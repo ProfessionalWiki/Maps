@@ -11,6 +11,7 @@
 			"Martinwiss",
 			"Per",
 			"Rotsee",
+			"Stefan2255",
 			"WikiPhoenix"
 		]
 	},
@@ -148,6 +149,7 @@
 	"maps-googlemaps3-par-clustergridsize": "Rutnätsstorleken för ett kluster i bildpunkter.",
 	"maps-par-clustermaxzoom": "Den maximala zoomnivån där kluster kan finnas.",
 	"maps-par-clusterzoomonclick": "Om standardbeteendet för att klicka på ett kluster är att zooma in på det.",
+	"maps-par-clusteranimate": "Om smidiga övergångar ska aktiveras vid zoomning och spindelifiering.",
 	"maps-par-maxclusterradius": "Den maximala radien som ett kluster kommer att täcka.",
 	"maps-googlemaps3-par-clusteraveragecenter": "Om centrum för varje kluster bör vara medelvärdet för alla markörer i klustret.",
 	"maps-googlemaps3-par-clusterminsize": "Det minimala antalet markörer i ett kluster innan markörerna döljs och ett sifferantal visas.",
