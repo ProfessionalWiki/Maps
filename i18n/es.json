@@ -3,6 +3,7 @@
 		"authors": [
 			"AlvaroMolina",
 			"Armando-Martin",
+			"Avengium",
 			"Carlosmg.dg",
 			"Ciencia Al Poder",
 			"Crazymadlover",
@@ -161,6 +162,7 @@
 	"maps-googlemaps3-par-kmlrezoom": "Ajustar el nivel de zoom del mapa después de que se hayan cargado las capas KML.",
 	"maps-googlemaps3-par-poi": "Mostrar puntos de interés.",
 	"maps-googlemaps3-par-clustergridsize": "La medida de la cuadrícula de una agrupación en píxeles.",
+	"maps-par-clusteranimate": "Si se deben habilitar transiciones suaves al hacer zoom y usar el zoom como araña.",
 	"maps-googlemaps3-par-clusterminsize": "El número mínimo de marcadores que están en una agrupación antes de que los marcadores se oculten y aparezca un recuento.",
 	"mapeditor": "Editor de mapas",
 	"mapeditor-parser-error": "Se ha producido un error al analizar los metadatos. Ignorando la entrada del usuario.",

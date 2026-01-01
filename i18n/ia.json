@@ -145,6 +145,7 @@
 	"maps-googlemaps3-par-clustergridsize": "Le dimension del grillia de un aggruppamento in pixels.",
 	"maps-par-clustermaxzoom": "Le nivello de zoom maxime ubi aggruppamentos pote exister.",
 	"maps-par-clusterzoomonclick": "Indica si le comportamento predefinite de un clic sur un aggruppamento es de facer zoom avante verso illo.",
+	"maps-par-clusteranimate": "Si activar transitiones lisie durante le zoom e le expansion in forma de tela de aranea.",
 	"maps-par-maxclusterradius": "Le radio maxime que un aggruppamento coperira.",
 	"maps-googlemaps3-par-clusteraveragecenter": "Indica si le centro de cata aggruppamento debe esser le media de tote le marcatores in le aggruppamento.",
 	"maps-googlemaps3-par-clusterminsize": "Le numero minime de marcatores que debe esser presente in un aggruppamento ante que le marcatores es celate e le numero de illos appare.",

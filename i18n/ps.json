@@ -3,7 +3,8 @@
 		"authors": [
 			"Af420",
 			"Ahmed-Najib-Biabani-Ibrahimkhel",
-			"Amjad Khan"
+			"Amjad Khan",
+			"شاه زمان پټان"
 		]
 	},
 	"maps_map": "نخشه",
@@ -20,7 +21,7 @@
 	"mapeditor-remove-button": "غورځول",
 	"mapeditor-link-title-switcher-link-text": "تړنه",
 	"mapeditor-form-field-title": "سرليک",
-	"mapeditor-form-field-text": "متن",
+	"mapeditor-form-field-text": "ليک",
 	"mapeditor-form-field-link": "تړنه",
 	"mapeditor-form-field-group": "ډله",
 	"mapeditor-form-field-image": "انځور",
