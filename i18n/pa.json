@@ -73,5 +73,6 @@
 	"maps-json-editor-tooltip-circle": "ਗੋਲ-ਘਤੇਰਾ ਲਾਉਣ ਲਈ ਨਕਸ਼ੇ ਉੱਤੇ ਕਲਿੱਕ ਕਰੋ।",
 	"maps-json-editor-added-circle": "ਗੋਲ-ਘਤੇਰਾ ਜੋੜਿਆ",
 	"maps-json-editor-toolbar-cancel-text": "ਰੱਦ ਕਰੋ",
+	"maps-geo-json-create-page-creating": "ਵਰਕਾ ਬਣਾਇਆ ਜਾ ਰਿਹਾ ਏ...",
 	"maps-validator-type-title": "ਸਿਰਲੇਖ"
 }
