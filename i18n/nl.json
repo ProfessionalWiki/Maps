@@ -158,6 +158,7 @@
 	"maps-googlemaps3-par-clustergridsize": "De rastergrootte van een cluster in pixels.",
 	"maps-par-clustermaxzoom": "Het maximale zoomniveau waar clusters kunnen bestaan.",
 	"maps-par-clusterzoomonclick": "Of het standaardgedrag bij het klikken op een cluster is om erop in te zoomen.",
+	"maps-par-clusteranimate": "Of er vloeiende overgangen moeten zijn bij het zoomen en laten uitwaaieren.",
 	"maps-par-maxclusterradius": "De maximale straal die een cluster bestrijkt.",
 	"maps-googlemaps3-par-clusteraveragecenter": "Of het midden van elke cluster het gemiddelde moet zijn van alle markeringen in de cluster.",
 	"maps-googlemaps3-par-clusterminsize": "Hoeveel markeringen er in een cluster moeten zitten voordat ze worden verborgen en het aantal ervan verschijnt.",
