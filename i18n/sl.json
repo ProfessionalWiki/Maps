@@ -148,6 +148,7 @@
 	"maps-googlemaps3-par-clustergridsize": "Velikost mreže gruče v pikslih.",
 	"maps-par-clustermaxzoom": "Največja stopnja povečave, pri kateri lahko obstajajo gruče.",
 	"maps-par-clusterzoomonclick": "Ali je privzeto vedenje ob kliku gruče njeno povečanje.",
+	"maps-par-clusteranimate": "Ali naj bodo pri povečavi in pajkanju omogočeni gladki prehodi?",
 	"maps-par-maxclusterradius": "Največji polmer, ki ga bo pokrivala gruča.",
 	"maps-googlemaps3-par-clusteraveragecenter": "Ali naj bo središče vsake gruče povprečje vseh označevalcev v gruči.",
 	"maps-googlemaps3-par-clusterminsize": "Najmanjše število označevalcev, ki morajo biti v gruči, preden so označevalci skriti in se prikaže števec.",

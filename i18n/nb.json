@@ -151,6 +151,7 @@
 	"maps-googlemaps3-par-clustergridsize": "Rutenettstørrelsen for et kluster angitt i piksler.",
 	"maps-par-clustermaxzoom": "Det maksimale zoomnivået der et kluster kan eksistere.",
 	"maps-par-clusterzoomonclick": "Angir at standardoppførselen ved å klikke på et kluster er å zoome inn på det.",
+	"maps-par-clusteranimate": "Hvorvidt man skal aktivere myk overganger når man zoomer eller viser edderkoppvisninger.",
 	"maps-par-maxclusterradius": "Maksimal radius som et kluster kan dekke.",
 	"maps-googlemaps3-par-clusteraveragecenter": "Angir at sentrum for alle kluster bør være middelposisjonen av alle markører i klustret.",
 	"maps-googlemaps3-par-clusterminsize": "Minimalt antall markører i et kluster før markørene skjules og kun antallet vises.",
