@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"GreenZeb",
-			"Papuass"
+			"Papuass",
+			"Rusjanis"
 		]
 	},
 	"maps-abb-north": "Z",
@@ -17,7 +18,7 @@
 	"maps-json-editor-toolbar-save-text": "Pabeigts",
 	"maps-json-editor-toolbar-cancel-text": "Atcelt",
 	"maps-json-editor-toolbar-clear-text": "Dzēst visu",
-	"maps-json-editor-toolbar-button-edit": "Labot slāņus",
+	"maps-json-editor-toolbar-button-edit": "Esošo marķieru un formu modificēšana",
 	"maps-json-editor-toolbar-button-remove": "Dzēst slāņus",
 	"maps-json-editor-toolbar-button-save": "Saglabāt izmaiņas",
 	"maps-json-editor-changes-saved": "Tavas veiktās izmaiņas ir saglabātas",
