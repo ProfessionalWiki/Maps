@@ -149,6 +149,8 @@
 	"semanticmaps-par-template": "Шаблён для фарматаваньня зьместу акна інфармацыі.",
 	"semanticmaps-par-geocodecontrol": "Паказаць элемэнты кіраваньня геаграфічным кадаваньнем.",
 	"maps-geo-json-edit-source": "Рэдагаваць код",
+	"tag-maps-visual-edit": "Рэдагаваньне з мапы",
+	"tag-maps-visual-edit-description": "Рэдагаваньне зроблена з дапамогай візуальнага рэдактару, забясьпечанага [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Maps Maps пашырэньнем]",
 	"maps-validator-type-string": "тэкст",
 	"maps-validator-type-integer": "цэлы лік",
 	"maps-validator-type-float": "лік",
