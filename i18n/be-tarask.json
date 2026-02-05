@@ -148,6 +148,7 @@
 	"semanticmaps-par-centre": "Цэнтар мапы. Калі ён не пададзены, мапа будзе аўтаматычна выбіраць аптымальны цэнтар для паказу ўсіх маркераў.",
 	"semanticmaps-par-template": "Шаблён для фарматаваньня зьместу акна інфармацыі.",
 	"semanticmaps-par-geocodecontrol": "Паказаць элемэнты кіраваньня геаграфічным кадаваньнем.",
+	"maps-json-editor-toolbar-cancel-text": "Скасаваць",
 	"maps-geo-json-edit-source": "Рэдагаваць код",
 	"tag-maps-visual-edit": "Рэдагаваньне з мапы",
 	"tag-maps-visual-edit-description": "Рэдагаваньне зроблена з дапамогай візуальнага рэдактару, забясьпечанага [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Maps Maps пашырэньнем]",
