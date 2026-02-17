@@ -6,6 +6,7 @@ namespace Maps;
 
 use MediaWiki\Html\Html;
 use Maps\Map\MapData;
+use MediaWiki\MediaWikiServices;
 use ParamProcessor\ProcessedParam;
 use ParamProcessor\ProcessingResult;
 
@@ -216,7 +217,8 @@ class GoogleMapsService implements MappingService {
 					array_filter(
 						array_map(
 							function( string $fileName ) {
-								return wfExpandUrl( MapsFunctions::getFileUrl( $fileName ) );
+								return MediaWikiServices::getInstance()->getUrlUtils()->expand(
+									MapsFunctions::getFileUrl( $fileName ) );
 							},
 							$kmlFileNames
 						),
