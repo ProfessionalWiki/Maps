@@ -35,4 +35,6 @@
 	<rule ref="Squiz.Operators.ValidLogicalOperators" />
 	<file>.</file>
 	<exclude-pattern>/(vendor|conf)/</exclude-pattern>
+	<arg name="extensions" value="php"/>
+	<arg name="encoding" value="UTF-8"/>
 </ruleset>
