@@ -23,12 +23,25 @@ class TestFactory {
 	}
 
 	public function parse( string $textToParse ): string {
-		return MediaWikiServices::getInstance()->getParser()
+		$parserOutput = MediaWikiServices::getInstance()->getParser()
 			->parse(
 				$textToParse,
 				Title::newMainPage(),
 				new \ParserOptions( User::newSystemUser( 'TestUser' ) )
-			)->getText();
+			);
+
+		if ( method_exists( $parserOutput, 'getContentHolderText' ) ) {
+			try {
+				return $parserOutput->getContentHolderText();
+			} catch ( LogicException $e ) {
+				// Handle case where there is no body content
+				return '';
+			}
+		} elseif ( method_exists( $parserOutput, 'getText' ) ) {
+			return $parserOutput->getText();
+		}
+
+		return '';
 	}
 
 }
