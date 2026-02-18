@@ -34,8 +34,6 @@ class WikitextParser {
 				// Handle case where there is no body content
 				return '';
 			}
-		} elseif ( method_exists( $parserOutput, 'getRawText' ) ) {
-			return $parserOutput->getRawText();
 		} elseif ( method_exists( $parserOutput, 'getText' ) ) {
 			return $parserOutput->getText();
 		}
