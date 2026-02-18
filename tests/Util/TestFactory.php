@@ -4,6 +4,7 @@ declare( strict_types = 1 );
 
 namespace Maps\Tests\Util;
 
+use LogicException;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
 use User;
