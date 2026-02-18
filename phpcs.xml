@@ -1,8 +1,5 @@
 <?xml version="1.0"?>
 <ruleset>
-	<file>src/</file>
-	<file>tests/</file>
-
 	<rule ref="./vendor/mediawiki/mediawiki-codesniffer/MediaWiki">
 		<exclude name="Generic.Files.LineLength.TooLong" />
 		<exclude name="Squiz.WhiteSpace.SuperfluousWhitespace.EndLine" />
@@ -36,4 +33,6 @@
 	<rule ref="Generic.Metrics.CyclomaticComplexity" />
 	<rule ref="Generic.Metrics.NestingLevel" />
 	<rule ref="Squiz.Operators.ValidLogicalOperators" />
+	<file>.</file>
+	<exclude-pattern>/(vendor|conf)/</exclude-pattern>
 </ruleset>
