@@ -4,6 +4,7 @@ declare( strict_types = 1 );
 
 namespace Maps\Presentation;
 
+use LogicException;
 use MediaWiki\Parser\Parser;
 use ParserOptions;
 
@@ -20,11 +21,24 @@ class WikitextParser {
 			return '';
 		}
 
-		return $this->parser->parse(
+		$parserOutput = $this->parser->parse(
 			$text,
 			$this->parser->getTitle(),
 			new ParserOptions( $this->parser->getUserIdentity() )
-		)->getText();
+		);
+
+		if ( method_exists( $parserOutput, 'getContentHolderText' ) ) {
+			try {
+				return $parserOutput->getContentHolderText();
+			} catch ( LogicException $e ) {
+				// Handle case where there is no body content
+				return '';
+			}
+		} elseif ( method_exists( $parserOutput, 'getText' ) ) {
+			return $parserOutput->getText();
+		}
+
+		return '';
 	}
 
 }
