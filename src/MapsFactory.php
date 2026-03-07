@@ -219,7 +219,7 @@ class MapsFactory {
 		return $factory;
 	}
 
-	public function newGeoJsonFetcher( FileFetcher $fileFetcher = null ): GeoJsonFetcher {
+	public function newGeoJsonFetcher( ?FileFetcher $fileFetcher = null ): GeoJsonFetcher {
 		return new GeoJsonFetcher(
 			$fileFetcher ?? $this->getGeoJsonFileFetcher(),
 			$this->mediaWikiServices->getTitleParser(),
