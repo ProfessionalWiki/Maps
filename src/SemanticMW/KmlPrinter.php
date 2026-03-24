@@ -58,6 +58,10 @@ class KmlPrinter extends FileExportPrinter {
 			$link->setParameter( $this->params['text'], 'text' );
 		}
 
+		if ( $this->params['filename'] !== '' ) {
+			$link->setParameter( $this->params['filename'], 'filename' );
+		}
+
 		// Fix for offset-error in getQueryLink()
 		// (getQueryLink by default sets offset to point to the next
 		// result set, fix by setting it to 0 if now explicitly set)
@@ -104,6 +108,11 @@ class KmlPrinter extends FileExportPrinter {
 			'default' => true,
 		];
 
+		$definitions['filename'] = [
+			'message' => 'semanticmaps-kml-filename',
+			'default' => 'kml.kml',
+		];
+
 		return $definitions;
 	}
 
@@ -126,6 +135,9 @@ class KmlPrinter extends FileExportPrinter {
 	 * @return string|boolean
 	 */
 	public function getFileName( QueryResult $queryResult ) {
+		if ( $this->params['filename'] !== '' ) {
+			return $this->params['filename'];
+		}
 		return 'kml.kml';
 	}
 
