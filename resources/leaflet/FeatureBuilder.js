@@ -150,18 +150,26 @@
 					return maps.leaflet.GeoJson.simpleStyleToLeafletPathOptions(feature.properties);
 				},
 				pointToLayer: function(feature, latlng) {
-					markerLayer.addLayer(
-						createMarker(
-							{
-								lat: latlng.lat,
-								lon: latlng.lng,
-								title: feature.properties.title || '',
-								text: maps.leaflet.GeoJson.popupContentFromProperties(feature.properties),
-								icon: ''
-							},
-							options
-						)
+					let marker = createMarker(
+						{
+							lat: latlng.lat,
+							lon: latlng.lng,
+							title: feature.properties.title || '',
+							text: maps.leaflet.GeoJson.popupContentFromProperties(feature.properties),
+							icon: ''
+						},
+						options
 					);
+
+					let color = feature.properties && feature.properties['marker-color'];
+					if (color) {
+						let icon = maps.leaflet.GeoJson.createColoredIcon(L, color);
+						if (icon) {
+							marker.setIcon(icon);
+						}
+					}
+
+					markerLayer.addLayer(marker);
 				},
 				onEachFeature: function (feature, layer) {
 					if (feature.geometry.type !== 'Point') {

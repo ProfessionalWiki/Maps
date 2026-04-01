@@ -88,6 +88,7 @@
 					style: function (feature) {
 						return  maps.leaflet.GeoJson.simpleStyleToLeafletPathOptions(feature.properties);
 					},
+					pointToLayer: maps.leaflet.GeoJson.pointToLayer,
 					onEachFeature: self._onEditableFeature
 				}
 			);
