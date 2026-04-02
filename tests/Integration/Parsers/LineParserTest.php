@@ -58,6 +58,14 @@ class LineParserTest extends TestCase {
 		);
 	}
 
+	public function testLinkWithInvalidTitleDoesNotCrash() {
+		$parser = $this->newParser();
+
+		$line = $parser->parse( '4,2~link:<>' );
+
+		$this->assertSame( '', $line->getLink() );
+	}
+
 	public function testTitleAndTextGetSetWhenPresent() {
 		$parser = $this->newParser();
 
