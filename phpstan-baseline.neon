@@ -16,11 +16,6 @@ parameters:
 			path: src/MapsHooks.php
 
 		-
-			message: "#^Call to an undefined static method MediaWiki\\\\Settings\\\\SettingsBuilder\\:\\:getInstance\\(\\)\\.$#"
-			count: 1
-			path: src/MapsHooks.php
-
-		-
 			message: "#^Call to static method newFromExternalLink\\(\\) on an unknown class AlItem\\.$#"
 			count: 1
 			path: src/MapsHooks.php
@@ -30,3 +25,87 @@ parameters:
 			count: 1
 			path: src/MapsHooks.php
 
+		-
+			message: "#^Property Maps\\\\DataAccess\\\\CachingGeocoder\\:\\:\\$cache has unknown class BagOStuff as its type\\.$#"
+			count: 1
+			path: src/DataAccess/CachingGeocoder.php
+
+		-
+			message: "#^Parameter \\$cache of method Maps\\\\DataAccess\\\\CachingGeocoder\\:\\:__construct\\(\\) has invalid type BagOStuff\\.$#"
+			count: 1
+			path: src/DataAccess/CachingGeocoder.php
+
+		-
+			message: "#^Property Maps\\\\DataAccess\\\\GeoJsonFetcher\\:\\:\\$titleParser has unknown class TitleParser as its type\\.$#"
+			count: 1
+			path: src/DataAccess/GeoJsonFetcher.php
+
+		-
+			message: "#^Parameter \\$titleParser of method Maps\\\\DataAccess\\\\GeoJsonFetcher\\:\\:__construct\\(\\) has invalid type TitleParser\\.$#"
+			count: 1
+			path: src/DataAccess/GeoJsonFetcher.php
+
+		-
+			message: "#^Class JsonContent not found\\.$#"
+			count: 1
+			path: src/DataAccess/GeoJsonFetcher.php
+
+		-
+			message: "#^Caught class MalformedTitleException not found\\.$#"
+			count: 1
+			path: src/DataAccess/GeoJsonFetcher.php
+
+		-
+			message: "#^Property Maps\\\\DataAccess\\\\GeoJsonFetcherResult\\:\\:\\$source has unknown class TitleValue as its type\\.$#"
+			count: 1
+			path: src/DataAccess/GeoJsonFetcherResult.php
+
+		-
+			message: "#^Parameter \\$source of method Maps\\\\DataAccess\\\\GeoJsonFetcherResult\\:\\:__construct\\(\\) has invalid type TitleValue\\.$#"
+			count: 1
+			path: src/DataAccess/GeoJsonFetcherResult.php
+
+		-
+			message: "#^Method Maps\\\\DataAccess\\\\GeoJsonFetcherResult\\:\\:getTitleValue\\(\\) has invalid return type TitleValue\\.$#"
+			count: 1
+			path: src/DataAccess/GeoJsonFetcherResult.php
+
+		-
+			message: "#^Property Maps\\\\DataAccess\\\\PageContentFetcher\\:\\:\\$titleParser has unknown class TitleParser as its type\\.$#"
+			count: 1
+			path: src/DataAccess/PageContentFetcher.php
+
+		-
+			message: "#^Parameter \\$titleParser of method Maps\\\\DataAccess\\\\PageContentFetcher\\:\\:__construct\\(\\) has invalid type TitleParser\\.$#"
+			count: 1
+			path: src/DataAccess/PageContentFetcher.php
+
+		-
+			message: "#^Method Maps\\\\DataAccess\\\\PageContentFetcher\\:\\:getPageContent\\(\\) has invalid return type Content\\.$#"
+			count: 1
+			path: src/DataAccess/PageContentFetcher.php
+
+		-
+			message: "#^Caught class MalformedTitleException not found\\.$#"
+			count: 1
+			path: src/DataAccess/PageContentFetcher.php
+
+		-
+			message: "#^Call to static method encode\\(\\) on an unknown class FormatJson\\.$#"
+			count: 1
+			path: src/Map/MapOutput.php
+
+		-
+			message: "#^Parameter \\$po of method Maps\\\\Map\\\\MapOutput\\:\\:addResourcesToParserOutput\\(\\) has invalid type ParserOutput\\.$#"
+			count: 1
+			path: src/Map/MapOutput.php
+
+		-
+			message: "#^Method Maps\\\\MapsFactory\\:\\:getMediaWikiCache\\(\\) has invalid return type BagOStuff\\.$#"
+			count: 1
+			path: src/MapsFactory.php
+
+		-
+			message: "#^Parameter \\$parserOutput of method Maps\\\\MapsFactory\\:\\:newSemanticGeoJsonStore\\(\\) has invalid type ParserOutput\\.$#"
+			count: 1
+			path: src/MapsFactory.php

@@ -8,7 +8,7 @@ phpunit:
 	php ../../tests/phpunit/phpunit.php -c phpunit.xml.dist
 
 phpcs:
-	cd ../.. && vendor/bin/phpcs -p -s --standard=$(shell pwd)/phpcs.xml
+	vendor/bin/phpcs -p -s
 
 stan:
 	../../vendor/bin/phpstan analyse --configuration=phpstan.neon --memory-limit=2G
