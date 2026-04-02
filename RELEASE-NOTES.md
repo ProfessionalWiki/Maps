@@ -3,6 +3,12 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 12.1.0
+
+Under development.
+
+* Added support for the `marker-color` GeoJSON property from the [simplestyle spec](https://github.com/mapbox/simplestyle-spec/tree/master/1.1.0)
+
 ## Maps 12.0.0
 
 Released on August 13th, 2025.
@@ -287,7 +293,7 @@ Released on December 9th, 2019.
     * Border color (property key `stroke`)
     * Border width (property key `stroke-width`)
     * Border opacity (property key `stroke-opacity`)
-    * `marker-size`, `marker-symbol` and `marker-color` are not yet supported and will be ignored
+    * `marker-size` and `marker-symbol` are not yet supported and will be ignored
     * Display only, editing in the visual editor is not yet supported
 * Marker clustering now also cluster markers from the GeoJSON layer
 * Marker clustering now also cluster markers dynamically loaded via the `ajaxquery` feature
