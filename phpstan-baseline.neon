@@ -1,5 +1,6 @@
 parameters:
 	ignoreErrors:
+		# SMW classes (optional dependency)
 		-
 			message: "#^Call to static method getInstance\\(\\) on an unknown class SMW\\\\Services\\\\ServicesFactory\\.$#"
 			count: 1
@@ -25,6 +26,7 @@ parameters:
 			count: 1
 			path: src/MapsHooks.php
 
+		# MediaWiki classes that moved to namespaces (backward compat aliases not resolved by PHPStan)
 		-
 			message: "#^Property Maps\\\\DataAccess\\\\CachingGeocoder\\:\\:\\$cache has unknown class BagOStuff as its type\\.$#"
 			count: 1
@@ -93,7 +95,7 @@ parameters:
 		-
 			message: "#^Call to static method encode\\(\\) on an unknown class FormatJson\\.$#"
 			count: 1
-			path: src/Map/MapOutput.php
+			path: src/Map/MapHtmlBuilder.php
 
 		-
 			message: "#^Parameter \\$po of method Maps\\\\Map\\\\MapOutput\\:\\:addResourcesToParserOutput\\(\\) has invalid type ParserOutput\\.$#"
@@ -109,3 +111,78 @@ parameters:
 			message: "#^Parameter \\$parserOutput of method Maps\\\\MapsFactory\\:\\:newSemanticGeoJsonStore\\(\\) has invalid type ParserOutput\\.$#"
 			count: 1
 			path: src/MapsFactory.php
+
+		-
+			message: "#^Parameter \\$frame of anonymous function has invalid type PPFrame\\.$#"
+			count: 2
+			path: src/ParserHookSetup.php
+
+		-
+			message: "#^Parameter \\$frame of method Maps\\\\ParserHookSetup\\:\\:handleFunctionHook\\(\\) has invalid type PPFrame\\.$#"
+			count: 1
+			path: src/ParserHookSetup.php
+
+		-
+			message: "#^Parameter \\#1 \\$parser \\(MediaWiki\\\\Parser\\\\Parser\\) of method Maps\\\\ParserHooks\\\\CoordinatesFunction\\:\\:handle\\(\\) is not contravariant with parameter \\#1 \\$parser \\(Parser\\) of method ParserHooks\\\\HookHandler\\:\\:handle\\(\\)\\.$#"
+			count: 1
+			path: src/ParserHooks/CoordinatesFunction.php
+
+		-
+			message: "#^Parameter \\#1 \\$parser \\(MediaWiki\\\\Parser\\\\Parser\\) of method Maps\\\\ParserHooks\\\\DistanceFunction\\:\\:handle\\(\\) is not contravariant with parameter \\#1 \\$parser \\(Parser\\) of method ParserHooks\\\\HookHandler\\:\\:handle\\(\\)\\.$#"
+			count: 1
+			path: src/ParserHooks/DistanceFunction.php
+
+		-
+			message: "#^Parameter \\#1 \\$parser \\(MediaWiki\\\\Parser\\\\Parser\\) of method Maps\\\\ParserHooks\\\\FindDestinationFunction\\:\\:handle\\(\\) is not contravariant with parameter \\#1 \\$parser \\(Parser\\) of method ParserHooks\\\\HookHandler\\:\\:handle\\(\\)\\.$#"
+			count: 1
+			path: src/ParserHooks/FindDestinationFunction.php
+
+		-
+			message: "#^Parameter \\#1 \\$parser \\(MediaWiki\\\\Parser\\\\Parser\\) of method Maps\\\\ParserHooks\\\\GeoDistanceFunction\\:\\:handle\\(\\) is not contravariant with parameter \\#1 \\$parser \\(Parser\\) of method ParserHooks\\\\HookHandler\\:\\:handle\\(\\)\\.$#"
+			count: 1
+			path: src/ParserHooks/GeoDistanceFunction.php
+
+		-
+			message: "#^Parameter \\#1 \\$parser \\(MediaWiki\\\\Parser\\\\Parser\\) of method Maps\\\\ParserHooks\\\\GeocodeFunction\\:\\:handle\\(\\) is not contravariant with parameter \\#1 \\$parser \\(Parser\\) of method ParserHooks\\\\HookHandler\\:\\:handle\\(\\)\\.$#"
+			count: 1
+			path: src/ParserHooks/GeocodeFunction.php
+
+		-
+			message: "#^Parameter \\#1 \\$parser \\(MediaWiki\\\\Parser\\\\Parser\\) of method Maps\\\\ParserHooks\\\\MapsDocFunction\\:\\:handle\\(\\) is not contravariant with parameter \\#1 \\$parser \\(Parser\\) of method ParserHooks\\\\HookHandler\\:\\:handle\\(\\)\\.$#"
+			count: 1
+			path: src/ParserHooks/MapsDocFunction.php
+
+		-
+			message: "#^Property Maps\\\\Presentation\\\\OutputFacade\\:\\:\\$outputPage has unknown class OutputPage as its type\\.$#"
+			count: 1
+			path: src/Presentation/OutputFacade.php
+
+		-
+			message: "#^Property Maps\\\\Presentation\\\\OutputFacade\\:\\:\\$parserOutput has unknown class ParserOutput as its type\\.$#"
+			count: 1
+			path: src/Presentation/OutputFacade.php
+
+		-
+			message: "#^Parameter \\$outputPage of method Maps\\\\Presentation\\\\OutputFacade\\:\\:newFromOutputPage\\(\\) has invalid type OutputPage\\.$#"
+			count: 1
+			path: src/Presentation/OutputFacade.php
+
+		-
+			message: "#^Parameter \\$parserOutput of method Maps\\\\Presentation\\\\OutputFacade\\:\\:newFromParserOutput\\(\\) has invalid type ParserOutput\\.$#"
+			count: 1
+			path: src/Presentation/OutputFacade.php
+
+		-
+			message: "#^Instantiated class ParserOptions not found\\.$#"
+			count: 1
+			path: src/Presentation/WikitextParser.php
+
+		-
+			message: "#^Call to static method newFromText\\(\\) on an unknown class Title\\.$#"
+			count: 1
+			path: src/WikitextParsers/LocationParser.php
+
+		-
+			message: "#^Call to static method newFromText\\(\\) on an unknown class Title\\.$#"
+			count: 1
+			path: src/WikitextParsers/LineParser.php

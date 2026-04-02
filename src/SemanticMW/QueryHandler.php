@@ -474,8 +474,8 @@ class QueryHandler {
 
 	/**
 	 * Since we’re outside the normal parse flow (like QueryHandler), we must initialize the Parser:
-     * * Build a fresh Parser from ParserFactory->create() rather than the global shared instance.
-     * * Reuse that initialized Parser for all related parsing that belongs to the same context Title and Options.
+	 * * Build a fresh Parser from ParserFactory->create() rather than the global shared instance.
+	 * * Reuse that initialized Parser for all related parsing that belongs to the same context Title and Options.
 	 */
 	private function getParser(): Parser {
 		if ( $this->parser !== null ) {
