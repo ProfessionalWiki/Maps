@@ -57,6 +57,11 @@ class GeoJsonFetcher {
 			return $this->newEmptyResult();
 		}
 
+		// Prevent SSRF by blocking requests to private/reserved IP ranges
+		if ( $this->urlResolvesToPrivateIp( $fileLocation ) ) {
+			return $this->newEmptyResult();
+		}
+
 		try {
 			return new GeoJsonFetcherResult(
 				$this->normalizeJson( $this->fileFetcher->fetchFile( $fileLocation ) ),
@@ -67,6 +72,35 @@ class GeoJsonFetcher {
 		catch ( FileFetchingException $ex ) {
 			return $this->newEmptyResult();
 		}
+	}
+
+	private function urlResolvesToPrivateIp( string $url ): bool {
+		$host = parse_url( $url, PHP_URL_HOST );
+
+		if ( $host === false || $host === null ) {
+			return true;
+		}
+
+		// Strip brackets from IPv6 literals
+		$host = trim( $host, '[]' );
+
+		$ips = gethostbynamel( $host );
+
+		if ( $ips === false ) {
+			// Also check for IPv6 literal addresses
+			if ( filter_var( $host, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6 ) ) {
+				return !filter_var( $host, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6 | FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE );
+			}
+			return true;
+		}
+
+		foreach ( $ips as $ip ) {
+			if ( !filter_var( $ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE ) ) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	private function newEmptyResult(): GeoJsonFetcherResult {

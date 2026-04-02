@@ -60,7 +60,7 @@ class GeoJsonFetcherTest extends TestCase {
 
 		$this->assertSame(
 			[],
-			$this->newJsonFileParser()->parse( 'http://such.a/file' )
+			$this->newJsonFileParser()->parse( 'http://example.com/file' )
 		);
 	}
 
@@ -69,7 +69,7 @@ class GeoJsonFetcherTest extends TestCase {
 
 		$this->assertEquals(
 			self::VALID_FILE_JSON,
-			$this->newJsonFileParser()->parse( 'http://such.a/file' )
+			$this->newJsonFileParser()->parse( 'http://example.com/file' )
 		);
 	}
 
@@ -78,7 +78,7 @@ class GeoJsonFetcherTest extends TestCase {
 
 		$this->assertSame(
 			[],
-			$this->newJsonFileParser()->parse( 'http://such.a/file' )
+			$this->newJsonFileParser()->parse( 'http://example.com/file' )
 		);
 	}
 
@@ -117,6 +117,27 @@ class GeoJsonFetcherTest extends TestCase {
 			self::EXISTING_GEO_JSON_PAGE,
 			$this->newJsonFileParser()->fetch( self::EXISTING_GEO_JSON_PAGE_WITH_PREFIX )->getTitleValue()->getText()
 		);
+	}
+
+	/**
+	 * @dataProvider privateIpUrlProvider
+	 */
+	public function testWhenUrlResolvesToPrivateIp_emptyJsonIsReturned( string $url ) {
+		$this->fileFetcher = new StubFileFetcher( json_encode( self::VALID_FILE_JSON ) );
+
+		$this->assertSame(
+			[],
+			$this->newJsonFileParser()->parse( $url )
+		);
+	}
+
+	public static function privateIpUrlProvider(): iterable {
+		yield 'loopback' => [ 'http://127.0.0.1/file' ];
+		yield 'link-local / AWS metadata' => [ 'http://169.254.169.254/latest/meta-data/' ];
+		yield 'private class A' => [ 'http://10.0.0.1/file' ];
+		yield 'private class B' => [ 'http://172.16.0.1/file' ];
+		yield 'private class C' => [ 'http://192.168.1.1/file' ];
+		yield 'localhost' => [ 'http://localhost/file' ];
 	}
 
 }
