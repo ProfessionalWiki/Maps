@@ -170,6 +170,8 @@
 					}
 
 					markerLayer.addLayer(marker);
+
+					return marker;
 				},
 				onEachFeature: function (feature, layer) {
 					if (feature.geometry.type !== 'Point') {
