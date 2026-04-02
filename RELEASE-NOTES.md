@@ -5,7 +5,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 ## Maps 12.1.0
 
-Under development.
+Released on April 3rd, 2026.
 
 * Added support for the `marker-color` GeoJSON property from the [simplestyle spec](https://github.com/mapbox/simplestyle-spec/tree/master/1.1.0)
 * Added `filename` parameter to KML result format for custom download filenames
