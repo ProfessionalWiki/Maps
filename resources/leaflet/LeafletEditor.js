@@ -152,43 +152,65 @@
 		}
 
 		self._onEditableFeature = function(feature, layer) {
-			let titleInput = $('<textarea cols="50" rows="1" />').text(feature.properties.title);
-			let descriptionInput = $('<textarea cols="50" rows="2" />').text(feature.properties.description);
-			let button = $('<button style="width: 100%">').text(mw.msg('maps-json-editor-toolbar-save-text'));
-
-			layer.on("popupopen", function () {
-				let v = titleInput.val();
-				titleInput.focus().val('').val(v);
-			});
-
 			let popup = L.popup({
 				minWidth: 250,
 				maxWidth: 9000,
-				keepInView: true,
-				closeButton: false,
-				autoClose: false,
-				closeOnEscapeKey: false,
-				closeOnClick: false
+				keepInView: true
 			});
 
-			let onSizeChangedHandler = function(element) {
-				popup.update(); element.focus();
-			};
+			function showReadView() {
+				let container = $('<div />');
+				let readContent = maps.leaflet.GeoJson.popupContentFromProperties(feature.properties);
 
-			onSizeChange(titleInput, onSizeChangedHandler);
-			onSizeChange(descriptionInput, onSizeChangedHandler);
-
-			button.click(function() {
-				popup.remove();
-
-				if (titleInput.val() !== titleInput.text() || descriptionInput.val() !== descriptionInput.text()) {
-					feature.properties["title"] = titleInput.val();
-					feature.properties["description"] = descriptionInput.val();
-					self._showSaveButton();
+				if (readContent !== '') {
+					container.append($('<div />').html(readContent));
 				}
-			});
 
-			popup.setContent($('<div />').append(titleInput, descriptionInput, button)[0]);
+				let editLink = $('<a href="#" />').text(mw.msg('maps-json-editor-toolbar-button-edit'));
+				editLink.click(function(e) {
+					e.preventDefault();
+					showEditView();
+				});
+				container.append(editLink);
+
+				popup.setContent(container[0]);
+				if (popup.isOpen()) {
+					popup.update();
+				}
+			}
+
+			function showEditView() {
+				let titleInput = $('<textarea cols="50" rows="1" />').text(feature.properties.title);
+				let descriptionInput = $('<textarea cols="50" rows="2" />').text(feature.properties.description);
+				let button = $('<button style="width: 100%">').text(mw.msg('maps-json-editor-toolbar-save-text'));
+
+				let onSizeChangedHandler = function(element) {
+					popup.update(); element.focus();
+				};
+
+				onSizeChange(titleInput, onSizeChangedHandler);
+				onSizeChange(descriptionInput, onSizeChangedHandler);
+
+				button.click(function() {
+					if (titleInput.val() !== (feature.properties.title || '')
+						|| descriptionInput.val() !== (feature.properties.description || '')) {
+						feature.properties["title"] = titleInput.val();
+						feature.properties["description"] = descriptionInput.val();
+						self._showSaveButton();
+					}
+					showReadView();
+				});
+
+				popup.options.closeButton = false;
+				popup.options.autoClose = false;
+				popup.options.closeOnEscapeKey = false;
+				popup.options.closeOnClick = false;
+				popup.setContent($('<div />').append(titleInput, descriptionInput, button)[0]);
+				popup.update();
+				titleInput.focus();
+			}
+
+			showReadView();
 			layer.bindPopup(popup);
 		};
 
