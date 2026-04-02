@@ -22,7 +22,7 @@ class DistanceParserTest extends TestCase {
 		$this->assertEqualsWithDelta(
 			$expected,
 			( new DistanceParser() )->parse( $input ),
-			PHP_FLOAT_EPSILON
+			0.001
 		);
 	}
 
@@ -34,7 +34,7 @@ class DistanceParserTest extends TestCase {
 			[ '4.2 km', 4200.0 ],
 			[ '4.2 m', 4.2 ],
 			[ '4.02 m', 4.02 ],
-//			[ '4.02 km', 4020.0 ],
+			[ '4.02 km', 4020.0 ],
 			[ '0.001 km', 1.0 ],
 		];
 	}
