@@ -34,7 +34,7 @@ minimum requirements are indicated in bold. For a detailed list of changes, see 
 	<tr>
 		<th>12.1.x</th>
 		<td>7.4 - 8.4</td>
-		<td>1.43 - 1.44</td>
+		<td>1.43 - 1.45</td>
 		<td>4.2 - 6.0</td>
 		<td>Development</td>
 	</tr>

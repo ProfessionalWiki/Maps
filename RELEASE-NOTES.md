@@ -11,6 +11,12 @@ Under development.
 * Added `filename` parameter to KML result format for custom download filenames
 * Added `clusteranimation` parameter to disable cluster animation on Leaflet maps
 * Added compatibility with MediaWiki 1.45
+* Dropped compatibility code for MediaWiki older than 1.36
+* Fixed stored XSS vulnerability in AJAX marker popups for Semantic MediaWiki queries
+* Fixed SSRF vulnerability in GeoJSON URL fetching by blocking requests to private/reserved IP ranges
+* Fixed `maps-visual-edit` tag never being applied to GeoJSON visual edits due to race condition
+* Fixed multi-valued Semantic MediaWiki properties being silently lost in map popups (only last value was shown)
+* Fixed popup anchor offset for custom marker icons on Leaflet maps
 * Fixed Visual Editor crash when maps contain polygons (#758, #829)
 * Fixed deprecated `ParserOutput::getText()` usage causing warnings on MediaWiki 1.42+ (#812, #837)
 * Fixed UI messages showing in content language instead of user language (#694)
