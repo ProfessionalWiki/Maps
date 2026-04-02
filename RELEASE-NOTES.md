@@ -10,8 +10,6 @@ Under development.
 * Added support for the `marker-color` GeoJSON property from the [simplestyle spec](https://github.com/mapbox/simplestyle-spec/tree/master/1.1.0)
 * Added `filename` parameter to KML result format for custom download filenames
 * Added `clusteranimation` parameter to disable cluster animation on Leaflet maps
-* Added compatibility with MediaWiki 1.45
-* Dropped compatibility code for MediaWiki older than 1.36
 * Fixed stored XSS vulnerability in AJAX marker popups for Semantic MediaWiki queries
 * Fixed SSRF vulnerability in GeoJSON URL fetching by blocking requests to private/reserved IP ranges
 * Fixed `maps-visual-edit` tag never being applied to GeoJSON visual edits due to race condition
