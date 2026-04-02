@@ -8,6 +8,17 @@ different releases and which versions of PHP and MediaWiki they support, see the
 Under development.
 
 * Added support for the `marker-color` GeoJSON property from the [simplestyle spec](https://github.com/mapbox/simplestyle-spec/tree/master/1.1.0)
+* Added `filename` parameter to KML result format for custom download filenames
+* Added `clusteranimation` parameter to disable cluster animation on Leaflet maps
+* Added compatibility with MediaWiki 1.45
+* Fixed Visual Editor crash when maps contain polygons (#758, #829)
+* Fixed deprecated `ParserOutput::getText()` usage causing warnings on MediaWiki 1.42+ (#812, #837)
+* Fixed UI messages showing in content language instead of user language (#694)
+* Fixed deprecated `wfExpandUrl()` usage
+* Fixed deprecated nullable parameter in file fetcher
+* Fixed non-namespaced `Html` class alias usage (#826)
+* Fixed `GeoJsonContent` subject page type casting (#827)
+* Fixed `DistanceParserTest` floating point comparison (#684)
 
 ## Maps 12.0.0
 
