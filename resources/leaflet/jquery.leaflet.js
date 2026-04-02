@@ -304,10 +304,11 @@
 			let overlays = this.addOverlays();
 
 			if (layers.size > 1 || options.overlays.length > 0) {
-				let control = L.control.layers([], overlays).addTo(this.map);
+				let baseLayers = {};
 				layers.forEach(function(layerObject, layerName) {
-					control.addBaseLayer(layerObject, layerName);
+					baseLayers[layerName] = layerObject;
 				});
+				L.control.layers(baseLayers, overlays).addTo(this.map);
 			}
 		};
 
