@@ -32,9 +32,9 @@ window.mapsLeafletList = [];
 			1000
 		);
 
-		// mw.hook( 've.deactivationComplete' ).add( function() {
-		// 	clearInterval( thread );
-		// } );
+		mw.hook( 've.deactivationComplete' ).add( function() {
+			clearInterval( thread );
+		} );
 
 		// surface.getModel().on( 'history', function() {
 		// 	console.log('history');
