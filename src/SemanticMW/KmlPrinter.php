@@ -110,7 +110,7 @@ class KmlPrinter extends FileExportPrinter {
 
 		$definitions['filename'] = [
 			'message' => 'semanticmaps-kml-filename',
-			'default' => 'kml.kml',
+			'default' => '',
 		];
 
 		return $definitions;
@@ -136,7 +136,13 @@ class KmlPrinter extends FileExportPrinter {
 	 */
 	public function getFileName( QueryResult $queryResult ) {
 		if ( $this->params['filename'] !== '' ) {
-			return $this->params['filename'];
+			$filename = $this->params['filename'];
+
+			if ( !str_ends_with( strtolower( $filename ), '.kml' ) ) {
+				$filename .= '.kml';
+			}
+
+			return $filename;
 		}
 		return 'kml.kml';
 	}

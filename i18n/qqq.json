@@ -218,6 +218,7 @@
 	"semanticmaps-kml-text": "{{doc-paramdesc|text}}",
 	"semanticmaps-kml-title": "{{doc-paramdesc|title}}",
 	"semanticmaps-kml-linkabsolute": "{{doc-paramdesc|absolute}}",
+	"semanticmaps-kml-filename": "{{doc-paramdesc|filename}}",
 	"semanticmaps-kml-pagelinktext": "Used as description for \"pagelinktext\" input box.\nSee example: [{{canonicalurl:Special:Ask|format=kml}} Special:Ask]\n\n<code>$1</code> is not a parameter, and appears as is.\n\nDefault value for the input box is {{msg-mw|Semanticmaps-default-kml-pagelink}}.",
 	"semanticmaps-shapes-improperformat": "This is an error message.\n\nParameter:\n* $1 - improper text",
 	"semanticmaps-shapes-missingshape": "This is an error message.\n\nParameter:\n* $1 - name of the shape",
