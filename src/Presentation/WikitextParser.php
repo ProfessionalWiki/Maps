@@ -27,18 +27,11 @@ class WikitextParser {
 			new ParserOptions( $this->parser->getUserIdentity() )
 		);
 
-		if ( method_exists( $parserOutput, 'getContentHolderText' ) ) {
-			try {
-				return $parserOutput->getContentHolderText();
-			} catch ( LogicException $e ) {
-				// Handle case where there is no body content
-				return '';
-			}
-		} elseif ( method_exists( $parserOutput, 'getText' ) ) {
-			return $parserOutput->getText();
+		try {
+			return $parserOutput->getContentHolderText();
+		} catch ( LogicException $e ) {
+			return '';
 		}
-
-		return '';
 	}
 
 }
