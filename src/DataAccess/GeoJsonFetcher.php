@@ -20,11 +20,13 @@ class GeoJsonFetcher {
 	private FileFetcher $fileFetcher;
 	private \TitleParser $titleParser;
 	private RevisionLookup $revisionLookup;
+	private UrlSsrfGuard $ssrfGuard;
 
 	public function __construct( FileFetcher $fileFetcher, \TitleParser $titleParser, RevisionLookup $revisionLookup ) {
 		$this->fileFetcher = $fileFetcher;
 		$this->titleParser = $titleParser;
 		$this->revisionLookup = $revisionLookup;
+		$this->ssrfGuard = new UrlSsrfGuard();
 	}
 
 	public function parse( string $fileLocation ): array {
@@ -54,6 +56,11 @@ class GeoJsonFetcher {
 
 		// Prevent reading JSON files on the server
 		if ( !filter_var( $fileLocation, FILTER_VALIDATE_URL ) ) {
+			return $this->newEmptyResult();
+		}
+
+		// Prevent SSRF by blocking requests to private/reserved IP ranges
+		if ( $this->ssrfGuard->urlResolvesToPrivateNetwork( $fileLocation ) ) {
 			return $this->newEmptyResult();
 		}
 

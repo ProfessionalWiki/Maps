@@ -60,7 +60,7 @@ class GeoJsonFetcherTest extends TestCase {
 
 		$this->assertSame(
 			[],
-			$this->newJsonFileParser()->parse( 'http://such.a/file' )
+			$this->newJsonFileParser()->parse( 'http://example.com/file' )
 		);
 	}
 
@@ -69,7 +69,7 @@ class GeoJsonFetcherTest extends TestCase {
 
 		$this->assertEquals(
 			self::VALID_FILE_JSON,
-			$this->newJsonFileParser()->parse( 'http://such.a/file' )
+			$this->newJsonFileParser()->parse( 'http://example.com/file' )
 		);
 	}
 
@@ -78,7 +78,7 @@ class GeoJsonFetcherTest extends TestCase {
 
 		$this->assertSame(
 			[],
-			$this->newJsonFileParser()->parse( 'http://such.a/file' )
+			$this->newJsonFileParser()->parse( 'http://example.com/file' )
 		);
 	}
 
@@ -116,6 +116,15 @@ class GeoJsonFetcherTest extends TestCase {
 		$this->assertSame(
 			self::EXISTING_GEO_JSON_PAGE,
 			$this->newJsonFileParser()->fetch( self::EXISTING_GEO_JSON_PAGE_WITH_PREFIX )->getTitleValue()->getText()
+		);
+	}
+
+	public function testWhenUrlResolvesToPrivateIp_emptyJsonIsReturned() {
+		$this->fileFetcher = new StubFileFetcher( json_encode( self::VALID_FILE_JSON ) );
+
+		$this->assertSame(
+			[],
+			$this->newJsonFileParser()->parse( 'http://127.0.0.1/file' )
 		);
 	}
 
