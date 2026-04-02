@@ -241,7 +241,7 @@
 		this.getNormalBaseLayers = function() {
 			let layers = new Map();
 
-			$.each( options.layers.reverse(), function(index, layerName) {
+			$.each( [...options.layers].reverse(), function(index, layerName) {
 				layers.set(layerName, _this.newBaseLayerFromName(layerName));
 			});
 
@@ -267,7 +267,7 @@
 		this.getImageBaseLayers = function() {
 			let layers = new Map();
 
-			$.each( options.imageLayers.reverse(), function(index, layer) {
+			$.each( [...options.imageLayers].reverse(), function(index, layer) {
 				layers.set(
 					layer.name,
 					L.imageOverlay(
@@ -359,7 +359,7 @@
 		this.fitContent = function() {
 			let bounds = this.mapContent.getBounds();
 
-			$.each( options.imageLayers.reverse(), function(index, layer) {
+			$.each( [...options.imageLayers].reverse(), function(index, layer) {
 				bounds.extend(new L.LatLng(0, 0));
 				bounds.extend(new L.LatLng(layer.height, layer.width));
 			});
