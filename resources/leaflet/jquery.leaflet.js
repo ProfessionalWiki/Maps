@@ -342,6 +342,15 @@
 		};
 
 		this.centerAndZoomMap = function() {
+			if (options.centre !== false && options.zoom !== false) {
+				this.map.setView(
+					new L.LatLng(options.centre.lat, options.centre.lon),
+					options.zoom,
+					{animate: false}
+				);
+				return;
+			}
+
 			this.fitContent();
 
 			if (options.zoom !== false) {
