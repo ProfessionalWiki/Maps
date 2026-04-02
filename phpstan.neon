@@ -11,6 +11,7 @@ parameters:
 		- src/MapsSetup.php
 		- src/Map/CargoFormat/
 		- src/Map/SemanticFormat/
+		- src/ParserHooks/
 
 		- src/GeoJsonPages/
 		- src/LegacyMapEditor/

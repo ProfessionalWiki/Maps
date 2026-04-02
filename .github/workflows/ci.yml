@@ -23,9 +23,6 @@ jobs:
           - mw: 'REL1_45'
             php: 8.3
             experimental: false
-          - mw: 'master'
-            php: 8.4
-            experimental: true
 
     runs-on: ubuntu-latest
 
@@ -151,7 +148,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 8.2
+          php-version: 8.3
           extensions: mbstring
           tools: composer, cs2pr
 
@@ -161,15 +158,15 @@ jobs:
         with:
           path: |
             mediawiki
-            mediawiki/extensions/
-            mediawiki/vendor/
-          key: mw_phpstan
+            !mediawiki/extensions/
+            !mediawiki/vendor/
+          key: mw_phpstan-v2
 
       - name: Cache Composer cache
         uses: actions/cache@v4
         with:
           path: ~/.composer/cache
-          key: composer_static_analysis
+          key: composer_phpstan
 
       - uses: actions/checkout@v4
         with:
@@ -203,10 +200,6 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: mediawiki
-
     steps:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -215,48 +208,18 @@ jobs:
           extensions: mbstring, intl, php-ast
           tools: composer
 
-      - name: Cache MediaWiki
-        id: cache-mediawiki
-        uses: actions/cache@v4
-        with:
-          path: |
-            mediawiki
-            !mediawiki/extensions/
-            !mediawiki/vendor/
-          key: mw_static_analysis
-
       - name: Cache Composer cache
         uses: actions/cache@v4
         with:
           path: ~/.composer/cache
-          key: composer_static_analysis
+          key: composer_code_style
 
       - uses: actions/checkout@v4
-        with:
-          path: EarlyCopy
-
-      - name: Install MediaWiki
-        if: steps.cache-mediawiki.outputs.cache-hit != 'true'
-        working-directory: ~
-        run: bash EarlyCopy/.github/workflows/installMediaWiki.sh REL1_43 Maps
-
-      - uses: actions/checkout@v4
-        with:
-          path: mediawiki/extensions/Maps
 
       - name: Composer allow-plugins
         run: composer config --no-plugins allow-plugins.composer/installers true
 
-      - name: Composer update (core)
-        run: composer update
-
-      - name: Composer allow-plugins (extension)
-        run: composer config --no-plugins allow-plugins.composer/installers true
-        working-directory: mediawiki/extensions/Maps
-
-      - name: Composer update (extension)
-        run: composer update
-        working-directory: mediawiki/extensions/Maps
+      - name: Composer install
+        run: composer install --no-progress --no-interaction --prefer-dist --optimize-autoloader
 
       - run: make phpcs
-        working-directory: mediawiki/extensions/Maps
