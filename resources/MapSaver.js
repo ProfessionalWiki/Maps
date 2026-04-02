@@ -27,25 +27,27 @@
 		// parameters.summary: required string
 		// parameters.done: required callback function
 		self.save = function(paremeters) {
-			new mw.Api().edit(
-				pageName,
-				function(revision) {
-					let editApiParameters = {
-						text: paremeters.newContent,
-						summary: paremeters.summary,
-						minor: false
-					};
+			getUserHasPermission(
+				"applychangetags",
+				function(canApplyTags) {
+					new mw.Api().edit(
+						pageName,
+						function(revision) {
+							let editApiParameters = {
+								text: paremeters.newContent,
+								summary: paremeters.summary,
+								minor: false
+							};
 
-					ifUserHasPermission(
-						"applychangetags",
-						function() {
-							editApiParameters.tags = ['maps-visual-edit'];
+							if (canApplyTags) {
+								editApiParameters.tags = ['maps-visual-edit'];
+							}
+
+							return editApiParameters;
 						}
-					);
-
-					return editApiParameters;
+					).then(paremeters.done);
 				}
-			).then(paremeters.done);
+			);
 		};
 
 		return self;
