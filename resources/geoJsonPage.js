@@ -58,22 +58,34 @@
 		);
 	}
 
-	function initializeGeoJsonAndEditorUi(map) {
-		if (mw.config.get('wgCurRevisionId') === mw.config.get('wgRevisionId')) {
-
-			maps.api.canEditPage(mw.config.get('wgPageName')).done(
-				function(canEdit) {
-					if (canEdit) {
-						initializeWithEditor(map);
-					}
-					else {
-						initializePlainMap(map);
-					}
+	function addEditButton(map) {
+		maps.api.canEditPage(mw.config.get('wgPageName')).done(
+			function(canEdit) {
+				if (canEdit) {
+					let editButton = L.easyButton(
+						'<span style="font-size: 15px;">&#9998;</span>',
+						function() {
+							editButton.remove();
+							map.eachLayer(function(layer) {
+								if (layer instanceof L.GeoJSON) {
+									map.removeLayer(layer);
+								}
+							});
+							initializeWithEditor(map);
+						},
+						mw.msg('maps-json-editor-toolbar-button-edit')
+					);
+					editButton.addTo(map);
 				}
-			);
-		}
-		else {
-			initializePlainMap(map);
+			}
+		);
+	}
+
+	function initializeGeoJsonAndEditorUi(map) {
+		initializePlainMap(map);
+
+		if (mw.config.get('wgCurRevisionId') === mw.config.get('wgRevisionId')) {
+			addEditButton(map);
 		}
 	}
 
