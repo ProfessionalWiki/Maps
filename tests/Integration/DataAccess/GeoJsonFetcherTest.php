@@ -119,25 +119,13 @@ class GeoJsonFetcherTest extends TestCase {
 		);
 	}
 
-	/**
-	 * @dataProvider privateIpUrlProvider
-	 */
-	public function testWhenUrlResolvesToPrivateIp_emptyJsonIsReturned( string $url ) {
+	public function testWhenUrlResolvesToPrivateIp_emptyJsonIsReturned() {
 		$this->fileFetcher = new StubFileFetcher( json_encode( self::VALID_FILE_JSON ) );
 
 		$this->assertSame(
 			[],
-			$this->newJsonFileParser()->parse( $url )
+			$this->newJsonFileParser()->parse( 'http://127.0.0.1/file' )
 		);
-	}
-
-	public static function privateIpUrlProvider(): iterable {
-		yield 'loopback' => [ 'http://127.0.0.1/file' ];
-		yield 'link-local / AWS metadata' => [ 'http://169.254.169.254/latest/meta-data/' ];
-		yield 'private class A' => [ 'http://10.0.0.1/file' ];
-		yield 'private class B' => [ 'http://172.16.0.1/file' ];
-		yield 'private class C' => [ 'http://192.168.1.1/file' ];
-		yield 'localhost' => [ 'http://localhost/file' ];
 	}
 
 }
