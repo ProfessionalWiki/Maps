@@ -18,7 +18,7 @@
 		let pathOptions = {};
 
 		for (let [key, value] of Object.entries(simpleStyleToLeaflet)) {
-			if (featureProperties[key]) {
+			if (featureProperties[key] !== undefined && featureProperties[key] !== null) {
 				pathOptions[value] = featureProperties[key];
 			}
 		}
