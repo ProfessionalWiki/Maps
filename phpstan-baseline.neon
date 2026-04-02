@@ -123,36 +123,6 @@ parameters:
 			path: src/ParserHookSetup.php
 
 		-
-			message: "#^Parameter \\#1 \\$parser \\(MediaWiki\\\\Parser\\\\Parser\\) of method Maps\\\\ParserHooks\\\\CoordinatesFunction\\:\\:handle\\(\\) is not contravariant with parameter \\#1 \\$parser \\(Parser\\) of method ParserHooks\\\\HookHandler\\:\\:handle\\(\\)\\.$#"
-			count: 1
-			path: src/ParserHooks/CoordinatesFunction.php
-
-		-
-			message: "#^Parameter \\#1 \\$parser \\(MediaWiki\\\\Parser\\\\Parser\\) of method Maps\\\\ParserHooks\\\\DistanceFunction\\:\\:handle\\(\\) is not contravariant with parameter \\#1 \\$parser \\(Parser\\) of method ParserHooks\\\\HookHandler\\:\\:handle\\(\\)\\.$#"
-			count: 1
-			path: src/ParserHooks/DistanceFunction.php
-
-		-
-			message: "#^Parameter \\#1 \\$parser \\(MediaWiki\\\\Parser\\\\Parser\\) of method Maps\\\\ParserHooks\\\\FindDestinationFunction\\:\\:handle\\(\\) is not contravariant with parameter \\#1 \\$parser \\(Parser\\) of method ParserHooks\\\\HookHandler\\:\\:handle\\(\\)\\.$#"
-			count: 1
-			path: src/ParserHooks/FindDestinationFunction.php
-
-		-
-			message: "#^Parameter \\#1 \\$parser \\(MediaWiki\\\\Parser\\\\Parser\\) of method Maps\\\\ParserHooks\\\\GeoDistanceFunction\\:\\:handle\\(\\) is not contravariant with parameter \\#1 \\$parser \\(Parser\\) of method ParserHooks\\\\HookHandler\\:\\:handle\\(\\)\\.$#"
-			count: 1
-			path: src/ParserHooks/GeoDistanceFunction.php
-
-		-
-			message: "#^Parameter \\#1 \\$parser \\(MediaWiki\\\\Parser\\\\Parser\\) of method Maps\\\\ParserHooks\\\\GeocodeFunction\\:\\:handle\\(\\) is not contravariant with parameter \\#1 \\$parser \\(Parser\\) of method ParserHooks\\\\HookHandler\\:\\:handle\\(\\)\\.$#"
-			count: 1
-			path: src/ParserHooks/GeocodeFunction.php
-
-		-
-			message: "#^Parameter \\#1 \\$parser \\(MediaWiki\\\\Parser\\\\Parser\\) of method Maps\\\\ParserHooks\\\\MapsDocFunction\\:\\:handle\\(\\) is not contravariant with parameter \\#1 \\$parser \\(Parser\\) of method ParserHooks\\\\HookHandler\\:\\:handle\\(\\)\\.$#"
-			count: 1
-			path: src/ParserHooks/MapsDocFunction.php
-
-		-
 			message: "#^Property Maps\\\\Presentation\\\\OutputFacade\\:\\:\\$outputPage has unknown class OutputPage as its type\\.$#"
 			count: 1
 			path: src/Presentation/OutputFacade.php
@@ -176,11 +146,6 @@ parameters:
 			message: "#^Instantiated class ParserOptions not found\\.$#"
 			count: 1
 			path: src/Presentation/WikitextParser.php
-
-		-
-			message: "#^Call to static method newFromText\\(\\) on an unknown class Title\\.$#"
-			count: 1
-			path: src/WikitextParsers/LocationParser.php
 
 		-
 			message: "#^Call to static method newFromText\\(\\) on an unknown class Title\\.$#"
