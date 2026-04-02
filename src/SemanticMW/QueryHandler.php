@@ -219,10 +219,19 @@ class QueryHandler {
 					$locations[] = $this->locationFromDataItem( $dataValue->getDataItem() );
 				}
 				else {
-					$properties[$resultArray->getPrintRequest()->getCanonicalLabel()] = $this->handleResultProperty(
-						$dataValue,
-						$resultArray->getPrintRequest()
-					);
+					$label = $resultArray->getPrintRequest()->getCanonicalLabel();
+
+					if ( array_key_exists( $label, $properties ) ) {
+						$properties[$label] .= ', ' . $this->handleResultPropertyValue(
+							$dataValue,
+							$resultArray->getPrintRequest()
+						);
+					} else {
+						$properties[$label] = $this->handleResultProperty(
+							$dataValue,
+							$resultArray->getPrintRequest()
+						);
+					}
 				}
 			}
 		}
@@ -283,8 +292,22 @@ class QueryHandler {
 
 	/**
 	 * Handles a single property (\SMW\Query\PrintRequest) to be displayed for a record (SMWDataValue).
+	 * Returns the full property display string including header (e.g., "Property Name: value").
 	 */
 	private function handleResultProperty( SMWDataValue $object, PrintRequest $printRequest ): string {
+		if ( $this->hasTemplate() ) {
+			return $this->handleResultPropertyValue( $object, $printRequest );
+		}
+
+		$propertyName = $this->getPropertyName( $printRequest );
+		return $propertyName . ( $propertyName === '' ? '' : ': ' ) . $this->getPropertyValue( $object );
+	}
+
+	/**
+	 * Returns just the value portion of a property, without the header.
+	 * Used for appending additional values of multi-valued properties.
+	 */
+	private function handleResultPropertyValue( SMWDataValue $object, PrintRequest $printRequest ): string {
 		if ( $this->hasTemplate() ) {
 			if ( $object instanceof SMWWikiPageValue ) {
 				return $object->getDataItem()->getTitle()->getPrefixedText();
@@ -293,8 +316,7 @@ class QueryHandler {
 			return $object->getLongText( SMW_OUTPUT_WIKI, null );
 		}
 
-		$propertyName = $this->getPropertyName( $printRequest );
-		return $propertyName . ( $propertyName === '' ? '' : ': ' ) . $this->getPropertyValue( $object );
+		return $this->getPropertyValue( $object );
 	}
 
 	private function getPropertyName( PrintRequest $printRequest ): string {
