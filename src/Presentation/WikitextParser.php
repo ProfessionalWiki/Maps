@@ -5,6 +5,7 @@ declare( strict_types = 1 );
 namespace Maps\Presentation;
 
 use LogicException;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Parser\Parser;
 use ParserOptions;
 
@@ -21,10 +22,15 @@ class WikitextParser {
 			return '';
 		}
 
+		$options = $this->parser->getOptions();
+		if ( $options === null ) {
+			$options = new ParserOptions( RequestContext::getMain()->getUser() );
+		}
+
 		$parserOutput = $this->parser->parse(
 			$text,
 			$this->parser->getTitle(),
-			new ParserOptions( $this->parser->getUserIdentity() )
+			$options
 		);
 
 		try {
