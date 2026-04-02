@@ -58,7 +58,13 @@ class CargoOutputBuilder {
 
 	private function setIconUrl( array $markers, string $iconParameter ): void {
 		if ( $iconParameter !== '' ) {
-			$iconUrl = $this->imageRepository->getByName( $iconParameter )->getUrl();
+			$image = $this->imageRepository->getByName( $iconParameter );
+
+			if ( $image === null ) {
+				return;
+			}
+
+			$iconUrl = $image->getUrl();
 
 			foreach ( $markers as $marker ) {
 				$marker->setIconUrl( $iconUrl );
