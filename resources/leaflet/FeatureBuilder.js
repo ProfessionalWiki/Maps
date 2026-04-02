@@ -24,7 +24,7 @@
 					iconUrl: properties.icon,
 					iconSize: [ img.width, img.height ],
 					iconAnchor: [ img.width / 2, img.height ],
-					popupAnchor: [ -img.width % 2, -img.height*2/3 ]
+					popupAnchor: [ -img.width / 2, -img.height*2/3 ]
 				});
 
 				marker.setIcon(icon);
