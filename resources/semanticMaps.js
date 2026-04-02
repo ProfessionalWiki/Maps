@@ -63,7 +63,7 @@ window.sm = new ( function( $, mw ) {
 						lat: coordinates.lat,
 						lon: coordinates.lon,
 						title: location.fulltext,
-						text: '<b><a href="' + location.fullurl + '">' + location.fulltext + '</a></b>',
+						text: $('<b/>').append($('<a/>', { href: location.fullurl }).text(location.fulltext))[0].outerHTML,
 						icon: icon
 					};
 
