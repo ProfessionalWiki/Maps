@@ -145,7 +145,9 @@ class LineParser implements ValueParser {
 			$line->setLink( $link );
 		} else {
 			$title = \Title::newFromText( $link );
-			$line->setLink( $title->getFullURL() );
+			if ( $title !== null ) {
+				$line->setLink( $title->getFullURL() );
+			}
 		}
 	}
 
