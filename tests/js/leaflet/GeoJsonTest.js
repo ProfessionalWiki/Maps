@@ -50,6 +50,39 @@
 		);
 	} );
 
+	QUnit.test( 'GeoJSON.simpleStyleToLeafletPathOptions preserves zero values', function ( assert ) {
+		let pathOptions = GeoJSON.simpleStyleToLeafletPathOptions( {
+			"stroke": "#ff0000",
+			"stroke-width": 0,
+			"stroke-opacity": 0,
+			"fill-opacity": 0
+		} );
+
+		assert.strictEqual(
+			pathOptions.weight,
+			0,
+			'stroke-width of 0 is preserved'
+		);
+
+		assert.strictEqual(
+			pathOptions.opacity,
+			0,
+			'stroke-opacity of 0 is preserved'
+		);
+
+		assert.strictEqual(
+			pathOptions.fillOpacity,
+			0,
+			'fill-opacity of 0 is preserved'
+		);
+
+		assert.strictEqual(
+			pathOptions.color,
+			'#ff0000',
+			'non-zero values still work alongside zero values'
+		);
+	} );
+
 	QUnit.test( 'GeoJSON.popupContentFromProperties', function ( assert ) {
 		assert.equal(
 			GeoJSON.popupContentFromProperties({
