@@ -250,7 +250,7 @@ class LeafletService implements MappingService {
 		foreach ( $imageLayers as $imageLayer ) {
 			$image = $this->imageFinder->getByName( $imageLayer );
 
-			if ( $image !== null ) {
+			if ( $image !== null && $image->getWidthInPx() > 0 ) {
 				$jsImageLayers[] = [
 					'name' => $imageLayer,
 					'url' => $image->getUrl(),
