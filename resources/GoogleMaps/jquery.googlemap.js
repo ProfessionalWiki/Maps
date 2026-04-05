@@ -154,12 +154,10 @@
 
 			for (var i = this.markers.length - 1; i >= 0; i--) {
 				if (this.markers[i] === marker) {
-					delete this.markers[i];
+					this.markers.splice(i, 1);
 					break;
 				}
 			}
-
-			delete marker;
 		};
 
 		/**
@@ -274,14 +272,12 @@
 		this.removeLine = function (line) {
 			line.setMap(null);
 
-			for (var i = this.line.length - 1; i >= 0; i--) {
-				if (this.line[i] === line) {
-					delete this.line[i];
+			for (var i = this.lines.length - 1; i >= 0; i--) {
+				if (this.lines[i] === line) {
+					this.lines.splice(i, 1);
 					break;
 				}
 			}
-
-			delete line;
 		};
 
 		this.removeLines = function () {
@@ -401,21 +397,19 @@
 		this.removePolygon = function (polygon) {
 			polygon.setMap(null);
 
-			for (var i = this.polygon.length - 1; i >= 0; i--) {
-				if (this.polygon[i] === polygon) {
-					delete this.polygon[i];
+			for (var i = this.polygons.length - 1; i >= 0; i--) {
+				if (this.polygons[i] === polygon) {
+					this.polygons.splice(i, 1);
 					break;
 				}
 			}
-
-			delete polygon;
 		};
 
 		this.removePolygons = function () {
-			for (var i = this.polygon.length - 1; i >= 0; i--) {
-				this.polygon[i].setMap(null);
+			for (var i = this.polygons.length - 1; i >= 0; i--) {
+				this.polygons[i].setMap(null);
 			}
-			this.polygon = [];
+			this.polygons = [];
 		};
 
 		//Rezoom's the map to show all visible markers.
