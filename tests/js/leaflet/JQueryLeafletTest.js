@@ -118,4 +118,34 @@
 		jqueryMap.map.remove();
 	} );
 
+	QUnit.test( 'addLayersAndOverlays passes base layers object to L.control.layers', function ( assert ) {
+		var $div = $( '<div>' ).css( { width: '400px', height: '300px' } ).appendTo( '#qunit-fixture' );
+		var options = makeDefaultOptions( {
+			layers: [ 'OpenStreetMap', 'OpenTopoMap' ],
+			overlays: [ 'OpenRailwayMap' ]
+		} );
+
+		var jqueryMap = createTestMap( $div, options );
+
+		var capturedBaseLayers = null;
+		var capturedOverlays = null;
+		var originalControlLayers = L.control.layers;
+		L.control.layers = function ( baseLayers, overlays, opts ) {
+			capturedBaseLayers = baseLayers;
+			capturedOverlays = overlays;
+			return originalControlLayers.call( L.control, baseLayers, overlays, opts );
+		};
+
+		jqueryMap.addLayersAndOverlays();
+
+		L.control.layers = originalControlLayers;
+
+		assert.notStrictEqual( capturedBaseLayers, null, 'L.control.layers was called' );
+		assert.false( Array.isArray( capturedBaseLayers ), 'Base layers argument is not an array' );
+		assert.strictEqual( Object.keys( capturedBaseLayers ).length, 2, 'Base layers object has 2 entries' );
+		assert.strictEqual( Object.keys( capturedOverlays ).length, 1, 'Overlays object has 1 entry' );
+
+		jqueryMap.map.remove();
+	} );
+
 }( window.jQuery, window.mediaWiki ) );
