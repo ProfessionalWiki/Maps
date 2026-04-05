@@ -98,4 +98,24 @@
 		jqueryMap.map.remove();
 	} );
 
+	QUnit.test( 'getNormalBaseLayers does not mutate options.layers', function ( assert ) {
+		var $div = $( '<div>' ).css( { width: '400px', height: '300px' } ).appendTo( '#qunit-fixture' );
+		var options = makeDefaultOptions( {
+			layers: [ 'OpenStreetMap', 'OpenTopoMap' ]
+		} );
+
+		var originalLayers = options.layers.slice();
+
+		var jqueryMap = createTestMap( $div, options );
+		jqueryMap.getNormalBaseLayers();
+
+		assert.deepEqual( options.layers, originalLayers, 'options.layers unchanged after first getNormalBaseLayers call' );
+
+		jqueryMap.getNormalBaseLayers();
+
+		assert.deepEqual( options.layers, originalLayers, 'options.layers unchanged after second getNormalBaseLayers call' );
+
+		jqueryMap.map.remove();
+	} );
+
 }( window.jQuery, window.mediaWiki ) );
