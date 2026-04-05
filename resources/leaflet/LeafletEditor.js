@@ -120,6 +120,9 @@
 										self._showSaveButton();
 										alert(mw.msg('maps-json-editor-edit-failed'));
 									}
+								},
+								onError: function() {
+									self._showSaveButton();
 								}
 							}
 						);

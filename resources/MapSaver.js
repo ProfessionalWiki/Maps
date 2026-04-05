@@ -45,7 +45,7 @@
 
 							return editApiParameters;
 						}
-					).then(paremeters.done).catch(function() {
+					).then(paremeters.done, function() {
 						alert(mw.msg('maps-json-editor-edit-failed'));
 						if (paremeters.onError) {
 							paremeters.onError();
