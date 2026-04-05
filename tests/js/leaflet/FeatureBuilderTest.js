@@ -56,4 +56,42 @@
 		assert.strictEqual( featureGroup.markerLayer.getLayers().length, 2, 'Marker layer contains 2 markers' );
 	} );
 
+	QUnit.test( 'contentLayerFromOptions with GeoJSON Points includes points in GeoJSON layer', function ( assert ) {
+		var featureGroup = FeatureBuilder.contentLayerFromOptions( {
+			lines: [],
+			polygons: [],
+			circles: [],
+			rectangles: [],
+			locations: [],
+			cluster: false,
+			copycoords: false,
+			geojson: {
+				type: 'FeatureCollection',
+				features: [
+					{
+						type: 'Feature',
+						geometry: { type: 'Point', coordinates: [ 5, 52 ] },
+						properties: { title: 'Amsterdam' }
+					},
+					{
+						type: 'Feature',
+						geometry: { type: 'Point', coordinates: [ 4.5, 51.9 ] },
+						properties: { title: 'Rotterdam' }
+					}
+				]
+			}
+		} );
+
+		// Find the L.GeoJSON layer within the feature group
+		var geoJsonLayer = null;
+		featureGroup.eachLayer( function ( layer ) {
+			if ( layer instanceof L.GeoJSON ) {
+				geoJsonLayer = layer;
+			}
+		} );
+
+		assert.notStrictEqual( geoJsonLayer, null, 'GeoJSON layer exists in feature group' );
+		assert.strictEqual( geoJsonLayer.getLayers().length, 2, 'GeoJSON layer contains 2 sublayers for Point features' );
+	} );
+
 }() );
