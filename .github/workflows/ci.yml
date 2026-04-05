@@ -135,6 +135,81 @@ jobs:
 #      - name: Psalm
 #        run: cd extensions/Maps && php vendor/bin/psalm --config=psalm.xml --shepherd --stats
 
+  qunit:
+    name: "QUnit"
+
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: mediawiki
+
+    steps:
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.3
+          extensions: mbstring, intl
+          tools: composer
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Clone MediaWiki
+        run: git clone --depth 1 -b REL1_43 https://github.com/wikimedia/mediawiki.git mediawiki
+        working-directory: ~
+
+      - uses: actions/checkout@v4
+        with:
+          path: mediawiki/extensions/Maps
+
+      - name: Composer allow-plugins
+        run: composer config --no-plugins allow-plugins.composer/installers true
+
+      - name: Configure Composer merge for Maps
+        run: |
+          cat <<'EOJSON' > composer.local.json
+          {
+            "extra": {
+              "merge-plugin": {
+                "merge-dev": true,
+                "include": [
+                  "extensions/Maps/composer.json"
+                ]
+              }
+            }
+          }
+          EOJSON
+
+      - run: composer update
+
+      - name: Install MediaWiki
+        run: php maintenance/install.php --dbtype sqlite --dbuser root --dbname mw --dbpath "$(pwd)" --scriptpath="/w" --pass AdminPassword WikiName AdminUser
+
+      - name: Configure MediaWiki
+        run: |
+          echo 'error_reporting(E_ALL | E_STRICT);' >> LocalSettings.php
+          echo '$wgShowExceptionDetails = true;' >> LocalSettings.php
+          echo 'wfLoadExtension( "Maps" );' >> LocalSettings.php
+          echo '$wgEnableJavaScriptTest = true;' >> LocalSettings.php
+
+      - name: Install npm dependencies
+        run: npm install
+
+      - name: Run QUnit tests
+        env:
+          MW_SERVER: http://127.0.0.1:8080
+          MW_SCRIPT_PATH: /w
+          FORCE_COLOR: 1
+        run: |
+          ln -s . w
+          nohup php -S 0.0.0.0:8080 -t . > /tmp/php-server.log 2>&1 &
+          sleep 2
+          curl -sf http://127.0.0.1:8080/w/index.php/Special:BlankPage > /dev/null || (echo "Server failed:" && cat /tmp/php-server.log && exit 1)
+          npx grunt qunit --qunit-component=Maps
+
   PHPStan:
     name: "PHPStan"
 
