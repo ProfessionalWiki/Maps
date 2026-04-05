@@ -148,4 +148,35 @@
 		jqueryMap.map.remove();
 	} );
 
+	QUnit.test( 'centerAndZoomMap skips fitContent when both centre and zoom are set', function ( assert ) {
+		var $div = $( '<div>' ).css( { width: '400px', height: '300px' } ).appendTo( '#qunit-fixture' );
+		var options = makeDefaultOptions( {
+			centre: { lat: 40, lon: -74 },
+			zoom: 5,
+			locations: [
+				{ lat: 52, lon: 5, title: 'Far away marker', text: '', icon: '' }
+			]
+		} );
+
+		var jqueryMap = createTestMap( $div, options );
+
+		var fitContentCalled = false;
+		var originalFitContent = jqueryMap.fitContent;
+		jqueryMap.fitContent = function () {
+			fitContentCalled = true;
+			originalFitContent.call( jqueryMap );
+		};
+
+		jqueryMap.centerAndZoomMap();
+
+		var center = jqueryMap.map.getCenter();
+
+		assert.false( fitContentCalled, 'fitContent is not called when both centre and zoom are explicitly set' );
+		assert.strictEqual( jqueryMap.map.getZoom(), 5, 'Map zoom matches explicit value' );
+		assert.strictEqual( center.lat, 40, 'Map center latitude matches explicit value' );
+		assert.strictEqual( center.lng, -74, 'Map center longitude matches explicit value' );
+
+		jqueryMap.map.remove();
+	} );
+
 }( window.jQuery, window.mediaWiki ) );
