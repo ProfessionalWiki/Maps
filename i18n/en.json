@@ -226,6 +226,9 @@
 	"maps-validator-type-mapspolygon-list": "List of geographical polygons",
 	"maps-validator-type-wmsoverlay": "Web Map Service overlay",
 
+	"maps-json-editor-edit-summary-default": "Visual map edit",
+	"maps-json-editor-edit-summary-prompt": "Enter an edit summary for your changes to the map",
+
 	"maps-json-editor-button-marker": "Place a marker",
 	"maps-json-editor-button-line": "Draw a line",
 	"maps-json-editor-button-polygon": "Draw a polygon",

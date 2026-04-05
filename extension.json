@@ -222,6 +222,9 @@
 				"maps-json-editor-edit-other",
 				"maps-json-editor-edit-failed",
 
+				"maps-json-editor-edit-summary-default",
+				"maps-json-editor-edit-summary-prompt",
+
 				"maps-json-editor-toolbar-save-title",
 				"maps-json-editor-toolbar-save-text",
 				"maps-json-editor-toolbar-cancel-title",
