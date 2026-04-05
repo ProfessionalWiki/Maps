@@ -99,9 +99,9 @@
 				'<img src="' + mw.config.get('egMapsScriptPath') + 'resources/leaflet/images/save-solid.svg">',
 				function() {
 					let editSummary = prompt(
-						'Enter an edit summary for your changes to the map',
-						'Visual map edit'
-					); // TODO: i18n
+						mw.msg('maps-json-editor-edit-summary-prompt'),
+						mw.msg('maps-json-editor-edit-summary-default')
+					);
 
 					if (editSummary!== null) {
 						self.saveButton.remove();
