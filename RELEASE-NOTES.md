@@ -3,6 +3,21 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 12.1.1
+
+Released on April 5th, 2026.
+
+* Fixed GeoJSON Point features being excluded from layer bounds, causing auto-zoom to ignore point-only GeoJSON data (#863)
+* Fixed `setInterval` never cleared in VisualEditor, causing intervals to accumulate (#864)
+* Fixed zero-valued GeoJSON style properties (`stroke-width: 0`, `fill-opacity: 0`) being silently dropped (#865)
+* Fixed layer order flipping on repeated map initialization due to in-place array mutation (#866)
+* Fixed crash in `LineParser` when using `link:` with an invalid wiki title (#867)
+* Fixed crash in Cargo map format when icon file does not exist (#868)
+* Fixed division by zero in image layer aspect ratio calculation for zero-width images (#869)
+* Fixed GeoJSON visual editor silently swallowing API save errors (#870)
+* Fixed empty map when using `cluster`, `center` and `zoom` together (#688)
+* Fixed overlay layers not appearing on top of base layers (#642)
+
 ## Maps 12.1.0
 
 Released on April 3rd, 2026.
