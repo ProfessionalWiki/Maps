@@ -342,10 +342,15 @@
 		"localBasePath": "tests/js/",
 		"remoteExtPath": "Maps/tests/js/",
 		"scripts": [
-			"leaflet/GeoJsonTest.js"
+			"leaflet/GeoJsonTest.js",
+			"leaflet/FeatureBuilderTest.js",
+			"leaflet/JQueryLeafletTest.js",
+			"MapSaverTest.js"
 		],
 		"dependencies": [
-			"ext.maps.leaflet.geojson"
+			"ext.maps.leaflet.geojson",
+			"ext.maps.leaflet.loader",
+			"ext.maps.leaflet.editor"
 		]
 	},
 
