@@ -5,7 +5,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 ## Maps 12.1.1
 
-Released on April 5th, 2026.
+TBD
 
 * Fixed GeoJSON Point features being excluded from layer bounds, causing auto-zoom to ignore point-only GeoJSON data (#863)
 * Fixed `setInterval` never cleared in VisualEditor, causing intervals to accumulate (#864)
@@ -17,6 +17,9 @@ Released on April 5th, 2026.
 * Fixed GeoJSON visual editor silently swallowing API save errors (#870)
 * Fixed empty map when using `cluster`, `center` and `zoom` together (#688)
 * Fixed overlay layers not appearing on top of base layers (#642)
+* Fixed Google Maps `removeLine`/`removePolygon` crash due to wrong property names (#883)
+* Fixed editor JS module being loaded on every Leaflet map instead of only when GeoJSON is used
+* Internationalized the GeoJSON editor edit summary prompt
 
 ## Maps 12.1.0
 
