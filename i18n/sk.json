@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Helix84",
+			"KormiSK",
 			"Luky001",
 			"Macofe"
 		]
@@ -16,5 +17,6 @@
 	"maps-longitude": "Zem. šírka:",
 	"maps_coordinates_missing": "Neboli poskytnuté žiadne súradnice.",
 	"maps_geocoding_failed": "Nebolo možné určiť súradnice {{PLURAL:$2|nasledovnej adresy|nasledovných adries}}: $1.",
-	"maps_geocoding_failed_for": "Nebolo možné určiť súradnice {{PLURAL:$2|nasledovnej adresy|nasledovných adries}} a {{PLURAL:$2|bola vynechaná|boli vynechané}} z mapy: $1."
+	"maps_geocoding_failed_for": "Nebolo možné určiť súradnice {{PLURAL:$2|nasledovnej adresy|nasledovných adries}} a {{PLURAL:$2|bola vynechaná|boli vynechané}} z mapy: $1.",
+	"semanticmaps-kml-filename": "Názov súboru pre súbor KML"
 }

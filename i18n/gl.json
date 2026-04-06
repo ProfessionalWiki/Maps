@@ -208,6 +208,7 @@
 	"semanticmaps-kml-text": "O texto asociado a cada páxina. Anulado polas propiedades pescudadas adicionais, se existen.",
 	"semanticmaps-kml-title": "O título por defecto para os resultados",
 	"semanticmaps-kml-linkabsolute": "Indica se as ligazóns deberían ser absolutas (en vez de relativas)",
+	"semanticmaps-kml-filename": "O nome do ficheiro KML",
 	"semanticmaps-kml-pagelinktext": "O texto a usar para as ligazóns cara á páxina, nas que «$1» será substituído polo título da páxina",
 	"semanticmaps-shapes-improperformat": "Formato incorrecto de «$1». Consulta a documentación sobre os formatos.",
 	"semanticmaps-shapes-missingshape": "Non se atopou forma ningunha para «$1». Consulte a documentación sobre as formas dispoñibles.",

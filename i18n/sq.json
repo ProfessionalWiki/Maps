@@ -2,8 +2,10 @@
 	"@metadata": {
 		"authors": [
 			"Ammartivari",
+			"INNERLMNT",
 			"Vanished 456321456"
 		]
 	},
-	"mapeditor": "Redaktor hartash"
+	"mapeditor": "Redaktor hartash",
+	"semanticmaps-kml-filename": "Emri i skedës për skedën KML"
 }
