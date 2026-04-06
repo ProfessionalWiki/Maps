@@ -348,6 +348,7 @@
 			"leaflet/GeoJsonTest.js",
 			"leaflet/FeatureBuilderTest.js",
 			"leaflet/JQueryLeafletTest.js",
+			"leaflet/LeafletEditorTest.js",
 			"MapSaverTest.js"
 		],
 		"dependencies": [
