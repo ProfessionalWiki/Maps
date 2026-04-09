@@ -225,6 +225,8 @@
 	"maps-validator-type-mapspolygon": "Polígono xeográfico",
 	"maps-validator-type-mapspolygon-list": "Lista de polígonos xeográficos",
 	"maps-validator-type-wmsoverlay": "Sobreposición do servizo de mapas web",
+	"maps-json-editor-edit-summary-default": "Edición de mapa visual",
+	"maps-json-editor-edit-summary-prompt": "Introduce un resumo da edición para os cambios feitos ao mapa",
 	"maps-json-editor-button-marker": "Colocar un marcador",
 	"maps-json-editor-button-line": "Debuxar unha liña",
 	"maps-json-editor-button-polygon": "Debuxar un polígono",

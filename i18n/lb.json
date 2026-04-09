@@ -123,6 +123,8 @@
 	"maps-validator-type-mapsrectangle-list": "Lëscht vun de Rechtecken",
 	"maps-validator-type-mapspolygon": "Geographesche Polygon",
 	"maps-validator-type-mapspolygon-list": "Lëscht vun de geographesche Polygonen",
+	"maps-json-editor-edit-summary-default": "Visuell Kaartenännerung",
+	"maps-json-editor-edit-summary-prompt": "Gitt e Resümmee vun Ärer Ännerung un der Kaart an",
 	"maps-json-editor-button-line": "Eng Linn zeechnen",
 	"maps-json-editor-toolbar-save-title": "Ännerunge späicheren",
 	"maps-json-editor-toolbar-save-text": "Fäerdeg",

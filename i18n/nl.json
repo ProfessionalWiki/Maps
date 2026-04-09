@@ -235,6 +235,8 @@
 	"maps-validator-type-mapspolygon": "Geografische polygoon",
 	"maps-validator-type-mapspolygon-list": "Lijst van geografische polygonen",
 	"maps-validator-type-wmsoverlay": "Overlappende webkaartdienst",
+	"maps-json-editor-edit-summary-default": "Visuele kaartbewerking",
+	"maps-json-editor-edit-summary-prompt": "Voer een bewerkingssamenvatting in voor uw wijzigingen aan de kaart",
 	"maps-json-editor-button-marker": "Plaats een markering",
 	"maps-json-editor-button-line": "Teken een lijn",
 	"maps-json-editor-button-polygon": "Teken een polygoon",
