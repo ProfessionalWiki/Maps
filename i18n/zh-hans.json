@@ -244,6 +244,7 @@
 	"maps-validator-type-mapspolygon": "地理多边形",
 	"maps-validator-type-mapspolygon-list": "地理多边形列表",
 	"maps-validator-type-wmsoverlay": "网络地图服务覆盖层",
+	"maps-json-editor-edit-summary-default": "可视化地图编辑",
 	"maps-json-editor-button-marker": "放置标记",
 	"maps-json-editor-button-line": "绘制线",
 	"maps-json-editor-button-polygon": "绘制多边形",

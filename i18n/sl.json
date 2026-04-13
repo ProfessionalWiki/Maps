@@ -226,6 +226,8 @@
 	"maps-validator-type-mapspolygon": "Geografski poligon",
 	"maps-validator-type-mapspolygon-list": "Seznam geografskih poligonov",
 	"maps-validator-type-wmsoverlay": "Prekrivanje Web Map Service",
+	"maps-json-editor-edit-summary-default": "Vizualno urejanje zemljevida",
+	"maps-json-editor-edit-summary-prompt": "Vnesite povzetek urejanja za spremembe zemljevida",
 	"maps-json-editor-button-marker": "Postavi označevalec",
 	"maps-json-editor-button-line": "Nariši linijo",
 	"maps-json-editor-button-polygon": "Nariši poligon",
