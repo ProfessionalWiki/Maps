@@ -5,7 +5,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 ## Maps 12.1.1
 
-TBD
+Released on April 15th, 2026.
 
 * Fixed GeoJSON Point features being excluded from layer bounds, causing auto-zoom to ignore point-only GeoJSON data (#863)
 * Fixed `setInterval` never cleared in VisualEditor, causing intervals to accumulate (#864)
