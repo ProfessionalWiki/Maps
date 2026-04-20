@@ -13,6 +13,7 @@
 			"Pyscowicz",
 			"Silvonen",
 			"Str4nd",
+			"Wikipeedikko",
 			"ZeiP"
 		]
 	},
@@ -150,11 +151,14 @@
 	"semanticmaps-kml-text": "Kuhunkin sivuun liittyvä teksti. Jos kyselyllä on lisäominaisuuksia, ne syrjäyttävät tämän.",
 	"semanticmaps-kml-title": "Tulossivun oletusotsikko",
 	"semanticmaps-kml-linkabsolute": "Ovatko linkit absoluuttisia (eivätkä suhteellisia)",
+	"semanticmaps-kml-filename": "KLM-tiedoston nimi",
 	"semanticmaps-kml-pagelinktext": "Sivulinkeissä käytettävä teksti, jossa $1 korvataan sivun otsikolla",
 	"semanticmaps-shapes-improperformat": "$1 on muotoiltu väärin. Katso muotoilun dokumentaatiota.",
 	"semanticmaps-shapes-missingshape": "$1: muotoja ei löytynyt. Dokumentaatiossa kerrotaan sallituista muodoista.",
 	"maps-validator-type-mapslocation": "Maantieteellinen sijainti",
 	"maps-validator-type-mapslocation-list": "Luettelo sijainneista",
+	"maps-json-editor-edit-summary-default": "Visuaalisen kartan muokkaus",
+	"maps-json-editor-edit-summary-prompt": "Anna karttaan tekemiesi muutosten yhteenveto",
 	"maps-json-editor-button-line": "Piirrä viiva",
 	"maps-json-editor-toolbar-save-title": "Poistu muokkaustilasta ja säilytä kaikki muutokset",
 	"maps-json-editor-toolbar-save-text": "Valmis",
