@@ -17,14 +17,14 @@ class MapsDistanceParser {
 	private static bool $validatedDistanceUnit = false;
 	private static $unitRegex = false;
 
-	public static function parseAndFormat( string $distance, string $unit = null, int $decimals = 2 ): string {
+	public static function parseAndFormat( string $distance, ?string $unit = null, int $decimals = 2 ): string {
 		return self::formatDistance( self::parseDistance( $distance ), $unit, $decimals );
 	}
 
 	/**
 	 * Formats a given distance in meters to a distance in an optionally specified notation.
 	 */
-	public static function formatDistance( float $meters, string $unit = null, int $decimals = 2 ): string {
+	public static function formatDistance( float $meters, ?string $unit = null, int $decimals = 2 ): string {
 		$meters = MediaWikiServices::getInstance()->getContentLanguage()->formatNum( round( $meters / self::getUnitRatio( $unit ), $decimals ) );
 		return "$meters $unit";
 	}
@@ -32,7 +32,7 @@ class MapsDistanceParser {
 	/**
 	 * Returns the unit to meter ratio in a safe way, by first resolving the unit.
 	 */
-	public static function getUnitRatio( string $unit = null ): float {
+	public static function getUnitRatio( ?string $unit = null ): float {
 		global $egMapsDistanceUnits;
 		return $egMapsDistanceUnits[self::getValidUnit( $unit )];
 	}
@@ -40,7 +40,7 @@ class MapsDistanceParser {
 	/**
 	 * Returns a valid unit. If the provided one is invalid, the default will be used.
 	 */
-	public static function getValidUnit( string $unit = null ): string {
+	public static function getValidUnit( ?string $unit = null ): string {
 		global $egMapsDistanceUnit, $egMapsDistanceUnits;
 
 		// This ensures the value for $egMapsDistanceUnit is correct, and caches the result.

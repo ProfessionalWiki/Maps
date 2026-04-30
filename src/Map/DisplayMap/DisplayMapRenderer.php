@@ -31,7 +31,7 @@ class DisplayMapRenderer {
 	private WikitextParser $wikitextParser;
 	private ElementJsonSerializer $elementSerializer;
 
-	public function __construct( MappingService $service = null ) {
+	public function __construct( ?MappingService $service = null ) {
 		$this->service = $service;
 	}
 
