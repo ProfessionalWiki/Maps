@@ -160,7 +160,7 @@ class CoordinateValue extends SMWDataValue {
 	 *
 	 * @return string|null
 	 */
-	private function getFormattedCoord( SMWDIGeoCoord $dataItem, string $format = null ) {
+	private function getFormattedCoord( SMWDIGeoCoord $dataItem, ?string $format = null ) {
 		return MapsFactory::globalInstance()->getCoordinateFormatter()->format(
 			new LatLongValue(
 				$dataItem->getLatitude(),
