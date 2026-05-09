@@ -15,7 +15,7 @@
 		"Geocoding",
 		"OpenStreetMap"
 	],
-	"homepage": "https://maps.extension.wiki",
+	"homepage": "https://professional.wiki/en/extension/maps",
 	"license": "GPL-2.0-or-later",
 	"authors": [
 		{
@@ -32,7 +32,6 @@
 	],
 	"support": {
 		"email": "semediawiki-user@lists.sourceforge.net",
-		"irc": "irc://irc.libera.chat/mediawiki",
 		"source": "https://github.com/ProfessionalWiki/Maps"
 	},
 	"require": {
