@@ -43,7 +43,7 @@ class CoordinateValue extends SMWDataValue {
 			throw new InvalidArgumentException( '$value needs to be a string' );
 		}
 
-		[ $distance, $comparator ] = $this->parseUserValue( $value );
+		[ $distance, $comparator ] = $this->parseAndReturnUserValue( $value );
 		$distance = $this->parserDistance( $distance );
 
 		$this->setUserValue( $value );
@@ -69,7 +69,11 @@ class CoordinateValue extends SMWDataValue {
 	/**
 	 * @see SMWDataValue::parseUserValue
 	 */
-	protected function parseUserValue( $value ) {
+	protected function parseUserValue( $value ): void {
+		$this->parseAndReturnUserValue( $value );
+	}
+
+	private function parseAndReturnUserValue( $value ): array {
 		if ( !is_string( $value ) ) {
 			throw new InvalidArgumentException( '$value needs to be a string' );
 		}
@@ -245,16 +249,14 @@ class CoordinateValue extends SMWDataValue {
 	 * $2: The location in directional DMS notation.
 	 * $3: The latitude in non-directional float notation.
 	 * $4 The longitude in non-directional float notation.
-	 *
-	 * @return array
 	 */
-	protected function getServiceLinkParams() {
+	protected function getServiceLinkParams(): array {
 		$coordinateSet = $this->m_dataitem->getCoordinateSet();
 		return [
 			$this->getFormattedCoord( $this->m_dataitem, 'float' ), // TODO
 			$this->getFormattedCoord( $this->m_dataitem, 'dms' ), // TODO
 			$coordinateSet['lat'],
-			$coordinateSet['lon']
+			$coordinateSet['lon'],
 		];
 	}
 

@@ -86,10 +86,8 @@ class KmlPrinter extends FileExportPrinter {
 	 * @see SMWResultPrinter::getParamDefinitions
 	 *
 	 * @param ParamDefinition[] $definitions
-	 *
-	 * @return array
 	 */
-	public function getParamDefinitions( array $definitions ) {
+	public function getParamDefinitions( array $definitions ): array {
 		global $egMapsDefaultLabel, $egMapsDefaultTitle;
 
 		$definitions['text'] = [
@@ -134,7 +132,7 @@ class KmlPrinter extends FileExportPrinter {
 	 *
 	 * @return string|boolean
 	 */
-	public function getFileName( QueryResult $queryResult ) {
+	public function getFileName( QueryResult $queryResult ): false|string {
 		if ( $this->params['filename'] !== '' ) {
 			$filename = $this->params['filename'];
 
@@ -160,7 +158,7 @@ class KmlPrinter extends FileExportPrinter {
 	 * @param array $params
 	 * @param $outputMode
 	 */
-	protected function handleParameters( array $params, $outputMode ) {
+	protected function handleParameters( array $params, $outputMode ): void {
 		$this->params = $params;
 	}
 }

@@ -16,7 +16,7 @@ use Wikimedia\Rdbms\IDatabase;
  */
 class CoordinateDescription extends ValueDescription {
 
-	public function getQueryString( $asValue = false ) {
+	public function getQueryString( $asValue = false ): string {
 		$queryString = DataValueFactory::getInstance()->newDataValueByItem(
 			$this->getDataItem(),
 			$this->getProperty()

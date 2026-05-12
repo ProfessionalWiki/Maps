@@ -10,6 +10,7 @@ use Maps\GeoFunctions;
 use Maps\Presentation\MapsDistanceParser;
 use SMW\DataValueFactory;
 use SMW\DIProperty;
+use SMW\Query\Language\Description;
 use SMW\Query\Language\ThingDescription;
 use SMW\Query\Language\ValueDescription;
 use SMWDataItem;
@@ -43,7 +44,7 @@ class AreaDescription extends ValueDescription {
 	/**
 	 * @see Description::prune
 	 */
-	public function prune( &$maxsize, &$maxDepth, &$log ) {
+	public function prune( &$maxsize, &$maxDepth, &$log ): Description {
 		if ( ( $maxsize < $this->getSize() ) || ( $maxDepth < $this->getDepth() ) ) {
 			$log[] = $this->getQueryString();
 
@@ -59,7 +60,7 @@ class AreaDescription extends ValueDescription {
 		return $this;
 	}
 
-	public function getQueryString( $asValue = false ) {
+	public function getQueryString( $asValue = false ): string {
 		$centerString = DataValueFactory::getInstance()->newDataValueByItem(
 			$this->center,
 			$this->getProperty()
