@@ -3,6 +3,14 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 12.1.2
+
+Released on May 13th, 2026.
+
+* Added compatibility with Semantic MediaWiki 7.x (#895)
+* Added compatibility with ParserHooks 3.x
+* Fixed PHP 8.4 implicit nullable parameter deprecations (#890)
+
 ## Maps 12.1.1
 
 Released on April 15th, 2026.
