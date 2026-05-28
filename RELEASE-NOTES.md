@@ -3,6 +3,13 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 12.1.3
+
+Released on May 29th, 2026.
+
+* Fixed a stored XSS vulnerability in the Leaflet service, where base layer and overlay names supplied via the `layers` and `overlays` parameters were used as layer control labels without escaping ([GHSA-4h7g-5542-v3fc](https://github.com/ProfessionalWiki/Maps/security/advisories/GHSA-4h7g-5542-v3fc))
+* The `layers` and `overlays` parameters are now restricted to the configured available layers; values not listed in `$egMapsLeafletAvailableLayers` / `$egMapsLeafletAvailableOverlayLayers` are ignored
+
 ## Maps 12.1.2
 
 Released on May 13th, 2026.
