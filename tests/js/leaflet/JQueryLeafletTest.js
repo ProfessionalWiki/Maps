@@ -50,6 +50,36 @@
 		return jqueryMap;
 	}
 
+	// Helper: runs addLayersAndOverlays and returns the baseLayers/overlays objects
+	// handed to L.control.layers. Stubs L.control.layers so the names are never
+	// rendered (avoiding payload execution), and L.tileLayer.provider so arbitrary
+	// names don't hit the provider catalog.
+	function captureLayerControl( $div, options ) {
+		var jqueryMap = createTestMap( $div, options );
+
+		var stubLayer = { addTo: function () { return this; } };
+		var originalProvider = L.tileLayer.provider;
+		var originalControlLayers = L.control.layers;
+		var captured = {};
+
+		L.tileLayer.provider = function () { return stubLayer; };
+		L.control.layers = function ( baseLayers, overlays ) {
+			captured.baseLayers = baseLayers;
+			captured.overlays = overlays;
+			return stubLayer;
+		};
+
+		try {
+			jqueryMap.addLayersAndOverlays();
+		} finally {
+			L.control.layers = originalControlLayers;
+			L.tileLayer.provider = originalProvider;
+			jqueryMap.map.remove();
+		}
+
+		return captured;
+	}
+
 	QUnit.test( 'leafletmaps creates a jquery object with map methods', function ( assert ) {
 		var $div = $( '<div>' ).css( { width: '400px', height: '300px' } ).appendTo( '#qunit-fixture' );
 		var options = makeDefaultOptions();
@@ -146,6 +176,43 @@
 		assert.strictEqual( Object.keys( capturedOverlays ).length, 1, 'Overlays object has 1 entry' );
 
 		jqueryMap.map.remove();
+	} );
+
+	QUnit.test( 'addOverlays HTML-escapes overlay names used as layer-control labels', function ( assert ) {
+		var $div = $( '<div>' ).css( { width: '400px', height: '300px' } ).appendTo( '#qunit-fixture' );
+		var options = makeDefaultOptions( {
+			overlays: [ '<img src=x onerror="alert(1)">' ]
+		} );
+
+		var captured = captureLayerControl( $div, options );
+
+		assert.deepEqual(
+			Object.keys( captured.overlays ),
+			[ '&lt;img src=x onerror=&quot;alert(1)&quot;&gt;' ],
+			'Overlay name is HTML-escaped before being used as a layer-control label'
+		);
+	} );
+
+	QUnit.test( 'addLayersAndOverlays HTML-escapes base layer names used as layer-control labels', function ( assert ) {
+		var $div = $( '<div>' ).css( { width: '400px', height: '300px' } ).appendTo( '#qunit-fixture' );
+		var options = makeDefaultOptions( {
+			layers: [ 'OpenStreetMap', '<img src=x onerror="alert(1)">' ]
+		} );
+
+		var captured = captureLayerControl( $div, options );
+
+		assert.true(
+			Object.prototype.hasOwnProperty.call( captured.baseLayers, '&lt;img src=x onerror=&quot;alert(1)&quot;&gt;' ),
+			'Malicious base layer name is HTML-escaped'
+		);
+		assert.false(
+			Object.prototype.hasOwnProperty.call( captured.baseLayers, '<img src=x onerror="alert(1)">' ),
+			'Raw (unescaped) base layer name is not used as a key'
+		);
+		assert.true(
+			Object.prototype.hasOwnProperty.call( captured.baseLayers, 'OpenStreetMap' ),
+			'Legitimate base layer name is left unchanged'
+		);
 	} );
 
 	QUnit.test( 'centerAndZoomMap skips fitContent when both centre and zoom are set', function ( assert ) {

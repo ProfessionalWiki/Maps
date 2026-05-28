@@ -291,7 +291,7 @@
 			let overlays = {};
 
 			$.each(options.overlays, function(index, overlayName) {
-				overlays[overlayName] = new L.tileLayer.provider(overlayName).addTo(_this.map);
+				overlays[mw.html.escape(overlayName)] = new L.tileLayer.provider(overlayName).addTo(_this.map);
 			});
 
 			return overlays;
@@ -306,7 +306,7 @@
 			if (layers.size > 1 || options.overlays.length > 0) {
 				let baseLayers = {};
 				layers.forEach(function(layerObject, layerName) {
-					baseLayers[layerName] = layerObject;
+					baseLayers[mw.html.escape(layerName)] = layerObject;
 				});
 				L.control.layers(baseLayers, overlays).addTo(this.map);
 			}

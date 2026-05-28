@@ -241,7 +241,34 @@ class LeafletService implements MappingService {
 
 		$params['imageLayers'] = $this->getJsImageLayers( $params['image layers'] );
 
+		$params['overlays'] = $this->filterToAvailable(
+			$params['overlays'],
+			$GLOBALS['egMapsLeafletAvailableOverlayLayers']
+		);
+		$params['layers'] = $this->filterToAvailable(
+			$params['layers'],
+			$GLOBALS['egMapsLeafletAvailableLayers']
+		);
+
 		return new MapData( $params );
+	}
+
+	/**
+	 * Removes values that are not enabled in the available-layers whitelist. ParamProcessor only
+	 * adds a non-fatal warning for such values rather than dropping them, so without this an editor
+	 * can inject arbitrary strings that end up as Leaflet layer-control labels.
+	 *
+	 * @param string[] $values
+	 * @param array<string, bool> $available
+	 * @return string[]
+	 */
+	private function filterToAvailable( array $values, array $available ): array {
+		return array_values(
+			array_filter(
+				$values,
+				static fn ( string $value ): bool => ( $available[$value] ?? false ) === true
+			)
+		);
 	}
 
 	private function getJsImageLayers( array $imageLayers ) {

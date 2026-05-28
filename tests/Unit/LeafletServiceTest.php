@@ -5,6 +5,7 @@ declare( strict_types = 1 );
 namespace Maps\Tests\Unit;
 
 use Maps\LeafletService;
+use Maps\Map\MapData;
 use Maps\Tests\TestDoubles\ImageValueObject;
 use Maps\Tests\TestDoubles\InMemoryImageRepository;
 use PHPUnit\Framework\TestCase;
@@ -14,6 +15,27 @@ use ReflectionMethod;
  * @covers \Maps\LeafletService
  */
 class LeafletServiceTest extends TestCase {
+
+	private array $originalGlobals = [];
+
+	protected function setUp(): void {
+		parent::setUp();
+
+		$this->originalGlobals = [
+			'egMapsLeafletAvailableLayers' => $GLOBALS['egMapsLeafletAvailableLayers'] ?? null,
+			'egMapsLeafletAvailableOverlayLayers' => $GLOBALS['egMapsLeafletAvailableOverlayLayers'] ?? null,
+		];
+
+		$GLOBALS['egMapsLeafletAvailableLayers'] = [ 'OpenStreetMap' => true, 'OpenTopoMap' => true ];
+		$GLOBALS['egMapsLeafletAvailableOverlayLayers'] = [ 'OpenSeaMap' => true, 'OpenRailwayMap' => true ];
+	}
+
+	protected function tearDown(): void {
+		$GLOBALS['egMapsLeafletAvailableLayers'] = $this->originalGlobals['egMapsLeafletAvailableLayers'];
+		$GLOBALS['egMapsLeafletAvailableOverlayLayers'] = $this->originalGlobals['egMapsLeafletAvailableOverlayLayers'];
+
+		parent::tearDown();
+	}
 
 	public function testZeroWidthImageLayerIsSkipped() {
 		$imageRepo = new InMemoryImageRepository();
@@ -43,6 +65,42 @@ class LeafletServiceTest extends TestCase {
 		$result = $this->getJsImageLayers( $imageRepo, [ 'missing.png' ] );
 
 		$this->assertSame( [], $result );
+	}
+
+	public function testNonWhitelistedOverlaysAreRemoved() {
+		$mapData = $this->newLeafletMapData( [
+			'overlays' => [ 'OpenSeaMap', '<img src=x onerror="alert(1)">', 'OpenRailwayMap' ]
+		] );
+
+		$this->assertSame(
+			[ 'OpenSeaMap', 'OpenRailwayMap' ],
+			$mapData->getParameters()['overlays']
+		);
+	}
+
+	public function testNonWhitelistedLayersAreRemoved() {
+		$mapData = $this->newLeafletMapData( [
+			'layers' => [ 'OpenStreetMap', '<img src=x onerror="alert(1)">', 'OpenTopoMap' ]
+		] );
+
+		$this->assertSame(
+			[ 'OpenStreetMap', 'OpenTopoMap' ],
+			$mapData->getParameters()['layers']
+		);
+	}
+
+	private function newLeafletMapData( array $overrides ): MapData {
+		$params = array_merge(
+			[
+				'geojson' => '',
+				'image layers' => [],
+				'layers' => [],
+				'overlays' => [],
+			],
+			$overrides
+		);
+
+		return ( new LeafletService( new InMemoryImageRepository() ) )->newMapDataFromParameters( $params );
 	}
 
 	private function getJsImageLayers( InMemoryImageRepository $imageRepo, array $imageLayers ): array {
