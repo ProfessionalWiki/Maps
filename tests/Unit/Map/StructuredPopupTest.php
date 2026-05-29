@@ -12,15 +12,15 @@ use PHPUnit\Framework\TestCase;
  */
 class StructuredPopupTest extends TestCase {
 
+	private function getHtml( string $titleHtml, array $propertyValues ): string {
+		return ( new StructuredPopup( $titleHtml, $propertyValues ) )->getHtml();
+	}
+
 	public function testWithoutPropertyValues() {
 		$this->assertSame(
 			'<h3 style="padding-top: 0">MyTitle</h3>',
 			$this->getHtml( 'MyTitle', [] )
 		);
-	}
-
-	private function getHtml( string $titleHtml, array $propertyValues ) {
-		return ( new StructuredPopup( $titleHtml, $propertyValues ) )->getHtml();
 	}
 
 	public function testTitleAndListAreSeparated() {
@@ -37,24 +37,24 @@ class StructuredPopupTest extends TestCase {
 		);
 	}
 
-	public function testLinksAreAllowed() {
-		$this->assertStringContainsString(
-			'<strong><a href="#">P1</a></strong>: <a href="#">P1</a>',
-			$this->getHtml( 'MyTitle', [ '<a href="#">P1</a>' => '<a href="#">P1</a>' ] )
+	public function testPropertyValuesAreSanitized() {
+		$this->assertStringNotContainsString(
+			'onerror',
+			$this->getHtml( 'MyTitle', [ 'P1' => '<img src="x.jpg" onerror="alert(1)">' ] )
 		);
 	}
 
-	public function testImagesAreAllowed() {
-		$this->assertStringContainsString(
-			'<img src="#">',
-			$this->getHtml( 'MyTitle', [ 'P1' => '<img src="#">' ] )
+	public function testPropertyNamesAreSanitized() {
+		$this->assertStringNotContainsString(
+			'onerror',
+			$this->getHtml( 'MyTitle', [ '<img src="x.jpg" onerror="alert(1)">' => 'V1' ] )
 		);
 	}
 
-	public function testRandomTagsAreFiltered() {
-		$this->assertStringContainsString(
-			'<strong>P1</strong>: abcde',
-			$this->getHtml( 'MyTitle', [ 'P1<script>' => '<ul><li>abc</li></ul>de' ] )
+	public function testTitleIsSanitized() {
+		$this->assertStringNotContainsString(
+			'onerror',
+			$this->getHtml( '<img src="x.jpg" onerror="alert(1)">', [] )
 		);
 	}
 
