@@ -3,6 +3,12 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 12.1.4
+
+Released on May 30th, 2026.
+
+* Hardened HTML sanitization of Cargo `map` result popups, stripping event-handler attributes and unsafe URL schemes (`javascript:`, `data:`, `vbscript:`) while preserving links and images (#900)
+
 ## Maps 12.1.3
 
 Released on May 29th, 2026.
