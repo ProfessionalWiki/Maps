@@ -90,10 +90,6 @@
 				labelClass: 'markerwithlabel'
 			};
 
-			if ( markerOptions.text !== '' ) {
-				markerOptions.text = $('<div>').text(markerOptions.text).text();
-			}
-
 			if (!markerData.hasOwnProperty('icon') || markerData.icon !== '') {
 				markerOptions.icon = markerData.icon;
 			}
