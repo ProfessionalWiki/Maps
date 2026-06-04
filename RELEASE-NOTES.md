@@ -7,7 +7,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 Released on June 4th, 2026.
 
-* Fixed semantic maps being broken on Semantic MediaWiki 7.0 (#898, #901)
+* Fixed Semantic MediaWiki 7 compatibility issues (#898, #901)
 
 ## Maps 12.1.4
 
