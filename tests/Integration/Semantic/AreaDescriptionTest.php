@@ -29,14 +29,15 @@ class AreaDescriptionTest extends TestCase {
 			'10 km'
 		);
 
-		$this->assertEquals(
+		$this->assertEqualsWithDelta(
 			[
 				'north' => 0.089932160591873,
 				'east' => 5.089932160591873,
 				'south' => -0.089932160591873,
 				'west' => 4.9100678394081
 			],
-			$area->getBoundingBox()
+			$area->getBoundingBox(),
+			1e-9
 		);
 	}
 

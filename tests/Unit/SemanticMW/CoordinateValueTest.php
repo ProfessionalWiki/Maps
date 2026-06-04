@@ -32,7 +32,7 @@ class CoordinateValueTest extends TestCase {
 		/**
 		 * @var CoordinateValue $geoValue
 		 */
-		$geoValue = DataValueFactory::newDataItemValue( $geoDI );
+		$geoValue = DataValueFactory::getInstance()->newDataValueByItem( $geoDI );
 
 		$this->assertInstanceOf( CoordinateValue::class, $geoValue );
 
