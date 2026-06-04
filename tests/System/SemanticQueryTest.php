@@ -8,10 +8,13 @@ use Maps\DataAccess\PageContentFetcher;
 use Maps\Tests\MapsTestFactory;
 use Maps\Tests\Util\PageCreator;
 use Maps\Tests\Util\TestFactory;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
 use PHPUnit\Framework\TestCase;
 
 /**
+ * @covers \Maps\Map\SemanticFormat\MapPrinter
+ *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
@@ -49,7 +52,10 @@ class SemanticQueryTest extends TestCase {
 	public function testLeafletQueryWithGeoJson() {
 		$this->createDataPages();
 
-		$content = $this->getResultForQuery( '{{#ask:[[Coordinates::+]]|?Coordinates|format=leaflet|geojson=TestGeoJson}}' );
+		// The map data is embedded as an HTML-escaped data attribute, so decode before asserting on the JSON.
+		$content = htmlspecialchars_decode(
+			$this->getResultForQuery( '{{#ask:[[Coordinates::+]]|?Coordinates|format=leaflet|geojson=TestGeoJson}}' )
+		);
 
 		$this->assertStringContainsString( '<div id="map_leaflet_', $content );
 		$this->assertStringContainsString( '"GeoJsonSource":"TestGeoJson"', $content );
@@ -63,8 +69,12 @@ class SemanticQueryTest extends TestCase {
 			$query
 		);
 
-		// TODO: saner way
-		return $this->contentFetcher->getPageContent( 'MapQuery' )->getParserOutput( Title::newFromText( 'MapQuery' ) )->getText();
+		$title = Title::newFromText( 'MapQuery' );
+		$content = $this->contentFetcher->getPageContent( 'MapQuery' );
+
+		return MediaWikiServices::getInstance()->getContentRenderer()
+			->getParserOutput( $content, $title )
+			->getText();
 	}
 
 	private function createDataPages() {

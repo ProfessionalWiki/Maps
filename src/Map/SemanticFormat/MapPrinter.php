@@ -289,15 +289,14 @@ class MapPrinter extends ResultPrinter {
 	/**
 	 * Returns a list of parameter information, for usage by Special:Ask and others.
 	 *
+	 * @param array $definitions
+	 *
 	 * @return array
 	 */
-	public function getParameters() {
-		$params = parent::getParameters();
-		$paramInfo = $this->getParameterInfo();
+	public function getParamDefinitions( array $definitions ): array {
+		$definitions = parent::getParamDefinitions( $definitions );
 
-		$params = array_merge( $params, $paramInfo );
-
-		return $params;
+		return array_merge( $definitions, $this->getParameterInfo() );
 	}
 
 	/**

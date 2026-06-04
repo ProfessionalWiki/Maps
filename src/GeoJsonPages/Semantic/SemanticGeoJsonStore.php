@@ -6,8 +6,8 @@ namespace Maps\GeoJsonPages\Semantic;
 
 use Maps\GeoJsonPages\GeoJsonStore;
 use MediaWiki\Title\Title;
-use Onoi\EventDispatcher\EventDispatcher;
 use SMW\DIProperty;
+use SMW\EventDispatcher\EventDispatcher;
 use SMW\ParserData;
 use SMWDIContainer;
 
