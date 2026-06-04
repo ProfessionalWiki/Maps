@@ -3,6 +3,12 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 12.1.5
+
+Released on June 4th, 2026.
+
+* Fixed semantic maps being broken on Semantic MediaWiki 7.0 (#898, #901)
+
 ## Maps 12.1.4
 
 Released on May 30th, 2026.
