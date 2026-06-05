@@ -83,7 +83,7 @@ class KmlPrinter extends FileExportPrinter {
 	}
 
 	/**
-	 * @see SMWResultPrinter::getParamDefinitions
+	 * @see \SMW\Query\ResultPrinters\ResultPrinter::getParamDefinitions
 	 *
 	 * @param ParamDefinition[] $definitions
 	 */
@@ -115,7 +115,7 @@ class KmlPrinter extends FileExportPrinter {
 	}
 
 	/**
-	 * @see SMWIExportPrinter::getMimeType
+	 * @see \SMW\Query\ExportPrinter::getMimeType
 	 *
 	 * @param QueryResult $queryResult
 	 *
@@ -126,7 +126,7 @@ class KmlPrinter extends FileExportPrinter {
 	}
 
 	/**
-	 * @see SMWIExportPrinter::getFileName
+	 * @see \SMW\Query\ExportPrinter::getFileName
 	 *
 	 * @param QueryResult $queryResult
 	 *

@@ -16,9 +16,10 @@ use MediaWiki\MediaWikiServices;
 use SMW\Query\PrintRequest;
 use SMW\Query\QueryResult;
 use SMW\Query\Result\ResultArray;
-use SMWDataValue;
-use SMWDIGeoCoord;
-use SMWWikiPageValue;
+use SMW\DataValues\DataValue;
+use SMW\DataItems\GeoCoord;
+use SMW\DataValues\WikiPageValue;
+use SMW\DataValues\RecordValue;
 
 /**
  * @licence GNU GPL v2+
@@ -175,7 +176,7 @@ class QueryHandler {
 	 */
 	private function getTitleAndText( ResultArray $resultArray ): array {
 		while ( ( $dataValue = $resultArray->getNextDataValue() ) !== false ) {
-			if ( $dataValue instanceof SMWWikiPageValue ) {
+			if ( $dataValue instanceof WikiPageValue ) {
 				return [
 					$dataValue->getLongText( $this->outputMode, null ),
 					$this->getResultSubjectText( $dataValue )
@@ -209,9 +210,9 @@ class QueryHandler {
 
 			// Loop through all the parts of the field value.
 			while ( ( $dataValue = $resultArray->getNextDataValue() ) !== false ) {
-				if ( $dataValue instanceof \SMWRecordValue ) {
+				if ( $dataValue instanceof RecordValue ) {
 					foreach ( $dataValue->getDataItems() as $dataItem ) {
-						if ( $dataItem instanceof \SMWDIGeoCoord ) {
+						if ( $dataItem instanceof GeoCoord ) {
 							$locations[] = $this->locationFromDataItem( $dataItem );
 						}
 					}
@@ -239,7 +240,7 @@ class QueryHandler {
 		return [ $locations, $properties ];
 	}
 
-	private function locationFromDataItem( SMWDIGeoCoord $dataItem ): Location {
+	private function locationFromDataItem( GeoCoord $dataItem ): Location {
 		return Location::newFromLatLon(
 			$dataItem->getLatitude(),
 			$dataItem->getLongitude()
@@ -247,14 +248,14 @@ class QueryHandler {
 	}
 
 	/**
-	 * Handles a SMWWikiPageValue subject value.
+	 * Handles a WikiPageValue subject value.
 	 * Gets the plain text title and creates the HTML text with headers and the like.
 	 *
-	 * @param SMWWikiPageValue $object
+	 * @param WikiPageValue $object
 	 *
 	 * @return string
 	 */
-	private function getResultSubjectText( SMWWikiPageValue $object ): string {
+	private function getResultSubjectText( WikiPageValue $object ): string {
 		if ( !$this->showSubject ) {
 			return '';
 		}
@@ -291,10 +292,10 @@ class QueryHandler {
 	}
 
 	/**
-	 * Handles a single property (\SMW\Query\PrintRequest) to be displayed for a record (SMWDataValue).
+	 * Handles a single property (\SMW\Query\PrintRequest) to be displayed for a record (DataValue).
 	 * Returns the full property display string including header (e.g., "Property Name: value").
 	 */
-	private function handleResultProperty( SMWDataValue $object, PrintRequest $printRequest ): string {
+	private function handleResultProperty( DataValue $object, PrintRequest $printRequest ): string {
 		if ( $this->hasTemplate() ) {
 			return $this->handleResultPropertyValue( $object, $printRequest );
 		}
@@ -307,9 +308,9 @@ class QueryHandler {
 	 * Returns just the value portion of a property, without the header.
 	 * Used for appending additional values of multi-valued properties.
 	 */
-	private function handleResultPropertyValue( SMWDataValue $object, PrintRequest $printRequest ): string {
+	private function handleResultPropertyValue( DataValue $object, PrintRequest $printRequest ): string {
 		if ( $this->hasTemplate() ) {
-			if ( $object instanceof SMWWikiPageValue ) {
+			if ( $object instanceof WikiPageValue ) {
 				return $object->getDataItem()->getTitle()->getPrefixedText();
 			}
 
@@ -350,7 +351,7 @@ class QueryHandler {
 		return $this->linkStyle === 'all' ? smwfGetLinker() : null;
 	}
 
-	private function getPropertyValue( SMWDataValue $object ): string {
+	private function getPropertyValue( DataValue $object ): string {
 		if ( !$this->linkAbsolute ) {
 			return $object->getLongHTMLText(
 				$this->getValueLinker()
@@ -373,7 +374,7 @@ class QueryHandler {
 		return $object->getLongText( $this->outputMode, null );
 	}
 
-	private function hasPage( SMWDataValue $object ): bool {
+	private function hasPage( DataValue $object ): bool {
 		$hasPage = $object->getTypeID() == '_wpg';
 
 		if ( $hasPage ) {

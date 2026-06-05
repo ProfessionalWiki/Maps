@@ -5,16 +5,17 @@ declare( strict_types = 1 );
 namespace Maps\GeoJsonPages\Semantic;
 
 use SMW\DataModel\ContainerSemanticData;
-use SMW\DIProperty;
-use SMW\DIWikiPage;
+use SMW\DataItems\Property;
+use SMW\DataItems\WikiPage;
 use TitleValue;
+use SMW\DataItems\DataItem;
 
 class SubObject {
 
 	private string $name;
 
 	/**
-	 * @var array<string, array<int, \SMWDataItem>>
+	 * @var array<string, array<int, DataItem>>
 	 */
 	private array $values = [];
 
@@ -22,7 +23,7 @@ class SubObject {
 		$this->name = $name;
 	}
 
-	public function addPropertyValuePair( string $propertyName, \SMWDataItem $dataItem ) {
+	public function addPropertyValuePair( string $propertyName, DataItem $dataItem ) {
 		$this->values[$propertyName][] = $dataItem;
 	}
 
@@ -32,7 +33,7 @@ class SubObject {
 		foreach ( $this->values as $propertyName => $dataItems ) {
 			foreach ( $dataItems as $dataItem ) {
 				$container->addPropertyObjectValue(
-					new DIProperty( $propertyName ),
+					new Property( $propertyName ),
 					$dataItem
 				);
 			}
@@ -43,7 +44,7 @@ class SubObject {
 
 	private function newContainerSemanticData( TitleValue $subjectPage ): ContainerSemanticData {
 		return new ContainerSemanticData(
-			new DIWikiPage(
+			new WikiPage(
 				$subjectPage->getDBkey(),
 				$subjectPage->getNamespace(),
 				$subjectPage->getInterwiki(),
