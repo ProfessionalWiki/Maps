@@ -6,10 +6,10 @@ namespace Maps\GeoJsonPages\Semantic;
 
 use Maps\GeoJsonPages\GeoJsonStore;
 use MediaWiki\Title\Title;
-use SMW\DIProperty;
+use SMW\DataItems\Property;
 use SMW\EventDispatcher\EventDispatcher;
 use SMW\ParserData;
-use SMWDIContainer;
+use SMW\DataItems\Container;
 
 class SemanticGeoJsonStore implements GeoJsonStore {
 
@@ -28,8 +28,8 @@ class SemanticGeoJsonStore implements GeoJsonStore {
 	public function storeGeoJson( string $geoJson ) {
 		foreach ( $this->subObjectBuilder->getSubObjectsFromGeoJson( $geoJson ) as $subObject ) {
 			$this->parserData->getSemanticData()->addPropertyObjectValue(
-				new DIProperty( DIProperty::TYPE_SUBOBJECT ),
-				new SMWDIContainer( $subObject->toContainerSemanticData( $this->subjectPage->getTitleValue() ) )
+				new Property( Property::TYPE_SUBOBJECT ),
+				new Container( $subObject->toContainerSemanticData( $this->subjectPage->getTitleValue() ) )
 			);
 		}
 

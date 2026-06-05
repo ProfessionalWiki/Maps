@@ -6,8 +6,8 @@ namespace Maps\SemanticMW;
 
 use SMW\DataValueFactory;
 use SMW\Query\Language\ValueDescription;
-use SMWDIGeoCoord;
 use Wikimedia\Rdbms\IDatabase;
+use SMW\DataItems\GeoCoord;
 
 /**
  * Description of one data value of type Geographical Coordinates.
@@ -41,7 +41,7 @@ class CoordinateDescription extends ValueDescription {
 
 		// Only execute the query when the description's type is geographical coordinates,
 		// the description is valid, and the near comparator is used.
-		if ( $dataItem instanceof SMWDIGeoCoord ) {
+		if ( $dataItem instanceof GeoCoord ) {
 			switch ( $this->getComparator() ) {
 				case SMW_CMP_EQ:
 					$comparator = '=';
