@@ -40,6 +40,19 @@ class CoordinateValueTest extends TestCase {
 		$this->assertSame( '23° 0\' 0.00" N, 42° 0\' 0.00" E', $geoValue->getShortWikiText() );
 	}
 
+	public function testGetLongTextRendersSemanticMediaWikiTooltip() {
+		$geoValue = DataValueFactory::getInstance()->newDataValueByItem( new SMWDIGeoCoord( 23, 42 ) );
+
+		$longWikiText = $geoValue->getLongWikiText();
+
+		// Semantic MediaWiki 7 binds its hover tooltip to the smw-highlighter element.
+		$this->assertStringContainsString( 'smw-highlighter', $longWikiText );
+		$this->assertStringContainsString( 'data-state="inline"', $longWikiText );
+		$this->assertStringContainsString( 'data-title="Coordinates"', $longWikiText );
+		$this->assertStringContainsString( 'smwttcontent', $longWikiText );
+		$this->assertSame( $longWikiText, $geoValue->getLongHTMLText() );
+	}
+
 	/**
 	 * @dataProvider coordinateProvider
 	 */
