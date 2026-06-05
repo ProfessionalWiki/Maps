@@ -9,13 +9,13 @@ use InvalidArgumentException;
 use Maps\GeoFunctions;
 use Maps\Presentation\MapsDistanceParser;
 use SMW\DataValueFactory;
-use SMW\DIProperty;
+use SMW\DataItems\Property;
 use SMW\Query\Language\Description;
 use SMW\Query\Language\ThingDescription;
 use SMW\Query\Language\ValueDescription;
-use SMWDataItem;
-use SMWDIGeoCoord;
 use Wikimedia\Rdbms\IDatabase;
+use SMW\DataItems\GeoCoord;
+use SMW\DataItems\DataItem;
 
 /**
  * Description of a geographical area defined by a coordinates set and a distance to the bounds.
@@ -27,12 +27,12 @@ use Wikimedia\Rdbms\IDatabase;
  */
 class AreaDescription extends ValueDescription {
 
-	private SMWDIGeoCoord $center;
+	private GeoCoord $center;
 	private string $radius;
 
-	public function __construct( SMWDataItem $areaCenter, int $comparator, string $radius, ?DIProperty $property = null ) {
-		if ( !( $areaCenter instanceof SMWDIGeoCoord ) ) {
-			throw new InvalidArgumentException( '$areaCenter needs to be a SMWDIGeoCoord' );
+	public function __construct( DataItem $areaCenter, int $comparator, string $radius, ?Property $property = null ) {
+		if ( !( $areaCenter instanceof GeoCoord ) ) {
+			throw new InvalidArgumentException( '$areaCenter needs to be a GeoCoord' );
 		}
 
 		parent::__construct( $areaCenter, $property, $comparator );
@@ -83,7 +83,7 @@ class AreaDescription extends ValueDescription {
 	 * @return string|false
 	 */
 	public function getSQLCondition( $tableName, array $fieldNames, IDatabase $db ) {
-		if ( $this->center->getDIType() != SMWDataItem::TYPE_GEO ) {
+		if ( $this->center->getDIType() != DataItem::TYPE_GEO ) {
 			throw new \LogicException( 'Constructor should have prevented this' );
 		}
 

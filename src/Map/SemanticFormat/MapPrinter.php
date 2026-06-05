@@ -20,7 +20,7 @@ use MediaWiki\Title\Title;
 use MediaWiki\Parser\Parser;
 use SMW\Query\QueryResult;
 use SMW\Query\ResultPrinters\ResultPrinter;
-use SMWOutputs;
+use SMW\MediaWiki\Outputs;
 
 /**
  * @licence GNU GPL v2+
@@ -140,13 +140,13 @@ class MapPrinter extends ResultPrinter {
 	}
 
 	private function outputResources( MapOutput $mapOutput ) {
-		SMWOutputs::requireHeadItem(
+		Outputs::requireHeadItem(
 			$this->randomString(),
 			$mapOutput->getHeadItems()
 		);
 
 		foreach ( $mapOutput->getResourceModules() as $resourceModule ) {
-			SMWOutputs::requireResource( $resourceModule );
+			Outputs::requireResource( $resourceModule );
 		}
 	}
 
