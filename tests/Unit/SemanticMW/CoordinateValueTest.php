@@ -40,6 +40,16 @@ class CoordinateValueTest extends TestCase {
 		$this->assertSame( '23° 0\' 0.00" N, 42° 0\' 0.00" E', $geoValue->getShortWikiText() );
 	}
 
+	public function testGetLongTextRendersTooltipWithoutFatal() {
+		$geoValue = DataValueFactory::getInstance()->newDataValueByItem( new SMWDIGeoCoord( 23, 42 ) );
+
+		$longWikiText = $geoValue->getLongWikiText();
+
+		$this->assertStringContainsString( 'smwttinline', $longWikiText );
+		$this->assertStringContainsString( 'smwttcontent', $longWikiText );
+		$this->assertSame( $longWikiText, $geoValue->getLongHTMLText() );
+	}
+
 	/**
 	 * @dataProvider coordinateProvider
 	 */

@@ -189,7 +189,8 @@ class CoordinateValue extends SMWDataValue {
 	 */
 	public function getLongWikiText( $linked = null ) {
 		if ( $this->isValid() ) {
-			SMWOutputs::requireHeadItem( SMW_HEADER_TOOLTIP );
+			SMWOutputs::requireStyle( 'ext.smw.tooltip.styles' );
+			SMWOutputs::requireResource( 'ext.smw.tooltip' );
 
 			// TODO: fix lang keys so they include the space and coordinates.
 			$coordinateSet = $this->m_dataitem->getCoordinateSet();
