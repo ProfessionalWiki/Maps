@@ -16,12 +16,20 @@ jobs:
         include:
           - mw: 'REL1_43'
             php: 8.3
+            smw: ''
             experimental: false
           - mw: 'REL1_44'
             php: 8.3
+            smw: ''
             experimental: false
           - mw: 'REL1_45'
             php: 8.3
+            smw: ''
+            experimental: false
+          # Exercises the Semantic MediaWiki integration, which self-skips when SMW is absent.
+          - mw: 'REL1_43'
+            php: 8.3
+            smw: '^7.0'
             experimental: false
 
     runs-on: ubuntu-latest
@@ -46,7 +54,7 @@ jobs:
             mediawiki
             !mediawiki/extensions/
             !mediawiki/vendor/
-          key: mw_${{ matrix.mw }}-php${{ matrix.php }}-v22
+          key: mw_${{ matrix.mw }}-php${{ matrix.php }}-smw${{ matrix.smw }}-v23
 
       - name: Cache Composer cache
         uses: actions/cache@v4
@@ -61,7 +69,7 @@ jobs:
       - name: Install MediaWiki
         if: steps.cache-mediawiki.outputs.cache-hit != 'true'
         working-directory: ~
-        run: bash EarlyCopy/.github/workflows/installMediaWiki.sh ${{ matrix.mw }} Maps
+        run: bash EarlyCopy/.github/workflows/installMediaWiki.sh ${{ matrix.mw }} Maps ${{ matrix.smw }}
 
       - uses: actions/checkout@v4
         with:
@@ -71,6 +79,10 @@ jobs:
         run: composer config --no-plugins allow-plugins.composer/installers true
 
       - run: composer update
+
+      - name: Set up Semantic MediaWiki
+        if: matrix.smw != ''
+        run: php maintenance/update.php --quick
 
       - name: Run PHPUnit
         run: php tests/phpunit/phpunit.php -c extensions/Maps
