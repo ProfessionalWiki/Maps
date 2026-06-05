@@ -203,6 +203,7 @@
 	"semanticmaps-latitude": "Parameters:\n* $1 - latitude\nSee also:\n* {{msg-mw|Semanticmaps-longitude}}\n* {{msg-mw|Semanticmaps-altitude}}\n{{Identical|Latitude}}",
 	"semanticmaps-longitude": "Parameters:\n* $1 - longitude\nSee also:\n* {{msg-mw|Semanticmaps-latitude}}\n* {{msg-mw|Semanticmaps-altitude}}\n{{Identical|Longitude}}",
 	"semanticmaps-altitude": "Parameters:\n* $1 - altitude\nSee also:\n* {{msg-mw|Semanticmaps-latitude}}\n* {{msg-mw|Semanticmaps-longitude}}",
+	"semanticmaps-coordinates": "Tooltip title shown above the latitude and longitude when hovering over a coordinate value stored with Semantic MediaWiki.\n{{Identical|Coordinates}}",
 	"semanticmaps-forminput-locations": "This is a button label.\n\n{{Identical|Location}}",
 	"semanticmaps-par-staticlocations": "{{doc-paramdesc|staticlocations}}",
 	"semanticmaps-par-showtitle": "{{doc-paramdesc|showtitle}}",
