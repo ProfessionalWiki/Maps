@@ -3,6 +3,13 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 12.1.6
+
+Released on June 5th, 2026.
+
+* Fixed a fatal error when rendering coordinate values with Semantic MediaWiki 7, where the long text and tooltip output referenced the removed `SMW_HEADER_TOOLTIP` constant
+* Restored the coordinate value hover tooltip on Semantic MediaWiki 7
+
 ## Maps 12.1.5
 
 Released on June 4th, 2026.
