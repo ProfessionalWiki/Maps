@@ -130,6 +130,7 @@
 	"semanticmaps-latitude": "Latitudine: $1",
 	"semanticmaps-longitude": "Longitudine: $1",
 	"semanticmaps-altitude": "Altitudine: $1",
+	"semanticmaps-coordinates": "Coordinate",
 	"semanticmaps-forminput-locations": "Luoghi",
 	"semanticmaps-par-staticlocations": "Un elenco di luoghi da aggiungere alla mappa unitamente ai dati interrogati. Come con display_points, si può aggiungere un titolo, la descrizione e l'icona per ogni posizione utilizzando la tilde \"~\" come separatore.",
 	"semanticmaps-par-showtitle": "Mostrare oppure no un titolo nella finestra informazioni per l'indicatore. Disattivarlo è spesso utile quando si utilizza un template per la formattazione del contenuto della finestra informazioni.",

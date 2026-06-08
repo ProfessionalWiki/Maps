@@ -194,6 +194,7 @@
 	"semanticmaps-latitude": "Zemljepisna širina: $1",
 	"semanticmaps-longitude": "Zemljepisna dolžina: $1",
 	"semanticmaps-altitude": "Nadmorska višina: $1",
+	"semanticmaps-coordinates": "Koordinate",
 	"semanticmaps-forminput-locations": "Lokacije",
 	"semanticmaps-par-staticlocations": "Seznam lokacij za dodajanje na zemljevid skupaj z zadetki poizvedb. Tako kot z display_points, lahko dodate naslov, opis in ikono za vsako lokacijo z uporabo \"~\" kot ločilo.",
 	"semanticmaps-par-showtitle": "Ali naj imajo podatkovna okna označevalcev naslov. Izklop te možnosti je pogosto koristen, če za oblikovanje vsebine podatkovnih oken uporabljate predlogo.",

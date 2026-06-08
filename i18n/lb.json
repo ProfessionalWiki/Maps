@@ -108,6 +108,7 @@
 	"semanticmaps-latitude": "Breedegrad: $1",
 	"semanticmaps-longitude": "Längtegrad: $1",
 	"semanticmaps-altitude": "Héicht: $1",
+	"semanticmaps-coordinates": "Koordinaten",
 	"semanticmaps-forminput-locations": "Plazen",
 	"semanticmaps-kml-title": "De Standard-Titel fir Resultater",
 	"semanticmaps-kml-linkabsolute": "Solle Linken absolut sinn (am Géigesaz zu relativ)",

@@ -199,6 +199,7 @@
 	"semanticmaps-latitude": "위도: $1",
 	"semanticmaps-longitude": "경도: $1",
 	"semanticmaps-altitude": "고도: $1",
+	"semanticmaps-coordinates": "좌표",
 	"semanticmaps-forminput-locations": "위치",
 	"semanticmaps-par-staticlocations": "쿼리된 데이터와 함께 지도를 추가하는 위치의 목록입니다. display_points와 같이, 구분자로 물결표 \"~\"를 사용하여 위치마다 제목과 설명, 아이콘을 추가할 수 있습니다.",
 	"semanticmaps-par-showtitle": "표시 정보 창에서 제목에 보여주거나 보여주지 않습니다. 정보 창 내용의 형식에 틀을 사용할 때 이를 비활성화하면 편리합니다.",

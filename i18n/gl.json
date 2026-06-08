@@ -193,6 +193,7 @@
 	"semanticmaps-latitude": "Latitude: $1",
 	"semanticmaps-longitude": "Lonxitude: $1",
 	"semanticmaps-altitude": "Altitude: $1",
+	"semanticmaps-coordinates": "Coordenadas",
 	"semanticmaps-forminput-locations": "Localizacións",
 	"semanticmaps-par-staticlocations": "Unha lista de localizacións para engadir ao mapa xunto aos datos consultados. Como con «display_points», podes engadir un título, unha descrición e mais unha icona por localización mediante o signo «~» como separador.",
 	"semanticmaps-par-showtitle": "Amosar ou non un título na ventá de información do marcador. Frecuentemente, desactivar isto é útil ao utilizar un modelo para dar formato ao contido da ventá de información.",
