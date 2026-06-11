@@ -141,6 +141,7 @@
 	"semanticmaps-latitude": "Leveyspiiri: $1",
 	"semanticmaps-longitude": "Pituuspiiri: $1",
 	"semanticmaps-altitude": "Korkeus: $1",
+	"semanticmaps-coordinates": "Koordinaatit",
 	"semanticmaps-forminput-locations": "Sijainnit",
 	"semanticmaps-par-staticlocations": "Sijaintien luettelo voidaan lisätä karttaan kyselydatan lisäksi. Kuten display_points-parametrissa voit lisätä sijaintikohtaisen otsikon, kuvauksen ja kuvakkeen; erottimena on \"~\".",
 	"semanticmaps-par-showtitle": "Näyttää kohdemerkin tietoikkunan otsikon tai ei. Käytöstä poisto on usein hyödyllistä, jos tietoikkunan sisältö muotoillaan mallineella.",

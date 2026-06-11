@@ -190,6 +190,7 @@
 	"semanticmaps-latitude": "Latitude: $1",
 	"semanticmaps-longitude": "Longitude: $1",
 	"semanticmaps-altitude": "Altitude: $1",
+	"semanticmaps-coordinates": "Coordinatas",
 	"semanticmaps-forminput-locations": "Locos",
 	"semanticmaps-par-staticlocations": "Un lista de locos a adder al carta con le datos resultante del consulta. Como con display_points, tu pote adder un titulo, description e icone per loco usante le tilde \"~\" como separator.",
 	"semanticmaps-par-showtitle": "Monstrar un titulo in le fenestra de information de marcator o non. Disactivar isto es sovente utile si un patrono es usate pro formatar le contento del fenestra de information.",

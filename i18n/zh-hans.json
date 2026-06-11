@@ -214,6 +214,7 @@
 	"semanticmaps-latitude": "纬度：$1",
 	"semanticmaps-longitude": "经度：$1",
 	"semanticmaps-altitude": "海拔：$1",
+	"semanticmaps-coordinates": "坐标",
 	"semanticmaps-forminput-locations": "位置",
 	"semanticmaps-par-staticlocations": "要与查询数据一起添加到地图的位置的列表。同display_points一样，您可以给每个位置添加标题、描述和图标，以浪纹线“~”分隔。",
 	"semanticmaps-par-showtitle": "是否在标记信息窗口内显示标题。当使用模板格式化信息窗口内容时，停用该功能通常很有用。",
