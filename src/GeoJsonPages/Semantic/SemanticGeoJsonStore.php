@@ -6,19 +6,19 @@ namespace Maps\GeoJsonPages\Semantic;
 
 use Maps\GeoJsonPages\GeoJsonStore;
 use MediaWiki\Title\Title;
-use SMW\DataItems\Property;
-use SMW\EventDispatcher\EventDispatcher;
+use SMW\DIProperty;
 use SMW\ParserData;
-use SMW\DataItems\Container;
+use SMWDIContainer;
 
 class SemanticGeoJsonStore implements GeoJsonStore {
 
 	private ParserData $parserData;
 	private Title $subjectPage;
-	private EventDispatcher $smwEventDispatcher;
+	/** @var \SMW\EventDispatcher\EventDispatcher|\Onoi\EventDispatcher\EventDispatcher Namespaced in SMW 7, the Onoi interface in SMW 6. */
+	private $smwEventDispatcher;
 	private SubObjectBuilder $subObjectBuilder;
 
-	public function __construct( ParserData $parserData, Title $subjectPage, EventDispatcher $smwEventDispatcher, SubObjectBuilder $subObjectBuilder ) {
+	public function __construct( ParserData $parserData, Title $subjectPage, $smwEventDispatcher, SubObjectBuilder $subObjectBuilder ) {
 		$this->parserData = $parserData;
 		$this->subjectPage = $subjectPage;
 		$this->smwEventDispatcher = $smwEventDispatcher;
@@ -28,8 +28,8 @@ class SemanticGeoJsonStore implements GeoJsonStore {
 	public function storeGeoJson( string $geoJson ) {
 		foreach ( $this->subObjectBuilder->getSubObjectsFromGeoJson( $geoJson ) as $subObject ) {
 			$this->parserData->getSemanticData()->addPropertyObjectValue(
-				new Property( Property::TYPE_SUBOBJECT ),
-				new Container( $subObject->toContainerSemanticData( $this->subjectPage->getTitleValue() ) )
+				new DIProperty( DIProperty::TYPE_SUBOBJECT ),
+				new SMWDIContainer( $subObject->toContainerSemanticData( $this->subjectPage->getTitleValue() ) )
 			);
 		}
 

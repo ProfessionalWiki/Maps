@@ -13,23 +13,35 @@ jobs:
 
     strategy:
       matrix:
+        # smwCache keeps the cache key free of the version constraint's special
+        # characters, which would otherwise collide and share one cache.
         include:
           - mw: 'REL1_43'
             php: 8.3
             smw: ''
+            smwCache: 'none'
             experimental: false
           - mw: 'REL1_44'
             php: 8.3
             smw: ''
+            smwCache: 'none'
             experimental: false
           - mw: 'REL1_45'
             php: 8.3
             smw: ''
+            smwCache: 'none'
             experimental: false
           # Exercises the Semantic MediaWiki integration, which self-skips when SMW is absent.
+          # Both supported major versions are tested, as they differ in API (e.g. class namespaces).
+          - mw: 'REL1_43'
+            php: 8.3
+            smw: '^6.0'
+            smwCache: 'smw6'
+            experimental: false
           - mw: 'REL1_43'
             php: 8.3
             smw: '^7.0'
+            smwCache: 'smw7'
             experimental: false
 
     runs-on: ubuntu-latest
@@ -54,7 +66,7 @@ jobs:
             mediawiki
             !mediawiki/extensions/
             !mediawiki/vendor/
-          key: mw_${{ matrix.mw }}-php${{ matrix.php }}-smw${{ matrix.smw }}-v23
+          key: mw_${{ matrix.mw }}-php${{ matrix.php }}-${{ matrix.smwCache }}-v24
 
       - name: Cache Composer cache
         uses: actions/cache@v4

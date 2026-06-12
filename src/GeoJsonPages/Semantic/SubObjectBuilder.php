@@ -8,8 +8,6 @@ use GeoJson\Exception\UnserializationException;
 use GeoJson\Feature\FeatureCollection;
 use GeoJson\GeoJson;
 use GeoJson\Geometry\Point;
-use SMW\DataItems\GeoCoord;
-use SMW\DataItems\Blob;
 
 class SubObjectBuilder {
 
@@ -47,20 +45,20 @@ class SubObjectBuilder {
 
 		$subObject->addPropertyValuePair(
 			'HasCoordinates',
-			new GeoCoord( $point->getCoordinates()[1], $point->getCoordinates()[0] )
+			new \SMWDIGeoCoord( $point->getCoordinates()[1], $point->getCoordinates()[0] )
 		);
 
 		if ( array_key_exists( 'description', $properties ) && is_string( $properties['description'] ) ) {
 			$subObject->addPropertyValuePair(
 				'HasDescription',
-				new Blob( $properties['description'] )
+				new \SMWDIBlob( $properties['description'] )
 			);
 		}
 
 		if ( array_key_exists( 'title', $properties ) && is_string( $properties['title'] ) ) {
 			$subObject->addPropertyValuePair(
 				'HasTitle',
-				new Blob( $properties['title'] )
+				new \SMWDIBlob( $properties['title'] )
 			);
 		}
 
