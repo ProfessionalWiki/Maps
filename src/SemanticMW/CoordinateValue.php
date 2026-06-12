@@ -13,24 +13,24 @@ use SMW\Query\Language\Description;
 use SMW\Query\Language\ThingDescription;
 use SMW\Query\QueryComparator;
 use ValueParsers\ParseException;
-use SMW\DataValues\DataValue;
-use SMW\DataItems\GeoCoord;
-use SMW\DataItems\DataItem;
-use SMW\Formatters\Highlighter;
+use SMWDataValue;
+use SMWDIGeoCoord;
+use SMWDataItem;
+use SMW\Highlighter;
 
 /**
- * @property GeoCoord m_dataitem
+ * @property SMWDIGeoCoord m_dataitem
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  * @author Markus Krötzsch
  */
-class CoordinateValue extends DataValue {
+class CoordinateValue extends SMWDataValue {
 
 	private $wikiValue;
 
 	/**
-	 * Overwrite DataValue::getQueryDescription() to be able to process
+	 * Overwrite SMWDataValue::getQueryDescription() to be able to process
 	 * comparators between all values.
 	 *
 	 * @param string $value
@@ -67,7 +67,7 @@ class CoordinateValue extends DataValue {
 	}
 
 	/**
-	 * @see DataValue::parseUserValue
+	 * @see SMWDataValue::parseUserValue
 	 */
 	protected function parseUserValue( $value ): void {
 		$this->parseAndReturnUserValue( $value );
@@ -110,14 +110,14 @@ class CoordinateValue extends DataValue {
 
 		try {
 			$value = $parser->parse( $coordinates );
-			$this->m_dataitem = new GeoCoord( $value->getLatitude(), $value->getLongitude() );
+			$this->m_dataitem = new SMWDIGeoCoord( $value->getLatitude(), $value->getLongitude() );
 		}
 		catch ( ParseException $parseException ) {
 			$this->addError( wfMessage( 'maps_unrecognized_coords', $coordinates, 1 )->text() );
 
 			// Make sure this is always set
 			// TODO: Why is this needed?!
-			$this->m_dataitem = new GeoCoord( [ 'lat' => 0, 'lon' => 0 ] );
+			$this->m_dataitem = new SMWDIGeoCoord( [ 'lat' => 0, 'lon' => 0 ] );
 		}
 	}
 
@@ -135,7 +135,7 @@ class CoordinateValue extends DataValue {
 	}
 
 	/**
-	 * @see DataValue::getShortHTMLText
+	 * @see SMWDataValue::getShortHTMLText
 	 *
 	 * @since 0.6
 	 */
@@ -144,7 +144,7 @@ class CoordinateValue extends DataValue {
 	}
 
 	/**
-	 * @see DataValue::getShortWikiText
+	 * @see SMWDataValue::getShortWikiText
 	 */
 	public function getShortWikiText( $linker = null ) {
 		if ( $this->isValid() ) {
@@ -159,12 +159,12 @@ class CoordinateValue extends DataValue {
 	}
 
 	/**
-	 * @param GeoCoord $dataItem
+	 * @param SMWDIGeoCoord $dataItem
 	 * @param string|null $format
 	 *
 	 * @return string|null
 	 */
-	private function getFormattedCoord( GeoCoord $dataItem, ?string $format = null ) {
+	private function getFormattedCoord( SMWDIGeoCoord $dataItem, ?string $format = null ) {
 		return MapsFactory::globalInstance()->getCoordinateFormatter()->format(
 			new LatLongValue(
 				$dataItem->getLatitude(),
@@ -176,14 +176,14 @@ class CoordinateValue extends DataValue {
 	}
 
 	/**
-	 * @see DataValue::getLongHTMLText
+	 * @see SMWDataValue::getLongHTMLText
 	 */
 	public function getLongHTMLText( $linker = null ) {
 		return $this->getLongWikiText( $linker );
 	}
 
 	/**
-	 * @see DataValue::getLongWikiText
+	 * @see SMWDataValue::getLongWikiText
 	 *
 	 * @since 0.6
 	 */
@@ -215,21 +215,21 @@ class CoordinateValue extends DataValue {
 	}
 
 	/**
-	 * @see DataValue::getWikiValue
+	 * @see SMWDataValue::getWikiValue
 	 */
 	public function getWikiValue() {
 		return $this->wikiValue;
 	}
 
 	/**
-	 * @see DataValue::setDataItem
+	 * @see SMWDataValue::setDataItem
 	 *
-	 * @param DataItem $dataItem
+	 * @param SMWDataItem $dataItem
 	 *
 	 * @return boolean
 	 */
-	protected function loadDataItem( DataItem $dataItem ) {
-		if ( $dataItem instanceof GeoCoord ) {
+	protected function loadDataItem( SMWDataItem $dataItem ) {
+		if ( $dataItem instanceof SMWDIGeoCoord ) {
 			$formattedValue = $this->getFormattedCoord( $dataItem );
 
 			if ( $formattedValue !== null ) {
@@ -262,7 +262,7 @@ class CoordinateValue extends DataValue {
 	}
 
 	/**
-	 * @return GeoCoord|\SMW\DataItems\Error
+	 * @return SMWDIGeoCoord|\SMWDIError
 	 */
 	public function getDataItem() {
 		return parent::getDataItem();

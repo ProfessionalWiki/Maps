@@ -8,7 +8,7 @@ use Maps\Map\SemanticFormat\MapPrinter;
 use Maps\SemanticMW\CoordinateValue;
 use Maps\SemanticMW\KmlPrinter;
 use SMW\DataTypeRegistry;
-use SMW\DataItems\DataItem;
+use SMWDataItem;
 
 /**
  * @licence GNU GPL v2+
@@ -29,7 +29,7 @@ class SemanticMapsSetup {
 			DataTypeRegistry::getInstance()->registerDatatype(
 				'_geo',
 				CoordinateValue::class,
-				DataItem::TYPE_GEO
+				SMWDataItem::TYPE_GEO
 			);
 
 			return true;
