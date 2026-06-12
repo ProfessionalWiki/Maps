@@ -7,7 +7,6 @@ namespace Maps;
 use DataValues\Geo\Parsers\LatLongParser;
 use Maps\GeoJsonPages\GeoJsonContent;
 use Maps\GeoJsonPages\GeoJsonContentHandler;
-use Maps\LegacyMapEditor\SpecialMapEditor;
 use Maps\Map\CargoFormat\CargoFormat;
 use Maps\WikitextParsers\CircleParser;
 use Maps\WikitextParsers\DistanceParser;
@@ -37,11 +36,6 @@ class MapsSetup {
 	private function defaultSettings() {
 		if ( $GLOBALS['egMapsGMaps3Language'] === '' ) {
 			$GLOBALS['egMapsGMaps3Language'] = $GLOBALS['wgLang'];
-		}
-
-		if ( in_array( 'googlemaps3', $GLOBALS['egMapsAvailableServices'] ) ) {
-			$GLOBALS['wgSpecialPages']['MapEditor'] = SpecialMapEditor::class;
-			$GLOBALS['wgSpecialPageGroups']['MapEditor'] = 'maps';
 		}
 
 		if ( $GLOBALS['egMapsGMaps3ApiKey'] === '' && array_key_exists( 'egGoogleJsApiKey', $GLOBALS ) ) {
