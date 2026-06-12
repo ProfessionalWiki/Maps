@@ -1,6 +1,6 @@
 {
 	"name": "Maps",
-	"version": "12.1.6",
+	"version": "13.0.0",
 
 	"author": [
 		"[https://EntropyWins.wtf/mediawiki Jeroen De Dauw]",
@@ -26,7 +26,6 @@
 		]
 	},
 	"ExtensionMessagesFiles": {
-		"MapsAlias": "i18n/aliases/Aliases.php",
 		"MapsMagic": "i18n/magic/MagicWords.php"
 	},
 
@@ -305,37 +304,6 @@
 			],
 			"scripts": [
 				"GoogleMaps/googlemaps3ajax.js"
-			],
-			"targets": [ "desktop", "mobile" ]
-		},
-
-		"ext.maps.wikitext.editor": {
-			"dependencies": [
-				"jquery.ui",
-				"jquery.ui",
-				"jquery.ui"
-			],
-			"scripts": [
-				"WikitextEditor/js/jquery.miniColors.js",
-				"WikitextEditor/js/mapeditor.iefixes.js",
-				"WikitextEditor/js/mapeditor.js"
-			],
-			"styles": [
-				"WikitextEditor/css/jquery.miniColors.css",
-				"WikitextEditor/css/mapeditor.css"
-			],
-			"messages": [
-				"mapeditor-parser-error",
-				"mapeditor-none-text",
-				"mapeditor-done-button",
-				"mapeditor-remove-button",
-				"mapeditor-import-button",
-				"mapeditor-export-button",
-				"mapeditor-import-button2",
-				"mapeditor-select-button",
-				"mapeditor-mapparam-button",
-				"mapeditor-clear-button",
-				"mapeditor-imageoverlay-button"
 			],
 			"targets": [ "desktop", "mobile" ]
 		}

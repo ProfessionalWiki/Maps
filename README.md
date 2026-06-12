@@ -88,7 +88,6 @@ The `src/` contains the PHP code and follows PSR-4 autoloading.
 * `src/DataAccess` - Persistence layer code that does not belong to a more specific directory
 * `src/GeoJsonPages` - Code that deals with pages in the GeoJson namespace
 * `src/LegacyModel` - Badly designed and deprecated representations of map elements (markers, polygons, etc)
-* `src/LegacyMapEditor` - Deprecated and Google Maps only Special:MapEditor page
 * `src/SemanticMW` - Semantic MediaWiki code except for the map entry point (which is in `Map\SemanticFormat`)
 * `src/WikitextParsers` - Parsers for the wikitext definitions of map elements (like the `LegacyModel`)
 

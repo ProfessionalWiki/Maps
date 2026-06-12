@@ -3,6 +3,12 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 13.0.0
+
+Released on TBD.
+
+* Removed the Google Maps based map editor (Special:MapEditor), which has been non-functional since Google removed the Drawing library from the Maps JavaScript API at the end of May 2026 (#906)
+
 ## Maps 12.1.6
 
 Released on June 5th, 2026.
