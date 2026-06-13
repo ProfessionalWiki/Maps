@@ -111,16 +111,16 @@ Alternatively, you can execute commands from the MediaWiki root directory:
 * PHPStan: `vendor/bin/phpstan analyse --configuration=extensions/Maps/phpstan.neon --memory-limit=2G`
 * Psalm: `php vendor/bin/psalm --config=extensions/Maps/psalm.xml`
 
-Beware that due to technical debt, some tests access the network.
+Be aware that, due to technical debt, some tests access the network.
 
 ## Links
 
 * [Maps documentation wiki](https://maps.extension.wiki)
+* [Maps on Professional Wiki](https://professional.wiki/en/extension/maps)
 * [Maps on OpenHub](https://www.openhub.net/p/maps/)
 * [Maps on Packagist](https://packagist.org/packages/mediawiki/maps)
 * [Maps on WikiApiary](https://wikiapiary.com/wiki/Extension:Maps)
 * [Maps on MediaWiki.org](https://www.mediawiki.org/wiki/Extension:Maps)
-* [Sponsor Maps development](https://github.com/sponsors/JeroenDeDauw)
 
 [Leaflet maps]: https://maps.extension.wiki/wiki/Displaying_Leaflet_maps
 [Google Maps]: https://maps.extension.wiki/wiki/Displaying_Google_Maps
