@@ -9,6 +9,12 @@ Released on TBD.
 
 * Removed the Google Maps based map editor (Special:MapEditor), which has been non-functional since Google removed the Drawing library from the Maps JavaScript API at the end of May 2026 (#906)
 
+## Maps 12.1.7
+
+Released on June 13th, 2026.
+
+* Restored compatibility with Semantic MediaWiki 6, which regressed when the Semantic integration moved to the namespaced classes introduced in Semantic MediaWiki 7 (#908)
+
 ## Maps 12.1.6
 
 Released on June 5th, 2026.
