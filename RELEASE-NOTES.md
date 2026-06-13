@@ -5,7 +5,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 ## Maps 13.0.0
 
-Released on TBD.
+Released on June 13th, 2026.
 
 * Removed the Google Maps based map editor (Special:MapEditor), which has been non-functional since Google removed the Drawing library from the Maps JavaScript API at the end of May 2026 (#906)
 
