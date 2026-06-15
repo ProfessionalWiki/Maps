@@ -28,8 +28,6 @@
 	"maps-latitude": "Географска ширина:",
 	"maps-longitude": "Географска дужина:",
 	"maps_googlemaps3": "Гугл мапе, треће издање",
-	"mapeditor": "Уређивач карте",
-	"mapeditor-form-field-image": "Слика",
 	"semanticmaps-unrecognizeddistance": "Вредност $1 није исправно растојање.",
 	"semanticmaps-kml": "KML",
 	"maps-validator-type-mapspolygon": "Географски полигон",
