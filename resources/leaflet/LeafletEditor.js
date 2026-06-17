@@ -231,7 +231,9 @@
 
 		self.remove = function() {
 			self.drawControl.remove();
-			self.saveButton.remove();
+			if (self.saveButton) {
+				self.saveButton.remove();
+			}
 			self.geoJsonLayer.remove();
 		};
 
