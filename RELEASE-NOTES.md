@@ -3,6 +3,12 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 13.0.1
+
+Released on June 21st, 2026.
+
+* Fixed custom marker popups being offset to the left instead of centered above the marker icon (#915)
+
 ## Maps 13.0.0
 
 Released on June 13th, 2026.
