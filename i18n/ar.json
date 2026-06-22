@@ -160,6 +160,7 @@
 	"semanticmaps-latitude": "دائرة العرض: $1",
 	"semanticmaps-longitude": "خط الطول: $1",
 	"semanticmaps-altitude": "الارتفاع: $1",
+	"semanticmaps-coordinates": "الإحداثيات",
 	"semanticmaps-forminput-locations": "المواقع",
 	"semanticmaps-par-staticlocations": "قائمة بالمواقع التي تريد إضافتها إلى الخريطة مع البيانات التي تم الاستعلام عنها، كما هو الحال مع display_points، يمكنك إضافة عنوان ووصف ورمز لكل موقع باستخدام التلدة \"~\" كفاصل.",
 	"semanticmaps-par-showtitle": "عرض عنوان في نافذة معلومات العلامة أو لا، غالبا ما يكون تعطيل هذا الأمر مفيدا عند استخدام قالب لتنسيق محتوى نافذة المعلومات.",
