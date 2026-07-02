@@ -118,6 +118,10 @@ class MapPrinter extends ResultPrinter {
 		$params['ajaxquery'] = urlencode( $params['ajaxquery'] );
 
 		if ( $params['locations'] === [] ) {
+			if ( $this->shouldWarnAboutMissingCoordinatePrintout( $res, $params ) ) {
+				$res->addErrors( [ wfMessage( 'semanticmaps-no-coordinate-printout' )->inContentLanguage()->text() ] );
+			}
+
 			return $params['default'];
 		}
 
@@ -137,6 +141,38 @@ class MapPrinter extends ResultPrinter {
 		$this->outputResources( $mapOutput );
 
 		return $mapOutput->getHtml();
+	}
+
+	private function shouldWarnAboutMissingCoordinatePrintout( QueryResult $res, array $params ): bool {
+		return !$this->hasAlternateMarkerSource( $params )
+			&& !$this->queryHasCoordinatePrintout( $res );
+	}
+
+	private function hasAlternateMarkerSource( array $params ): bool {
+		return $this->hasAjaxCoordinateSource( $params )
+			|| ( $params['geojson'] ?? '' ) !== ''
+			|| ( $params['kml'] ?? [] ) !== []
+			|| ( $params['gkml'] ?? [] ) !== [];
+	}
+
+	private function hasAjaxCoordinateSource( array $params ): bool {
+		// The JS only loads markers via ajax when both parameters are set; a
+		// half-configured pair never fires ajax, so the warning still applies.
+		return $params['ajaxcoordproperty'] !== '' && $params['ajaxquery'] !== '';
+	}
+
+	private function queryHasCoordinatePrintout( QueryResult $res ): bool {
+		foreach ( $res->getPrintRequests() as $printRequest ) {
+			// Approximation: any Record printout is treated as coordinate-capable
+			// without checking whether its declared fields actually include one.
+			// See QueryHandler::getLocationsAndProperties for the precise,
+			// per-value check this mirrors at the print-request-type level.
+			if ( in_array( $printRequest->getTypeID(), [ '_geo', '_rec' ], true ) ) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	private function outputResources( MapOutput $mapOutput ) {
