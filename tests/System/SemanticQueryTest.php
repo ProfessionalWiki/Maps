@@ -63,6 +63,21 @@ class SemanticQueryTest extends TestCase {
 		$this->assertStringContainsString( '"geojson":{"type":"FeatureCollection"', $content );
 	}
 
+	public function testGoogleMapsQueryContainsImageOverlayData() {
+		$this->createDataPages();
+
+		$content = htmlspecialchars_decode(
+			$this->getResultForQuery(
+				'{{#ask:[[Coordinates::+]]|?Coordinates|format=googlemaps3'
+				. '|imageoverlays=52.1,13.1:51.9,12.9:TestOverlay.png}}'
+			)
+		);
+
+		$this->assertStringContainsString( '"image":"TestOverlay.png"', $content );
+		$this->assertStringContainsString( '"ne":{"lon":13.1,"lat":52.1}', $content );
+		$this->assertStringContainsString( '"sw":{"lon":12.9,"lat":51.9}', $content );
+	}
+
 	private function getResultForQuery( string $query ): string {
 		$this->pageCreator->createPage(
 			'MapQuery',
