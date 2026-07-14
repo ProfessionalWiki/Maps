@@ -115,6 +115,11 @@ class MapPrinter extends ResultPrinter {
 		$params['circles'] = $this->elementsToJson( $params['circles'] );
 		$params['rectangles'] = $this->elementsToJson( $params['rectangles'] );
 
+		// Only the Google Maps service defines this parameter.
+		if ( array_key_exists( 'imageoverlays', $params ) ) {
+			$params['imageoverlays'] = $this->elementsToJson( $params['imageoverlays'] );
+		}
+
 		$params['ajaxquery'] = urlencode( $params['ajaxquery'] );
 
 		if ( $params['locations'] === [] ) {
