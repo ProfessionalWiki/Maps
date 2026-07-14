@@ -3,6 +3,12 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 13.0.2
+
+Released on July 14th, 2026.
+
+* Fixed the `imageoverlays` parameter not working in query result formats, where it produced invalid map data that stopped the map from rendering at all (#919)
+
 ## Maps 13.0.1
 
 Released on June 21st, 2026.
