@@ -246,4 +246,194 @@
 		jqueryMap.map.remove();
 	} );
 
+	QUnit.test( 'getLayerDefinition returns null when options.layerDefinitions is absent', function ( assert ) {
+		var $div = $( '<div>' ).css( { width: '400px', height: '300px' } ).appendTo( '#qunit-fixture' );
+		var options = makeDefaultOptions();
+
+		var jqueryMap = createTestMap( $div, options );
+
+		assert.strictEqual(
+			jqueryMap.getLayerDefinition( 'OpenStreetMap' ),
+			null,
+			'Absent layerDefinitions yields null without error'
+		);
+
+		jqueryMap.map.remove();
+	} );
+
+	QUnit.test( 'getLayerDefinition returns the definition only for a matching name', function ( assert ) {
+		var $div = $( '<div>' ).css( { width: '400px', height: '300px' } ).appendTo( '#qunit-fixture' );
+		var options = makeDefaultOptions( {
+			layerDefinitions: {
+				Historic: { url: 'https://tiles.example/{z}/{x}/{y}.png', options: {}, wms: false }
+			}
+		} );
+
+		var jqueryMap = createTestMap( $div, options );
+
+		assert.strictEqual( jqueryMap.getLayerDefinition( 'OpenStreetMap' ), null, 'Unknown name yields null' );
+		assert.strictEqual(
+			jqueryMap.getLayerDefinition( 'Historic' ).url,
+			'https://tiles.example/{z}/{x}/{y}.png',
+			'Known name yields its definition'
+		);
+
+		jqueryMap.map.remove();
+	} );
+
+	QUnit.test( 'newBaseLayerFromName builds a tile layer from a custom definition', function ( assert ) {
+		var $div = $( '<div>' ).css( { width: '400px', height: '300px' } ).appendTo( '#qunit-fixture' );
+		var options = makeDefaultOptions( {
+			layers: [ 'Historic' ],
+			layerDefinitions: {
+				Historic: {
+					url: 'https://tiles.example/{z}/{x}/{y}.png',
+					options: { attribution: 'Example', maxZoom: 18 },
+					wms: false
+				}
+			}
+		} );
+
+		var jqueryMap = createTestMap( $div, options );
+
+		var capturedUrl = null;
+		var capturedOptions = null;
+		var sentinel = {};
+		var originalTileLayer = L.tileLayer;
+		L.tileLayer = function ( url, opts ) {
+			capturedUrl = url;
+			capturedOptions = opts;
+			return sentinel;
+		};
+		L.tileLayer.provider = originalTileLayer.provider;
+		L.tileLayer.wms = originalTileLayer.wms;
+
+		var layer;
+		try {
+			layer = jqueryMap.newBaseLayerFromName( 'Historic' );
+		} finally {
+			L.tileLayer = originalTileLayer;
+			jqueryMap.map.remove();
+		}
+
+		assert.strictEqual( layer, sentinel, 'Returns the layer built from the definition' );
+		assert.strictEqual( capturedUrl, 'https://tiles.example/{z}/{x}/{y}.png', 'Uses the definition url' );
+		assert.deepEqual(
+			capturedOptions,
+			{ attribution: 'Example', maxZoom: 18 },
+			'Passes the definition options through to Leaflet'
+		);
+	} );
+
+	QUnit.test( 'newBaseLayerFromName uses L.tileLayer.wms for a WMS definition', function ( assert ) {
+		var $div = $( '<div>' ).css( { width: '400px', height: '300px' } ).appendTo( '#qunit-fixture' );
+		var options = makeDefaultOptions( {
+			layers: [ 'Weather' ],
+			layerDefinitions: {
+				Weather: {
+					url: 'https://example/wms',
+					options: { layers: 'hist1904', transparent: true },
+					wms: true
+				}
+			}
+		} );
+
+		var jqueryMap = createTestMap( $div, options );
+
+		var capturedUrl = null;
+		var capturedOptions = null;
+		var sentinel = {};
+		var originalWms = L.tileLayer.wms;
+		L.tileLayer.wms = function ( url, opts ) {
+			capturedUrl = url;
+			capturedOptions = opts;
+			return sentinel;
+		};
+
+		var layer;
+		try {
+			layer = jqueryMap.newBaseLayerFromName( 'Weather' );
+		} finally {
+			L.tileLayer.wms = originalWms;
+			jqueryMap.map.remove();
+		}
+
+		assert.strictEqual( layer, sentinel, 'Returns the WMS layer built from the definition' );
+		assert.strictEqual( capturedUrl, 'https://example/wms', 'Uses the definition url' );
+		assert.deepEqual(
+			capturedOptions,
+			{ layers: 'hist1904', transparent: true },
+			'Passes the WMS options through to Leaflet'
+		);
+	} );
+
+	QUnit.test( 'newBaseLayerFromName falls back to the provider catalog without a matching definition', function ( assert ) {
+		var $div = $( '<div>' ).css( { width: '400px', height: '300px' } ).appendTo( '#qunit-fixture' );
+		var options = makeDefaultOptions( {
+			layers: [ 'OpenStreetMap' ],
+			layerDefinitions: {
+				Historic: { url: 'https://tiles.example/{z}/{x}/{y}.png', options: {}, wms: false }
+			}
+		} );
+
+		var jqueryMap = createTestMap( $div, options );
+
+		var capturedName = null;
+		var sentinel = { addTo: function () { return this; } };
+		var originalProvider = L.tileLayer.provider;
+		L.tileLayer.provider = function ( name ) {
+			capturedName = name;
+			return sentinel;
+		};
+
+		try {
+			jqueryMap.newBaseLayerFromName( 'OpenStreetMap' );
+		} finally {
+			L.tileLayer.provider = originalProvider;
+			jqueryMap.map.remove();
+		}
+
+		assert.strictEqual( capturedName, 'OpenStreetMap', 'Names without a definition use the provider catalog' );
+	} );
+
+	QUnit.test( 'addOverlays builds a custom overlay from its definition', function ( assert ) {
+		var $div = $( '<div>' ).css( { width: '400px', height: '300px' } ).appendTo( '#qunit-fixture' );
+		var options = makeDefaultOptions( {
+			overlays: [ 'HistoricOverlay' ],
+			layerDefinitions: {
+				HistoricOverlay: { url: 'https://tiles.example/{z}/{x}/{y}.png', options: {}, wms: false }
+			}
+		} );
+
+		var jqueryMap = createTestMap( $div, options );
+
+		var capturedUrl = null;
+		var sentinel = { addTo: function () { return this; } };
+		var originalTileLayer = L.tileLayer;
+		L.tileLayer = function ( url ) {
+			capturedUrl = url;
+			return sentinel;
+		};
+		L.tileLayer.provider = originalTileLayer.provider;
+		L.tileLayer.wms = originalTileLayer.wms;
+
+		var overlays;
+		try {
+			overlays = jqueryMap.addOverlays();
+		} finally {
+			L.tileLayer = originalTileLayer;
+			jqueryMap.map.remove();
+		}
+
+		assert.strictEqual(
+			capturedUrl,
+			'https://tiles.example/{z}/{x}/{y}.png',
+			'Custom overlay is built from its definition url'
+		);
+		assert.true(
+			Object.prototype.hasOwnProperty.call( overlays, 'HistoricOverlay' ),
+			'Overlay is keyed by its name'
+		);
+	} );
+
 }( window.jQuery, window.mediaWiki ) );

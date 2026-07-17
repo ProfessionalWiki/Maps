@@ -4,12 +4,35 @@ declare( strict_types = 1 );
 
 namespace Maps\Tests\Integration\Parser;
 
+use Maps\LeafletLayerDefinitions;
+use Maps\LeafletService;
 use Maps\Tests\MapsTestFactory;
 use Maps\Tests\TestDoubles\ImageValueObject;
+use Maps\Tests\TestDoubles\InMemoryImageRepository;
 use Maps\Tests\Util\TestFactory;
 use PHPUnit\Framework\TestCase;
 
 class LeafletTest extends TestCase {
+
+	private array $originalLayerDefinitions;
+
+	protected function setUp(): void {
+		parent::setUp();
+
+		$this->originalLayerDefinitions = $GLOBALS['egMapsLeafletLayerDefinitions'] ?? [];
+		$this->setLayerDefinitions( [] );
+	}
+
+	protected function tearDown(): void {
+		$GLOBALS['egMapsLeafletLayerDefinitions'] = $this->originalLayerDefinitions;
+
+		parent::tearDown();
+	}
+
+	private function setLayerDefinitions( array $definitions ): void {
+		$GLOBALS['egMapsLeafletLayerDefinitions'] = $definitions;
+		MapsTestFactory::newTestInstance();
+	}
 
 	private function parse( string $textToParse ): string {
 		return TestFactory::newInstance()->parse( $textToParse );
@@ -51,6 +74,52 @@ class LeafletTest extends TestCase {
 		$this->assertStringContainsData( '"url":"/tmp/example/image.png"', $html );
 		$this->assertStringContainsData( '"width":100', $html );
 		$this->assertStringContainsData( '"height":50', $html );
+	}
+
+	public function testCustomLayerNameIsAValidLayerValue() {
+		$service = new LeafletService(
+			new InMemoryImageRepository(),
+			new LeafletLayerDefinitions( [ 'Historic' => [ 'url' => 'https://tiles.example/{z}/{x}/{y}.png' ] ] )
+		);
+
+		$values = $service->getParameterInfo()['layers']['values'];
+
+		$this->assertContains( 'Historic', $values );
+		$this->assertContains( 'OpenStreetMap', $values );
+	}
+
+	public function testCustomLayerNameIsAValidOverlayValue() {
+		$service = new LeafletService(
+			new InMemoryImageRepository(),
+			new LeafletLayerDefinitions( [ 'Historic' => [ 'url' => 'https://tiles.example/{z}/{x}/{y}.png' ] ] )
+		);
+
+		$values = $service->getParameterInfo()['overlays']['values'];
+
+		$this->assertContains( 'Historic', $values );
+		$this->assertContains( 'OpenSeaMap', $values );
+	}
+
+	public function testUsedCustomLayerDefinitionIsSerializedIntoMapData() {
+		$this->setLayerDefinitions( [
+			'Historic' => [
+				'url' => 'https://tiles.example/historic/{z}/{x}/{y}.png',
+				'options' => [ 'attribution' => 'Historic tiles' ],
+			],
+		] );
+
+		$html = $this->parse( '{{#leaflet:layers=Historic}}' );
+
+		$this->assertStringContainsData( '"layerDefinitions":', $html );
+		$this->assertStringContainsData( '"url":"https://tiles.example/historic/{z}/{x}/{y}.png"', $html );
+		$this->assertStringContainsData( '"attribution":"Historic tiles"', $html );
+		$this->assertStringContainsData( '"wms":false', $html );
+	}
+
+	public function testMapWithoutCustomLayersHasNoLayerDefinitions() {
+		$html = $this->parse( '{{#leaflet:}}' );
+
+		$this->assertStringNotContainsString( 'layerDefinitions', $html );
 	}
 
 }
