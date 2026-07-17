@@ -252,6 +252,40 @@ return [
 		'NASAGIBS.ModisTerraChlorophyll' => true
 	],
 
+	// Custom named tile layers that can be used as base layers or overlays, in addition to the
+	// stock leaflet-providers layers listed above. The name of each definition becomes a valid
+	// value for the layers and overlays parameters. Only the definitions actually used by a map
+	// are sent to the browser.
+	//
+	// Each definition has a 'url' (required, an XYZ tile template or, for WMS, the service
+	// endpoint), an optional 'options' array passed straight to Leaflet, and an optional 'wms'
+	// flag. Definitions without a non-empty url string are ignored.
+	//
+	// Example:
+	// 'egMapsLeafletLayerDefinitions' => [
+	//     'Historic 1904' => [
+	//         'url' => 'https://tiles.example.org/historic1904/{z}/{x}/{y}.png',
+	//         'options' => [
+	//             'attribution' => 'Historic map tiles',
+	//             'minZoom' => 1,
+	//             'maxZoom' => 18,
+	//             'subdomains' => 'abc',
+	//             'bounds' => [ [ 49.5, 5.8 ], [ 53.6, 15.2 ] ],
+	//         ],
+	//     ],
+	//     'Weather WMS' => [
+	//         'wms' => true,
+	//         'url' => 'https://example.org/geoserver/wms',
+	//         'options' => [
+	//             'layers' => 'weather:precipitation',
+	//             'format' => 'image/png',
+	//             'transparent' => true,
+	//             'attribution' => 'Weather service',
+	//         ],
+	//     ],
+	// ],
+	'egMapsLeafletLayerDefinitions' => [],
+
 	'egMapsLeafletLayersApiKeys' => [
 		'MapBox' => '',
 		'MapQuestOpen' => '',

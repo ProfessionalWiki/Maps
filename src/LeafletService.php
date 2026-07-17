@@ -16,10 +16,12 @@ use ParamProcessor\ProcessingResult;
 class LeafletService implements MappingService {
 
 	private ImageRepository $imageFinder;
+	private LeafletLayerDefinitions $layerDefinitions;
 	private array $addedDependencies = [];
 
-	public function __construct( ImageRepository $imageFinder ) {
+	public function __construct( ImageRepository $imageFinder, LeafletLayerDefinitions $layerDefinitions ) {
 		$this->imageFinder = $imageFinder;
+		$this->layerDefinitions = $layerDefinitions;
 	}
 
 	public function getName(): string {
@@ -51,7 +53,7 @@ class LeafletService implements MappingService {
 			'aliases' => 'layer',
 			'type' => 'string',
 			'islist' => true,
-			'values' => array_keys( $GLOBALS['egMapsLeafletAvailableLayers'], true, true ),
+			'values' => $this->availableLayerNames( $GLOBALS['egMapsLeafletAvailableLayers'] ),
 			'default' => $GLOBALS['egMapsLeafletLayers'],
 			'message' => 'maps-leaflet-par-layers',
 		];
@@ -68,7 +70,7 @@ class LeafletService implements MappingService {
 			'aliases' => [ 'overlaylayers' ],
 			'type' => ParameterTypes::STRING,
 			'islist' => true,
-			'values' => array_keys( $GLOBALS['egMapsLeafletAvailableOverlayLayers'], true, true ),
+			'values' => $this->availableLayerNames( $GLOBALS['egMapsLeafletAvailableOverlayLayers'] ),
 			'default' => $GLOBALS['egMapsLeafletOverlayLayers'],
 			'message' => 'maps-leaflet-par-overlaylayers',
 		];
@@ -143,6 +145,24 @@ class LeafletService implements MappingService {
 		];
 
 		return $params;
+	}
+
+	/**
+	 * The enabled stock layer names plus the names of the custom layer definitions, which are
+	 * valid values for both the layers and overlays parameters.
+	 *
+	 * @param array<string, bool> $availableStockLayers
+	 * @return string[]
+	 */
+	private function availableLayerNames( array $availableStockLayers ): array {
+		return array_values(
+			array_unique(
+				array_merge(
+					array_keys( $availableStockLayers, true, true ),
+					$this->layerDefinitions->getLayerNames()
+				)
+			)
+		);
 	}
 
 	/**
@@ -243,12 +263,14 @@ class LeafletService implements MappingService {
 
 		$params['overlays'] = $this->filterToAvailable(
 			$params['overlays'],
-			$GLOBALS['egMapsLeafletAvailableOverlayLayers']
+			$this->availableWithDefinitions( $GLOBALS['egMapsLeafletAvailableOverlayLayers'] )
 		);
 		$params['layers'] = $this->filterToAvailable(
 			$params['layers'],
-			$GLOBALS['egMapsLeafletAvailableLayers']
+			$this->availableWithDefinitions( $GLOBALS['egMapsLeafletAvailableLayers'] )
 		);
+
+		$params = $this->addUsedLayerDefinitions( $params );
 
 		return new MapData( $params );
 	}
@@ -269,6 +291,33 @@ class LeafletService implements MappingService {
 				static fn ( string $value ): bool => ( $available[$value] ?? false ) === true
 			)
 		);
+	}
+
+	/**
+	 * @param array<string, bool> $available
+	 * @return array<string, bool>
+	 */
+	private function availableWithDefinitions( array $available ): array {
+		return array_merge(
+			$available,
+			array_fill_keys( $this->layerDefinitions->getLayerNames(), true )
+		);
+	}
+
+	/**
+	 * Serializes the custom layer definitions actually used by this map into the map data, so only
+	 * the relevant definitions are shipped to the client rather than the whole catalog.
+	 */
+	private function addUsedLayerDefinitions( array $params ): array {
+		$usedDefinitions = $this->layerDefinitions->getDefinitions(
+			array_merge( $params['layers'], $params['overlays'] )
+		);
+
+		if ( $usedDefinitions !== [] ) {
+			$params['layerDefinitions'] = $usedDefinitions;
+		}
+
+		return $params;
 	}
 
 	private function getJsImageLayers( array $imageLayers ) {

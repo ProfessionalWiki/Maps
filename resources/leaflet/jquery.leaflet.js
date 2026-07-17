@@ -249,6 +249,11 @@
 		};
 
 		this.newBaseLayerFromName = function(layerName) {
+			let definition = this.getLayerDefinition(layerName);
+			if (definition !== null) {
+				return this.newLayerFromDefinition(definition);
+			}
+
 			if (layerName === 'MapQuestOpen') {
 				return new window.MQ.TileLayer();
 			}
@@ -262,6 +267,24 @@
 			}
 
 			return new L.tileLayer.provider(layerName, layerOptions);
+		};
+
+		// Returns the custom layer definition for the given name, or null when there is none.
+		// Definitions are supplied per map via options.layerDefinitions (see LeafletService).
+		this.getLayerDefinition = function(layerName) {
+			if (options.layerDefinitions && options.layerDefinitions.hasOwnProperty(layerName)) {
+				return options.layerDefinitions[layerName];
+			}
+
+			return null;
+		};
+
+		this.newLayerFromDefinition = function(definition) {
+			if (definition.wms) {
+				return L.tileLayer.wms(definition.url, definition.options);
+			}
+
+			return L.tileLayer(definition.url, definition.options);
 		};
 
 		this.getImageBaseLayers = function() {
@@ -291,7 +314,12 @@
 			let overlays = {};
 
 			$.each(options.overlays, function(index, overlayName) {
-				overlays[mw.html.escape(overlayName)] = new L.tileLayer.provider(overlayName).addTo(_this.map);
+				let definition = _this.getLayerDefinition(overlayName);
+				let overlay = definition !== null
+					? _this.newLayerFromDefinition(definition)
+					: new L.tileLayer.provider(overlayName);
+
+				overlays[mw.html.escape(overlayName)] = overlay.addTo(_this.map);
 			});
 
 			return overlays;

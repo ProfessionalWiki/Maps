@@ -7,6 +7,7 @@ namespace Maps\Tests\Unit\Map\CargoFormat;
 use DataValues\Geo\Values\LatLongValue;
 use Maps\Map\CargoFormat\CargoOutputBuilder;
 use Maps\Map\Marker;
+use Maps\LeafletLayerDefinitions;
 use Maps\LeafletService;
 use Maps\Map\MapOutputBuilder;
 use Maps\MappingServices;
@@ -52,7 +53,7 @@ class CargoOutputBuilderTest extends TestCase {
 	}
 
 	private function callSetIconUrl( InMemoryImageRepository $imageRepo, array $markers, string $iconParameter ): void {
-		$leafletService = new LeafletService( new InMemoryImageRepository() );
+		$leafletService = new LeafletService( new InMemoryImageRepository(), new LeafletLayerDefinitions( [] ) );
 
 		$builder = new CargoOutputBuilder(
 			new MapOutputBuilder(),

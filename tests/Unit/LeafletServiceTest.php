@@ -4,6 +4,7 @@ declare( strict_types = 1 );
 
 namespace Maps\Tests\Unit;
 
+use Maps\LeafletLayerDefinitions;
 use Maps\LeafletService;
 use Maps\Map\MapData;
 use Maps\Tests\TestDoubles\ImageValueObject;
@@ -89,7 +90,102 @@ class LeafletServiceTest extends TestCase {
 		);
 	}
 
-	private function newLeafletMapData( array $overrides ): MapData {
+	public function testCustomLayerDefinitionSurvivesFiltering() {
+		$mapData = $this->newLeafletMapData(
+			[ 'layers' => [ 'OpenStreetMap', 'Historic', '<img src=x onerror="alert(1)">' ] ],
+			new LeafletLayerDefinitions( [
+				'Historic' => [ 'url' => 'https://tiles.example/{z}/{x}/{y}.png' ],
+			] )
+		);
+
+		$this->assertSame(
+			[ 'OpenStreetMap', 'Historic' ],
+			$mapData->getParameters()['layers']
+		);
+	}
+
+	public function testCustomOverlayDefinitionSurvivesFiltering() {
+		$mapData = $this->newLeafletMapData(
+			[ 'overlays' => [ 'OpenSeaMap', 'Historic', '<img src=x onerror="alert(1)">' ] ],
+			new LeafletLayerDefinitions( [
+				'Historic' => [ 'url' => 'https://tiles.example/{z}/{x}/{y}.png' ],
+			] )
+		);
+
+		$this->assertSame(
+			[ 'OpenSeaMap', 'Historic' ],
+			$mapData->getParameters()['overlays']
+		);
+	}
+
+	public function testUsedLayerDefinitionIsSerializedIntoMapData() {
+		$mapData = $this->newLeafletMapData(
+			[ 'layers' => [ 'OpenStreetMap', 'Historic' ] ],
+			new LeafletLayerDefinitions( [
+				'Historic' => [
+					'url' => 'https://tiles.example/{z}/{x}/{y}.png',
+					'options' => [ 'attribution' => 'Example' ],
+				],
+			] )
+		);
+
+		$this->assertSame(
+			[
+				'Historic' => [
+					'url' => 'https://tiles.example/{z}/{x}/{y}.png',
+					'options' => [ 'attribution' => 'Example' ],
+					'wms' => false,
+				],
+			],
+			$mapData->getParameters()['layerDefinitions']
+		);
+	}
+
+	public function testDefinitionUsedAsOverlayIsSerializedIntoMapData() {
+		$mapData = $this->newLeafletMapData(
+			[ 'overlays' => [ 'OpenSeaMap', 'Historic' ] ],
+			new LeafletLayerDefinitions( [
+				'Historic' => [ 'url' => 'https://tiles.example/{z}/{x}/{y}.png' ],
+			] )
+		);
+
+		$this->assertArrayHasKey( 'Historic', $mapData->getParameters()['layerDefinitions'] );
+	}
+
+	public function testOnlyUsedLayerDefinitionsAreSerialized() {
+		$mapData = $this->newLeafletMapData(
+			[ 'layers' => [ 'Used' ] ],
+			new LeafletLayerDefinitions( [
+				'Unused' => [ 'url' => 'https://tiles.example/unused/{z}/{x}/{y}.png' ],
+				'Used' => [ 'url' => 'https://tiles.example/used/{z}/{x}/{y}.png' ],
+				'AlsoUnused' => [ 'url' => 'https://tiles.example/also/{z}/{x}/{y}.png' ],
+			] )
+		);
+
+		$this->assertSame(
+			[ 'Used' ],
+			array_keys( $mapData->getParameters()['layerDefinitions'] )
+		);
+	}
+
+	public function testLayerDefinitionsKeyIsAbsentWhenNoneAreConfigured() {
+		$mapData = $this->newLeafletMapData( [ 'layers' => [ 'OpenStreetMap' ] ] );
+
+		$this->assertArrayNotHasKey( 'layerDefinitions', $mapData->getParameters() );
+	}
+
+	public function testLayerDefinitionsKeyIsAbsentWhenConfiguredDefinitionsAreUnused() {
+		$mapData = $this->newLeafletMapData(
+			[ 'layers' => [ 'OpenStreetMap' ] ],
+			new LeafletLayerDefinitions( [
+				'Historic' => [ 'url' => 'https://tiles.example/{z}/{x}/{y}.png' ],
+			] )
+		);
+
+		$this->assertArrayNotHasKey( 'layerDefinitions', $mapData->getParameters() );
+	}
+
+	private function newLeafletMapData( array $overrides, ?LeafletLayerDefinitions $layerDefinitions = null ): MapData {
 		$params = array_merge(
 			[
 				'geojson' => '',
@@ -100,11 +196,22 @@ class LeafletServiceTest extends TestCase {
 			$overrides
 		);
 
-		return ( new LeafletService( new InMemoryImageRepository() ) )->newMapDataFromParameters( $params );
+		return $this->newService( new InMemoryImageRepository(), $layerDefinitions )
+			->newMapDataFromParameters( $params );
+	}
+
+	private function newService(
+		InMemoryImageRepository $imageRepo,
+		?LeafletLayerDefinitions $layerDefinitions = null
+	): LeafletService {
+		return new LeafletService(
+			$imageRepo,
+			$layerDefinitions ?? new LeafletLayerDefinitions( [] )
+		);
 	}
 
 	private function getJsImageLayers( InMemoryImageRepository $imageRepo, array $imageLayers ): array {
-		$service = new LeafletService( $imageRepo );
+		$service = $this->newService( $imageRepo );
 
 		$method = new ReflectionMethod( LeafletService::class, 'getJsImageLayers' );
 		$method->setAccessible( true );

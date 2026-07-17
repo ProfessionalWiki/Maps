@@ -191,10 +191,15 @@ class MapsFactory {
 
 	private function getLeafletService(): LeafletService {
 		$this->leafletService ??= new LeafletService(
-			$this->getImageRepository()
+			$this->getImageRepository(),
+			$this->getLeafletLayerDefinitions()
 		);
 
 		return $this->leafletService;
+	}
+
+	public function getLeafletLayerDefinitions(): LeafletLayerDefinitions {
+		return new LeafletLayerDefinitions( $this->settings['egMapsLeafletLayerDefinitions'] ?? [] );
 	}
 
 	public function getDisplayMapFunction(): DisplayMapFunction {
