@@ -185,6 +185,26 @@ class LeafletServiceTest extends TestCase {
 		$this->assertArrayNotHasKey( 'layerDefinitions', $mapData->getParameters() );
 	}
 
+	public function testDefinitionShadowingStockLayerIsSerialized() {
+		$mapData = $this->newLeafletMapData(
+			[ 'layers' => [ 'OpenStreetMap' ] ],
+			new LeafletLayerDefinitions( [
+				'OpenSeaMap' => [ 'url' => 'https://tiles.example/before/{z}/{x}/{y}.png' ],
+				'OpenStreetMap' => [ 'url' => 'https://tiles.example/shadow/{z}/{x}/{y}.png' ],
+				'OpenTopoMap' => [ 'url' => 'https://tiles.example/after/{z}/{x}/{y}.png' ],
+			] )
+		);
+
+		$this->assertSame(
+			[ 'OpenStreetMap' ],
+			array_keys( $mapData->getParameters()['layerDefinitions'] )
+		);
+		$this->assertSame(
+			'https://tiles.example/shadow/{z}/{x}/{y}.png',
+			$mapData->getParameters()['layerDefinitions']['OpenStreetMap']['url']
+		);
+	}
+
 	private function newLeafletMapData( array $overrides, ?LeafletLayerDefinitions $layerDefinitions = null ): MapData {
 		$params = array_merge(
 			[
