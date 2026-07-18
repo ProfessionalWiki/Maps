@@ -104,6 +104,20 @@ class LeafletServiceTest extends TestCase {
 		);
 	}
 
+	public function testNumericallyNamedCustomLayerSurvivesFiltering() {
+		$mapData = $this->newLeafletMapData(
+			[ 'layers' => [ 'OpenStreetMap', '1904' ] ],
+			new LeafletLayerDefinitions( [
+				'1904' => [ 'url' => 'https://tiles.example/{z}/{x}/{y}.png' ],
+			] )
+		);
+
+		$this->assertSame(
+			[ 'OpenStreetMap', '1904' ],
+			$mapData->getParameters()['layers']
+		);
+	}
+
 	public function testCustomOverlayDefinitionSurvivesFiltering() {
 		$mapData = $this->newLeafletMapData(
 			[ 'overlays' => [ 'OpenSeaMap', 'Historic', '<img src=x onerror="alert(1)">' ] ],

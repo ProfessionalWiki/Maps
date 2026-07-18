@@ -298,10 +298,10 @@ class LeafletService implements MappingService {
 	 * @return array<string, bool>
 	 */
 	private function availableWithDefinitions( array $available ): array {
-		return array_merge(
-			$available,
-			array_fill_keys( $this->layerDefinitions->getLayerNames(), true )
-		);
+		// Union rather than array_merge: array_merge renumbers integer-like keys, which would drop
+		// a custom layer whose name is purely numeric (e.g. "1904"). Custom names go on the left so
+		// they take precedence over a same-named stock layer.
+		return array_fill_keys( $this->layerDefinitions->getLayerNames(), true ) + $available;
 	}
 
 	/**
