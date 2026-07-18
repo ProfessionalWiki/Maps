@@ -272,7 +272,7 @@
 		// Returns the custom layer definition for the given name, or null when there is none.
 		// Definitions are supplied per map via options.layerDefinitions (see LeafletService).
 		this.getLayerDefinition = function(layerName) {
-			if (options.layerDefinitions && options.layerDefinitions.hasOwnProperty(layerName)) {
+			if (options.layerDefinitions && Object.prototype.hasOwnProperty.call(options.layerDefinitions, layerName)) {
 				return options.layerDefinitions[layerName];
 			}
 

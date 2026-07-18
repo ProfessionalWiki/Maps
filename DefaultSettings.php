@@ -261,6 +261,9 @@ return [
 	// endpoint), an optional 'options' array passed straight to Leaflet, and an optional 'wms'
 	// flag. Definitions without a non-empty url string are ignored.
 	//
+	// A definition whose name matches a stock layer (e.g. 'OpenStreetMap') overrides that stock
+	// layer. The 'options' are passed to Leaflet as-is; note that 'attribution' is rendered as HTML.
+	//
 	// Example:
 	// 'egMapsLeafletLayerDefinitions' => [
 	//     'Historic 1904' => [
