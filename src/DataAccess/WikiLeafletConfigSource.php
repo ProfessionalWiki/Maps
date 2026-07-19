@@ -7,6 +7,7 @@ namespace Maps\DataAccess;
 use Maps\LeafletConfigSource;
 use MediaWiki\Content\JsonContent;
 use MediaWiki\Json\FormatJson;
+use Throwable;
 
 /**
  * Reads the raw Leaflet configuration from the MediaWiki:Maps JSON config page.
@@ -40,7 +41,7 @@ class WikiLeafletConfigSource implements LeafletConfigSource {
 	private function getPageData(): ?array {
 		try {
 			$content = $this->contentFetcher->getPageContent( $this->configPageName, NS_MEDIAWIKI );
-		} catch ( \Throwable $e ) {
+		} catch ( Throwable $e ) {
 			return null;
 		}
 

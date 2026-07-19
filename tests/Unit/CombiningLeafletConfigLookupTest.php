@@ -111,6 +111,15 @@ class CombiningLeafletConfigLookupTest extends TestCase {
 		$this->assertSame( [ 'OpenStreetMap' ], $config->getDefaultLayers() );
 	}
 
+	public function testEmptyWikiDefaultLayersClearThePhpDefaults() {
+		$config = $this->newLookup(
+			$this->phpConfig( [ 'defaultLayers' => [ 'OpenStreetMap' ] ] ),
+			[ 'defaultLayers' => [] ]
+		)->getConfig();
+
+		$this->assertSame( [], $config->getDefaultLayers() );
+	}
+
 	public function testWikiConfigIsIgnoredWhenDisabled() {
 		$config = $this->newLookup(
 			$this->phpConfig( [ 'defaultLayers' => [ 'OpenStreetMap' ] ] ),

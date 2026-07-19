@@ -214,11 +214,15 @@ class MapsFactory {
 				'availableLayers' => $this->settings['egMapsLeafletAvailableLayers'] ?? [],
 				'availableOverlays' => $this->settings['egMapsLeafletAvailableOverlayLayers'] ?? [],
 			],
-			new WikiLeafletConfigSource( $this->getPageContentFetcher(), self::CONFIG_PAGE_TITLE ),
+			$this->newWikiLeafletConfigSource(),
 			$this->isWikiConfigEnabled()
 		);
 
 		return $this->leafletConfigLookup;
+	}
+
+	protected function newWikiLeafletConfigSource(): LeafletConfigSource {
+		return new WikiLeafletConfigSource( $this->getPageContentFetcher(), self::CONFIG_PAGE_TITLE );
 	}
 
 	public function getLeafletConfigValidator(): LeafletConfigValidator {
