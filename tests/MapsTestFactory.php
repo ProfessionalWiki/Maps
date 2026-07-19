@@ -5,8 +5,10 @@ declare( strict_types = 1 );
 namespace Maps\Tests;
 
 use Maps\DataAccess\ImageRepository;
+use Maps\LeafletConfigSource;
 use Maps\MapsFactory;
 use Maps\Tests\TestDoubles\InMemoryImageRepository;
+use Maps\Tests\TestDoubles\StubLeafletConfigSource;
 
 class MapsTestFactory extends MapsFactory {
 
@@ -29,6 +31,14 @@ class MapsTestFactory extends MapsFactory {
 
 	public function getImageRepository(): ImageRepository {
 		return $this->imageRepo;
+	}
+
+	/**
+	 * Keeps tests hermetic: the config lookup uses the PHP settings only, without reading the
+	 * MediaWiki:Maps page from the database.
+	 */
+	protected function newWikiLeafletConfigSource(): LeafletConfigSource {
+		return new StubLeafletConfigSource( null );
 	}
 
 }
