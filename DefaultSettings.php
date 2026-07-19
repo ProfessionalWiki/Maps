@@ -175,7 +175,6 @@ return [
 	'egMapsLeafletAvailableLayers' => [
 		'OpenStreetMap' => true,
 		'OpenStreetMap.DE' => true,
-		'OpenStreetMap.BlackAndWhite' => true,
 		'OpenStreetMap.HOT' => true,
 		'OpenTopoMap' => true,
 		'Thunderforest.OpenCycleMap' => true,
@@ -185,24 +184,8 @@ return [
 		'Thunderforest.Landscape' => true,
 		'Thunderforest.Outdoors' => true,
 		'Thunderforest.Pioneer' => true,
-		'OpenMapSurfer.Roads' => true,
-		'OpenMapSurfer.Grayscale' => true,
-		'Hydda.Full' => true,
-		'Hydda.Base' => true,
 		//'MapBox' => false, // todo: implement setting api key
-		'Stamen.Toner' => true,
-		'Stamen.TonerBackground' => true,
-		'Stamen.TonerHybrid' => true,
-		'Stamen.TonerLines' => true,
-		'Stamen.TonerLabels' => true,
-		'Stamen.TonerLite' => true,
-		'Stamen.Watercolor' => true,
-		'Stamen.Terrain' => true,
-		'Stamen.TerrainBackground' => true,
-		'Stamen.TopOSMRelief' => true,
-		'Stamen.TopOSMFeatures' => true,
 		'Esri.WorldStreetMap' => true,
-		'Esri.DeLorme' => true,
 		'Esri.WorldTopoMap' => true,
 		'Esri.WorldImagery' => true,
 		'Esri.WorldTerrain' => true,
@@ -211,7 +194,6 @@ return [
 		'Esri.OceanBasemap' => true,
 		'Esri.NatGeoWorldMap' => true,
 		'Esri.WorldGrayCanvas' => true,
-		'MapQuestOpen' => true,
 		//'HERE' => false, // todo: implement setting api key
 		'FreeMapSK' => true,
 		'MtbMap' => true,
@@ -221,8 +203,6 @@ return [
 		'CartoDB.DarkMatter' => true,
 		'CartoDB.DarkMatterNoLabels' => true,
 		'CartoDB.DarkMatterOnlyLabels' => true,
-		'HikeBike.HikeBike' => true,
-		'HikeBike.HillShading' => true,
 		'BasemapAT.basemap' => true,
 		'BasemapAT.grau' => true,
 		'BasemapAT.overlay' => true,
@@ -232,14 +212,9 @@ return [
 		'NASAGIBS.ModisTerraBands367CR' => true,
 		'NASAGIBS.ViirsEarthAtNight2012' => true,
 		'NLS' => true,
-		'GeoportailFrance' => true,
-		'GeoportailFrance.parcels' => true,
-		'GeoportailFrance.ignMaps' => true,
-		'GeoportailFrance.orthos' => true
 	],
 
 	'egMapsLeafletAvailableOverlayLayers' => [
-		'OpenMapSurfer.AdminBounds' => true,
 		'OpenSeaMap' => true,
 		'OpenWeatherMap.Clouds' => true,
 		'OpenWeatherMap.CloudsClassic' => true,
@@ -252,7 +227,6 @@ return [
 		'OpenWeatherMap.Wind' => true,
 		'OpenWeatherMap.Temperature' => true,
 		'OpenWeatherMap.Snow' => true,
-		'Hydda.RoadsAndLabels' => true,
 		'NASAGIBS.ModisTerraLSTDay' => true,
 		'NASAGIBS.ModisTerraSnowCover' => true,
 		'NASAGIBS.ModisTerraAOD' => true,
@@ -306,14 +280,10 @@ return [
 
 	'egMapsLeafletLayersApiKeys' => [
 		'MapBox' => '',
-		'MapQuestOpen' => '',
 		'Thunderforest' => '',
-		'GeoportailFrance' => ''
 	],
 
-	'egMapsLeafletLayerDependencies' => [
-		'MapQuestOpen' => 'https://open.mapquestapi.com/sdk/leaflet/v2.2/mq-map.js?key=',
-	],
+	'egMapsLeafletLayerDependencies' => [],
 
 
 
