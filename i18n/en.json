@@ -265,5 +265,18 @@
 	"maps-validator-describe-header-description": "Description",
 	"maps-validator-describe-required": "required",
 	"maps-validator-describe-empty": "empty",
-	"maps-validator-message-nodesc": "No description provided"
+	"maps-validator-message-nodesc": "No description provided",
+	"maps-config-invalid": "The Maps configuration was not saved because it is invalid:",
+	"maps-config-error-invalid-json": "The configuration must be a JSON object.",
+	"maps-config-error-not-object": "The value of \"$1\" must be a JSON object.",
+	"maps-config-error-unknown-key": "Unknown configuration key \"$1\".",
+	"maps-config-error-invalid-layer-name": "\"$1\" is not a valid layer name.",
+	"maps-config-error-unknown-layer-key": "Layer \"$1\" has an unknown property \"$2\".",
+	"maps-config-error-invalid-url": "Layer \"$1\" must have a \"url\" that starts with http:// or https://.",
+	"maps-config-error-invalid-wms": "The \"wms\" property of layer \"$1\" must be true or false.",
+	"maps-config-error-unknown-option": "Layer \"$1\" has an unknown option \"$2\".",
+	"maps-config-error-invalid-option-url": "The \"$2\" option of layer \"$1\" must be a URL that starts with http:// or https://.",
+	"maps-config-error-invalid-attribution": "The \"attribution\" option of layer \"$1\" must be text.",
+	"maps-config-error-invalid-default-list": "\"$1\" must be a list of layer names.",
+	"maps-config-error-invalid-availability": "\"$1\" must be a map of layer names to true or false."
 }

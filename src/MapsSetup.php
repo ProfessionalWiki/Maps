@@ -110,6 +110,8 @@ class MapsSetup {
 		$hooks['ListDefinedTags'][] = 'Maps\MapsHooks::onRegisterTags';
 		$hooks['ChangeTagsListActive'][] = 'Maps\MapsHooks::onRegisterTags';
 		$hooks['ChangeTagsAllowedAdd'][] = 'Maps\MapsHooks::onChangeTagsAllowedAdd';
+		$hooks['ContentHandlerDefaultModelFor'][] = 'Maps\MapsHooks::onContentHandlerDefaultModelFor';
+		$hooks['EditFilter'][] = 'Maps\MapsHooks::onEditFilter';
 
 		$hooks['CargoSetFormatClasses'][] = function( array &$formatClasses ) {
 			$formatClasses['map'] = CargoFormat::class;

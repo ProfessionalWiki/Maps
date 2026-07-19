@@ -4,9 +4,11 @@ declare( strict_types = 1 );
 
 namespace Maps\Tests\Unit;
 
+use Maps\LeafletConfig;
 use Maps\LeafletLayerDefinitions;
 use Maps\LeafletService;
 use Maps\Map\MapData;
+use Maps\Tests\TestDoubles\FixedLeafletConfigLookup;
 use Maps\Tests\TestDoubles\ImageValueObject;
 use Maps\Tests\TestDoubles\InMemoryImageRepository;
 use PHPUnit\Framework\TestCase;
@@ -16,27 +18,6 @@ use ReflectionMethod;
  * @covers \Maps\LeafletService
  */
 class LeafletServiceTest extends TestCase {
-
-	private array $originalGlobals = [];
-
-	protected function setUp(): void {
-		parent::setUp();
-
-		$this->originalGlobals = [
-			'egMapsLeafletAvailableLayers' => $GLOBALS['egMapsLeafletAvailableLayers'] ?? null,
-			'egMapsLeafletAvailableOverlayLayers' => $GLOBALS['egMapsLeafletAvailableOverlayLayers'] ?? null,
-		];
-
-		$GLOBALS['egMapsLeafletAvailableLayers'] = [ 'OpenStreetMap' => true, 'OpenTopoMap' => true ];
-		$GLOBALS['egMapsLeafletAvailableOverlayLayers'] = [ 'OpenSeaMap' => true, 'OpenRailwayMap' => true ];
-	}
-
-	protected function tearDown(): void {
-		$GLOBALS['egMapsLeafletAvailableLayers'] = $this->originalGlobals['egMapsLeafletAvailableLayers'];
-		$GLOBALS['egMapsLeafletAvailableOverlayLayers'] = $this->originalGlobals['egMapsLeafletAvailableOverlayLayers'];
-
-		parent::tearDown();
-	}
 
 	public function testZeroWidthImageLayerIsSkipped() {
 		$imageRepo = new InMemoryImageRepository();
@@ -240,7 +221,15 @@ class LeafletServiceTest extends TestCase {
 	): LeafletService {
 		return new LeafletService(
 			$imageRepo,
-			$layerDefinitions ?? new LeafletLayerDefinitions( [] )
+			new FixedLeafletConfigLookup(
+				new LeafletConfig(
+					$layerDefinitions ?? new LeafletLayerDefinitions( [] ),
+					[ 'OpenStreetMap' ],
+					[],
+					[ 'OpenStreetMap' => true, 'OpenTopoMap' => true ],
+					[ 'OpenSeaMap' => true, 'OpenRailwayMap' => true ]
+				)
+			)
 		);
 	}
 

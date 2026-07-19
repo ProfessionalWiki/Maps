@@ -5,13 +5,19 @@ declare( strict_types = 1 );
 namespace Maps;
 
 /**
- * Admin-defined custom Leaflet base and overlay layers, configured via
- * $egMapsLeafletLayerDefinitions. Normalizes and validates the raw configuration and is the
+ * Admin-defined custom Leaflet base and overlay layers, coming from $egMapsLeafletLayerDefinitions
+ * and/or the MediaWiki:Maps config page. Normalizes and hardens the raw configuration and is the
  * single source of truth for which custom layer names exist and what their definition is.
+ *
+ * Hardening (see LeafletLayerContract) is applied identically to both config sources: the url and
+ * errorTileUrl must be http(s) URLs, only allowlisted Leaflet options are kept, the attribution is
+ * sanitized, and layer names that are empty, too long or prototype-polluting are rejected.
  *
  * @licence GNU GPL v2+
  */
 class LeafletLayerDefinitions {
+
+	private AttributionSanitizer $attributionSanitizer;
 
 	/**
 	 * @var array<string, array{url: string, options: array, wms: bool}>
@@ -19,10 +25,10 @@ class LeafletLayerDefinitions {
 	private array $definitions;
 
 	/**
-	 * @param array $rawDefinitions Layer name to raw definition, as configured via
-	 *        $egMapsLeafletLayerDefinitions. Invalid definitions are skipped.
+	 * @param array $rawDefinitions Layer name to raw definition. Invalid definitions are skipped.
 	 */
 	public function __construct( array $rawDefinitions ) {
+		$this->attributionSanitizer = new AttributionSanitizer();
 		$this->definitions = $this->normalizeAll( $rawDefinitions );
 	}
 
@@ -30,6 +36,10 @@ class LeafletLayerDefinitions {
 		$definitions = [];
 
 		foreach ( $rawDefinitions as $name => $rawDefinition ) {
+			if ( !LeafletLayerContract::isValidLayerName( (string)$name ) ) {
+				continue;
+			}
+
 			$definition = $this->normalize( $rawDefinition );
 
 			if ( $definition !== null ) {
@@ -50,22 +60,53 @@ class LeafletLayerDefinitions {
 
 		$url = $rawDefinition['url'] ?? null;
 
-		if ( !is_string( $url ) || $url === '' ) {
+		if ( !is_string( $url ) || !LeafletLayerContract::isValidLayerUrl( $url ) ) {
 			return null;
 		}
 
+		$wms = (bool)( $rawDefinition['wms'] ?? false );
+
 		return [
 			'url' => $url,
-			'options' => is_array( $rawDefinition['options'] ?? null ) ? $rawDefinition['options'] : [],
-			'wms' => (bool)( $rawDefinition['wms'] ?? false ),
+			'options' => $this->normalizeOptions(
+				is_array( $rawDefinition['options'] ?? null ) ? $rawDefinition['options'] : [],
+				$wms
+			),
+			'wms' => $wms,
 		];
+	}
+
+	private function normalizeOptions( array $options, bool $wms ): array {
+		$allowed = array_fill_keys( LeafletLayerContract::allowedOptions( $wms ), true );
+
+		$normalized = [];
+
+		foreach ( $options as $key => $value ) {
+			if ( !isset( $allowed[$key] ) ) {
+				continue;
+			}
+
+			if ( $key === 'attribution' ) {
+				if ( is_string( $value ) ) {
+					$normalized[$key] = $this->attributionSanitizer->sanitize( $value );
+				}
+			} elseif ( in_array( $key, LeafletLayerContract::URL_OPTIONS, true ) ) {
+				if ( is_string( $value ) && LeafletLayerContract::isValidLayerUrl( $value ) ) {
+					$normalized[$key] = $value;
+				}
+			} else {
+				$normalized[$key] = $value;
+			}
+		}
+
+		return $normalized;
 	}
 
 	/**
 	 * @return string[]
 	 */
 	public function getLayerNames(): array {
-		return array_keys( $this->definitions );
+		return array_map( 'strval', array_keys( $this->definitions ) );
 	}
 
 	/**
