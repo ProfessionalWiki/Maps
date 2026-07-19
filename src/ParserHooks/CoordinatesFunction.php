@@ -46,9 +46,7 @@ class CoordinatesFunction implements HookHandler {
 	}
 
 	private static function getParameterInfo(): array {
-		global $egMapsAvailableCoordNotations;
-		global $egMapsCoordinateNotation;
-		global $egMapsCoordinateDirectional;
+		$config = MapsFactory::globalInstance()->getEffectiveSettings();
 
 		$params = [];
 
@@ -57,15 +55,15 @@ class CoordinatesFunction implements HookHandler {
 		];
 
 		$params['format'] = [
-			'default' => $egMapsCoordinateNotation,
-			'values' => $egMapsAvailableCoordNotations,
+			'default' => $config->get( 'egMapsCoordinateNotation' ),
+			'values' => $config->get( 'egMapsAvailableCoordNotations' ),
 			'aliases' => 'notation',
 			'tolower' => true,
 		];
 
 		$params['directional'] = [
 			'type' => 'boolean',
-			'default' => $egMapsCoordinateDirectional,
+			'default' => $config->get( 'egMapsCoordinateDirectional' ),
 		];
 
 		// Give grep a chance to find the usages:

@@ -59,9 +59,7 @@ class GeocodeFunction implements HookHandler {
 	}
 
 	private static function getParameterInfo() {
-		global $egMapsAvailableCoordNotations;
-		global $egMapsCoordinateNotation;
-		global $egMapsCoordinateDirectional;
+		$config = MapsFactory::globalInstance()->getEffectiveSettings();
 
 		$params = [];
 
@@ -71,8 +69,8 @@ class GeocodeFunction implements HookHandler {
 		];
 
 		$params['format'] = [
-			'default' => $egMapsCoordinateNotation,
-			'values' => $egMapsAvailableCoordNotations,
+			'default' => $config->get( 'egMapsCoordinateNotation' ),
+			'values' => $config->get( 'egMapsAvailableCoordNotations' ),
 			'aliases' => 'notation',
 			'tolower' => true,
 			'message' => 'maps-geocode-par-format',
@@ -80,7 +78,7 @@ class GeocodeFunction implements HookHandler {
 
 		$params['directional'] = [
 			'type' => 'boolean',
-			'default' => $egMapsCoordinateDirectional,
+			'default' => $config->get( 'egMapsCoordinateDirectional' ),
 			'message' => 'maps-geocode-par-directional',
 		];
 

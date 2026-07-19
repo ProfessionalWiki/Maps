@@ -4,6 +4,7 @@ declare( strict_types = 1 );
 
 namespace Maps\Presentation;
 
+use Maps\MapsFactory;
 use MediaWiki\MediaWikiServices;
 
 /**
@@ -14,7 +15,6 @@ use MediaWiki\MediaWikiServices;
  */
 class MapsDistanceParser {
 
-	private static bool $validatedDistanceUnit = false;
 	private static $unitRegex = false;
 
 	public static function parseAndFormat( string $distance, ?string $unit = null, int $decimals = 2 ): string {
@@ -33,31 +33,38 @@ class MapsDistanceParser {
 	 * Returns the unit to meter ratio in a safe way, by first resolving the unit.
 	 */
 	public static function getUnitRatio( ?string $unit = null ): float {
-		global $egMapsDistanceUnits;
-		return $egMapsDistanceUnits[self::getValidUnit( $unit )];
+		return (float)self::getUnitDefinitions()[self::getValidUnit( $unit )];
 	}
 
 	/**
 	 * Returns a valid unit. If the provided one is invalid, the default will be used.
 	 */
 	public static function getValidUnit( ?string $unit = null ): string {
-		global $egMapsDistanceUnit, $egMapsDistanceUnits;
+		$units = self::getUnitDefinitions();
 
-		// This ensures the value for $egMapsDistanceUnit is correct, and caches the result.
-		if ( self::$validatedDistanceUnit === false ) {
-			if ( !array_key_exists( $egMapsDistanceUnit, $egMapsDistanceUnits ) ) {
-				$units = array_keys( $egMapsDistanceUnits );
-				$egMapsDistanceUnit = $units[0];
-			}
-
-			self::$validatedDistanceUnit = true;
-		}
-
-		if ( $unit == null || !array_key_exists( $unit, $egMapsDistanceUnits ) ) {
-			$unit = $egMapsDistanceUnit;
+		if ( $unit === null || !array_key_exists( $unit, $units ) ) {
+			return self::getDefaultUnit( $units );
 		}
 
 		return $unit;
+	}
+
+	/**
+	 * The configured default unit, or the first available unit when the configured one is unknown.
+	 *
+	 * @param array<string, int|float> $units
+	 */
+	private static function getDefaultUnit( array $units ): string {
+		$default = MapsFactory::globalInstance()->getEffectiveSettings()->get( 'egMapsDistanceUnit' );
+
+		return array_key_exists( $default, $units ) ? $default : (string)array_key_first( $units );
+	}
+
+	/**
+	 * @return array<string, int|float> Unit name to meter ratio.
+	 */
+	private static function getUnitDefinitions(): array {
+		return MapsFactory::globalInstance()->getEffectiveSettings()->get( 'egMapsDistanceUnits' );
 	}
 
 	/**
@@ -119,8 +126,7 @@ class MapsDistanceParser {
 
 	private static function initUnitRegex() {
 		if ( self::$unitRegex === false ) {
-			global $egMapsDistanceUnits;
-			self::$unitRegex = implode( '|', array_keys( $egMapsDistanceUnits ) ) . '|';
+			self::$unitRegex = implode( '|', self::getUnits() ) . '|';
 		}
 	}
 
@@ -128,8 +134,7 @@ class MapsDistanceParser {
 	 * Returns a list of all supported units.
 	 */
 	public static function getUnits(): array {
-		global $egMapsDistanceUnits;
-		return array_keys( $egMapsDistanceUnits );
+		return array_keys( self::getUnitDefinitions() );
 	}
 
 }

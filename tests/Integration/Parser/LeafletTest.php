@@ -4,13 +4,13 @@ declare( strict_types = 1 );
 
 namespace Maps\Tests\Integration\Parser;
 
-use Maps\LeafletConfig;
-use Maps\LeafletLayerDefinitions;
+use Maps\Config\ConfigSchema;
+use Maps\Config\EffectiveSettings;
 use Maps\LeafletService;
 use Maps\Tests\MapsTestFactory;
-use Maps\Tests\TestDoubles\FixedLeafletConfigLookup;
 use Maps\Tests\TestDoubles\ImageValueObject;
 use Maps\Tests\TestDoubles\InMemoryImageRepository;
+use Maps\Tests\TestDoubles\StubWikiConfigSource;
 use Maps\Tests\Util\TestFactory;
 use PHPUnit\Framework\TestCase;
 
@@ -81,13 +81,20 @@ class LeafletTest extends TestCase {
 	private function newServiceWithCustomLayer(): LeafletService {
 		return new LeafletService(
 			new InMemoryImageRepository(),
-			new FixedLeafletConfigLookup( new LeafletConfig(
-				new LeafletLayerDefinitions( [ 'Historic' => [ 'url' => 'https://tiles.example/{z}/{x}/{y}.png' ] ] ),
-				[ 'OpenStreetMap' ],
-				[],
-				[ 'OpenStreetMap' => true ],
-				[ 'OpenSeaMap' => true ]
-			) )
+			new EffectiveSettings(
+				[
+					'egMapsLeafletLayerDefinitions' => [ 'Historic' => [ 'url' => 'https://tiles.example/{z}/{x}/{y}.png' ] ],
+					'egMapsLeafletLayers' => [ 'OpenStreetMap' ],
+					'egMapsLeafletOverlayLayers' => [],
+					'egMapsLeafletAvailableLayers' => [ 'OpenStreetMap' => true ],
+					'egMapsLeafletAvailableOverlayLayers' => [ 'OpenSeaMap' => true ],
+					'egMapsLeafletZoom' => 14,
+					'egMapsResizableByDefault' => false,
+				],
+				ConfigSchema::newDefault(),
+				new StubWikiConfigSource( null ),
+				true
+			)
 		);
 	}
 

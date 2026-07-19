@@ -4,13 +4,13 @@ declare( strict_types = 1 );
 
 namespace Maps\Tests\Unit;
 
-use Maps\LeafletConfig;
-use Maps\LeafletLayerDefinitions;
+use Maps\Config\ConfigSchema;
+use Maps\Config\EffectiveSettings;
 use Maps\LeafletService;
 use Maps\Map\MapData;
-use Maps\Tests\TestDoubles\FixedLeafletConfigLookup;
 use Maps\Tests\TestDoubles\ImageValueObject;
 use Maps\Tests\TestDoubles\InMemoryImageRepository;
+use Maps\Tests\TestDoubles\StubWikiConfigSource;
 use PHPUnit\Framework\TestCase;
 use ReflectionMethod;
 
@@ -74,9 +74,7 @@ class LeafletServiceTest extends TestCase {
 	public function testCustomLayerDefinitionSurvivesFiltering() {
 		$mapData = $this->newLeafletMapData(
 			[ 'layers' => [ 'OpenStreetMap', 'Historic', '<img src=x onerror="alert(1)">' ] ],
-			new LeafletLayerDefinitions( [
-				'Historic' => [ 'url' => 'https://tiles.example/{z}/{x}/{y}.png' ],
-			] )
+			[ 'Historic' => [ 'url' => 'https://tiles.example/{z}/{x}/{y}.png' ] ]
 		);
 
 		$this->assertSame(
@@ -88,9 +86,7 @@ class LeafletServiceTest extends TestCase {
 	public function testNumericallyNamedCustomLayerSurvivesFiltering() {
 		$mapData = $this->newLeafletMapData(
 			[ 'layers' => [ 'OpenStreetMap', '1904' ] ],
-			new LeafletLayerDefinitions( [
-				'1904' => [ 'url' => 'https://tiles.example/{z}/{x}/{y}.png' ],
-			] )
+			[ '1904' => [ 'url' => 'https://tiles.example/{z}/{x}/{y}.png' ] ]
 		);
 
 		$this->assertSame(
@@ -102,9 +98,7 @@ class LeafletServiceTest extends TestCase {
 	public function testCustomOverlayDefinitionSurvivesFiltering() {
 		$mapData = $this->newLeafletMapData(
 			[ 'overlays' => [ 'OpenSeaMap', 'Historic', '<img src=x onerror="alert(1)">' ] ],
-			new LeafletLayerDefinitions( [
-				'Historic' => [ 'url' => 'https://tiles.example/{z}/{x}/{y}.png' ],
-			] )
+			[ 'Historic' => [ 'url' => 'https://tiles.example/{z}/{x}/{y}.png' ] ]
 		);
 
 		$this->assertSame(
@@ -116,12 +110,12 @@ class LeafletServiceTest extends TestCase {
 	public function testUsedLayerDefinitionIsSerializedIntoMapData() {
 		$mapData = $this->newLeafletMapData(
 			[ 'layers' => [ 'OpenStreetMap', 'Historic' ] ],
-			new LeafletLayerDefinitions( [
+			[
 				'Historic' => [
 					'url' => 'https://tiles.example/{z}/{x}/{y}.png',
 					'options' => [ 'attribution' => 'Example' ],
 				],
-			] )
+			]
 		);
 
 		$this->assertSame(
@@ -139,9 +133,7 @@ class LeafletServiceTest extends TestCase {
 	public function testDefinitionUsedAsOverlayIsSerializedIntoMapData() {
 		$mapData = $this->newLeafletMapData(
 			[ 'overlays' => [ 'OpenSeaMap', 'Historic' ] ],
-			new LeafletLayerDefinitions( [
-				'Historic' => [ 'url' => 'https://tiles.example/{z}/{x}/{y}.png' ],
-			] )
+			[ 'Historic' => [ 'url' => 'https://tiles.example/{z}/{x}/{y}.png' ] ]
 		);
 
 		$this->assertArrayHasKey( 'Historic', $mapData->getParameters()['layerDefinitions'] );
@@ -150,11 +142,11 @@ class LeafletServiceTest extends TestCase {
 	public function testOnlyUsedLayerDefinitionsAreSerialized() {
 		$mapData = $this->newLeafletMapData(
 			[ 'layers' => [ 'Used' ] ],
-			new LeafletLayerDefinitions( [
+			[
 				'Unused' => [ 'url' => 'https://tiles.example/unused/{z}/{x}/{y}.png' ],
 				'Used' => [ 'url' => 'https://tiles.example/used/{z}/{x}/{y}.png' ],
 				'AlsoUnused' => [ 'url' => 'https://tiles.example/also/{z}/{x}/{y}.png' ],
-			] )
+			]
 		);
 
 		$this->assertSame(
@@ -172,9 +164,7 @@ class LeafletServiceTest extends TestCase {
 	public function testLayerDefinitionsKeyIsAbsentWhenConfiguredDefinitionsAreUnused() {
 		$mapData = $this->newLeafletMapData(
 			[ 'layers' => [ 'OpenStreetMap' ] ],
-			new LeafletLayerDefinitions( [
-				'Historic' => [ 'url' => 'https://tiles.example/{z}/{x}/{y}.png' ],
-			] )
+			[ 'Historic' => [ 'url' => 'https://tiles.example/{z}/{x}/{y}.png' ] ]
 		);
 
 		$this->assertArrayNotHasKey( 'layerDefinitions', $mapData->getParameters() );
@@ -183,11 +173,11 @@ class LeafletServiceTest extends TestCase {
 	public function testDefinitionShadowingStockLayerIsSerialized() {
 		$mapData = $this->newLeafletMapData(
 			[ 'layers' => [ 'OpenStreetMap' ] ],
-			new LeafletLayerDefinitions( [
+			[
 				'OpenSeaMap' => [ 'url' => 'https://tiles.example/before/{z}/{x}/{y}.png' ],
 				'OpenStreetMap' => [ 'url' => 'https://tiles.example/shadow/{z}/{x}/{y}.png' ],
 				'OpenTopoMap' => [ 'url' => 'https://tiles.example/after/{z}/{x}/{y}.png' ],
-			] )
+			]
 		);
 
 		$this->assertSame(
@@ -200,7 +190,11 @@ class LeafletServiceTest extends TestCase {
 		);
 	}
 
-	private function newLeafletMapData( array $overrides, ?LeafletLayerDefinitions $layerDefinitions = null ): MapData {
+	/**
+	 * @param array<string, mixed> $overrides
+	 * @param array<string, array> $layerDefinitions
+	 */
+	private function newLeafletMapData( array $overrides, array $layerDefinitions = [] ): MapData {
 		$params = array_merge(
 			[
 				'geojson' => '',
@@ -215,21 +209,39 @@ class LeafletServiceTest extends TestCase {
 			->newMapDataFromParameters( $params );
 	}
 
+	/**
+	 * @param array<string, array> $layerDefinitions
+	 */
 	private function newService(
 		InMemoryImageRepository $imageRepo,
-		?LeafletLayerDefinitions $layerDefinitions = null
+		array $layerDefinitions = []
 	): LeafletService {
 		return new LeafletService(
 			$imageRepo,
-			new FixedLeafletConfigLookup(
-				new LeafletConfig(
-					$layerDefinitions ?? new LeafletLayerDefinitions( [] ),
-					[ 'OpenStreetMap' ],
-					[],
-					[ 'OpenStreetMap' => true, 'OpenTopoMap' => true ],
-					[ 'OpenSeaMap' => true, 'OpenRailwayMap' => true ]
-				)
-			)
+			$this->effectiveSettings( [ 'egMapsLeafletLayerDefinitions' => $layerDefinitions ] )
+		);
+	}
+
+	/**
+	 * @param array<string, mixed> $overrides
+	 */
+	private function effectiveSettings( array $overrides ): EffectiveSettings {
+		return new EffectiveSettings(
+			array_merge(
+				[
+					'egMapsLeafletLayerDefinitions' => [],
+					'egMapsLeafletLayers' => [ 'OpenStreetMap' ],
+					'egMapsLeafletOverlayLayers' => [],
+					'egMapsLeafletAvailableLayers' => [ 'OpenStreetMap' => true, 'OpenTopoMap' => true ],
+					'egMapsLeafletAvailableOverlayLayers' => [ 'OpenSeaMap' => true, 'OpenRailwayMap' => true ],
+					'egMapsLeafletZoom' => 14,
+					'egMapsResizableByDefault' => false,
+				],
+				$overrides
+			),
+			ConfigSchema::newDefault(),
+			new StubWikiConfigSource( null ),
+			true
 		);
 	}
 

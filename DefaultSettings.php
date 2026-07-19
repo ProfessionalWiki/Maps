@@ -28,8 +28,9 @@ return [
 
 	// Boolean. Whether Maps configuration may also be set on the MediaWiki:Maps JSON config page,
 	// which is editable only by users with the editinterface and editsitejson rights. When false,
-	// that page is never read and only LocalSettings.php applies. The wiki page currently exposes
-	// the Leaflet layer settings; its values take precedence over LocalSettings.php.
+	// that page is never read and only LocalSettings.php applies. The wiki page exposes most Maps
+	// settings, grouped by service and topic (see the README); its values take precedence over
+	// LocalSettings.php. Secrets, script-injection primitives and setup-time switches stay PHP-only.
 	'egMapsEnableInWikiConfig' => true,
 
 

@@ -148,7 +148,7 @@ class DisplayMapFunction {
 	}
 
 	private function trackMap( Parser $parser ) {
-		if ( $GLOBALS['egMapsEnableCategory'] ) {
+		if ( MapsFactory::globalInstance()->getEffectiveSettings()->get( 'egMapsEnableCategory' ) ) {
 			$parser->addTrackingCategory( 'maps-tracking-category' );
 		}
 	}

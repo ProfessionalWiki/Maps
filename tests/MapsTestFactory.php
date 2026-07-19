@@ -4,11 +4,11 @@ declare( strict_types = 1 );
 
 namespace Maps\Tests;
 
+use Maps\Config\WikiConfigSource;
 use Maps\DataAccess\ImageRepository;
-use Maps\LeafletConfigSource;
 use Maps\MapsFactory;
 use Maps\Tests\TestDoubles\InMemoryImageRepository;
-use Maps\Tests\TestDoubles\StubLeafletConfigSource;
+use Maps\Tests\TestDoubles\StubWikiConfigSource;
 
 class MapsTestFactory extends MapsFactory {
 
@@ -17,6 +17,14 @@ class MapsTestFactory extends MapsFactory {
 	 * @var InMemoryImageRepository
 	 */
 	public $imageRepo;
+
+	/**
+	 * When set, the effective settings read this as the MediaWiki:Maps config instead of the
+	 * default hermetic (empty) source. Reset to null in tearDown.
+	 *
+	 * @var array<string, mixed>|null
+	 */
+	public static ?array $wikiConfig = null;
 
 	/**
 	 * Initializes a new test instance, updates the global instance used by production code and returns it.
@@ -34,11 +42,11 @@ class MapsTestFactory extends MapsFactory {
 	}
 
 	/**
-	 * Keeps tests hermetic: the config lookup uses the PHP settings only, without reading the
-	 * MediaWiki:Maps page from the database.
+	 * Keeps tests hermetic: the effective settings use the PHP settings only, unless a test sets
+	 * self::$wikiConfig, and never read the MediaWiki:Maps page from the database.
 	 */
-	protected function newWikiLeafletConfigSource(): LeafletConfigSource {
-		return new StubLeafletConfigSource( null );
+	protected function newWikiConfigSource(): WikiConfigSource {
+		return new StubWikiConfigSource( self::$wikiConfig );
 	}
 
 }

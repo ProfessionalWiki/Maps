@@ -44,28 +44,63 @@ via [Professional.Wiki](https://professional.wiki/). Discounts for work that is 
 
 ## On-wiki configuration
 
-Most settings are configured in `LocalSettings.php` (see the
-[configuration documentation](https://maps.extension.wiki/wiki/Configuration)). Wiki administrators
-without server access can also configure the Leaflet layers on the `MediaWiki:Maps` page. It holds
-JSON and, like other site configuration, is editable only by users with the `editinterface` and
-`editsitejson` rights. For example, to add a custom tile layer that authors can then select with the
-`layers` parameter:
+Most settings can be configured in `LocalSettings.php` (see the
+[configuration documentation](https://maps.extension.wiki/wiki/Configuration)) or, for wiki
+administrators without server access, on the `MediaWiki:Maps` page. It holds JSON and, like other
+site configuration, is editable only by users with the `editinterface` and `editsitejson` rights.
+Settings are grouped by service and topic:
 
 ```json
 {
+	"general": {
+		"mapWidth": "100%",
+		"mapHeight": "500px",
+		"distanceUnit": "km"
+	},
+	"coordinates": {
+		"notation": "float",
+		"directional": false
+	},
+	"geocoding": {
+		"service": "google"
+	},
 	"leaflet": {
+		"defaultZoom": 5,
 		"layerDefinitions": {
 			"Historic 1904": {
 				"url": "https://tiles.example.org/historic1904/{z}/{x}/{y}.png",
 				"options": { "attribution": "Historic map tiles", "maxZoom": 18 }
 			}
 		}
+	},
+	"googleMaps": {
+		"zoom": 5,
+		"type": "satellite"
 	}
 }
 ```
 
-The page is validated when saved and combined with `LocalSettings.php`, with the wiki page taking
-precedence. Changes take effect the next time a page with a map is parsed.
+The available groups and keys mirror the `LocalSettings.php` settings of the same name:
+
+* **general**: `mapWidth`, `mapHeight`, `defaultTitle`, `defaultLabel`, `resizableByDefault`,
+  `rezoomForKml`, `pagesWithMapsCategory`, `distanceUnits`, `distanceUnit`, `distanceDecimals`
+* **coordinates**: `availableNotations`, `notation`, `directional`
+* **geocoding**: `service` (`geonames`, `google` or `nominatim`)
+* **semanticMediaWiki**: `showTitle`, `hideNamespace`, `template`, `coordinateFormat`,
+  `coordinateDirectional`
+* **leaflet**: `layerDefinitions`, `defaultLayers`, `defaultOverlays`, `availableLayers`,
+  `availableOverlays`, `defaultZoom`
+* **googleMaps**: `zoom`, `type`, `types`, `controls`, `typeControlStyle`, `zoomControlStyle`,
+  `autoInfoWindows`, `layers`, `showPoi`, `language`
+
+The page is validated when saved and combined with `LocalSettings.php`, with the wiki value taking
+precedence. Most settings are replaced wholesale; only `layerDefinitions`, `availableLayers` and
+`availableOverlays` are merged per name, so the wiki only needs to list the entries it changes.
+Changes take effect the next time a page with a map is parsed.
+
+Secrets (API keys), settings that run before a wiki page can be read, and other server-only options
+stay exclusive to `LocalSettings.php`. Set `$egMapsEnableInWikiConfig` to `false` to ignore the page
+entirely.
 
 ## Project status
 

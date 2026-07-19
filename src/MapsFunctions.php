@@ -20,20 +20,22 @@ final class MapsFunctions {
 	 * @return array
 	 */
 	public static function getCommonParameters() {
+		$config = MapsFactory::globalInstance()->getEffectiveSettings();
+
 		$params = [];
 
 		$params['width'] = [
 			'type' => 'dimension',
 			'allowauto' => true,
 			'units' => [ 'px', 'ex', 'em', '%', '' ],
-			'default' => $GLOBALS['egMapsMapWidth'],
+			'default' => $config->get( 'egMapsMapWidth' ),
 			'message' => 'maps-par-width',
 		];
 
 		$params['height'] = [
 			'type' => 'dimension',
 			'units' => [ 'px', 'ex', 'em', '' ],
-			'default' => $GLOBALS['egMapsMapHeight'],
+			'default' => $config->get( 'egMapsMapHeight' ),
 			'message' => 'maps-par-height',
 		];
 
@@ -47,11 +49,11 @@ final class MapsFunctions {
 
 		$params['title'] = [
 			'name' => 'title',
-			'default' => $GLOBALS['egMapsDefaultTitle'],
+			'default' => $config->get( 'egMapsDefaultTitle' ),
 		];
 
 		$params['label'] = [
-			'default' => $GLOBALS['egMapsDefaultLabel'],
+			'default' => $config->get( 'egMapsDefaultLabel' ),
 			'aliases' => 'text',
 		];
 

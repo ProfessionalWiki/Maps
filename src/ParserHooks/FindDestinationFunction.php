@@ -54,8 +54,7 @@ class FindDestinationFunction implements HookHandler {
 	}
 
 	private static function getParameterInfo(): array {
-		global $egMapsAvailableCoordNotations;
-		global $egMapsCoordinateNotation, $egMapsCoordinateDirectional;
+		$config = MapsFactory::globalInstance()->getEffectiveSettings();
 
 		$params = [];
 
@@ -64,15 +63,15 @@ class FindDestinationFunction implements HookHandler {
 		];
 
 		$params['format'] = [
-			'default' => $egMapsCoordinateNotation,
-			'values' => $egMapsAvailableCoordNotations,
+			'default' => $config->get( 'egMapsCoordinateNotation' ),
+			'values' => $config->get( 'egMapsAvailableCoordNotations' ),
 			'aliases' => 'notation',
 			'tolower' => true,
 		];
 
 		$params['directional'] = [
 			'type' => 'boolean',
-			'default' => $egMapsCoordinateDirectional,
+			'default' => $config->get( 'egMapsCoordinateDirectional' ),
 		];
 
 		$params['bearing'] = [

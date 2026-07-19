@@ -7,7 +7,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 Released on TBD.
 
-* Added an on-wiki JSON configuration page at `MediaWiki:Maps` for the Leaflet layer settings (custom layer definitions, the default and available base layers and overlays). It is editable only by administrators and interface administrators, is validated on save, and is combined with `LocalSettings.php` with the wiki page taking precedence. Set `$egMapsEnableInWikiConfig` to `false` to disable it.
+* Added an on-wiki JSON configuration page at `MediaWiki:Maps` exposing most Maps settings, grouped by service and topic (general map, coordinate, geocoding, Semantic MediaWiki, Leaflet and Google Maps options), including the Leaflet custom layer definitions and available layers. It is editable only by administrators and interface administrators, is validated on save, and is combined with `LocalSettings.php` with the wiki page taking precedence. Secrets, script-injection primitives and setup-time settings stay exclusive to `LocalSettings.php`. Set `$egMapsEnableInWikiConfig` to `false` to disable it.
 * Hardened the custom Leaflet layer definitions used by `$egMapsLeafletLayerDefinitions` and the config page (breaking change): the `url` and `errorTileUrl` must be `http(s)` URLs, only an allowlist of Leaflet `options` is kept, and `attribution` is sanitized to plain text and `http(s)` links. Definitions relying on raw HTML attribution or non-allowlisted options need updating.
 
 ## Maps 13.1.0

@@ -4,6 +4,7 @@ declare( strict_types = 1 );
 
 namespace Maps\SemanticMW;
 
+use Maps\MapsFactory;
 use Maps\Presentation\KmlFormatter;
 use ParamProcessor\ParamDefinition;
 use SMW\Query\QueryResult;
@@ -88,16 +89,16 @@ class KmlPrinter extends FileExportPrinter {
 	 * @param ParamDefinition[] $definitions
 	 */
 	public function getParamDefinitions( array $definitions ): array {
-		global $egMapsDefaultLabel, $egMapsDefaultTitle;
+		$config = MapsFactory::globalInstance()->getEffectiveSettings();
 
 		$definitions['text'] = [
 			'message' => 'semanticmaps-kml-text',
-			'default' => $egMapsDefaultLabel,
+			'default' => $config->get( 'egMapsDefaultLabel' ),
 		];
 
 		$definitions['title'] = [
 			'message' => 'semanticmaps-kml-title',
-			'default' => $egMapsDefaultTitle,
+			'default' => $config->get( 'egMapsDefaultTitle' ),
 		];
 
 		$definitions['linkabsolute'] = [
