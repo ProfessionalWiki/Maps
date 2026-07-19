@@ -5,7 +5,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 ## Maps 13.1.0
 
-Released on TBD.
+Released on July 19th, 2026.
 
 * Added the `$egMapsLeafletLayerDefinitions` setting to define custom named Leaflet tile and WMS layers, which can then be used as values of the `layers` and `overlays` parameters
 
