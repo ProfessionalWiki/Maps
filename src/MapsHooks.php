@@ -8,8 +8,10 @@ use AlItem;
 use ALTree;
 use Maps\GeoJsonPages\GeoJsonNewPageUi;
 use Maps\Presentation\OutputFacade;
+use MediaWiki\Html\Html;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Settings\SettingsBuilder;
+use MediaWiki\Title\Title;
 use SkinTemplate;
 use SMW\Query\PrintRequest;
 
@@ -117,6 +119,59 @@ final class MapsHooks {
 
 	public static function onChangeTagsAllowedAdd( array &$allowedTags ) {
 		$allowedTags[] = 'maps-visual-edit';
+	}
+
+	/**
+	 * Forces the JSON content model on the on-wiki config page, so MediaWiki core requires the
+	 * editinterface and editsitejson rights to edit it and enforces JSON syntax on save.
+	 *
+	 * @param Title $title
+	 * @param string &$model
+	 */
+	public static function onContentHandlerDefaultModelFor( $title, &$model ) {
+		if ( MapsFactory::globalInstance()->isConfigPage( $title ) ) {
+			$model = CONTENT_MODEL_JSON;
+		}
+
+		return true;
+	}
+
+	/**
+	 * Validates the on-wiki config page on save, blocking the edit with precise errors when the
+	 * configuration is invalid.
+	 *
+	 * @param \MediaWiki\EditPage\EditPage $editor
+	 * @param string $text
+	 * @param string $section
+	 * @param string &$error
+	 * @param string $summary
+	 */
+	public static function onEditFilter( $editor, $text, $section, &$error, $summary ) {
+		$factory = MapsFactory::globalInstance();
+
+		if ( !is_string( $text ) || !$factory->isConfigPage( $editor->getTitle() ) ) {
+			return true;
+		}
+
+		$errors = $factory->getLeafletConfigValidator()->validate( $text );
+
+		if ( $errors !== [] ) {
+			$error = self::formatConfigErrors( $errors );
+		}
+
+		return true;
+	}
+
+	private static function formatConfigErrors( array $errors ): string {
+		$items = '';
+
+		foreach ( $errors as $errorSpec ) {
+			$items .= Html::rawElement( 'li', [], wfMessage( ...$errorSpec )->escaped() );
+		}
+
+		return Html::errorBox(
+			wfMessage( 'maps-config-invalid' )->escaped() . Html::rawElement( 'ul', [], $items )
+		);
 	}
 
 	/**

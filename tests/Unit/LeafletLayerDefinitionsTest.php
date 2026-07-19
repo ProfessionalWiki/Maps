@@ -142,4 +142,130 @@ class LeafletLayerDefinitionsTest extends TestCase {
 		$this->assertSame( [], $definitions->getDefinitions( [ 'Unknown' ] ) );
 	}
 
+	public function testAttributionHtmlIsSanitized() {
+		$definitions = new LeafletLayerDefinitions( [
+			'Historic' => [
+				'url' => 'https://tiles.example/{z}/{x}/{y}.png',
+				'options' => [
+					'attribution' => '<a href="https://osm.org">OSM</a><script>alert(1)</script>',
+				],
+			],
+		] );
+
+		$attribution = $definitions->getDefinitions( [ 'Historic' ] )['Historic']['options']['attribution'];
+
+		$this->assertStringContainsString( 'href="https://osm.org"', $attribution );
+		$this->assertStringNotContainsString( '<script', $attribution );
+	}
+
+	public function testUnknownOptionIsDropped() {
+		$definitions = new LeafletLayerDefinitions( [
+			'Historic' => [
+				'url' => 'https://tiles.example/{z}/{x}/{y}.png',
+				'options' => [ 'maxZoom' => 18, 'evilOption' => 'x' ],
+			],
+		] );
+
+		$this->assertSame(
+			[ 'maxZoom' => 18 ],
+			$definitions->getDefinitions( [ 'Historic' ] )['Historic']['options']
+		);
+	}
+
+	public function testWmsOnlyOptionIsDroppedFromTileLayer() {
+		$definitions = new LeafletLayerDefinitions( [
+			'Tile' => [
+				'url' => 'https://tiles.example/{z}/{x}/{y}.png',
+				'options' => [ 'layers' => 'weather', 'maxZoom' => 18 ],
+			],
+		] );
+
+		$this->assertSame(
+			[ 'maxZoom' => 18 ],
+			$definitions->getDefinitions( [ 'Tile' ] )['Tile']['options']
+		);
+	}
+
+	public function testDefinitionWithNonHttpUrlIsSkipped() {
+		$definitions = new LeafletLayerDefinitions( [
+			'Ftp' => [ 'url' => 'ftp://tiles.example/{z}/{x}/{y}.png' ],
+		] );
+
+		$this->assertSame( [], $definitions->getLayerNames() );
+	}
+
+	public function testDefinitionWithProtocolRelativeUrlIsSkipped() {
+		$definitions = new LeafletLayerDefinitions( [
+			'Rel' => [ 'url' => '//tiles.example/{z}/{x}/{y}.png' ],
+		] );
+
+		$this->assertSame( [], $definitions->getLayerNames() );
+	}
+
+	public function testInvalidErrorTileUrlOptionIsDropped() {
+		$definitions = new LeafletLayerDefinitions( [
+			'Historic' => [
+				'url' => 'https://tiles.example/{z}/{x}/{y}.png',
+				'options' => [ 'errorTileUrl' => 'javascript:alert(1)' ],
+			],
+		] );
+
+		$this->assertSame(
+			[],
+			$definitions->getDefinitions( [ 'Historic' ] )['Historic']['options']
+		);
+	}
+
+	public function testValidErrorTileUrlOptionIsKept() {
+		$definitions = new LeafletLayerDefinitions( [
+			'Historic' => [
+				'url' => 'https://tiles.example/{z}/{x}/{y}.png',
+				'options' => [ 'errorTileUrl' => 'https://tiles.example/error.png' ],
+			],
+		] );
+
+		$this->assertSame(
+			[ 'errorTileUrl' => 'https://tiles.example/error.png' ],
+			$definitions->getDefinitions( [ 'Historic' ] )['Historic']['options']
+		);
+	}
+
+	public function testReservedLayerNameIsSkipped() {
+		$definitions = new LeafletLayerDefinitions( [
+			'Before' => [ 'url' => 'https://tiles.example/b/{z}/{x}/{y}.png' ],
+			'__proto__' => [ 'url' => 'https://tiles.example/p/{z}/{x}/{y}.png' ],
+			'After' => [ 'url' => 'https://tiles.example/a/{z}/{x}/{y}.png' ],
+		] );
+
+		$this->assertSame( [ 'Before', 'After' ], $definitions->getLayerNames() );
+	}
+
+	public function testTooLongLayerNameIsSkipped() {
+		$definitions = new LeafletLayerDefinitions( [
+			str_repeat( 'a', 201 ) => [ 'url' => 'https://tiles.example/{z}/{x}/{y}.png' ],
+		] );
+
+		$this->assertSame( [], $definitions->getLayerNames() );
+	}
+
+	public function testNumericLayerNameIsKept() {
+		$definitions = new LeafletLayerDefinitions( [
+			'1904' => [ 'url' => 'https://tiles.example/{z}/{x}/{y}.png' ],
+		] );
+
+		$this->assertSame( [ '1904' ], $definitions->getLayerNames() );
+		$this->assertArrayHasKey( '1904', $definitions->getDefinitions( [ '1904' ] ) );
+	}
+
+	public function testUrlTemplateTokensArePreserved() {
+		$definitions = new LeafletLayerDefinitions( [
+			'Tokens' => [ 'url' => 'https://{s}.tiles.example/{z}/{x}/{y}.png' ],
+		] );
+
+		$this->assertSame(
+			'https://{s}.tiles.example/{z}/{x}/{y}.png',
+			$definitions->getDefinitions( [ 'Tokens' ] )['Tokens']['url']
+		);
+	}
+
 }

@@ -243,5 +243,18 @@
 	"maps-validator-describe-header-description": "{{Identical|Description}}\n{{Related|Validator-describe}}",
 	"maps-validator-describe-required": "{{related|Validator-describe}}\n{{Identical|Required}}",
 	"maps-validator-describe-empty": "{{Identical|Empty}}\n{{related|Validator-describe}}",
-	"maps-validator-message-nodesc": "Indicates that no parameter description is available"
+	"maps-validator-message-nodesc": "Indicates that no parameter description is available",
+	"maps-config-invalid": "Heading shown above the list of errors when an edit to the MediaWiki:Maps JSON config page is rejected.",
+	"maps-config-error-invalid-json": "Error shown when the MediaWiki:Maps config is not a JSON object.",
+	"maps-config-error-not-object": "Error shown when a value that must be a JSON object is not. $1 is the location, e.g. \"leaflet\" or \"layerDefinitions\".",
+	"maps-config-error-unknown-key": "Error shown when the config contains an unrecognized key. $1 is the unknown key.",
+	"maps-config-error-invalid-layer-name": "Error shown when a custom Leaflet layer has an invalid name. $1 is the name.",
+	"maps-config-error-unknown-layer-key": "Error shown when a custom Leaflet layer definition has an unrecognized property. $1 is the layer name, $2 is the property.",
+	"maps-config-error-invalid-url": "Error shown when a custom Leaflet layer has no valid url. $1 is the layer name.",
+	"maps-config-error-invalid-wms": "Error shown when the wms property of a custom Leaflet layer is not a boolean. $1 is the layer name.",
+	"maps-config-error-unknown-option": "Error shown when a custom Leaflet layer has an option that is not allowed. $1 is the layer name, $2 is the option.",
+	"maps-config-error-invalid-option-url": "Error shown when a URL option of a custom Leaflet layer is not a valid URL. $1 is the layer name, $2 is the option.",
+	"maps-config-error-invalid-attribution": "Error shown when the attribution option of a custom Leaflet layer is not text. $1 is the layer name.",
+	"maps-config-error-invalid-default-list": "Error shown when a default layer list is not a list of strings. $1 is defaultLayers or defaultOverlays.",
+	"maps-config-error-invalid-availability": "Error shown when a layer availability map is invalid. $1 is availableLayers or availableOverlays."
 }

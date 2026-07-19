@@ -20,6 +20,7 @@ use Maps\DataAccess\MapsFileFetcher;
 use Maps\DataAccess\MediaWikiFileUrlFinder;
 use Maps\DataAccess\MwImageRepository;
 use Maps\DataAccess\PageContentFetcher;
+use Maps\DataAccess\WikiLeafletConfigSource;
 use Maps\GeoJsonPages\GeoJsonStore;
 use Maps\GeoJsonPages\Semantic\SemanticGeoJsonStore;
 use Maps\GeoJsonPages\Semantic\SubObjectBuilder;
@@ -50,6 +51,11 @@ use SMW\Services\ServicesFactory as ApplicationFactory;
  */
 class MapsFactory {
 
+	/**
+	 * The page in the MediaWiki namespace holding the on-wiki JSON configuration.
+	 */
+	public const CONFIG_PAGE_TITLE = 'Maps';
+
 	protected static ?self $globalInstance = null;
 
 	private array $settings;
@@ -57,6 +63,7 @@ class MapsFactory {
 
 	private LeafletService $leafletService;
 	private GoogleMapsService $googleService;
+	private ?LeafletConfigLookup $leafletConfigLookup = null;
 
 	final protected function __construct( array $settings, MediaWikiServices $mediaWikiServices ) {
 		$this->settings = $settings;
@@ -192,14 +199,43 @@ class MapsFactory {
 	private function getLeafletService(): LeafletService {
 		$this->leafletService ??= new LeafletService(
 			$this->getImageRepository(),
-			$this->getLeafletLayerDefinitions()
+			$this->getLeafletConfigLookup()
 		);
 
 		return $this->leafletService;
 	}
 
-	public function getLeafletLayerDefinitions(): LeafletLayerDefinitions {
-		return new LeafletLayerDefinitions( $this->settings['egMapsLeafletLayerDefinitions'] ?? [] );
+	public function getLeafletConfigLookup(): LeafletConfigLookup {
+		$this->leafletConfigLookup ??= new CombiningLeafletConfigLookup(
+			[
+				'layerDefinitions' => $this->settings['egMapsLeafletLayerDefinitions'] ?? [],
+				'defaultLayers' => $this->settings['egMapsLeafletLayers'] ?? [],
+				'defaultOverlays' => $this->settings['egMapsLeafletOverlayLayers'] ?? [],
+				'availableLayers' => $this->settings['egMapsLeafletAvailableLayers'] ?? [],
+				'availableOverlays' => $this->settings['egMapsLeafletAvailableOverlayLayers'] ?? [],
+			],
+			new WikiLeafletConfigSource( $this->getPageContentFetcher(), self::CONFIG_PAGE_TITLE ),
+			$this->isWikiConfigEnabled()
+		);
+
+		return $this->leafletConfigLookup;
+	}
+
+	public function getLeafletConfigValidator(): LeafletConfigValidator {
+		return new LeafletConfigValidator();
+	}
+
+	public function isWikiConfigEnabled(): bool {
+		return (bool)( $this->settings['egMapsEnableInWikiConfig'] ?? true );
+	}
+
+	/**
+	 * Whether the given title is the on-wiki config page and reading it is enabled.
+	 */
+	public function isConfigPage( Title $title ): bool {
+		return $this->isWikiConfigEnabled()
+			&& $title->getNamespace() === NS_MEDIAWIKI
+			&& $title->getText() === self::CONFIG_PAGE_TITLE;
 	}
 
 	public function getDisplayMapFunction(): DisplayMapFunction {

@@ -4,9 +4,11 @@ declare( strict_types = 1 );
 
 namespace Maps\Tests\Integration\Parser;
 
+use Maps\LeafletConfig;
 use Maps\LeafletLayerDefinitions;
 use Maps\LeafletService;
 use Maps\Tests\MapsTestFactory;
+use Maps\Tests\TestDoubles\FixedLeafletConfigLookup;
 use Maps\Tests\TestDoubles\ImageValueObject;
 use Maps\Tests\TestDoubles\InMemoryImageRepository;
 use Maps\Tests\Util\TestFactory;
@@ -76,25 +78,28 @@ class LeafletTest extends TestCase {
 		$this->assertStringContainsData( '"height":50', $html );
 	}
 
-	public function testCustomLayerNameIsAValidLayerValue() {
-		$service = new LeafletService(
+	private function newServiceWithCustomLayer(): LeafletService {
+		return new LeafletService(
 			new InMemoryImageRepository(),
-			new LeafletLayerDefinitions( [ 'Historic' => [ 'url' => 'https://tiles.example/{z}/{x}/{y}.png' ] ] )
+			new FixedLeafletConfigLookup( new LeafletConfig(
+				new LeafletLayerDefinitions( [ 'Historic' => [ 'url' => 'https://tiles.example/{z}/{x}/{y}.png' ] ] ),
+				[ 'OpenStreetMap' ],
+				[],
+				[ 'OpenStreetMap' => true ],
+				[ 'OpenSeaMap' => true ]
+			) )
 		);
+	}
 
-		$values = $service->getParameterInfo()['layers']['values'];
+	public function testCustomLayerNameIsAValidLayerValue() {
+		$values = $this->newServiceWithCustomLayer()->getParameterInfo()['layers']['values'];
 
 		$this->assertContains( 'Historic', $values );
 		$this->assertContains( 'OpenStreetMap', $values );
 	}
 
 	public function testCustomLayerNameIsAValidOverlayValue() {
-		$service = new LeafletService(
-			new InMemoryImageRepository(),
-			new LeafletLayerDefinitions( [ 'Historic' => [ 'url' => 'https://tiles.example/{z}/{x}/{y}.png' ] ] )
-		);
-
-		$values = $service->getParameterInfo()['overlays']['values'];
+		$values = $this->newServiceWithCustomLayer()->getParameterInfo()['overlays']['values'];
 
 		$this->assertContains( 'Historic', $values );
 		$this->assertContains( 'OpenSeaMap', $values );

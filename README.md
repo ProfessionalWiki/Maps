@@ -42,6 +42,31 @@ via [Professional.Wiki](https://professional.wiki/). Discounts for work that is 
 * Ask a question on [the mailing list](https://www.semantic-mediawiki.org/wiki/Mailing_list)
 * File an issue on [our issue tracker](https://github.com/JeroenDeDauw/Maps/issues)
 
+## On-wiki configuration
+
+Most settings are configured in `LocalSettings.php` (see the
+[configuration documentation](https://maps.extension.wiki/wiki/Configuration)). Wiki administrators
+without server access can also configure the Leaflet layers on the `MediaWiki:Maps` page. It holds
+JSON and, like other site configuration, is editable only by users with the `editinterface` and
+`editsitejson` rights. For example, to add a custom tile layer that authors can then select with the
+`layers` parameter:
+
+```json
+{
+	"leaflet": {
+		"layerDefinitions": {
+			"Historic 1904": {
+				"url": "https://tiles.example.org/historic1904/{z}/{x}/{y}.png",
+				"options": { "attribution": "Historic map tiles", "maxZoom": 18 }
+			}
+		}
+	}
+}
+```
+
+The page is validated when saved and combined with `LocalSettings.php`, with the wiki page taking
+precedence. Changes take effect the next time a page with a map is parsed.
+
 ## Project status
 
 * Latest version [![Latest Stable Version](https://poser.pugx.org/mediawiki/maps/v/stable)](https://packagist.org/packages/mediawiki/maps)

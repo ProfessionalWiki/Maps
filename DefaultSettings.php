@@ -26,6 +26,12 @@ return [
 	// Allows disabling the Semantic MediaWiki integration.
 	'egMapsDisableSmwIntegration' => false,
 
+	// Boolean. Whether Maps configuration may also be set on the MediaWiki:Maps JSON config page,
+	// which is editable only by users with the editinterface and editsitejson rights. When false,
+	// that page is never read and only LocalSettings.php applies. The wiki page currently exposes
+	// the Leaflet layer settings; its values take precedence over LocalSettings.php.
+	'egMapsEnableInWikiConfig' => true,
+
 
 
 
@@ -255,14 +261,22 @@ return [
 	// Custom named tile layers that can be used as base layers or overlays, in addition to the
 	// stock leaflet-providers layers listed above. The name of each definition becomes a valid
 	// value for the layers and overlays parameters. Only the definitions actually used by a map
-	// are sent to the browser.
+	// are sent to the browser. The same layers can be defined on-wiki via the MediaWiki:Maps
+	// config page (see egMapsEnableInWikiConfig).
 	//
-	// Each definition has a 'url' (required, an XYZ tile template or, for WMS, the service
-	// endpoint), an optional 'options' array passed straight to Leaflet, and an optional 'wms'
-	// flag. Definitions without a non-empty url string are ignored.
+	// Each definition has a required 'url' plus optional 'options' and 'wms' entries:
+	//   - 'url' must be an http(s) URL. XYZ tile templates ({z}, {x}, {y}, {s}) and, for WMS, the
+	//     service endpoint are supported. Definitions without a valid url are ignored.
+	//   - 'wms' (boolean) renders the layer with L.tileLayer.wms instead of L.tileLayer.
+	//   - 'options' is passed to Leaflet, but only a safe allowlist of keys is kept: attribution,
+	//     minZoom, maxZoom, minNativeZoom, maxNativeZoom, subdomains, errorTileUrl, zoomOffset,
+	//     zoomReverse, tms, detectRetina, bounds, opacity, zIndex and noWrap; plus, for WMS layers,
+	//     layers, styles, format, transparent, version and uppercase. Unknown options are dropped.
+	//     'errorTileUrl' must be an http(s) URL, and 'attribution' is sanitized to plain text and
+	//     http(s) links.
 	//
 	// A definition whose name matches a stock layer (e.g. 'OpenStreetMap') overrides that stock
-	// layer. The 'options' are passed to Leaflet as-is; note that 'attribution' is rendered as HTML.
+	// layer.
 	//
 	// Example:
 	// 'egMapsLeafletLayerDefinitions' => [
