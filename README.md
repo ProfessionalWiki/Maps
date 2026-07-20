@@ -80,7 +80,7 @@ Settings are grouped by service and topic:
 }
 ```
 
-The available groups and keys mirror the `LocalSettings.php` settings of the same name:
+The available groups and keys correspond to `LocalSettings.php` settings:
 
 * **general**: `mapWidth`, `mapHeight`, `defaultTitle`, `defaultLabel`, `resizableByDefault`,
   `rezoomForKml`, `pagesWithMapsCategory`, `distanceUnits`, `distanceUnit`, `distanceDecimals`
