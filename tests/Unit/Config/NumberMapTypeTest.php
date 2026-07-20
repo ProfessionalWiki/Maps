@@ -45,6 +45,7 @@ class NumberMapTypeTest extends TestCase {
 			'string ratio' => [ [ 'm' => '1' ] ],
 			'name with space' => [ [ 'sea mile' => 1852 ] ],
 			'name with symbol' => [ [ 'm.' => 1 ] ],
+			'name with trailing newline' => [ [ "km\n" => 1 ] ],
 			'name starting with digit' => [ [ '2m' => 2 ] ],
 			'list' => [ [ 1, 2 ] ],
 			'not an array' => [ 'm' ],

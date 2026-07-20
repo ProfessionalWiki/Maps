@@ -54,6 +54,7 @@ class DimensionTypeTest extends TestCase {
 		return [
 			'negative' => [ -5 ],
 			'style injection' => [ '350px; color: red' ],
+			'trailing newline' => [ "350px\n" ],
 			'disallowed unit' => [ '50vh' ],
 			'unit without number' => [ '%' ],
 			'internal space' => [ '1 px' ],

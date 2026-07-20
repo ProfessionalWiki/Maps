@@ -48,7 +48,9 @@ class DimensionType implements ConfigType {
 			? ''
 			: '(' . implode( '|', array_map( 'preg_quote', $units ) ) . ')?';
 
-		return '/^\d+(\.\d+)?' . $unitGroup . '$/';
+		// The D modifier keeps $ from matching before a trailing newline, so a value with one is
+		// rejected rather than reaching an inline style attribute.
+		return '/^\d+(\.\d+)?' . $unitGroup . '$/D';
 	}
 
 }

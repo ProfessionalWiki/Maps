@@ -13,7 +13,7 @@ use PHPUnit\Framework\TestCase;
 class PatternTypeTest extends TestCase {
 
 	private function languageType(): PatternType {
-		return new PatternType( '/^[a-zA-Z]{2,3}(-[a-zA-Z0-9]{2,8})?$/', 'maps-config-error-invalid-language' );
+		return new PatternType( '/^[a-zA-Z]{2,3}(-[a-zA-Z0-9]{2,8})?$/D', 'maps-config-error-invalid-language' );
 	}
 
 	/**
@@ -41,6 +41,7 @@ class PatternTypeTest extends TestCase {
 		return [
 			'empty' => [ '' ],
 			'script injection' => [ 'en"></script>' ],
+			'trailing newline' => [ "en\n" ],
 			'too long' => [ 'englishlanguage' ],
 			'integer' => [ 5 ],
 			'null' => [ null ],

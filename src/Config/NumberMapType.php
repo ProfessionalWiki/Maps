@@ -11,7 +11,7 @@ namespace Maps\Config;
  */
 class NumberMapType implements ConfigType {
 
-	private const NAME_PATTERN = '/^[A-Za-z][A-Za-z0-9]*$/';
+	private const NAME_PATTERN = '/^[A-Za-z][A-Za-z0-9]*$/D';
 
 	public function validate( mixed $value, string $location ): array {
 		return $this->isValid( $value ) ? [] : [ [ 'maps-config-error-invalid-number-map', $location ] ];
