@@ -252,5 +252,18 @@
 	"maps-validator-describe-header-description": "Descrición",
 	"maps-validator-describe-required": "obrigatorio",
 	"maps-validator-describe-empty": "baleiro",
-	"maps-validator-message-nodesc": "Non se achegou descrición ningunha"
+	"maps-validator-message-nodesc": "Non se achegou descrición ningunha",
+	"maps-config-invalid": "Non se gardou a configuración dos mapas porque non é válida:",
+	"maps-config-error-invalid-json": "A configuración debe ser un obxecto JSON.",
+	"maps-config-error-not-object": "O valor de «$1» debe ser un obxecto JSON.",
+	"maps-config-error-unknown-key": "Descoñécese a clave de configuración «$1».",
+	"maps-config-error-invalid-layer-name": "«$1» non é un nome de capa válido.",
+	"maps-config-error-unknown-layer-key": "A capa «$1» ten unha propiedade descoñecida «$2».",
+	"maps-config-error-invalid-url": "A capa «$1» debe ter unha propiedade «url» que comece por «http://» ou por «https://».",
+	"maps-config-error-invalid-wms": "A propiedade «wms» da capa «$1» debe ser «true» ou «false».",
+	"maps-config-error-unknown-option": "A capa «$1» ten unha opción descoñecida «$2».",
+	"maps-config-error-invalid-option-url": "A opción «$2» da capa «$1» debe ser un enderezo URL que comece por «http://» ou por «https://».",
+	"maps-config-error-invalid-attribution": "A opción «attribution» da capa «$1» debe ser texto.",
+	"maps-config-error-invalid-default-list": "«$1» debe ser unha lista de nomes de capas.",
+	"maps-config-error-invalid-availability": "«$1» debe ser un mapa de nomes de capas con valores «true» ou «false»."
 }

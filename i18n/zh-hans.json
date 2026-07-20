@@ -273,5 +273,18 @@
 	"maps-validator-describe-header-description": "描述",
 	"maps-validator-describe-required": "必填",
 	"maps-validator-describe-empty": "空",
-	"maps-validator-message-nodesc": "没有提供描述"
+	"maps-validator-message-nodesc": "没有提供描述",
+	"maps-config-invalid": "地图配置无效，因此未保存：",
+	"maps-config-error-invalid-json": "配置必须是JSON对象。",
+	"maps-config-error-not-object": "“$1”的值必须是JSON对象。",
+	"maps-config-error-unknown-key": "未知配置项“$1”。",
+	"maps-config-error-invalid-layer-name": "“$1”不是有效的图层名称。",
+	"maps-config-error-unknown-layer-key": "图层“$1”具有未知属性“$2”。",
+	"maps-config-error-invalid-url": "图层“$1”必须具有以http://或https://开头的“url”。",
+	"maps-config-error-invalid-wms": "图层“$1”的属性“wms”必须是true或false。",
+	"maps-config-error-unknown-option": "图层“$1”具有未知选项“$2”。",
+	"maps-config-error-invalid-option-url": "图层“$1”的选项“$2”必须是以http://或https://开头的URL。",
+	"maps-config-error-invalid-attribution": "图层“$1”的选项“attribution”必须是文本。",
+	"maps-config-error-invalid-default-list": "“$1”必须是图层名称的列表。",
+	"maps-config-error-invalid-availability": "“$1”必须是将图层名称映射到true或false的映射。"
 }

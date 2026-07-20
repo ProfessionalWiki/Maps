@@ -258,5 +258,18 @@
 	"maps-validator-describe-header-description": "설명",
 	"maps-validator-describe-required": "필수",
 	"maps-validator-describe-empty": "비었음",
-	"maps-validator-message-nodesc": "설명을 제공하지 않았습니다"
+	"maps-validator-message-nodesc": "설명을 제공하지 않았습니다",
+	"maps-config-invalid": "지도 구성이 유효하지 않아 저장되지 않았습니다.",
+	"maps-config-error-invalid-json": "구성은 JSON 객체여야 합니다.",
+	"maps-config-error-not-object": "\"$1\"의 값은 JSON 객체여야 합니다.",
+	"maps-config-error-unknown-key": "알 수 없는 구성 키 \"$1\".",
+	"maps-config-error-invalid-layer-name": "\"$1\"은(는) 유효한 레이어 이름이 아닙니다.",
+	"maps-config-error-unknown-layer-key": "레이어 \"$1\"에는 알 수 없는 속성 \"$2\"이(가) 있습니다.",
+	"maps-config-error-invalid-url": "레이어 \"$1\"은(는) http:// 또는 https://로 시작하는 \"url\"을 가져야 합니다.",
+	"maps-config-error-invalid-wms": "레이어 \" $1 \"의 \"wms\" 속성은 true 또는 false여야 합니다.",
+	"maps-config-error-unknown-option": "레이어 \"$1\"에는 알 수 없는 옵션 \"$2\"이(가) 있습니다.",
+	"maps-config-error-invalid-option-url": "레이어 \"$1\"의 \"$2\" 옵션은 http:// 또는 https://로 시작하는 URL이어야 합니다.",
+	"maps-config-error-invalid-attribution": "레이어 \"$1\"의 \"attribution\" 옵션은 텍스트이어야 합니다.",
+	"maps-config-error-invalid-default-list": "\"$1\"은(는) 레이어 이름 목록이어야 합니다.",
+	"maps-config-error-invalid-availability": "\"$1\"은(는) 레이어 이름에서 true 또는 false로의 매핑이어야 합니다."
 }
