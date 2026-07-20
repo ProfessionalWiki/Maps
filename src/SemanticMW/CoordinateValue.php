@@ -165,13 +165,15 @@ class CoordinateValue extends SMWDataValue {
 	 * @return string|null
 	 */
 	private function getFormattedCoord( SMWDIGeoCoord $dataItem, ?string $format = null ) {
+		$config = MapsFactory::globalInstance()->getEffectiveSettings();
+
 		return MapsFactory::globalInstance()->getCoordinateFormatter()->format(
 			new LatLongValue(
 				$dataItem->getLatitude(),
 				$dataItem->getLongitude()
 			),
-			$format ?? $GLOBALS['smgQPCoodFormat'],
-			$GLOBALS['smgQPCoodDirectional']
+			$format ?? $config->get( 'smgQPCoodFormat' ),
+			$config->get( 'smgQPCoodDirectional' )
 		);
 	}
 

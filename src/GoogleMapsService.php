@@ -4,8 +4,9 @@ declare( strict_types = 1 );
 
 namespace Maps;
 
-use MediaWiki\Html\Html;
+use Maps\Config\EffectiveSettings;
 use Maps\Map\MapData;
+use MediaWiki\Html\Html;
 use MediaWiki\MediaWikiServices;
 use ParamProcessor\ProcessedParam;
 use ParamProcessor\ProcessingResult;
@@ -35,7 +36,12 @@ class GoogleMapsService implements MappingService {
 		'dropdown' => 'DROPDOWN_MENU'
 	];
 
+	private EffectiveSettings $config;
 	private $addedDependencies = [];
+
+	public function __construct( EffectiveSettings $config ) {
+		$this->config = $config;
+	}
 
 	public function getName(): string {
 		return 'googlemaps3';
@@ -46,10 +52,6 @@ class GoogleMapsService implements MappingService {
 	}
 
 	public function getParameterInfo(): array {
-		global $egMapsGMaps3Type, $egMapsGMaps3Types, $egMapsGMaps3Controls, $egMapsGMaps3Layers;
-		global $egMapsGMaps3DefTypeStyle, $egMapsGMaps3DefZoomStyle, $egMapsGMaps3AutoInfoWindows;
-		global $egMapsResizableByDefault;
-
 		$params = MapsFunctions::getCommonParameters();
 
 		$params['visitedicon'] = [
@@ -67,12 +69,12 @@ class GoogleMapsService implements MappingService {
 		$params['zoom'] = [
 			'type' => 'integer',
 			'range' => [ 0, 20 ],
-			'default' => $GLOBALS['egMapsGMaps3Zoom'],
+			'default' => $this->config->get( 'egMapsGMaps3Zoom' ),
 			'message' => 'maps-par-zoom',
 		];
 
 		$params['type'] = [
-			'default' => $egMapsGMaps3Type,
+			'default' => $this->config->get( 'egMapsGMaps3Type' ),
 			'values' => self::getTypeNames(),
 			'message' => 'maps-googlemaps3-par-type',
 			'post-format' => function ( $value ) {
@@ -82,7 +84,7 @@ class GoogleMapsService implements MappingService {
 
 		$params['types'] = [
 			'dependencies' => 'type',
-			'default' => $egMapsGMaps3Types,
+			'default' => $this->config->get( 'egMapsGMaps3Types' ),
 			'values' => self::getTypeNames(),
 			'message' => 'maps-googlemaps3-par-types',
 			'islist' => true,
@@ -96,7 +98,7 @@ class GoogleMapsService implements MappingService {
 		];
 
 		$params['layers'] = [
-			'default' => $egMapsGMaps3Layers,
+			'default' => $this->config->get( 'egMapsGMaps3Layers' ),
 			'values' => [
 				'traffic',
 				'bicycling',
@@ -107,7 +109,7 @@ class GoogleMapsService implements MappingService {
 		];
 
 		$params['controls'] = [
-			'default' => $egMapsGMaps3Controls,
+			'default' => $this->config->get( 'egMapsGMaps3Controls' ),
 			'values' => [
 				'pan',
 				'zoom',
@@ -124,14 +126,14 @@ class GoogleMapsService implements MappingService {
 		];
 
 		$params['zoomstyle'] = [
-			'default' => $egMapsGMaps3DefZoomStyle,
+			'default' => $this->config->get( 'egMapsGMaps3DefZoomStyle' ),
 			'values' => [ 'default', 'small', 'large' ],
 			'message' => 'maps-googlemaps3-par-zoomstyle',
 			'post-format' => 'strtoupper',
 		];
 
 		$params['typestyle'] = [
-			'default' => $egMapsGMaps3DefTypeStyle,
+			'default' => $this->config->get( 'egMapsGMaps3DefTypeStyle' ),
 			'values' => array_keys( self::TYPE_CONTROL_STYLES ),
 			'message' => 'maps-googlemaps3-par-typestyle',
 			'post-format' => function ( $value ) {
@@ -141,25 +143,25 @@ class GoogleMapsService implements MappingService {
 
 		$params['autoinfowindows'] = [
 			'type' => 'boolean',
-			'default' => $egMapsGMaps3AutoInfoWindows,
+			'default' => $this->config->get( 'egMapsGMaps3AutoInfoWindows' ),
 			'message' => 'maps-googlemaps3-par-autoinfowindows',
 		];
 
 		$params['resizable'] = [
 			'type' => 'boolean',
-			'default' => $egMapsResizableByDefault,
+			'default' => $this->config->get( 'egMapsResizableByDefault' ),
 			'message' => 'maps-par-resizable',
 		];
 
 		$params['kmlrezoom'] = [
 			'type' => 'boolean',
-			'default' => $GLOBALS['egMapsRezoomForKML'],
+			'default' => $this->config->get( 'egMapsRezoomForKML' ),
 			'message' => 'maps-googlemaps3-par-kmlrezoom',
 		];
 
 		$params['poi'] = [
 			'type' => 'boolean',
-			'default' => $GLOBALS['egMapsShowPOI'],
+			'default' => $this->config->get( 'egMapsShowPOI' ),
 			'message' => 'maps-googlemaps3-par-poi',
 		];
 
@@ -345,11 +347,10 @@ class GoogleMapsService implements MappingService {
 	}
 
 	private function getDependencies(): array {
+		$language = $this->config->get( 'egMapsGMaps3Language' );
+
 		return [
-			self::getApiScript(
-				is_string( $GLOBALS['egMapsGMaps3Language'] ) ?
-					$GLOBALS['egMapsGMaps3Language'] : $GLOBALS['egMapsGMaps3Language']->getCode()
-			)
+			self::getApiScript( is_string( $language ) ? $language : $language->getCode() )
 		];
 	}
 

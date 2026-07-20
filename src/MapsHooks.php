@@ -153,7 +153,7 @@ final class MapsHooks {
 			return true;
 		}
 
-		$errors = $factory->getLeafletConfigValidator()->validate( $text );
+		$errors = $factory->getConfigValidator()->validate( $text );
 
 		if ( $errors !== [] ) {
 			$error = self::formatConfigErrors( $errors );

@@ -5,6 +5,7 @@ declare( strict_types = 1 );
 namespace Maps\Tests\Integration\Parser;
 
 use Maps\GeoJsonPages\GeoJsonContent;
+use Maps\Tests\MapsTestFactory;
 use Maps\Tests\Util\PageCreator;
 use Maps\Tests\Util\TestFactory;
 use PHPUnit\Framework\TestCase;
@@ -139,6 +140,7 @@ class DisplayMapTest extends TestCase {
 	public function testDimensionDefaultsAsInteger() {
 		$GLOBALS['egMapsMapHeight'] = 420;
 		$GLOBALS['egMapsMapWidth'] = 230;
+		MapsTestFactory::newTestInstance();
 
 		$this->assertStringContainsString(
 			'height: 420px;',

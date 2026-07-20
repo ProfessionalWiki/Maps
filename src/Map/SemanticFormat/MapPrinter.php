@@ -171,7 +171,7 @@ class MapPrinter extends ResultPrinter {
 	private function addTrackingCategoryIfNeeded() {
 		$parser = MediaWikiServices::getInstance()->getParser();
 
-		if ( $GLOBALS['egMapsEnableCategory'] && $parser->getOutput() !== null ) {
+		if ( \Maps\MapsFactory::globalInstance()->getEffectiveSettings()->get( 'egMapsEnableCategory' ) && $parser->getOutput() !== null ) {
 			$parser->addTrackingCategory( 'maps-tracking-category' );
 		}
 	}
@@ -310,7 +310,7 @@ class MapPrinter extends ResultPrinter {
 	 * @return array
 	 */
 	private function getParameterInfo() {
-		global $smgQPShowTitle, $smgQPTemplate, $smgQPHideNamespace;
+		$config = \Maps\MapsFactory::globalInstance()->getEffectiveSettings();
 
 		$params = $this->service->getParameterInfo();
 
@@ -326,17 +326,17 @@ class MapPrinter extends ResultPrinter {
 		$params['showtitle'] = [
 			'type' => 'boolean',
 			'aliases' => 'show title',
-			'default' => $smgQPShowTitle,
+			'default' => $config->get( 'smgQPShowTitle' ),
 		];
 
 		$params['hidenamespace'] = [
 			'type' => 'boolean',
 			'aliases' => 'hide namespace',
-			'default' => $smgQPHideNamespace,
+			'default' => $config->get( 'smgQPHideNamespace' ),
 		];
 
 		$params['template'] = [
-			'default' => $smgQPTemplate,
+			'default' => $config->get( 'smgQPTemplate' ),
 		];
 
 		$params['userparam'] = [

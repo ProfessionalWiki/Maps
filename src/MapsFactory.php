@@ -19,8 +19,12 @@ use Maps\DataAccess\ImageRepository;
 use Maps\DataAccess\MapsFileFetcher;
 use Maps\DataAccess\MediaWikiFileUrlFinder;
 use Maps\DataAccess\MwImageRepository;
+use Maps\Config\ConfigSchema;
+use Maps\Config\ConfigValidator;
+use Maps\Config\EffectiveSettings;
+use Maps\Config\WikiConfigSource;
 use Maps\DataAccess\PageContentFetcher;
-use Maps\DataAccess\WikiLeafletConfigSource;
+use Maps\DataAccess\WikiPageConfigSource;
 use Maps\GeoJsonPages\GeoJsonStore;
 use Maps\GeoJsonPages\Semantic\SemanticGeoJsonStore;
 use Maps\GeoJsonPages\Semantic\SubObjectBuilder;
@@ -63,7 +67,7 @@ class MapsFactory {
 
 	private LeafletService $leafletService;
 	private GoogleMapsService $googleService;
-	private ?LeafletConfigLookup $leafletConfigLookup = null;
+	private ?EffectiveSettings $effectiveSettings = null;
 
 	final protected function __construct( array $settings, MediaWikiServices $mediaWikiServices ) {
 		$this->settings = $settings;
@@ -107,7 +111,7 @@ class MapsFactory {
 	}
 
 	private function newCoreGeocoder(): Geocoder {
-		switch ( $this->settings['egMapsDefaultGeoService'] ) {
+		switch ( $this->getEffectiveSettings()->get( 'egMapsDefaultGeoService' ) ) {
 			case 'geonames':
 				if ( $this->settings['egMapsGeoNamesUser'] === '' ) {
 					return $this->newGoogleGeocoder();
@@ -191,7 +195,7 @@ class MapsFactory {
 	}
 
 	private function getGoogleMapsService(): GoogleMapsService {
-		$this->googleService ??= new GoogleMapsService();
+		$this->googleService ??= new GoogleMapsService( $this->getEffectiveSettings() );
 
 		return $this->googleService;
 	}
@@ -199,34 +203,33 @@ class MapsFactory {
 	private function getLeafletService(): LeafletService {
 		$this->leafletService ??= new LeafletService(
 			$this->getImageRepository(),
-			$this->getLeafletConfigLookup()
+			$this->getEffectiveSettings()
 		);
 
 		return $this->leafletService;
 	}
 
-	public function getLeafletConfigLookup(): LeafletConfigLookup {
-		$this->leafletConfigLookup ??= new CombiningLeafletConfigLookup(
-			[
-				'layerDefinitions' => $this->settings['egMapsLeafletLayerDefinitions'] ?? [],
-				'defaultLayers' => $this->settings['egMapsLeafletLayers'] ?? [],
-				'defaultOverlays' => $this->settings['egMapsLeafletOverlayLayers'] ?? [],
-				'availableLayers' => $this->settings['egMapsLeafletAvailableLayers'] ?? [],
-				'availableOverlays' => $this->settings['egMapsLeafletAvailableOverlayLayers'] ?? [],
-			],
-			$this->newWikiLeafletConfigSource(),
+	public function getEffectiveSettings(): EffectiveSettings {
+		$this->effectiveSettings ??= new EffectiveSettings(
+			$this->settings,
+			$this->getConfigSchema(),
+			$this->newWikiConfigSource(),
 			$this->isWikiConfigEnabled()
 		);
 
-		return $this->leafletConfigLookup;
+		return $this->effectiveSettings;
 	}
 
-	protected function newWikiLeafletConfigSource(): LeafletConfigSource {
-		return new WikiLeafletConfigSource( $this->getPageContentFetcher(), self::CONFIG_PAGE_TITLE );
+	private function getConfigSchema(): ConfigSchema {
+		return ConfigSchema::newDefault();
 	}
 
-	public function getLeafletConfigValidator(): LeafletConfigValidator {
-		return new LeafletConfigValidator();
+	protected function newWikiConfigSource(): WikiConfigSource {
+		return new WikiPageConfigSource( $this->getPageContentFetcher(), self::CONFIG_PAGE_TITLE );
+	}
+
+	public function getConfigValidator(): ConfigValidator {
+		return new ConfigValidator( $this->getConfigSchema() );
 	}
 
 	public function isWikiConfigEnabled(): bool {

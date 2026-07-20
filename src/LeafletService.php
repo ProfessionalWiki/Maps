@@ -4,7 +4,7 @@ declare( strict_types = 1 );
 
 namespace Maps;
 
-use MediaWiki\Html\Html;
+use Maps\Config\EffectiveSettings;
 use Maps\DataAccess\ImageRepository;
 use Maps\Map\MapData;
 use ParamProcessor\ParameterTypes;
@@ -16,20 +16,37 @@ use ParamProcessor\ProcessingResult;
 class LeafletService implements MappingService {
 
 	private ImageRepository $imageFinder;
-	private LeafletConfigLookup $configLookup;
+	private EffectiveSettings $config;
+	private ?LeafletLayerDefinitions $layerDefinitions = null;
 	private array $addedDependencies = [];
 
-	public function __construct( ImageRepository $imageFinder, LeafletConfigLookup $configLookup ) {
+	public function __construct( ImageRepository $imageFinder, EffectiveSettings $config ) {
 		$this->imageFinder = $imageFinder;
-		$this->configLookup = $configLookup;
+		$this->config = $config;
 	}
 
 	/**
-	 * Resolved lazily and memoized so the MediaWiki:Maps config page is only read at parse time,
-	 * never during extension setup.
+	 * @return array<string, bool>
 	 */
-	private function getConfig(): LeafletConfig {
-		return $this->configLookup->getConfig();
+	private function availableLayers(): array {
+		return $this->config->get( 'egMapsLeafletAvailableLayers' );
+	}
+
+	/**
+	 * @return array<string, bool>
+	 */
+	private function availableOverlays(): array {
+		return $this->config->get( 'egMapsLeafletAvailableOverlayLayers' );
+	}
+
+	/**
+	 * Built lazily and memoized so the MediaWiki:Maps config page is only read at parse time, never
+	 * during extension setup.
+	 */
+	private function getLayerDefinitions(): LeafletLayerDefinitions {
+		$this->layerDefinitions ??= new LeafletLayerDefinitions( $this->config->get( 'egMapsLeafletLayerDefinitions' ) );
+
+		return $this->layerDefinitions;
 	}
 
 	public function getName(): string {
@@ -53,7 +70,7 @@ class LeafletService implements MappingService {
 		$params['defzoom'] = [
 			'type' => ParameterTypes::INTEGER,
 			'range' => [ 0, 20 ],
-			'default' => self::getDefaultZoom(),
+			'default' => $this->getDefaultZoom(),
 			'message' => 'maps-leaflet-par-defzoom'
 		];
 
@@ -61,8 +78,8 @@ class LeafletService implements MappingService {
 			'aliases' => 'layer',
 			'type' => 'string',
 			'islist' => true,
-			'values' => $this->availableLayerNames( $this->getConfig()->getAvailableLayers() ),
-			'default' => $this->getConfig()->getDefaultLayers(),
+			'values' => $this->availableLayerNames( $this->availableLayers() ),
+			'default' => $this->config->get( 'egMapsLeafletLayers' ),
 			'message' => 'maps-leaflet-par-layers',
 		];
 
@@ -78,14 +95,14 @@ class LeafletService implements MappingService {
 			'aliases' => [ 'overlaylayers' ],
 			'type' => ParameterTypes::STRING,
 			'islist' => true,
-			'values' => $this->availableLayerNames( $this->getConfig()->getAvailableOverlays() ),
-			'default' => $this->getConfig()->getDefaultOverlays(),
+			'values' => $this->availableLayerNames( $this->availableOverlays() ),
+			'default' => $this->config->get( 'egMapsLeafletOverlayLayers' ),
 			'message' => 'maps-leaflet-par-overlaylayers',
 		];
 
 		$params['resizable'] = [
 			'type' => ParameterTypes::BOOLEAN,
-			'default' => $GLOBALS['egMapsResizableByDefault'],
+			'default' => $this->config->get( 'egMapsResizableByDefault' ),
 			'message' => 'maps-par-resizable'
 		];
 
@@ -167,7 +184,7 @@ class LeafletService implements MappingService {
 			array_unique(
 				array_merge(
 					array_keys( $availableStockLayers, true, true ),
-					$this->getConfig()->getLayerDefinitions()->getLayerNames()
+					$this->getLayerDefinitions()->getLayerNames()
 				)
 			)
 		);
@@ -177,7 +194,7 @@ class LeafletService implements MappingService {
 	 * @since 3.0
 	 */
 	public function getDefaultZoom() {
-		return $GLOBALS['egMapsLeafletZoom'];
+		return $this->config->get( 'egMapsLeafletZoom' );
 	}
 
 	public function newMapId(): string {
@@ -236,7 +253,7 @@ class LeafletService implements MappingService {
 	private function getLayerDependencies( array $params ) {
 		global $egMapsLeafletLayerDependencies, $egMapsLeafletLayersApiKeys;
 
-		$availableLayers = $this->getConfig()->getAvailableLayers();
+		$availableLayers = $this->availableLayers();
 
 		$layerDependencies = [];
 
@@ -272,11 +289,11 @@ class LeafletService implements MappingService {
 
 		$params['overlays'] = $this->filterToAvailable(
 			$params['overlays'],
-			$this->availableWithDefinitions( $this->getConfig()->getAvailableOverlays() )
+			$this->availableWithDefinitions( $this->availableOverlays() )
 		);
 		$params['layers'] = $this->filterToAvailable(
 			$params['layers'],
-			$this->availableWithDefinitions( $this->getConfig()->getAvailableLayers() )
+			$this->availableWithDefinitions( $this->availableLayers() )
 		);
 
 		$params = $this->addUsedLayerDefinitions( $params );
@@ -310,7 +327,7 @@ class LeafletService implements MappingService {
 		// Union rather than array_merge: array_merge renumbers integer-like keys, which would drop
 		// a custom layer whose name is purely numeric (e.g. "1904"). Custom names go on the left so
 		// they take precedence over a same-named stock layer.
-		return array_fill_keys( $this->getConfig()->getLayerDefinitions()->getLayerNames(), true ) + $available;
+		return array_fill_keys( $this->getLayerDefinitions()->getLayerNames(), true ) + $available;
 	}
 
 	/**
@@ -318,7 +335,7 @@ class LeafletService implements MappingService {
 	 * the relevant definitions are shipped to the client rather than the whole catalog.
 	 */
 	private function addUsedLayerDefinitions( array $params ): array {
-		$usedDefinitions = $this->getConfig()->getLayerDefinitions()->getDefinitions(
+		$usedDefinitions = $this->getLayerDefinitions()->getDefinitions(
 			array_merge( $params['layers'], $params['overlays'] )
 		);
 

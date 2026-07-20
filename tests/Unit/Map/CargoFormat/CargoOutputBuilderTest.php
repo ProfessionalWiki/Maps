@@ -5,16 +5,16 @@ declare( strict_types = 1 );
 namespace Maps\Tests\Unit\Map\CargoFormat;
 
 use DataValues\Geo\Values\LatLongValue;
+use Maps\Config\ConfigSchema;
+use Maps\Config\EffectiveSettings;
 use Maps\Map\CargoFormat\CargoOutputBuilder;
 use Maps\Map\Marker;
-use Maps\LeafletConfig;
-use Maps\LeafletLayerDefinitions;
 use Maps\LeafletService;
 use Maps\Map\MapOutputBuilder;
 use Maps\MappingServices;
-use Maps\Tests\TestDoubles\FixedLeafletConfigLookup;
 use Maps\Tests\TestDoubles\ImageValueObject;
 use Maps\Tests\TestDoubles\InMemoryImageRepository;
+use Maps\Tests\TestDoubles\StubWikiConfigSource;
 use ParamProcessor\ParamDefinitionFactory;
 use PHPUnit\Framework\TestCase;
 use ReflectionMethod;
@@ -57,7 +57,7 @@ class CargoOutputBuilderTest extends TestCase {
 	private function callSetIconUrl( InMemoryImageRepository $imageRepo, array $markers, string $iconParameter ): void {
 		$leafletService = new LeafletService(
 			new InMemoryImageRepository(),
-			new FixedLeafletConfigLookup( new LeafletConfig( new LeafletLayerDefinitions( [] ), [], [], [], [] ) )
+			new EffectiveSettings( [], ConfigSchema::newDefault(), new StubWikiConfigSource( null ), true )
 		);
 
 		$builder = new CargoOutputBuilder(
