@@ -23,4 +23,12 @@ class IntegerType implements ConfigType {
 		return [];
 	}
 
+	public function describe(): array {
+		if ( $this->minimum === null ) {
+			return [ 'maps-config-type-integer' ];
+		}
+
+		return [ 'maps-config-type-integer-min', $this->minimum ];
+	}
+
 }

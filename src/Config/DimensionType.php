@@ -25,6 +25,16 @@ class DimensionType implements ConfigType {
 		return $this->isValid( $value ) ? [] : [ [ 'maps-config-error-invalid-dimension', $location ] ];
 	}
 
+	public function describe(): array {
+		$units = implode( ', ', $this->units );
+
+		if ( $this->allowAuto ) {
+			return [ 'maps-config-type-dimension-auto', $units ];
+		}
+
+		return [ 'maps-config-type-dimension', $units ];
+	}
+
 	private function isValid( mixed $value ): bool {
 		if ( is_int( $value ) || is_float( $value ) ) {
 			return $value >= 0;

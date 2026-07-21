@@ -42,4 +42,8 @@ class StringTypeTest extends TestCase {
 		];
 	}
 
+	public function testDescribe(): void {
+		$this->assertSame( [ 'maps-config-type-string' ], ( new StringType() )->describe() );
+	}
+
 }

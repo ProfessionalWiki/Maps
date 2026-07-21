@@ -43,4 +43,8 @@ class BooleanTypeTest extends TestCase {
 		];
 	}
 
+	public function testDescribe(): void {
+		$this->assertSame( [ 'maps-config-type-boolean' ], ( new BooleanType() )->describe() );
+	}
+
 }

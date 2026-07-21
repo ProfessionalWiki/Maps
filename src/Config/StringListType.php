@@ -10,6 +10,10 @@ class StringListType implements ConfigType {
 		return $this->isStringList( $value ) ? [] : [ [ 'maps-config-error-invalid-default-list', $location ] ];
 	}
 
+	public function describe(): array {
+		return [ 'maps-config-type-string-list' ];
+	}
+
 	private function isStringList( mixed $value ): bool {
 		if ( !is_array( $value ) || !array_is_list( $value ) ) {
 			return false;

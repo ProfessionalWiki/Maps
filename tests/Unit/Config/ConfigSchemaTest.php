@@ -58,4 +58,13 @@ class ConfigSchemaTest extends TestCase {
 		}
 	}
 
+	public function testEverySettingTypeProvidesADescription(): void {
+		foreach ( ConfigSchema::newDefault()->getSettings() as $setting ) {
+			$description = $setting->type->describe();
+
+			$this->assertNotSame( [], $description, "{$setting->group}.{$setting->key} has no type description" );
+			$this->assertIsString( $description[0], "{$setting->group}.{$setting->key} description lacks a message key" );
+		}
+	}
+
 }

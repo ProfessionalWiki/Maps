@@ -20,4 +20,13 @@ interface ConfigType {
 	 */
 	public function validate( mixed $value, string $location ): array;
 
+	/**
+	 * Describes the accepted value shape for the on-page configuration reference. The description is
+	 * about the value type, not the individual setting: its semantics live in the external
+	 * documentation, reached via the setting name shown alongside it.
+	 *
+	 * @return array A single message spec, [ messageKey, ...params ].
+	 */
+	public function describe(): array;
+
 }

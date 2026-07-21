@@ -87,4 +87,18 @@ class DimensionTypeTest extends TestCase {
 		];
 	}
 
+	public function testDescribeWithAutoListsUnitsAndAuto(): void {
+		$this->assertSame(
+			[ 'maps-config-type-dimension-auto', 'px, ex, em, %' ],
+			$this->width()->describe()
+		);
+	}
+
+	public function testDescribeWithoutAutoListsOnlyUnits(): void {
+		$this->assertSame(
+			[ 'maps-config-type-dimension', 'px, ex, em' ],
+			$this->height()->describe()
+		);
+	}
+
 }

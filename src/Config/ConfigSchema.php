@@ -62,7 +62,11 @@ class ConfigSchema {
 		$zoomControlStyles = [ 'default', 'small', 'large' ];
 		// The D modifier keeps $ from matching before a trailing newline, so a value with one is
 		// rejected rather than reaching the Google Maps API script URL.
-		$language = new PatternType( '/^[a-zA-Z]{2,3}(-[a-zA-Z0-9]{2,8})?$/D', 'maps-config-error-invalid-language' );
+		$language = new PatternType(
+			'/^[a-zA-Z]{2,3}(-[a-zA-Z0-9]{2,8})?$/D',
+			'maps-config-error-invalid-language',
+			'maps-config-type-language'
+		);
 
 		return new self( [
 			self::replace( 'general', 'mapWidth', 'egMapsMapWidth', new DimensionType( [ 'px', 'ex', 'em', '%' ], true ) ),

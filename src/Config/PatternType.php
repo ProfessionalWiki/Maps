@@ -12,7 +12,8 @@ class PatternType implements ConfigType {
 
 	public function __construct(
 		private string $pattern,
-		private string $errorMessageKey
+		private string $errorMessageKey,
+		private string $descriptionMessageKey
 	) {
 	}
 
@@ -22,6 +23,10 @@ class PatternType implements ConfigType {
 		}
 
 		return [ [ $this->errorMessageKey, $location ] ];
+	}
+
+	public function describe(): array {
+		return [ $this->descriptionMessageKey ];
 	}
 
 }

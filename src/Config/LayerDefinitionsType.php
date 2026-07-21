@@ -35,6 +35,10 @@ class LayerDefinitionsType implements ConfigType {
 		return $errors;
 	}
 
+	public function describe(): array {
+		return [ 'maps-config-type-layer-definitions' ];
+	}
+
 	private function validateDefinition( string $name, mixed $definition ): array {
 		if ( !$this->isObject( $definition ) ) {
 			return [ [ 'maps-config-error-not-object', $name ] ];

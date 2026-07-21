@@ -17,6 +17,10 @@ class NumberMapType implements ConfigType {
 		return $this->isValid( $value ) ? [] : [ [ 'maps-config-error-invalid-number-map', $location ] ];
 	}
 
+	public function describe(): array {
+		return [ 'maps-config-type-number-map' ];
+	}
+
 	private function isValid( mixed $value ): bool {
 		if ( !is_array( $value ) || $value === [] || array_is_list( $value ) ) {
 			return false;
