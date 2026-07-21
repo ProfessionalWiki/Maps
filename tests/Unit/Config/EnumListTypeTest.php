@@ -50,4 +50,11 @@ class EnumListTypeTest extends TestCase {
 		];
 	}
 
+	public function testDescribeListsTheAllowedValues(): void {
+		$this->assertSame(
+			[ 'maps-config-type-enum-list', 'traffic, bicycling, transit' ],
+			$this->type()->describe()
+		);
+	}
+
 }

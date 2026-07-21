@@ -10,4 +10,8 @@ class StringType implements ConfigType {
 		return is_string( $value ) ? [] : [ [ 'maps-config-error-invalid-string', $location ] ];
 	}
 
+	public function describe(): array {
+		return [ 'maps-config-type-string' ];
+	}
+
 }

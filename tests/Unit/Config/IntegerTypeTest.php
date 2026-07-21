@@ -53,4 +53,12 @@ class IntegerTypeTest extends TestCase {
 		);
 	}
 
+	public function testDescribeWithoutMinimum(): void {
+		$this->assertSame( [ 'maps-config-type-integer' ], ( new IntegerType() )->describe() );
+	}
+
+	public function testDescribeWithMinimumIncludesTheMinimum(): void {
+		$this->assertSame( [ 'maps-config-type-integer-min', 0 ], ( new IntegerType( 0 ) )->describe() );
+	}
+
 }

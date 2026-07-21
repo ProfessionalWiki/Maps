@@ -165,4 +165,8 @@ class LayerDefinitionsTypeTest extends TestCase {
 		);
 	}
 
+	public function testDescribe(): void {
+		$this->assertSame( [ 'maps-config-type-layer-definitions' ], ( new LayerDefinitionsType() )->describe() );
+	}
+
 }

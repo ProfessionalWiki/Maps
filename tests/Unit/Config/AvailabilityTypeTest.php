@@ -46,4 +46,8 @@ class AvailabilityTypeTest extends TestCase {
 		];
 	}
 
+	public function testDescribe(): void {
+		$this->assertSame( [ 'maps-config-type-availability' ], ( new AvailabilityType() )->describe() );
+	}
+
 }

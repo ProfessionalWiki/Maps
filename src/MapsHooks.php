@@ -6,6 +6,7 @@ namespace Maps;
 
 use AlItem;
 use ALTree;
+use Maps\Config\ConfigExample;
 use Maps\GeoJsonPages\GeoJsonNewPageUi;
 use Maps\Presentation\OutputFacade;
 use MediaWiki\Html\Html;
@@ -172,6 +173,77 @@ final class MapsHooks {
 		return Html::errorBox(
 			wfMessage( 'maps-config-invalid' )->escaped() . Html::rawElement( 'ul', [], $items )
 		);
+	}
+
+	/**
+	 * On the on-wiki config page, suppresses the default MediaWiki-namespace intro and frames the
+	 * JSON editor with a pointer to the documentation and the schema-generated configuration
+	 * reference.
+	 *
+	 * @param \MediaWiki\EditPage\EditPage $editPage
+	 */
+	public static function onAlternateEdit( $editPage ) {
+		$factory = MapsFactory::globalInstance();
+
+		if ( !$factory->isConfigPage( $editPage->getTitle() ) ) {
+			return true;
+		}
+
+		$editPage->suppressIntro = true;
+
+		$builder = $factory->newConfigDocumentationBuilder( $editPage->getContext() );
+		$editPage->editFormTextTop = $builder->buildPointer();
+		$editPage->editFormTextBottom = $builder->buildReference();
+
+		return true;
+	}
+
+	/**
+	 * Preloads a small valid example when the on-wiki config page is created, so an administrator
+	 * starts from a working configuration rather than a blank page.
+	 *
+	 * @param string &$text
+	 * @param Title $title
+	 */
+	public static function onEditFormPreloadText( &$text, $title ) {
+		if ( MapsFactory::globalInstance()->isConfigPage( $title ) ) {
+			$text = ConfigExample::JSON;
+		}
+
+		return true;
+	}
+
+	/**
+	 * On the on-wiki config page, trims the rendered page to the core JSON table and frames it with
+	 * a documentation pointer and the schema-generated configuration reference. View action only.
+	 *
+	 * @param \MediaWiki\Output\OutputPage $out
+	 * @param \Skin $skin
+	 */
+	public static function onBeforePageDisplay( $out, $skin ) {
+		$title = $out->getTitle();
+
+		if ( $title === null || !MapsFactory::globalInstance()->isConfigPage( $title ) ) {
+			return true;
+		}
+
+		if ( $out->getContext()->getActionName() !== 'view' ) {
+			return true;
+		}
+
+		$builder = MapsFactory::globalInstance()->newConfigDocumentationBuilder( $out->getContext() );
+		$trimmed = self::trimToJsonTable( $out->getHTML() );
+
+		$out->clearHTML();
+		$out->addHTML( $builder->buildPointer() . $trimmed . $builder->buildReference() );
+
+		return true;
+	}
+
+	private static function trimToJsonTable( string $html ): string {
+		$position = strpos( $html, '<table class="mw-json">' );
+
+		return $position === false ? $html : substr( $html, $position );
 	}
 
 	/**

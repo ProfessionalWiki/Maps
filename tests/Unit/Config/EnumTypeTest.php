@@ -46,4 +46,11 @@ class EnumTypeTest extends TestCase {
 		];
 	}
 
+	public function testDescribeListsTheAllowedValues(): void {
+		$this->assertSame(
+			[ 'maps-config-type-enum', 'float, dms, dm, dd' ],
+			$this->type()->describe()
+		);
+	}
+
 }

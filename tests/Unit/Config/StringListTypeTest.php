@@ -45,4 +45,8 @@ class StringListTypeTest extends TestCase {
 		];
 	}
 
+	public function testDescribe(): void {
+		$this->assertSame( [ 'maps-config-type-string-list' ], ( new StringListType() )->describe() );
+	}
+
 }

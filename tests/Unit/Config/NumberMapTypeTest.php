@@ -52,4 +52,8 @@ class NumberMapTypeTest extends TestCase {
 		];
 	}
 
+	public function testDescribe(): void {
+		$this->assertSame( [ 'maps-config-type-number-map' ], ( new NumberMapType() )->describe() );
+	}
+
 }

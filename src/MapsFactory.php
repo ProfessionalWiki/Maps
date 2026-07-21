@@ -19,6 +19,7 @@ use Maps\DataAccess\ImageRepository;
 use Maps\DataAccess\MapsFileFetcher;
 use Maps\DataAccess\MediaWikiFileUrlFinder;
 use Maps\DataAccess\MwImageRepository;
+use Maps\Config\ConfigDocumentationBuilder;
 use Maps\Config\ConfigSchema;
 use Maps\Config\ConfigValidator;
 use Maps\Config\EffectiveSettings;
@@ -42,6 +43,7 @@ use Maps\WikitextParsers\RectangleParser;
 use Maps\WikitextParsers\WmsOverlayParser;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
+use MessageLocalizer;
 use ParamProcessor\ParamDefinitionFactory;
 use MediaWiki\Parser\Parser;
 use RepoGroup;
@@ -230,6 +232,10 @@ class MapsFactory {
 
 	public function getConfigValidator(): ConfigValidator {
 		return new ConfigValidator( $this->getConfigSchema() );
+	}
+
+	public function newConfigDocumentationBuilder( MessageLocalizer $messageLocalizer ): ConfigDocumentationBuilder {
+		return new ConfigDocumentationBuilder( $this->getConfigSchema(), $messageLocalizer );
 	}
 
 	public function isWikiConfigEnabled(): bool {

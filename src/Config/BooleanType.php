@@ -10,4 +10,8 @@ class BooleanType implements ConfigType {
 		return is_bool( $value ) ? [] : [ [ 'maps-config-error-invalid-boolean', $location ] ];
 	}
 
+	public function describe(): array {
+		return [ 'maps-config-type-boolean' ];
+	}
+
 }

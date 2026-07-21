@@ -15,6 +15,10 @@ class AvailabilityType implements ConfigType {
 		return $this->isAvailabilityMap( $value ) ? [] : [ [ 'maps-config-error-invalid-availability', $location ] ];
 	}
 
+	public function describe(): array {
+		return [ 'maps-config-type-availability' ];
+	}
+
 	private function isAvailabilityMap( mixed $value ): bool {
 		if ( !is_array( $value ) || ( $value !== [] && array_is_list( $value ) ) ) {
 			return false;

@@ -22,4 +22,8 @@ class EnumType implements ConfigType {
 		return [ [ 'maps-config-error-invalid-enum', $location, implode( ', ', $this->allowedValues ) ] ];
 	}
 
+	public function describe(): array {
+		return [ 'maps-config-type-enum', implode( ', ', $this->allowedValues ) ];
+	}
+
 }
