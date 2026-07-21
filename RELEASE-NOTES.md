@@ -5,7 +5,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 ## Maps 14.0.0
 
-Released on TBD.
+Released on July 21st, 2026.
 
 * Added an on-wiki JSON configuration page at `MediaWiki:Maps` exposing most Maps settings, grouped by service and topic (general map, coordinate, geocoding, Semantic MediaWiki, Leaflet and Google Maps options), including the Leaflet custom layer definitions and available layers. It is editable only by administrators and interface administrators, is validated on save, and is combined with `LocalSettings.php` with the wiki page taking precedence. Secrets, script-injection primitives and setup-time settings stay exclusive to `LocalSettings.php`. Set `$egMapsEnableInWikiConfig` to `false` to disable it.
 * Editing or viewing the `MediaWiki:Maps` page now shows a configuration reference listing every key, its accepted value and the `LocalSettings.php` setting it overrides, next to a link to the full documentation. Creating the page preloads a small working example.
