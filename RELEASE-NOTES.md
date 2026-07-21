@@ -7,10 +7,8 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 Released on July 21st, 2026.
 
-* Added an on-wiki JSON configuration page at `MediaWiki:Maps` exposing most Maps settings, grouped by service and topic (general map, coordinate, geocoding, Semantic MediaWiki, Leaflet and Google Maps options), including the Leaflet custom layer definitions and available layers. It is editable only by administrators and interface administrators, is validated on save, and is combined with `LocalSettings.php` with the wiki page taking precedence. Secrets, script-injection primitives and setup-time settings stay exclusive to `LocalSettings.php`. Set `$egMapsEnableInWikiConfig` to `false` to disable it.
-* Editing or viewing the `MediaWiki:Maps` page now shows a configuration reference listing every key, its accepted value and the `LocalSettings.php` setting it overrides, next to a link to the full documentation. Creating the page preloads a small working example.
-* Hardened the custom Leaflet layer definitions used by `$egMapsLeafletLayerDefinitions` and the config page (breaking change): the `url` and `errorTileUrl` must be `http(s)` URLs, only an allowlist of Leaflet `options` is kept, and `attribution` is sanitized to plain text and `http(s)` links. Definitions relying on raw HTML attribution or non-allowlisted options need updating.
-* Removed built-in Leaflet layers whose upstream tile services have shut down: Stamen, Hydda, MapQuest Open, OpenMapSurfer, HikeBike, GeoportailFrance, Esri.DeLorme, and OpenStreetMap.BlackAndWhite. If you still use one of these, define a replacement with the `$egMapsLeafletLayerDefinitions` setting.
+* Added an on-wiki JSON configuration page at `MediaWiki:Maps` exposing most Maps settings. It is editable only by administrators and interface administrators and is combined with `LocalSettings.php` with the wiki page taking precedence. Secrets stay exclusive to `LocalSettings.php`. Set `$egMapsEnableInWikiConfig` to `false` to disable it.
+* Removed built-in Leaflet layers whose upstream tile services have shut down: Stamen, Hydda, MapQuest Open, OpenMapSurfer, HikeBike, GeoportailFrance, Esri.DeLorme, and OpenStreetMap.BlackAndWhite. If you still use one of these, define a replacement via the `$egMapsLeafletLayerDefinitions` setting.
 
 ## Maps 13.1.0
 
