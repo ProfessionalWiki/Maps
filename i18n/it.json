@@ -167,5 +167,13 @@
 	"maps-validator-describe-header-description": "Descrizione",
 	"maps-validator-describe-required": "obbligatorio",
 	"maps-validator-describe-empty": "vuota",
-	"maps-validator-message-nodesc": "Nessuna descrizione fornita"
+	"maps-validator-message-nodesc": "Nessuna descrizione fornita",
+	"maps-config-type-string": "Testo",
+	"maps-config-type-string-list": "Un elenco di valori di testo",
+	"maps-config-type-integer": "Un numero intero",
+	"maps-config-type-integer-min": "Un numero intero, uguale o superiore a $1",
+	"maps-config-type-enum": "Uno tra: $1",
+	"maps-config-type-language": "Un codice lingua, come \"it\" o \"en-GB\"",
+	"maps-config-docs-column-key": "Impostazioni",
+	"maps-config-docs-column-type": "Valore accettato"
 }

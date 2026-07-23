@@ -7,6 +7,7 @@
 			"Guycn2",
 			"Inkbug",
 			"Macofe",
+			"Neriah",
 			"Rotemliss",
 			"YaronSh",
 			"Yona b",
@@ -255,5 +256,6 @@
 	"maps-validator-describe-header-description": "תיאור",
 	"maps-validator-describe-required": "נדרש",
 	"maps-validator-describe-empty": "ריק",
-	"maps-validator-message-nodesc": "ללא תיאור"
+	"maps-validator-message-nodesc": "ללא תיאור",
+	"maps-config-error-invalid-integer": "\"$1\" חייב להיות מספר שלם."
 }

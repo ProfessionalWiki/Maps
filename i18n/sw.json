@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Fredrick Kafuka",
 			"Kipala",
 			"Lloffiwr",
 			"Yasen igra"
@@ -10,5 +11,8 @@
 	"maps-googlemaps3-par-imageoverlays": "Inaruhusu kuongeza picha mahali panapoonyeshwa",
 	"semanticmaps-kml-link": "Tazama faili la KML",
 	"semanticmaps-default-kml-pagelink": "Tazama ukurasa $1",
-	"semanticmaps-forminput-locations": "Mahali"
+	"semanticmaps-forminput-locations": "Mahali",
+	"maps-config-type-boolean": "kweli au uongo",
+	"maps-config-type-string": "Maandishi",
+	"maps-config-type-layer-definitions": "Tabaka maalum za Vipeperushi zilizopewa jina; tazama hati"
 }
