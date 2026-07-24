@@ -25,7 +25,8 @@ interface ConfigType {
 	 * about the value type, not the individual setting: its semantics live in the external
 	 * documentation, reached via the setting name shown alongside it.
 	 *
-	 * @return array A single message spec, [ messageKey, ...params ].
+	 * @return array A single message spec, [ messageKey, ...params ]. A param may be a LiteralValues
+	 *         to have its literal tokens rendered as code in the reference.
 	 */
 	public function describe(): array;
 

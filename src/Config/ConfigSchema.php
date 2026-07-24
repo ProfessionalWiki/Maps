@@ -65,7 +65,8 @@ class ConfigSchema {
 		$language = new PatternType(
 			'/^[a-zA-Z]{2,3}(-[a-zA-Z0-9]{2,8})?$/D',
 			'maps-config-error-invalid-language',
-			'maps-config-type-language'
+			'maps-config-type-language',
+			[ 'en', 'en-GB' ]
 		);
 
 		return new self( [

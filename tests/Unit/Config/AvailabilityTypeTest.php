@@ -5,6 +5,7 @@ declare( strict_types = 1 );
 namespace Maps\Tests\Unit\Config;
 
 use Maps\Config\AvailabilityType;
+use Maps\Config\LiteralValues;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -47,7 +48,10 @@ class AvailabilityTypeTest extends TestCase {
 	}
 
 	public function testDescribe(): void {
-		$this->assertSame( [ 'maps-config-type-availability' ], ( new AvailabilityType() )->describe() );
+		$this->assertEquals(
+			[ 'maps-config-type-availability', new LiteralValues( 'true' ), new LiteralValues( 'false' ) ],
+			( new AvailabilityType() )->describe()
+		);
 	}
 
 }

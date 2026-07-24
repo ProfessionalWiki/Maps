@@ -5,6 +5,7 @@ declare( strict_types = 1 );
 namespace Maps\Tests\Unit\Config;
 
 use Maps\Config\BooleanType;
+use Maps\Config\LiteralValues;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -44,7 +45,10 @@ class BooleanTypeTest extends TestCase {
 	}
 
 	public function testDescribe(): void {
-		$this->assertSame( [ 'maps-config-type-boolean' ], ( new BooleanType() )->describe() );
+		$this->assertEquals(
+			[ 'maps-config-type-boolean', new LiteralValues( 'true' ), new LiteralValues( 'false' ) ],
+			( new BooleanType() )->describe()
+		);
 	}
 
 }

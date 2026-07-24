@@ -16,7 +16,7 @@ class AvailabilityType implements ConfigType {
 	}
 
 	public function describe(): array {
-		return [ 'maps-config-type-availability' ];
+		return [ 'maps-config-type-availability', new LiteralValues( 'true' ), new LiteralValues( 'false' ) ];
 	}
 
 	private function isAvailabilityMap( mixed $value ): bool {

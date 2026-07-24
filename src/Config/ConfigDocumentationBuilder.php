@@ -105,14 +105,36 @@ class ConfigDocumentationBuilder {
 		return Html::rawElement(
 			'tr',
 			[],
-			Html::rawElement( 'td', [], Html::element( 'code', [], $setting->key ) )
-			. Html::element( 'td', [], $this->describeType( $setting->type ) )
-			. Html::rawElement( 'td', [], Html::element( 'code', [], '$' . $setting->settingName ) )
+			Html::element( 'td', [], $setting->key )
+			. Html::rawElement( 'td', [], $this->describeType( $setting->type ) )
+			. Html::element( 'td', [], '$' . $setting->settingName )
 		);
 	}
 
+	/**
+	 * Resolves a type's description, rendering its literal values as code while leaving descriptive
+	 * parameters, such as a numeric minimum, as plain text.
+	 */
 	private function describeType( ConfigType $type ): string {
-		return $this->messageLocalizer->msg( ...$type->describe() )->text();
+		$spec = $type->describe();
+		$message = $this->messageLocalizer->msg( array_shift( $spec ) );
+
+		foreach ( $spec as $param ) {
+			if ( $param instanceof LiteralValues ) {
+				$message->rawParams( $this->renderLiteralValues( $param ) );
+			} else {
+				$message->params( $param );
+			}
+		}
+
+		return $message->escaped();
+	}
+
+	private function renderLiteralValues( LiteralValues $values ): string {
+		return implode( ', ', array_map(
+			static fn ( string $value ): string => Html::element( 'code', [], $value ),
+			$values->values
+		) );
 	}
 
 }
