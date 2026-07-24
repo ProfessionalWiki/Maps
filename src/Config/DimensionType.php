@@ -26,10 +26,10 @@ class DimensionType implements ConfigType {
 	}
 
 	public function describe(): array {
-		$units = implode( ', ', $this->units );
+		$units = new LiteralValues( ...$this->units );
 
 		if ( $this->allowAuto ) {
-			return [ 'maps-config-type-dimension-auto', $units ];
+			return [ 'maps-config-type-dimension-auto', $units, new LiteralValues( 'auto' ) ];
 		}
 
 		return [ 'maps-config-type-dimension', $units ];

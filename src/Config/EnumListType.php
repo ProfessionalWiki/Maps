@@ -23,7 +23,7 @@ class EnumListType implements ConfigType {
 	}
 
 	public function describe(): array {
-		return [ 'maps-config-type-enum-list', implode( ', ', $this->allowedValues ) ];
+		return [ 'maps-config-type-enum-list', new LiteralValues( ...$this->allowedValues ) ];
 	}
 
 	private function isValid( mixed $value ): bool {

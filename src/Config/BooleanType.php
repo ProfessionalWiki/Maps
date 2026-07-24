@@ -11,7 +11,7 @@ class BooleanType implements ConfigType {
 	}
 
 	public function describe(): array {
-		return [ 'maps-config-type-boolean' ];
+		return [ 'maps-config-type-boolean', new LiteralValues( 'true' ), new LiteralValues( 'false' ) ];
 	}
 
 }

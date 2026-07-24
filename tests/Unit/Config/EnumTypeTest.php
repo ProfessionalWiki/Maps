@@ -5,6 +5,7 @@ declare( strict_types = 1 );
 namespace Maps\Tests\Unit\Config;
 
 use Maps\Config\EnumType;
+use Maps\Config\LiteralValues;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -47,8 +48,8 @@ class EnumTypeTest extends TestCase {
 	}
 
 	public function testDescribeListsTheAllowedValues(): void {
-		$this->assertSame(
-			[ 'maps-config-type-enum', 'float, dms, dm, dd' ],
+		$this->assertEquals(
+			[ 'maps-config-type-enum', new LiteralValues( 'float', 'dms', 'dm', 'dd' ) ],
 			$this->type()->describe()
 		);
 	}

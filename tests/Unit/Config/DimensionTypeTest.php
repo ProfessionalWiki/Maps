@@ -5,6 +5,7 @@ declare( strict_types = 1 );
 namespace Maps\Tests\Unit\Config;
 
 use Maps\Config\DimensionType;
+use Maps\Config\LiteralValues;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -88,15 +89,19 @@ class DimensionTypeTest extends TestCase {
 	}
 
 	public function testDescribeWithAutoListsUnitsAndAuto(): void {
-		$this->assertSame(
-			[ 'maps-config-type-dimension-auto', 'px, ex, em, %' ],
+		$this->assertEquals(
+			[
+				'maps-config-type-dimension-auto',
+				new LiteralValues( 'px', 'ex', 'em', '%' ),
+				new LiteralValues( 'auto' ),
+			],
 			$this->width()->describe()
 		);
 	}
 
 	public function testDescribeWithoutAutoListsOnlyUnits(): void {
-		$this->assertSame(
-			[ 'maps-config-type-dimension', 'px, ex, em' ],
+		$this->assertEquals(
+			[ 'maps-config-type-dimension', new LiteralValues( 'px', 'ex', 'em' ) ],
 			$this->height()->describe()
 		);
 	}

@@ -23,7 +23,7 @@ class EnumType implements ConfigType {
 	}
 
 	public function describe(): array {
-		return [ 'maps-config-type-enum', implode( ', ', $this->allowedValues ) ];
+		return [ 'maps-config-type-enum', new LiteralValues( ...$this->allowedValues ) ];
 	}
 
 }

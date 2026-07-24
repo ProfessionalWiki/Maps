@@ -4,6 +4,7 @@ declare( strict_types = 1 );
 
 namespace Maps\Tests\Unit\Config;
 
+use Maps\Config\LiteralValues;
 use Maps\Config\PatternType;
 use PHPUnit\Framework\TestCase;
 
@@ -16,7 +17,8 @@ class PatternTypeTest extends TestCase {
 		return new PatternType(
 			'/^[a-zA-Z]{2,3}(-[a-zA-Z0-9]{2,8})?$/D',
 			'maps-config-error-invalid-language',
-			'maps-config-type-language'
+			'maps-config-type-language',
+			[ 'en', 'en-GB' ]
 		);
 	}
 
@@ -52,8 +54,17 @@ class PatternTypeTest extends TestCase {
 		];
 	}
 
-	public function testDescribeReturnsTheConfiguredKey(): void {
-		$this->assertSame( [ 'maps-config-type-language' ], $this->languageType()->describe() );
+	public function testDescribeListsTheConfiguredKeyAndExampleValues(): void {
+		$this->assertEquals(
+			[ 'maps-config-type-language', new LiteralValues( 'en', 'en-GB' ) ],
+			$this->languageType()->describe()
+		);
+	}
+
+	public function testDescribeWithoutExamplesReturnsOnlyTheKey(): void {
+		$type = new PatternType( '/^\d+$/D', 'maps-config-error-invalid-language', 'maps-config-type-language' );
+
+		$this->assertSame( [ 'maps-config-type-language' ], $type->describe() );
 	}
 
 }
