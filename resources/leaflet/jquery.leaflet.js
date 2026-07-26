@@ -43,8 +43,19 @@
 		return mapOptions;
 	}
 
+	// Map data from before the geojson parameter became a list holds a single GeoJSON object, and
+	// still reaches this code from the parser cache after an upgrade.
+	function geoJsonSources(geoJson) {
+		if (Array.isArray(geoJson)) {
+			return geoJson;
+		}
+
+		return geoJson ? [geoJson] : [];
+	}
+
 	$.fn.leafletmaps = function ( options ) {
 		let _this = this;
+		options.geojson = geoJsonSources(options.geojson);
 		_this.options = options; // needed by LeafletAjax.js
 
 		this.setup = function() {
@@ -145,7 +156,7 @@
 				_this.purgePage();
 
 				editor.remove();
-				// Kept as a list of sources, which is what the map data holds and what rendering expects
+				// Replacing the whole list is safe because the editor only runs with a single source
 				options.geojson = [ editor.getLayer().toGeoJSON() ];
 				_this.mapContent = maps.leaflet.FeatureBuilder.contentLayerFromOptions(options).addTo(_this.map);
 
