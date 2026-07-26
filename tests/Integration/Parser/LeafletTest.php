@@ -21,6 +21,9 @@ use PHPUnit\Framework\TestCase;
  */
 class LeafletTest extends TestCase {
 
+	private const FIRST_FEATURE = 'Feature of the first page';
+	private const SECOND_FEATURE = 'Feature of the second page';
+
 	private array $originalLayerDefinitions;
 
 	protected function setUp(): void {
@@ -155,38 +158,43 @@ class LeafletTest extends TestCase {
 		);
 	}
 
+	private function createTwoGeoJsonPages(): void {
+		$this->createGeoJsonPage( 'FirstSource', self::FIRST_FEATURE );
+		$this->createGeoJsonPage( 'SecondSource', self::SECOND_FEATURE );
+	}
+
+	private function assertBothFeaturesAreRendered( string $html ): void {
+		$this->assertStringContainsData( self::FIRST_FEATURE, $html );
+		$this->assertStringContainsData( self::SECOND_FEATURE, $html );
+	}
+
 	public function testBothGeoJsonSourcesAreRendered() {
-		$this->createGeoJsonPage( 'FirstSource', 'Feature of the first page' );
-		$this->createGeoJsonPage( 'SecondSource', 'Feature of the second page' );
+		$this->createTwoGeoJsonPages();
 
-		$html = $this->parse( '{{#leaflet:geojson=FirstSource;SecondSource}}' );
-
-		$this->assertStringContainsData( 'Feature of the first page', $html );
-		$this->assertStringContainsData( 'Feature of the second page', $html );
+		$this->assertBothFeaturesAreRendered(
+			$this->parse( '{{#leaflet:geojson=FirstSource;SecondSource}}' )
+		);
 	}
 
 	public function testWhitespaceAfterTheDelimiterIsIgnored() {
-		$this->createGeoJsonPage( 'FirstSource', 'Feature of the first page' );
-		$this->createGeoJsonPage( 'SecondSource', 'Feature of the second page' );
+		$this->createTwoGeoJsonPages();
 
-		$html = $this->parse( '{{#leaflet:geojson=FirstSource; SecondSource}}' );
-
-		$this->assertStringContainsData( 'Feature of the first page', $html );
-		$this->assertStringContainsData( 'Feature of the second page', $html );
+		$this->assertBothFeaturesAreRendered(
+			$this->parse( '{{#leaflet:geojson=FirstSource; SecondSource}}' )
+		);
 	}
 
 	public function testMissingSourceDoesNotStopTheRemainingOneFromRendering() {
-		$this->createGeoJsonPage( 'SecondSource', 'Feature of the second page' );
+		$this->createGeoJsonPage( 'SecondSource', self::SECOND_FEATURE );
 
 		$html = $this->parse( '{{#leaflet:geojson=NoSuchPage;SecondSource}}' );
 
 		$this->assertStringContainsData( '"geojson":[{"type":"FeatureCollection"', $html );
-		$this->assertStringContainsData( 'Feature of the second page', $html );
+		$this->assertStringContainsData( self::SECOND_FEATURE, $html );
 	}
 
 	public function testGeoJsonSourceIsNullWithMultipleSources() {
-		$this->createGeoJsonPage( 'FirstSource', 'Feature of the first page' );
-		$this->createGeoJsonPage( 'SecondSource', 'Feature of the second page' );
+		$this->createTwoGeoJsonPages();
 
 		$this->assertStringContainsData(
 			'"GeoJsonSource":null',
@@ -195,11 +203,20 @@ class LeafletTest extends TestCase {
 	}
 
 	public function testGeoJsonSourceIsThePageNameWithASingleSource() {
-		$this->createGeoJsonPage( 'FirstSource', 'Feature of the first page' );
+		$this->createGeoJsonPage( 'FirstSource', self::FIRST_FEATURE );
 
 		$this->assertStringContainsData(
 			'"GeoJsonSource":"FirstSource"',
 			$this->parse( '{{#leaflet:geojson=FirstSource}}' )
+		);
+	}
+
+	public function testTrailingDelimiterLeavesTheSingleSourceEditable() {
+		$this->createGeoJsonPage( 'FirstSource', self::FIRST_FEATURE );
+
+		$this->assertStringContainsData(
+			'"GeoJsonSource":"FirstSource"',
+			$this->parse( '{{#leaflet:geojson=FirstSource;}}' )
 		);
 	}
 

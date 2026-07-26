@@ -190,6 +190,44 @@ class LeafletServiceTest extends TestCase {
 		);
 	}
 
+	public function testEditorModuleIsLoadedForAnEditableGeoJsonSource() {
+		$this->assertContains(
+			'ext.maps.leaflet.editor',
+			$this->resourceModulesFor( [ 'GeoJsonSource' => 'MySource' ] )
+		);
+	}
+
+	public function testEditorModuleIsNotLoadedWhenThereIsNoEditableGeoJsonSource() {
+		$this->assertNotContains(
+			'ext.maps.leaflet.editor',
+			$this->resourceModulesFor( [ 'GeoJsonSource' => null ] )
+		);
+	}
+
+	public function testEditorModuleIsNotLoadedWhenNoGeoJsonIsUsed() {
+		$this->assertNotContains(
+			'ext.maps.leaflet.editor',
+			$this->resourceModulesFor( [] )
+		);
+	}
+
+	/**
+	 * @param array<string, mixed> $overrides
+	 * @return string[]
+	 */
+	private function resourceModulesFor( array $overrides ): array {
+		return $this->newService( new InMemoryImageRepository() )->getResourceModules(
+			array_merge(
+				[
+					'resizable' => false,
+					'cluster' => false,
+					'fullscreen' => false,
+				],
+				$overrides
+			)
+		);
+	}
+
 	/**
 	 * @param array<string, mixed> $overrides
 	 * @param array<string, array> $layerDefinitions

@@ -30,17 +30,17 @@
 		return { type: 'FeatureCollection', features: features };
 	}
 
-	// The number of features rendered by the GeoJSON layer of a map content layer, 0 when there is none.
-	function geoJsonFeatureCount( contentLayer ) {
-		var count = 0;
+	// The GeoJSON layer of a map content layer, or null when there is none.
+	function geoJsonLayerIn( contentLayer ) {
+		var geoJsonLayer = null;
 
 		contentLayer.eachLayer( function ( layer ) {
 			if ( layer instanceof L.GeoJSON ) {
-				count = layer.getLayers().length;
+				geoJsonLayer = layer;
 			}
 		} );
 
-		return count;
+		return geoJsonLayer;
 	}
 
 	QUnit.test( 'createMarker returns a marker at the correct position', function ( assert ) {
@@ -94,7 +94,11 @@
 			]
 		} ) );
 
-		assert.strictEqual( geoJsonFeatureCount( featureGroup ), 2, 'GeoJSON layer contains both Point features' );
+		assert.strictEqual(
+			geoJsonLayerIn( featureGroup ).getLayers().length,
+			2,
+			'GeoJSON layer contains both Point features'
+		);
 	} );
 
 	QUnit.test( 'contentLayerFromOptions includes the features of every GeoJSON source', function ( assert ) {
@@ -105,18 +109,17 @@
 			]
 		} ) );
 
-		assert.strictEqual( geoJsonFeatureCount( featureGroup ), 3, 'GeoJSON layer contains the features of both sources' );
+		assert.strictEqual(
+			geoJsonLayerIn( featureGroup ).getLayers().length,
+			3,
+			'GeoJSON layer contains the features of both sources'
+		);
 	} );
 
 	QUnit.test( 'contentLayerFromOptions adds no GeoJSON layer without sources', function ( assert ) {
 		var featureGroup = FeatureBuilder.contentLayerFromOptions( newOptions() );
 
-		var hasGeoJsonLayer = false;
-		featureGroup.eachLayer( function ( layer ) {
-			hasGeoJsonLayer = hasGeoJsonLayer || layer instanceof L.GeoJSON;
-		} );
-
-		assert.false( hasGeoJsonLayer, 'Feature group has no GeoJSON layer' );
+		assert.strictEqual( geoJsonLayerIn( featureGroup ), null, 'Feature group has no GeoJSON layer' );
 	} );
 
 }( window.jQuery ) );
