@@ -6,14 +6,19 @@ namespace Maps\Tests\Integration\Parser;
 
 use Maps\Config\ConfigSchema;
 use Maps\Config\EffectiveSettings;
+use Maps\GeoJsonPages\GeoJsonContent;
 use Maps\LeafletService;
 use Maps\Tests\MapsTestFactory;
 use Maps\Tests\TestDoubles\ImageValueObject;
 use Maps\Tests\TestDoubles\InMemoryImageRepository;
 use Maps\Tests\TestDoubles\StubWikiConfigSource;
+use Maps\Tests\Util\PageCreator;
 use Maps\Tests\Util\TestFactory;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @covers \Maps\LeafletService
+ */
 class LeafletTest extends TestCase {
 
 	private array $originalLayerDefinitions;
@@ -132,6 +137,70 @@ class LeafletTest extends TestCase {
 		$html = $this->parse( '{{#leaflet:}}' );
 
 		$this->assertStringNotContainsString( 'layerDefinitions', $html );
+	}
+
+	private function createGeoJsonPage( string $pageName, string $featureTitle ): void {
+		PageCreator::instance()->createPageWithContent(
+			'GeoJson:' . $pageName,
+			new GeoJsonContent( json_encode( [
+				'type' => 'FeatureCollection',
+				'features' => [
+					[
+						'type' => 'Feature',
+						'geometry' => [ 'type' => 'Point', 'coordinates' => [ 4.35, 50.85 ] ],
+						'properties' => [ 'title' => $featureTitle ],
+					],
+				],
+			] ) )
+		);
+	}
+
+	public function testBothGeoJsonSourcesAreRendered() {
+		$this->createGeoJsonPage( 'FirstSource', 'Feature of the first page' );
+		$this->createGeoJsonPage( 'SecondSource', 'Feature of the second page' );
+
+		$html = $this->parse( '{{#leaflet:geojson=FirstSource;SecondSource}}' );
+
+		$this->assertStringContainsData( 'Feature of the first page', $html );
+		$this->assertStringContainsData( 'Feature of the second page', $html );
+	}
+
+	public function testWhitespaceAfterTheDelimiterIsIgnored() {
+		$this->createGeoJsonPage( 'FirstSource', 'Feature of the first page' );
+		$this->createGeoJsonPage( 'SecondSource', 'Feature of the second page' );
+
+		$html = $this->parse( '{{#leaflet:geojson=FirstSource; SecondSource}}' );
+
+		$this->assertStringContainsData( 'Feature of the first page', $html );
+		$this->assertStringContainsData( 'Feature of the second page', $html );
+	}
+
+	public function testMissingSourceDoesNotStopTheRemainingOneFromRendering() {
+		$this->createGeoJsonPage( 'SecondSource', 'Feature of the second page' );
+
+		$html = $this->parse( '{{#leaflet:geojson=NoSuchPage;SecondSource}}' );
+
+		$this->assertStringContainsData( '"geojson":[{"type":"FeatureCollection"', $html );
+		$this->assertStringContainsData( 'Feature of the second page', $html );
+	}
+
+	public function testGeoJsonSourceIsNullWithMultipleSources() {
+		$this->createGeoJsonPage( 'FirstSource', 'Feature of the first page' );
+		$this->createGeoJsonPage( 'SecondSource', 'Feature of the second page' );
+
+		$this->assertStringContainsData(
+			'"GeoJsonSource":null',
+			$this->parse( '{{#leaflet:geojson=FirstSource;SecondSource}}' )
+		);
+	}
+
+	public function testGeoJsonSourceIsThePageNameWithASingleSource() {
+		$this->createGeoJsonPage( 'FirstSource', 'Feature of the first page' );
+
+		$this->assertStringContainsData(
+			'"GeoJsonSource":"FirstSource"',
+			$this->parse( '{{#leaflet:geojson=FirstSource}}' )
+		);
 	}
 
 }

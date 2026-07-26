@@ -8,7 +8,7 @@
 			circles: [],
 			rectangles: [],
 			locations: [],
-			geojson: '',
+			geojson: [],
 			cluster: false,
 			copycoords: false,
 			layers: [ 'OpenStreetMap' ],
@@ -78,6 +78,32 @@
 		}
 
 		return captured;
+	}
+
+	function newPointCollection( title ) {
+		return {
+			type: 'FeatureCollection',
+			features: [
+				{
+					type: 'Feature',
+					geometry: { type: 'Point', coordinates: [ 5, 52 ] },
+					properties: { title: title }
+				}
+			]
+		};
+	}
+
+	// The number of features rendered by the GeoJSON layer of a map content layer, 0 when there is none.
+	function geoJsonFeatureCount( contentLayer ) {
+		var count = 0;
+
+		contentLayer.eachLayer( function ( layer ) {
+			if ( layer instanceof L.GeoJSON ) {
+				count = layer.getLayers().length;
+			}
+		} );
+
+		return count;
 	}
 
 	QUnit.test( 'leafletmaps creates a jquery object with map methods', function ( assert ) {
@@ -394,6 +420,70 @@
 		}
 
 		assert.strictEqual( capturedName, 'OpenStreetMap', 'Names without a definition use the provider catalog' );
+	} );
+
+	QUnit.test( 'shouldShowEditButton is false when there is no GeoJsonSource', function ( assert ) {
+		var $div = $( '<div>' ).css( { width: '400px', height: '300px' } ).appendTo( '#qunit-fixture' );
+		var options = makeDefaultOptions();
+		delete options.GeoJsonSource;
+
+		var jqueryMap = createTestMap( $div, options );
+
+		assert.false( jqueryMap.shouldShowEditButton(), 'No edit button without an editable source' );
+
+		jqueryMap.map.remove();
+	} );
+
+	QUnit.test( 'shouldShowEditButton is true for a single GeoJson page source', function ( assert ) {
+		var $div = $( '<div>' ).css( { width: '400px', height: '300px' } ).appendTo( '#qunit-fixture' );
+		var options = makeDefaultOptions( {
+			geojson: [ newPointCollection( 'Amsterdam' ) ],
+			GeoJsonSource: 'TestSource'
+		} );
+
+		var jqueryMap = createTestMap( $div, options );
+
+		assert.true( jqueryMap.shouldShowEditButton(), 'Edit button shown for an editable source' );
+
+		jqueryMap.map.remove();
+	} );
+
+	QUnit.test( 'saving in the editor renders the map content again', function ( assert ) {
+		var $div = $( '<div>' ).css( { width: '400px', height: '300px' } ).appendTo( '#qunit-fixture' );
+		var options = makeDefaultOptions( {
+			geojson: [ newPointCollection( 'Amsterdam' ) ],
+			GeoJsonSource: 'TestSource'
+		} );
+
+		var jqueryMap = createTestMap( $div, options );
+
+		var savedHandler = null;
+		jqueryMap.editor = {
+			initialize: function () {},
+			remove: function () {},
+			onSaved: function ( handler ) {
+				savedHandler = handler;
+			},
+			getLayer: function () {
+				return L.geoJSON( newPointCollection( 'Rotterdam' ) );
+			}
+		};
+		jqueryMap.purgePage = function () {};
+		jqueryMap.addEditButton = function () {};
+
+		var originalAlert = window.alert;
+		window.alert = function () {};
+
+		try {
+			jqueryMap.initializeEditor( options.geojson[ 0 ] );
+			savedHandler();
+		} finally {
+			window.alert = originalAlert;
+		}
+
+		assert.strictEqual( geoJsonFeatureCount( jqueryMap.mapContent ), 1, 'The saved GeoJSON is rendered again' );
+
+		jqueryMap.map.remove();
 	} );
 
 	QUnit.test( 'addOverlays builds a custom overlay from its definition', function ( assert ) {

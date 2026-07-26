@@ -5,6 +5,8 @@ declare( strict_types = 1 );
 namespace Maps;
 
 use Maps\Config\EffectiveSettings;
+use Maps\DataAccess\GeoJsonFetcherResult;
+use Maps\DataAccess\GeoJsonSources;
 use Maps\DataAccess\ImageRepository;
 use Maps\Map\MapData;
 use ParamProcessor\ParameterTypes;
@@ -159,7 +161,10 @@ class LeafletService implements MappingService {
 
 		$params['geojson'] = [
 			'type' => ParameterTypes::STRING,
-			'default' => '',
+			'islist' => true,
+			// Not the default comma: commas are common in both GeoJson page titles and URLs.
+			'delimiter' => ';',
+			'default' => [],
 			'message' => 'maps-displaymap-par-geojson',
 		];
 
@@ -222,7 +227,7 @@ class LeafletService implements MappingService {
 			$modules[] = 'ext.maps.leaflet.fullscreen';
 		}
 
-		if ( $params['geojson'] !== '' ) {
+		if ( ( $params['GeoJsonSource'] ?? null ) !== null ) {
 			$modules[] = 'ext.maps.leaflet.editor';
 		}
 
@@ -275,14 +280,12 @@ class LeafletService implements MappingService {
 	}
 
 	public function newMapDataFromParameters( array $params ): MapData {
-		if ( $params['geojson'] !== '' ) {
-			$fetcher = MapsFactory::globalInstance()->newGeoJsonFetcher();
+		if ( $params['geojson'] !== [] ) {
+			$sources = $this->fetchGeoJson( $params['geojson'] );
 
-			$result = $fetcher->fetch( $params['geojson'] );
-
-			$params['geojson'] = $result->getContent();
-			$params['GeoJsonSource'] = $result->getTitleValue() === null ? null : $result->getTitleValue()->getText();
-			$params['GeoJsonRevisionId'] = $result->getRevisionId();
+			$params['geojson'] = $sources->getContents();
+			$params['GeoJsonSource'] = $sources->getEditablePageName();
+			$params['GeoJsonRevisionId'] = $sources->getEditableRevisionId();
 		}
 
 		$params['imageLayers'] = $this->getJsImageLayers( $params['image layers'] );
@@ -299,6 +302,20 @@ class LeafletService implements MappingService {
 		$params = $this->addUsedLayerDefinitions( $params );
 
 		return new MapData( $params );
+	}
+
+	/**
+	 * @param string[] $sourceNames Page names in the GeoJson namespace or URLs
+	 */
+	private function fetchGeoJson( array $sourceNames ): GeoJsonSources {
+		$fetcher = MapsFactory::globalInstance()->newGeoJsonFetcher();
+
+		return new GeoJsonSources(
+			array_map(
+				static fn ( string $sourceName ): GeoJsonFetcherResult => $fetcher->fetch( $sourceName ),
+				array_filter( $sourceNames, static fn ( string $sourceName ): bool => $sourceName !== '' )
+			)
+		);
 	}
 
 	/**

@@ -197,7 +197,7 @@ class LeafletServiceTest extends TestCase {
 	private function newLeafletMapData( array $overrides, array $layerDefinitions = [] ): MapData {
 		$params = array_merge(
 			[
-				'geojson' => '',
+				'geojson' => [],
 				'image layers' => [],
 				'layers' => [],
 				'overlays' => [],

@@ -60,7 +60,7 @@ class SemanticQueryTest extends TestCase {
 		$this->assertStringContainsString( '<div id="map_leaflet_', $content );
 		$this->assertStringContainsString( '"GeoJsonSource":"TestGeoJson"', $content );
 		$this->assertStringContainsString( '"GeoJsonRevisionId":', $content );
-		$this->assertStringContainsString( '"geojson":{"type":"FeatureCollection"', $content );
+		$this->assertStringContainsString( '"geojson":[{"type":"FeatureCollection"', $content );
 	}
 
 	public function testGoogleMapsQueryContainsImageOverlayData() {

@@ -213,7 +213,7 @@
 			markers.addLayer(createMarker(properties, options));
 		});
 
-		if (options.geojson !== '') {
+		if (options.geojson.length > 0) {
 			features.addLayer(newGeoJsonLayer(options, markers));
 		}
 

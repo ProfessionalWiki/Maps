@@ -87,7 +87,7 @@
 		};
 
 		this.shouldShowEditButton = function() {
-			if ( options.geojson === '' || options.GeoJsonSource === null ) {
+			if ( !options.GeoJsonSource ) {
 				return false;
 			}
 
@@ -127,7 +127,7 @@
 			maps.api.getLatestRevision('GeoJson:' + options.GeoJsonSource).done(
 				function(revision) {
 					if (revision.revid === options.GeoJsonRevisionId) {
-						_this.initializeEditor(options.geojson);
+						_this.initializeEditor(options.geojson[0]);
 					}
 					else {
 						_this.purgePage();
@@ -145,7 +145,8 @@
 				_this.purgePage();
 
 				editor.remove();
-				options.geojson = editor.getLayer().toGeoJSON();
+				// Kept as a list of sources, which is what the map data holds and what rendering expects
+				options.geojson = [ editor.getLayer().toGeoJSON() ];
 				_this.mapContent = maps.leaflet.FeatureBuilder.contentLayerFromOptions(options).addTo(_this.map);
 
 				alert(mw.msg('maps-json-editor-changes-saved'));
