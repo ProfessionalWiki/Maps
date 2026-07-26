@@ -227,7 +227,7 @@ class LeafletService implements MappingService {
 			$modules[] = 'ext.maps.leaflet.fullscreen';
 		}
 
-		if ( ( $params['GeoJsonSource'] ?? null ) !== null ) {
+		if ( isset( $params['GeoJsonSource'] ) ) {
 			$modules[] = 'ext.maps.leaflet.editor';
 		}
 

@@ -72,6 +72,19 @@ class GeoJsonSourcesTest extends TestCase {
 		$this->assertNull( $sources->getEditableRevisionId() );
 	}
 
+	public function testSourceOutsideTheGeoJsonNamespaceIsNotEditable() {
+		$sources = new GeoJsonSources( [
+			new GeoJsonFetcherResult(
+				$this->newFeatureCollection( 'Feature' ),
+				self::REVISION_ID,
+				new TitleValue( NS_MEDIAWIKI, 'Maps' )
+			),
+		] );
+
+		$this->assertNull( $sources->getEditablePageName() );
+		$this->assertNull( $sources->getEditableRevisionId() );
+	}
+
 	public function testSecondSourceWithoutContentStillMakesTheFirstOneUneditable() {
 		$sources = new GeoJsonSources( [
 			$this->newPageResult( 'First', 'FirstFeature' ),

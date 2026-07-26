@@ -220,4 +220,13 @@ class LeafletTest extends TestCase {
 		);
 	}
 
+	public function testLeadingDelimiterLeavesTheSingleSourceEditable() {
+		$this->createGeoJsonPage( 'FirstSource', self::FIRST_FEATURE );
+
+		$this->assertStringContainsData(
+			'"GeoJsonSource":"FirstSource"',
+			$this->parse( '{{#leaflet:geojson=;FirstSource}}' )
+		);
+	}
+
 }

@@ -5,7 +5,7 @@ declare( strict_types = 1 );
 namespace Maps\DataAccess;
 
 /**
- * The GeoJSON of a single map, gathered from the one or more sources given via the geojson parameter.
+ * The GeoJSON of a single map, gathered from the sources given via the geojson parameter.
  */
 class GeoJsonSources {
 
@@ -41,10 +41,10 @@ class GeoJsonSources {
 	/**
 	 * The GeoJson page the visual editor may write to, or null when there is none.
 	 *
-	 * The editor saves the whole map layer to this page, so a map showing several sources must not have
-	 * one: saving would replace a single page with the combined content of all of them. Which sources
-	 * could be fetched deliberately plays no role, so that creating or deleting an unrelated page does
-	 * not make the editor appear or disappear.
+	 * The editor replaces the whole page with the layer it was opened on, so a map showing more than one
+	 * source must not have an editable page: the save would overwrite it with just one of the sources.
+	 * Whether the sources could be fetched deliberately plays no role in the count, so a source becoming
+	 * reachable or unreachable cannot turn the editor on for a map that shows several.
 	 */
 	public function getEditablePageName(): ?string {
 		return $this->getEditableResult()?->getTitleValue()?->getText();
@@ -55,11 +55,19 @@ class GeoJsonSources {
 	}
 
 	private function getEditableResult(): ?GeoJsonFetcherResult {
-		if ( count( $this->results ) !== 1 ) {
-			return null;
+		if ( count( $this->results ) === 1 && $this->isGeoJsonPage( $this->results[0] ) ) {
+			return $this->results[0];
 		}
 
-		return $this->results[0]->getTitleValue() === null ? null : $this->results[0];
+		return null;
+	}
+
+	/**
+	 * The editor saves to `GeoJson:` plus this name, so a page in any other namespace, which the fetcher
+	 * also accepts as long as its content is JSON, must not be editable.
+	 */
+	private function isGeoJsonPage( GeoJsonFetcherResult $result ): bool {
+		return $result->getTitleValue()?->getNamespace() === NS_GEO_JSON;
 	}
 
 }
