@@ -7,7 +7,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 Not yet released
 
-* The Leaflet `geojson` parameter now takes several semicolon-separated pages or URLs, shown together on one map. A single page name or URL that itself contains a semicolon is split into several sources. (#831)
+* The Leaflet `geojson` parameter now takes a semicolon-separated list of pages or URLs, shown together on one map. Existing values containing a semicolon are split into several sources. (#831)
 
 ## Maps 14.0.0
 
