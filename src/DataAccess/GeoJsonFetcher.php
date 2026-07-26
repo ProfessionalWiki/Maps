@@ -91,7 +91,8 @@ class GeoJsonFetcher {
 
 		$json = json_decode( $jsonString, true );
 
-		if ( $json === null ) {
+		// Not just null: JSON that is a bare number, string or boolean decodes to a non-array.
+		if ( !is_array( $json ) ) {
 			return [];
 		}
 

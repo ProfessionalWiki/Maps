@@ -73,6 +73,15 @@ class GeoJsonFetcherTest extends TestCase {
 		);
 	}
 
+	public function testWhenFileContainsJsonThatIsNotAnObject_emptyJsonIsReturned() {
+		$this->fileFetcher = new StubFileFetcher( '42' );
+
+		$this->assertSame(
+			[],
+			$this->newJsonFileParser()->parse( 'http://example.com/file' )
+		);
+	}
+
 	public function testWhenFileIsEmpty_emptyJsonIsReturned() {
 		$this->fileFetcher = new NullFileFetcher();
 
