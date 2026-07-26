@@ -3,6 +3,14 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 14.1.0
+
+Not yet released
+
+* The Leaflet `geojson` parameter now takes a semicolon-separated list of pages or URLs, shown together on one map. Existing values containing a semicolon are split into several sources. (#831)
+* Fixed the GeoJSON editor being offered for a source outside the `GeoJson` namespace, where saving wrote to a different page
+* Fixed a source whose content is JSON but not an object stopping the page it is shown on from rendering at all
+
 ## Maps 14.0.0
 
 Released on July 21st, 2026.

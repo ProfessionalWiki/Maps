@@ -43,8 +43,19 @@
 		return mapOptions;
 	}
 
+	// Map data from before the geojson parameter became a list holds a single GeoJSON object, and
+	// still reaches this code from the parser cache after an upgrade.
+	function geoJsonSources(geoJson) {
+		if (Array.isArray(geoJson)) {
+			return geoJson;
+		}
+
+		return geoJson ? [geoJson] : [];
+	}
+
 	$.fn.leafletmaps = function ( options ) {
 		let _this = this;
+		options.geojson = geoJsonSources(options.geojson);
 		_this.options = options; // needed by LeafletAjax.js
 
 		this.setup = function() {
@@ -87,7 +98,7 @@
 		};
 
 		this.shouldShowEditButton = function() {
-			if ( options.geojson === '' || options.GeoJsonSource === null ) {
+			if ( !options.GeoJsonSource ) {
 				return false;
 			}
 
@@ -127,7 +138,7 @@
 			maps.api.getLatestRevision('GeoJson:' + options.GeoJsonSource).done(
 				function(revision) {
 					if (revision.revid === options.GeoJsonRevisionId) {
-						_this.initializeEditor(options.geojson);
+						_this.initializeEditor(options.geojson[0]);
 					}
 					else {
 						_this.purgePage();
@@ -145,7 +156,8 @@
 				_this.purgePage();
 
 				editor.remove();
-				options.geojson = editor.getLayer().toGeoJSON();
+				// Replacing the whole list is safe because the editor only runs with a single source
+				options.geojson = [ editor.getLayer().toGeoJSON() ];
 				_this.mapContent = maps.leaflet.FeatureBuilder.contentLayerFromOptions(options).addTo(_this.map);
 
 				alert(mw.msg('maps-json-editor-changes-saved'));

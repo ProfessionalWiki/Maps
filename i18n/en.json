@@ -78,7 +78,7 @@
 	"maps-displaymap-par-rectangles": "Rectangles to display",
 	"maps-displaymap-par-static": "Make the map static",
 	"maps-displaymap-par-wmsoverlay": "Use a WMS overlay",
-	"maps-displaymap-par-geojson": "URL of a file or name of the page containing GeoJSON data",
+	"maps-displaymap-par-geojson": "One or more pages or URLs containing GeoJSON data, separated by semicolons",
 	"maps-fullscreen-button": "Toggle fullscreen",
 	"maps-fullscreen-button-tooltip": "View the map as fullscreen or embedded.",
 	"maps-mylocation-button-tooltip": "Show my location on the map.",
