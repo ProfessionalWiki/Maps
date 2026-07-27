@@ -149,8 +149,9 @@
 	"maps-config-error-invalid-option-url": "D'Optioun „$2“ vun der Kusch „$1“ muss eng URL sinn, déi mat http:// oder https:// ufänkt.",
 	"maps-config-error-invalid-attribution": "D'Optioun „attribution“ vun der Kusch „$1“ muss Text sinn.",
 	"maps-config-error-invalid-default-list": "„$1“ muss eng Lëscht vun Nimm vu Kusche sinn.",
+	"maps-config-type-boolean": "$1 oder $2",
 	"maps-config-type-string": "Text",
 	"maps-config-type-string-list": "Eng Lëscht vun Textwäerter",
 	"maps-config-type-integer": "Eng ganz Zuel",
-	"maps-config-type-language": "E Sproochcode, wéi z. B. „en“ oder „en-GB“"
+	"maps-config-type-language": "E Sproochcode, wéi z. B. $1"
 }
