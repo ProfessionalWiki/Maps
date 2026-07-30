@@ -3,6 +3,13 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 14.1.1
+
+Released on July 31st, 2026.
+
+* Fixed a stored XSS vulnerability in the Google Maps service, where content from KML files loaded via the `kml` parameter was used to build map popups without sanitization, and a `NetworkLink` refresh URL was evaluated as code ([GHSA-rg4f-xvhj-mw22](https://github.com/ProfessionalWiki/Maps/security/advisories/GHSA-rg4f-xvhj-mw22))
+* KML popups are now limited to safe HTML: frames, objects and scripts embedded in KML descriptions are no longer rendered
+
 ## Maps 14.1.0
 
 Released on July 26th, 2026.
