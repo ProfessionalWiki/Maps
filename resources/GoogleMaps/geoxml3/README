@@ -15,4 +15,7 @@ code of its own:
 * geoxml3.js: the NetworkLink refresh schedules a call instead of a string for setInterval to evaluate.
 * ProjectedOverlay.js: draw() builds the ground overlay image with the DOM API instead of an HTML string.
 
+ProjectedOverlay.js additionally exports its constructor on window, because ResourceLoader runs module
+scripts inside a function, where the declaration geoxml3.js looks for never becomes global.
+
 All are marked with a "Local modification" comment. Keep them when updating the library.
