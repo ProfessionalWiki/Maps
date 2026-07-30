@@ -157,3 +157,8 @@ ProjectedOverlay.prototype.setRotation=function(deg)
 	this.div_.style.oTransform      = 'rotate('+deg+'deg)';
 	this.div_.style.transform       = 'rotate('+deg+'deg)';
 }
+
+// Local modification (Maps extension): geoxml3 looks this constructor up on window, but
+// ResourceLoader runs module scripts inside a function, where a declaration does not become
+// global. Export it the way geoxml3.js exports geoXML3, or ground overlays never render.
+window.ProjectedOverlay = ProjectedOverlay;
