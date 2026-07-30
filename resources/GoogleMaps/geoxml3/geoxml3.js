@@ -940,7 +940,11 @@ geoXML3.parser = function (options) {
 				if ((networkLink.link.refreshMode === 'onInterval') &&
 					(networkLink.link.refreshInterval > 0)) {
 					// Reload at regular intervals
-					setInterval(parserName + '.parse("' + networkLink.link.href + '")',
+					// Local modification (Maps extension): the href comes from the untrusted KML document,
+					// and the string form of setInterval evaluates it as code. Schedule a call instead,
+					// like the onChange branch below does.
+					setInterval(
+						doc.internals.parser.parse.bind(doc.internals.parser, networkLink.link.href),
 						1000 * networkLink.link.refreshInterval);
 				} else if (networkLink.link.refreshMode === 'onChange') {
 					if (networkLink.link.viewRefreshMode === 'never') {
@@ -1364,8 +1368,17 @@ geoXML3.parser = function (options) {
 		if (bStyle.textColor != 'ff000000') styleArr.push('color: '      + kmlColor(bStyle.textColor).color + ';');
 		var styleProp = styleArr.length ? ' style="' + styleArr.join(' ') + '"' : '';
 
+		// Local modification (Maps extension): the KML document is untrusted, and it supplies both
+		// the balloon template and the values substituted into it, so sanitize the composed HTML.
+		// <style> is forbidden because a KML document must not restyle the page around the map.
+		// target is kept because the direction links built above open in a new tab.
+		var content = DOMPurify.sanitize(
+			'<div class="' + classTxt + '"' + styleProp + '>' + iwText + '</div>',
+			{ FORBID_TAGS: ['style'], ADD_ATTR: ['target'] }
+		);
+
 		var infoWindowOptions = geoXML3.combineOptions(parserOptions.infoWindowOptions, {
-			content: '<div class="' + classTxt + '"' + styleProp + '>' + iwText + '</div>',
+			content: content,
 			pixelOffset: new google.maps.Size(0, 2)
 		});
 
