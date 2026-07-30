@@ -197,7 +197,10 @@ class MapsFactory {
 	}
 
 	private function getGoogleMapsService(): GoogleMapsService {
-		$this->googleService ??= new GoogleMapsService( $this->getEffectiveSettings() );
+		$this->googleService ??= new GoogleMapsService(
+			$this->getEffectiveSettings(),
+			$this->getFileUrlFinder()
+		);
 
 		return $this->googleService;
 	}

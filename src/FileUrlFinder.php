@@ -15,4 +15,9 @@ interface FileUrlFinder {
 	 */
 	public function getUrlForFileName( string $fileName ): string;
 
+	/**
+	 * The url of the file page with this name, or null when this wiki has no such file.
+	 */
+	public function findFileUrl( string $fileName ): ?string;
+
 }

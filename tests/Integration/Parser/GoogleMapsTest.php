@@ -17,12 +17,19 @@ class GoogleMapsTest extends TestCase {
 		return TestFactory::newInstance()->parse( $textToParse );
 	}
 
-	public function testGoogleMapsKmlFiltersInvalidFileNames() {
+	public function testEmptyKmlEntriesAreDropped() {
 		$this->assertStringContainsData(
-			'"kml":["ValidFile.kml"],',
+			'"kml":["https://example.com/points.kml"],',
 			$this->parse(
-				"{{#google_maps:kml=, ,ValidFile.kml ,}}"
+				"{{#google_maps:kml=, ,https://example.com/points.kml ,}}"
 			)
+		);
+	}
+
+	public function testExternalKmlIsAllowedByDefault() {
+		$this->assertStringContainsData(
+			'"allowexternalkml":true',
+			$this->parse( '{{#google_maps:1,1}}' )
 		);
 	}
 

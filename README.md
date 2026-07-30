@@ -83,7 +83,8 @@ Settings are grouped by service and topic:
 The available groups and keys correspond to `LocalSettings.php` settings:
 
 * **general**: `mapWidth`, `mapHeight`, `defaultTitle`, `defaultLabel`, `resizableByDefault`,
-  `rezoomForKml`, `pagesWithMapsCategory`, `distanceUnits`, `distanceUnit`, `distanceDecimals`
+  `rezoomForKml`, `allowExternalKml`, `pagesWithMapsCategory`, `distanceUnits`, `distanceUnit`,
+  `distanceDecimals`
 * **coordinates**: `availableNotations`, `notation`, `directional`
 * **geocoding**: `service` (`geonames`, `google` or `nominatim`)
 * **semanticMediaWiki**: `showTitle`, `hideNamespace`, `template`, `coordinateFormat`,

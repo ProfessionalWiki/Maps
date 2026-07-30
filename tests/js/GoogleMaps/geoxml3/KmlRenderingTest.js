@@ -1,4 +1,4 @@
-( function ( mw ) {
+( function ( $, mw ) {
 	'use strict';
 
 	var originalGoogle = window.google;
@@ -139,6 +139,12 @@
 		);
 	}
 
+	// Without a refresh mode geoxml3 loads the linked document once, right away, rather than
+	// scheduling it.
+	function kmlWithLoadedNetworkLink( href ) {
+		return kmlDocument( '<NetworkLink><Link><href>' + href + '</href></Link></NetworkLink>' );
+	}
+
 	function kmlWithGroundOverlay( iconHref ) {
 		return kmlDocument(
 			'<GroundOverlay><Icon><href>' + iconHref + '</href></Icon>' +
@@ -147,16 +153,21 @@
 		);
 	}
 
-	// Directions are suppressed so that the info window holds only what the KML document
-	// contributed, rather than also the two Google Maps links geoxml3 adds for a point.
-	function parseKml( kml ) {
-		var parsedDocuments = [];
-
-		new geoXML3.parser( {
+	// The parser as jquery.googlemap.js builds it. Directions are suppressed so that the info
+	// window holds only what the KML document contributed, rather than also the two Google Maps
+	// links geoxml3 adds for a point.
+	function newParser( options ) {
+		return new geoXML3.parser( $.extend( {
 			map: mapStub,
 			zoom: false,
 			suppressDirections: true
-		} ).parseKmlString( kml, parsedDocuments );
+		}, options ) );
+	}
+
+	function parseKml( kml ) {
+		var parsedDocuments = [];
+
+		newParser( {} ).parseKmlString( kml, parsedDocuments );
 
 		return parsedDocuments[ 0 ];
 	}
@@ -298,6 +309,106 @@
 		);
 	} );
 
+	// How many fetches the stub below answers. Well above the nesting limit, and well below what it
+	// takes to run the browser out of stack, so a missing limit shows up as a failed assertion
+	// rather than as a crashed test run.
+	var ANSWERED_FETCHES = 20;
+
+	// The urls geoxml3 has the browser fetch for the documents the given KML document names.
+	// Fetching is stubbed out, so nothing leaves the browser, and every fetch is answered with
+	// responseKml, which is what lets a chain of documents be followed.
+	function fetchedUrls( options, kml, responseKml ) {
+		var requested = [];
+		var originalFetchXml = geoXML3.fetchXML;
+
+		geoXML3.fetchXML = function ( url, callback ) {
+			requested.push( url );
+			callback(
+				responseKml && requested.length < ANSWERED_FETCHES ?
+					geoXML3.xmlParse( responseKml ) :
+					undefined
+			);
+		};
+
+		try {
+			newParser( options ).parseKmlString( kml, [] );
+		} finally {
+			geoXML3.fetchXML = originalFetchXml;
+		}
+
+		return requested;
+	}
+
+	QUnit.test( 'NetworkLink to another host is fetched when external KML is allowed', function ( assert ) {
+		assert.deepEqual(
+			fetchedUrls(
+				{ allowExternalDocuments: true },
+				kmlWithLoadedNetworkLink( 'https://example.com/points.kml' ),
+				null
+			),
+			[ 'https://example.com/points.kml' ],
+			'The document the NetworkLink points at is fetched'
+		);
+	} );
+
+	QUnit.test( 'NetworkLink to another host is not fetched when external KML is not allowed', function ( assert ) {
+		assert.deepEqual(
+			fetchedUrls(
+				{ allowExternalDocuments: false },
+				kmlWithLoadedNetworkLink( 'https://example.com/points.kml' ),
+				null
+			),
+			[],
+			'Nothing is fetched from the other host'
+		);
+	} );
+
+	QUnit.test( 'NetworkLink to this wiki is fetched when external KML is not allowed', function ( assert ) {
+		assert.deepEqual(
+			fetchedUrls(
+				{ allowExternalDocuments: false },
+				kmlWithLoadedNetworkLink( window.location.origin + '/points.kml' ),
+				null
+			),
+			[ window.location.origin + '/points.kml' ],
+			'The document on the wiki itself is still fetched'
+		);
+	} );
+
+	QUnit.test( 'styleUrl on another host is fetched when external KML is allowed', function ( assert ) {
+		assert.deepEqual(
+			fetchedUrls(
+				{ allowExternalDocuments: true },
+				kmlWithPlacemark( '<styleUrl>https://example.com/styles.kml#pin</styleUrl>' ),
+				null
+			),
+			[ 'https://example.com/styles.kml' ],
+			'The document the style is defined in is fetched'
+		);
+	} );
+
+	QUnit.test( 'styleUrl on another host is not fetched when external KML is not allowed', function ( assert ) {
+		assert.deepEqual(
+			fetchedUrls(
+				{ allowExternalDocuments: false },
+				kmlWithPlacemark( '<styleUrl>https://example.com/styles.kml#pin</styleUrl>' ),
+				null
+			),
+			[],
+			'Nothing is fetched from the other host'
+		);
+	} );
+
+	QUnit.test( 'NetworkLink pointing at its own document stops at the nesting limit', function ( assert ) {
+		var selfReferencing = kmlWithLoadedNetworkLink( window.location.origin + '/points.kml' );
+
+		assert.strictEqual(
+			fetchedUrls( { allowExternalDocuments: true }, selfReferencing, selfReferencing ).length,
+			3,
+			'The cycle is followed a bounded number of times instead of forever'
+		);
+	} );
+
 	QUnit.test( 'Placemark description keeps a link target', function ( assert ) {
 		var content = renderInfoWindow( kmlWithPlacemark(
 			'<description><![CDATA[<a href="https://example.com/" target="_blank">Example</a>]]></description>'
@@ -328,4 +439,4 @@
 		);
 	} );
 
-}( window.mediaWiki ) );
+}( window.jQuery, window.mediaWiki ) );
