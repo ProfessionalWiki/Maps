@@ -12,7 +12,7 @@
 	},
 	"maps_map": "Мапа",
 	"maps-loading-map": "Учитавам мапу...",
-	"maps-displaymap-par-geojson": "URL датотеке или имена странице која садржи податке GeoJSON",
+	"maps-displaymap-par-geojson": "Једна или више страница или URL-ова који садрже GeoJSON податке раздвојене тачком-зарезом",
 	"validation-error-invalid-location": "Параметар „$1” мора да буде важећа локација",
 	"validation-error-invalid-locations": "Параметар $1 мора бити једна или више важећих локација.",
 	"validation-error-invalid-width": "Параметар „$1” мора да буде важећа ширина.",

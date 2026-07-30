@@ -91,7 +91,7 @@
 	"maps-displaymap-par-rectangles": "Weer te geven rechthoeken",
 	"maps-displaymap-par-static": "Maak de kaart statisch",
 	"maps-displaymap-par-wmsoverlay": "WMS-overlay gebruiken",
-	"maps-displaymap-par-geojson": "URL van een bestand of naam van de pagina die GeoJSON-gegevens bevat",
+	"maps-displaymap-par-geojson": "Een of meer pagina's of url's met GeoJSON-gegevens, gescheiden door puntkomma's.",
 	"maps-fullscreen-button": "Volledig scherm omschakelen",
 	"maps-fullscreen-button-tooltip": "De kaart als volledig scherm of ingesloten bekijken.",
 	"maps-mylocation-button-tooltip": "Laat op de kaart zien waar ik ben.",
