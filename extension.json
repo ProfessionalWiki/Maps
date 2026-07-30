@@ -110,6 +110,13 @@
 			"targets": [ "desktop", "mobile" ]
 		},
 
+		"ext.maps.dompurify": {
+			"scripts": [
+				"lib/dompurify/purify.js"
+			],
+			"targets": [ "desktop", "mobile" ]
+		},
+
 		"ext.maps.leaflet.library": {
 			"scripts": [
 				"lib/leaflet/leaflet.js",
@@ -288,7 +295,8 @@
 
 		"ext.maps.gm3.geoxml": {
 			"dependencies": [
-				"ext.maps.googlemaps3"
+				"ext.maps.googlemaps3",
+				"ext.maps.dompurify"
 			],
 			"scripts": [
 				"GoogleMaps/geoxml3/geoxml3.js",
@@ -348,6 +356,7 @@
 			"leaflet/GeoJsonTest.js",
 			"leaflet/FeatureBuilderTest.js",
 			"leaflet/JQueryLeafletTest.js",
+			"GoogleMaps/geoxml3/KmlRenderingTest.js",
 			"MapSaverTest.js"
 		],
 		"dependencies": [

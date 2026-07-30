@@ -100,7 +100,15 @@ ProjectedOverlay.prototype.draw = function(firstTime)
 		url += this.addZ_ + this.map_.getZoom() ;
 	}
 
-	this.div_.innerHTML = '<img src="' + url + '"  width=' + this.div_.style.width + ' height=' + this.div_.style.height + ' >' ;
+	// Local modification (Maps extension): build the image with the DOM API instead of an HTML
+	// string, so an untrusted KML GroundOverlay href cannot inject attributes of its own.
+	var img = document.createElement('img') ;
+	img.setAttribute('src', url) ;
+	img.setAttribute('width', this.div_.style.width) ;
+	img.setAttribute('height', this.div_.style.height) ;
+
+	this.div_.textContent = '' ;
+	this.div_.appendChild(img) ;
 
 	// Do the rest only if the zoom has changed...
 
