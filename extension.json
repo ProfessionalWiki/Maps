@@ -325,12 +325,14 @@
 			"leaflet/FeatureBuilderTest.js",
 			"leaflet/JQueryLeafletTest.js",
 			"GoogleMaps/geoxml3/KmlRenderingTest.js",
-			"MapSaverTest.js"
+			"MapSaverTest.js",
+			"GeoJsonPageTest.js"
 		],
 		"dependencies": [
 			"ext.maps.leaflet.geojson",
 			"ext.maps.leaflet.loader",
-			"ext.maps.leaflet.editor"
+			"ext.maps.leaflet.editor",
+			"ext.maps.geojson.page"
 		]
 	},
 

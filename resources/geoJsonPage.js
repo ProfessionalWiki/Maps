@@ -36,7 +36,7 @@
 		}
 	}
 
-	function initializeWithEditor(map) {
+	function initializeWithEditor(map, geoJson) {
 		let editor = maps.leaflet.LeafletEditor(
 			map,
 			new maps.MapSaver(mw.config.get('wgPageName'))
@@ -46,40 +46,52 @@
 			alert(mw.msg('maps-json-editor-changes-saved'));
 		});
 
-		editor.initialize(window.GeoJson);
+		editor.initialize(geoJson);
 
 		fitContent(map, editor.getLayer());
 	}
 
-	function initializePlainMap(map) {
+	function initializePlainMap(map, geoJson) {
 		fitContent(
 			map,
-			maps.leaflet.GeoJson.newGeoJsonLayer(L, window.GeoJson).addTo(map)
+			maps.leaflet.GeoJson.newGeoJsonLayer(L, geoJson).addTo(map)
 		);
 	}
 
-	function initializeGeoJsonAndEditorUi(map) {
+	function initializeGeoJsonAndEditorUi(map, geoJson) {
 		if (mw.config.get('wgCurRevisionId') === mw.config.get('wgRevisionId')) {
 
 			maps.api.canEditPage(mw.config.get('wgPageName')).done(
 				function(canEdit) {
 					if (canEdit) {
-						initializeWithEditor(map);
+						initializeWithEditor(map, geoJson);
 					}
 					else {
-						initializePlainMap(map);
+						initializePlainMap(map, geoJson);
 					}
 				}
 			);
 		}
 		else {
-			initializePlainMap(map);
+			initializePlainMap(map, geoJson);
 		}
 	}
 
-	mw.hook( 'wikipage.content' ).add( function ( $content ) {
+	// Pages rendered before the GeoJSON moved into the data attribute are still served from
+	// the parser cache, with the JSON in an inline script that assigns window.GeoJson.
+	function getGeoJson($mapElement) {
+		return $mapElement.data('mw-maps-geojson') || window.GeoJson;
+	}
+
+	function initializePage($content) {
+		let $mapElement = $content.find('#GeoJsonMap');
+
+		if ($mapElement.length === 0) {
+			return;
+		}
+
 		let map = L.map(
-			'GeoJsonMap',
+			$mapElement.get(0),
 			{
 				fullscreenControl: true,
 				fullscreenControlOptions: {position: 'topright'},
@@ -90,7 +102,14 @@
 		hideLoadingMessage(map, $content);
 		addZoomControl(map);
 		addTitleLayer(map);
-		initializeGeoJsonAndEditorUi(map);
-	} );
+		initializeGeoJsonAndEditorUi(map, getGeoJson($mapElement));
+	}
+
+	mw.hook( 'wikipage.content' ).add( initializePage );
+
+	maps.geoJsonPage = {
+		getGeoJson: getGeoJson,
+		initializePage: initializePage
+	};
 
 })( window.jQuery, window.mediaWiki, window.maps );
