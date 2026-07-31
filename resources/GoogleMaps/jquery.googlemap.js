@@ -202,6 +202,7 @@
 					var geoXml = new geoXML3.parser({
 						map:_this.map,
 						zoom:options.kmlrezoom,
+						allowExternalDocuments:options.allowexternalkml !== false,
 						failedParse:function(document){
 							console.log(options.kml);
 							console.log(document);

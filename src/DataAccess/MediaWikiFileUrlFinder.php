@@ -14,6 +14,10 @@ use MediaWiki\MediaWikiServices;
 class MediaWikiFileUrlFinder implements FileUrlFinder {
 
 	public function getUrlForFileName( string $fileName ): string {
+		return $this->findFileUrl( $fileName ) ?? trim( $fileName );
+	}
+
+	public function findFileUrl( string $fileName ): ?string {
 		$colonPosition = strpos( $fileName, ':' );
 
 		$titleWithoutPrefix = $colonPosition === false ? $fileName : substr( $fileName, $colonPosition + 1 );
@@ -24,6 +28,6 @@ class MediaWikiFileUrlFinder implements FileUrlFinder {
 			return $file->getURL();
 		}
 
-		return trim( $fileName );
+		return null;
 	}
 }

@@ -50,6 +50,15 @@ class OnWikiConfigTest extends TestCase {
 		$this->assertStringContainsString( htmlspecialchars( '"zoom":3' ), $html );
 	}
 
+	public function testWikiExternalKmlPolicyReachesTheRenderedMapData(): void {
+		$html = $this->parseWithWikiConfig(
+			[ 'general' => [ 'allowExternalKml' => false ] ],
+			'{{#google_maps:kml=https://example.com/points.kml}}'
+		);
+
+		$this->assertStringContainsString( htmlspecialchars( '"kml":[]' ), $html );
+	}
+
 	public function testWikiLeafletLayerDefinitionReachesTheRenderedMapData(): void {
 		$html = $this->parseWithWikiConfig(
 			[ 'leaflet' => [ 'layerDefinitions' => [

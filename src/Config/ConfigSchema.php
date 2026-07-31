@@ -76,6 +76,7 @@ class ConfigSchema {
 			self::replace( 'general', 'defaultLabel', 'egMapsDefaultLabel', new StringType() ),
 			self::replace( 'general', 'resizableByDefault', 'egMapsResizableByDefault', new BooleanType() ),
 			self::replace( 'general', 'rezoomForKml', 'egMapsRezoomForKML', new BooleanType() ),
+			self::replace( 'general', 'allowExternalKml', 'egMapsAllowExternalKml', new BooleanType() ),
 			self::replace( 'general', 'pagesWithMapsCategory', 'egMapsEnableCategory', new BooleanType() ),
 			self::replace( 'general', 'distanceUnits', 'egMapsDistanceUnits', new NumberMapType() ),
 			self::replace( 'general', 'distanceUnit', 'egMapsDistanceUnit', new StringType() ),

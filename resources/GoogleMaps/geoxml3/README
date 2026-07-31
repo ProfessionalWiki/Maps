@@ -15,6 +15,14 @@ code of its own:
 * geoxml3.js: the NetworkLink refresh schedules a call instead of a string for setInterval to evaluate.
 * ProjectedOverlay.js: draw() builds the ground overlay image with the DOM API instead of an HTML string.
 
+A KML document also names further documents for the library to fetch, through NetworkLink and
+styleUrl. Two more places were changed to bound which of those the browser retrieves:
+
+* geoxml3.js: the allowExternalDocuments parser option, false on wikis that do not allow KML from
+  elsewhere, limits every fetch to the origin of the page.
+* geoxml3.js: NetworkLink elements are followed at most geoXML3.maxNetworkLinkDepth levels deep, so a
+  document linking back to itself cannot make the browser fetch forever.
+
 ProjectedOverlay.js additionally exports its constructor on window, because ResourceLoader runs module
 scripts inside a function, where the declaration geoxml3.js looks for never becomes global.
 

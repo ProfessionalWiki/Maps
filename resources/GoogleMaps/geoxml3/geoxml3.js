@@ -93,6 +93,25 @@ if (!String.prototype.trim) {
 geoXML3 = window.geoXML3 || {instances: []};
 
 /**
+ * Local modification (Maps extension): how deeply NetworkLink elements may nest. A NetworkLink can
+ * point at a document that links back to it, and without a limit the reader's browser would follow
+ * such a cycle forever.
+ */
+geoXML3.maxNetworkLinkDepth = 3;
+
+/**
+ * Local modification (Maps extension): whether a url resolves to the origin of the page, which is
+ * the wiki itself. Anything the browser cannot resolve counts as another origin.
+ */
+geoXML3.isSameOrigin = function (url) {
+	try {
+		return new URL(url, document.baseURI).origin === window.location.origin;
+	} catch (e) {
+		return false;
+	}
+};
+
+/**
  * Constructor for the root KML parser object.
  *
  * <p>All top-level objects and functions are declared under a namespace of geoXML3.
@@ -123,6 +142,8 @@ geoXML3.parser = function (options) {
 			parser: this,
 			docSet: docSet || [],
 			remaining: 1,
+			// Local modification (Maps extension): how many NetworkLink hops led to this document.
+			depth: 0,
 			parseOnly: !(parserOptions.afterParse || parserOptions.processStyles)
 		};
 		thisDoc = new Object();
@@ -131,7 +152,21 @@ geoXML3.parser = function (options) {
 		render(geoXML3.xmlParse(kmlString),thisDoc);
 	}
 
-	var parse = function (urls, docSet) {
+	// Local modification (Maps extension): the reader's browser does the fetching, so the wiki
+	// decides whether KML may come from anywhere else. A KML document names documents of its own,
+	// through NetworkLink and styleUrl, so this is applied everywhere the parser takes a url, not
+	// only to the ones that came from the wikitext.
+	var allowedUrl = function (url) {
+		if (parserOptions.allowExternalDocuments || geoXML3.isSameOrigin(url)) {
+			return true;
+		}
+
+		geoXML3.log('Not fetching KML from outside this wiki: ' + url);
+
+		return false;
+	};
+
+	var parse = function (urls, docSet, depth) {
 		// Process one or more KML documents
 		if (!parserName) {
 			parserName = 'geoXML3.instances[' + (geoXML3.instances.push(this) - 1) + ']';
@@ -142,11 +177,15 @@ geoXML3.parser = function (options) {
 			urls = [urls];
 		}
 
+		urls = urls.filter(allowedUrl);
+
 		// Internal values for the set of documents as a whole
 		var internals = {
 			parser: this,
 			docSet: docSet || [],
 			remaining: urls.length,
+			// Local modification (Maps extension): how many NetworkLink hops led to these documents.
+			depth: depth || 0,
 			parseOnly: !(parserOptions.afterParse || parserOptions.processStyles)
 		};
 		var thisDoc, j;
@@ -520,6 +559,7 @@ geoXML3.parser = function (options) {
 				var rUrl = cleanURL( doc.baseDir, url );
 				if (rUrl === doc.baseUrl) continue;  // self
 				if (docsByUrl[rUrl])      continue;  // already loaded
+				if (!allowedUrl(rUrl))    continue;  // Local modification (Maps extension)
 
 				var thisDoc;
 				var j = docSet.indexOfObjWithItem('baseUrl', rUrl);
@@ -896,6 +936,11 @@ geoXML3.parser = function (options) {
 			var docPath = document.location.pathname.split('/');
 			docPath = docPath.splice(0, docPath.length - 1).join('/');
 			var linkNodes = getElementsByTagName(responseXML, 'NetworkLink');
+			// Local modification (Maps extension): stop following NetworkLinks once they have
+			// nested as deeply as allowed, so a cycle cannot make the browser fetch forever.
+			if (doc.internals.depth >= geoXML3.maxNetworkLinkDepth) {
+				linkNodes = [];
+			}
 			for (i = 0; i < linkNodes.length; i++) {
 				node = linkNodes[i];
 
@@ -944,12 +989,14 @@ geoXML3.parser = function (options) {
 					// and the string form of setInterval evaluates it as code. Schedule a call instead,
 					// like the onChange branch below does.
 					setInterval(
-						doc.internals.parser.parse.bind(doc.internals.parser, networkLink.link.href),
+						doc.internals.parser.parse.bind(
+							doc.internals.parser, networkLink.link.href, undefined, doc.internals.depth + 1),
 						1000 * networkLink.link.refreshInterval);
 				} else if (networkLink.link.refreshMode === 'onChange') {
 					if (networkLink.link.viewRefreshMode === 'never') {
 						// Load the link just once
-						doc.internals.parser.parse(networkLink.link.href, doc.internals.docSet);
+						doc.internals.parser.parse(
+							networkLink.link.href, doc.internals.docSet, doc.internals.depth + 1);
 					} else if (networkLink.link.viewRefreshMode === 'onStop') {
 						// Reload when the map view changes
 
@@ -1490,6 +1537,14 @@ geoXML3.parserOptions = function (overrides) {
 		 */
 		this.processStyles       = false,
 		/**#@-*/
+
+		/**
+		 * Local modification (Maps extension): when false, the parser only fetches documents from
+		 * the origin of the page, including the ones NetworkLink elements point at.
+		 * @type Boolean
+		 * @default true
+		 */
+		this.allowExternalDocuments = true,
 
 		this.markerOptions       = {},
 		this.infoWindowOptions   = {},
