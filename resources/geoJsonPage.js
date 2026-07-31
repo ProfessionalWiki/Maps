@@ -83,7 +83,7 @@
 		return $mapElement.data('mw-maps-geojson') || window.GeoJson;
 	}
 
-	mw.hook( 'wikipage.content' ).add( function ( $content ) {
+	function initializePage($content) {
 		let $mapElement = $content.find('#GeoJsonMap');
 
 		if ($mapElement.length === 0) {
@@ -103,10 +103,13 @@
 		addZoomControl(map);
 		addTitleLayer(map);
 		initializeGeoJsonAndEditorUi(map, getGeoJson($mapElement));
-	} );
+	}
+
+	mw.hook( 'wikipage.content' ).add( initializePage );
 
 	maps.geoJsonPage = {
-		getGeoJson: getGeoJson
+		getGeoJson: getGeoJson,
+		initializePage: initializePage
 	};
 
 })( window.jQuery, window.mediaWiki, window.maps );

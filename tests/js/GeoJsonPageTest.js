@@ -30,6 +30,16 @@
 		assert.deepEqual( maps.geoJsonPage.getGeoJson( mapElementWith( geoJson ) ), geoJson );
 	} );
 
+	QUnit.module( 'Maps.geoJsonPage page initialization' );
+
+	QUnit.test( 'content without a GeoJson map is left untouched', function ( assert ) {
+		var $content = $( '<div><p>No map here</p></div>' );
+
+		maps.geoJsonPage.initializePage( $content );
+
+		assert.strictEqual( $content.find( '.leaflet-container' ).length, 0 );
+	} );
+
 	QUnit.module( 'Maps.geoJsonPage with cached inline script markup', {
 		beforeEach: function () {
 			this.originalGeoJson = window.GeoJson;
