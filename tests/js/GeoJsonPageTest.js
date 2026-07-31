@@ -24,10 +24,23 @@
 		assert.deepEqual( maps.geoJsonPage.getGeoJson( mapElementWith( geoJson ) ), geoJson );
 	} );
 
-	QUnit.test( 'ampersands and angle brackets in values are read unchanged', function ( assert ) {
-		var geoJson = pointNamed( 'Tea & Coffee <b>Ltd</b>' );
+	// The attribute as GeoJsonMapPageUi emits it: quotes and newlines entity-encoded,
+	// U+0338 as &#x338;, and & < > as JSON \uXXXX escapes.
+	QUnit.test( 'values in page markup survive entity decoding unchanged', function ( assert ) {
+		var $mapElement = $(
+			'<div data-mw-maps-geojson="{&#10;' +
+			'    &quot;type&quot;: &quot;FeatureCollection&quot;,&#10;' +
+			'    &quot;features&quot;: [ {&#10;' +
+			'        &quot;type&quot;: &quot;Feature&quot;,&#10;' +
+			'        &quot;properties&quot;: { &quot;title&quot;: &quot;Tea \\u0026 Coffee \\u003Cb\\u003ELtd, open =&#x338; closed&quot; },&#10;' +
+			'        &quot;geometry&quot;: { &quot;type&quot;: &quot;Point&quot;, &quot;coordinates&quot;: [ 4.35, 50.85 ] }&#10;' +
+			'    } ]&#10;}"></div>'
+		);
 
-		assert.deepEqual( maps.geoJsonPage.getGeoJson( mapElementWith( geoJson ) ), geoJson );
+		assert.strictEqual(
+			maps.geoJsonPage.getGeoJson( $mapElement ).features[ 0 ].properties.title,
+			'Tea & Coffee <b>Ltd, open =\u0338 closed'
+		);
 	} );
 
 	QUnit.module( 'Maps.geoJsonPage page initialization' );
@@ -53,6 +66,15 @@
 		window.GeoJson = pointNamed( 'Brussels' );
 
 		assert.deepEqual( maps.geoJsonPage.getGeoJson( $( '<div>' ) ), window.GeoJson );
+	} );
+
+	QUnit.test( 'the map element wins over the global when both are present', function ( assert ) {
+		window.GeoJson = pointNamed( 'Cached global' );
+
+		assert.deepEqual(
+			maps.geoJsonPage.getGeoJson( mapElementWith( pointNamed( 'Brussels' ) ) ),
+			pointNamed( 'Brussels' )
+		);
 	} );
 
 }( window.jQuery ) );
