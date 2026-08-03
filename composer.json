@@ -35,7 +35,7 @@
 		"source": "https://github.com/ProfessionalWiki/Maps"
 	},
 	"require": {
-		"php": ">=7.4",
+		"php": ">=8.1",
 		"composer/installers": "^2.0.0|^1.0.1",
 		"mediawiki/parser-hooks": "~1.5|~3.0",
 		"param-processor/param-processor": "^1.10",
