@@ -281,5 +281,11 @@
 	"maps-config-error-invalid-attribution": "레이어 \"$1\"의 \"attribution\" 옵션은 텍스트이어야 합니다.",
 	"maps-config-error-invalid-default-list": "\"$1\"은(는) 레이어 이름 목록이어야 합니다.",
 	"maps-config-error-invalid-availability": "\"$1\"은(는) 레이어 이름에서 true 또는 false로의 매핑이어야 합니다.",
-	"maps-config-type-boolean": "$1 또는 $2"
+	"maps-config-type-boolean": "$1 또는 $2",
+	"maps-config-type-string": "텍스트",
+	"maps-config-type-string-list": "텍스트 값 목록",
+	"maps-config-type-integer": "정수",
+	"maps-config-type-enum": "다음 중 하나: $1",
+	"maps-config-docs-column-key": "설정",
+	"maps-config-docs-column-type": "승인된 값"
 }
