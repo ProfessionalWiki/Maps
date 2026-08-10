@@ -2,13 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Adriendelucca",
+			"Ar choler",
 			"Fohanno",
 			"Fulup",
 			"Macofe",
 			"Y-M D"
 		]
 	},
-	"maps-desc": "Aotren a ra ensoc'hañ kartennoù dinamek er pajennoù wiki, geokodañ chomlec'hioù hag oberiadennoù douaroniel all",
+	"maps-desc": "Aotren a ra ensoc'hañ kartennoù etreoberiat er pajennoù wiki, dre implijout Google Maps pe Leaflet. Un embanner gwelus en deus, a c'hall labourat gant Semantic MediaWiki mar karer, a labour gant GeoJSON hag a ouzhpenn barregezhioù geokodiñ.",
 	"maps_map": "Kartenn",
 	"maps-loading-map": "O kargañ ar gartenn...",
 	"maps-load-failed": "N'eus ket bet gallet kargañ ar gartenn !",
