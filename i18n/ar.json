@@ -81,7 +81,7 @@
 	"maps-displaymap-par-rectangles": "مستطيلات للعرض",
 	"maps-displaymap-par-static": "جعل الخريطة ثابتة",
 	"maps-displaymap-par-wmsoverlay": "استخدم تراكب خدمة خرائط الويب",
-	"maps-displaymap-par-geojson": "مسار ملف أو اسم الصفحة التي تحتوي على بيانات GeoJSON",
+	"maps-displaymap-par-geojson": "صفحة واحدة أو أكثر أو عناوين URL تحتوي على بيانات GeoJSON، مفصولة بفواصل منقوطة",
 	"maps-fullscreen-button": "تبديل ملء الشاشة",
 	"maps-fullscreen-button-tooltip": "عرض الخريطة على أنها ملء الشاشة أو مضمنة.",
 	"maps-mylocation-button-tooltip": "إظهار موقعي على الخريطة.",

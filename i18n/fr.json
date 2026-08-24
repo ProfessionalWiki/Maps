@@ -277,6 +277,8 @@
 	"maps-validator-describe-required": "requis",
 	"maps-validator-describe-empty": "vide",
 	"maps-validator-message-nodesc": "Aucune description fournie",
+	"maps-config-invalid": "La configuration Maps n'a pas été sauvegardée car elle est non valide :",
+	"maps-config-error-invalid-json": "La configuration doit être un objet JSON.",
 	"maps-config-error-invalid-boolean": "« $1 » doit valoir true ou false.",
 	"maps-config-error-invalid-integer": "« $1 » doit être un nombre entier.",
 	"maps-config-error-integer-too-small": "« $1 » doit être supérieur ou égal à $2 .",
@@ -289,6 +291,7 @@
 	"maps-config-type-enum": "Une valeur parmi : $1",
 	"maps-config-type-enum-list": "Liste de valeurs parmi : $1",
 	"maps-config-type-language": "Code de langue, par exemple $1",
+	"maps-config-docs-column-key": "Paramètre",
 	"maps-config-docs-column-type": "Valeur reconnue",
 	"maps-config-docs-column-setting": "équivalent de LocalSettings.php"
 }
