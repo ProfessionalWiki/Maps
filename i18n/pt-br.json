@@ -12,7 +12,8 @@
 			"Jaideraf",
 			"Luckas",
 			"Luckas Blade",
-			"Macofe"
+			"Macofe",
+			"User3412"
 		]
 	},
 	"maps-desc": "Permite incorporar mapas dinâmicos nas páginas da wiki usando o Google Maps ou o Leaflet.  Possui um editor visual, que se integra opcionalmente ao Semantic MediaWiki, suporta GeoJSON e adiciona recursos de geocodificação.",
@@ -253,5 +254,8 @@
 	"maps-validator-describe-header-description": "Descrição",
 	"maps-validator-describe-required": "obrigatório",
 	"maps-validator-describe-empty": "vazio",
-	"maps-validator-message-nodesc": "Nenhuma descrição fornecida"
+	"maps-validator-message-nodesc": "Nenhuma descrição fornecida",
+	"maps-config-type-boolean": "$1 ou $2",
+	"maps-config-type-string": "Texto",
+	"maps-config-type-enum": "Um de: $1"
 }
