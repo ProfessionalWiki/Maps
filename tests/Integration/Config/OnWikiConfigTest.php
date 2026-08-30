@@ -73,6 +73,20 @@ class OnWikiConfigTest extends TestCase {
 		);
 	}
 
+	/**
+	 * @covers \Maps\MapsFactory::getLeafletLayerDefinitions
+	 */
+	public function testLeafletLayerDefinitionsAccessorSeesWikiDefinitions(): void {
+		MapsTestFactory::$wikiConfig = [ 'leaflet' => [ 'layerDefinitions' => [
+			'FromWiki' => [ 'url' => 'https://wiki.example/{z}/{x}/{y}.png' ],
+		] ] ];
+		$factory = MapsTestFactory::newTestInstance();
+
+		$definitions = $factory->getLeafletLayerDefinitions()->getDefinitions( [ 'FromWiki' ] );
+
+		$this->assertSame( 'https://wiki.example/{z}/{x}/{y}.png', $definitions['FromWiki']['url'] );
+	}
+
 	public function testWikiLeafletDefaultZoomReachesTheParameterDefault(): void {
 		MapsTestFactory::$wikiConfig = [ 'leaflet' => [ 'defaultZoom' => 7 ] ];
 		$factory = MapsTestFactory::newTestInstance();
