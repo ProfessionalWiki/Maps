@@ -214,6 +214,15 @@ class MapsFactory {
 		return $this->leafletService;
 	}
 
+	/**
+	 * Public accessor for other extensions bridging to the custom Leaflet layers, such as the
+	 * Semantic Result Formats filtered format. Backed by the effective settings, so definitions
+	 * from both LocalSettings.php and the MediaWiki:Maps config page are included.
+	 */
+	public function getLeafletLayerDefinitions(): LeafletLayerDefinitions {
+		return new LeafletLayerDefinitions( $this->getEffectiveSettings()->get( 'egMapsLeafletLayerDefinitions' ) );
+	}
+
 	public function getEffectiveSettings(): EffectiveSettings {
 		$this->effectiveSettings ??= new EffectiveSettings(
 			$this->settings,
