@@ -5,7 +5,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 ## Maps 14.2.0
 
-Not yet released
+Released on September 7th, 2026.
 
 * Added the `$egMapsAllowExternalKml` setting, also available as `general.allowExternalKml` on the `MediaWiki:Maps` page. Set it to `false` to have the Google Maps `kml` parameter accept only files on the wiki, and to stop `NetworkLink` elements inside a KML file from pointing anywhere else. It defaults to `true`, which keeps the existing behaviour of letting an editor have the browser of everyone viewing the map fetch KML from any host.
 * `NetworkLink` elements in KML files are now followed at most three levels deep, so a KML file that links back to itself no longer makes the browser fetch in an endless loop
