@@ -255,6 +255,7 @@
 	"maps-validator-describe-required": "obrigatório",
 	"maps-validator-describe-empty": "vazio",
 	"maps-validator-message-nodesc": "Nenhuma descrição fornecida",
+	"maps-config-error-invalid-boolean": "\"$1\" precisa ser verdade ou falso",
 	"maps-config-type-boolean": "$1 ou $2",
 	"maps-config-type-string": "Texto",
 	"maps-config-type-enum": "Um de: $1"
