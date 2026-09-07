@@ -7,9 +7,9 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 Released on September 7th, 2026.
 
-* Added the `$egMapsAllowExternalKml` setting, also available as `general.allowExternalKml` on the `MediaWiki:Maps` page. Set it to `false` to have the Google Maps `kml` parameter accept only files on the wiki, and to stop `NetworkLink` elements inside a KML file from pointing anywhere else. It defaults to `true`, which keeps the existing behaviour of letting an editor have the browser of everyone viewing the map fetch KML from any host.
-* `NetworkLink` elements in KML files are now followed at most three levels deep, so a KML file that links back to itself no longer makes the browser fetch in an endless loop
-* Restored the `MapsFactory::getLeafletLayerDefinitions()` accessor that 14.0.0 removed. The Semantic Result Formats filtered format uses it to resolve custom layer names in its `map view layers` parameter, so on Maps 14.0.0 to 14.1.1 custom names there were silently skipped. The restored accessor also includes layer definitions set on the `MediaWiki:Maps` page, which the 13.1.x one did not.
+* Added the `$egMapsAllowExternalKml` setting (also available as `general.allowExternalKml` on the `MediaWiki:Maps` page). Set it to `false` to have the Google Maps `kml` parameter accept only files on the wiki, and to stop `NetworkLink` elements inside a KML file from pointing anywhere else. It defaults to `true`, which keeps the existing behavior of letting an editor's browser fetch KML from any host for everyone viewing the map
+* Fixed an endless browser loop issue triggered by KML files that link back to themselves: `NetworkLink` elements in KML files are now followed at most three levels deep
+* Restored the `MapsFactory::getLeafletLayerDefinitions()` accessor that 14.0.0 removed
 
 ## Maps 14.1.1
 
