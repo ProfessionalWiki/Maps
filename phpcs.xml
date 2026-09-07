@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
 <ruleset>
+	<arg name="extensions" value="php" />
+
 	<file>src/</file>
 	<file>tests/</file>
 
@@ -12,11 +14,13 @@
 		<exclude name="MediaWiki.WhiteSpace.SpaceBeforeSingleLineComment.SingleSpaceBeforeSingleLineComment" />
 		<exclude name="MediaWiki.WhiteSpace.SpaceBeforeSingleLineComment.NewLineComment" />
 		<exclude name="MediaWiki.WhiteSpace.SpaceAfterClosure.NoWhitespaceAfterClosure" />
+		<exclude name="MediaWiki.WhiteSpace.SpaceAfterClosure.NoWhitespaceAfterArrow" />
 
 		<exclude name="MediaWiki.Classes.UnusedUseStatement.UnusedUse" />
 		<exclude name="MediaWiki.Classes.UnsortedUseStatements.UnsortedUse" />
 
 		<exclude name="MediaWiki.ControlStructures.IfElseStructure.SpaceBeforeElse" />
+		<exclude name="Squiz.ControlStructures.ControlSignature.SpaceAfterCloseBrace" />
 		<exclude name="MediaWiki.Usage.StaticClosure.StaticClosure" />
 		<exclude name="MediaWiki.Usage.ExtendClassUsage.FunctionConfigUsage" />
 		<exclude name="MediaWiki.Commenting.PropertyDocumentation.MissingDocumentationPrivate" />
@@ -24,10 +28,13 @@
 
 		<!-- These should probably be fixed -->
 		<exclude name="MediaWiki.ControlStructures.AssignmentInControlStructures.AssignmentInControlStructures" />
+		<exclude name="Generic.CodeAnalysis.AssignmentInCondition" />
 		<exclude name="MediaWiki.Usage.IsNull.IsNull" />
 		<exclude name="MediaWiki.WhiteSpace.DisallowEmptyLineFunctions.NoEmptyLine" />
+		<exclude name="Squiz.WhiteSpace.FunctionOpeningBraceSpace.SpacingAfter" />
 		<exclude name="MediaWiki.NamingConventions.ValidGlobalName.allowedPrefix" />
 		<exclude name="Generic.Functions.FunctionCallArgumentSpacing.NoSpaceAfterComma" />
+		<exclude name="Universal.WhiteSpace.CommaSpacing" />
 		<exclude name="Generic.NamingConventions.UpperCaseConstantName.ConstantNotUpperCase" />
 		<exclude name="MediaWiki.Usage.DeprecatedGlobalVariables.Deprecated$wgTitle" />
 	</rule>

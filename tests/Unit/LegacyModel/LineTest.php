@@ -63,7 +63,7 @@ class LineTest extends BaseElementTest {
 		$coordinates = $line->getLineCoordinates();
 
 		$this->assertIsArray( $coordinates );
-		$this->assertEquals( count( $arguments[0] ), count( $coordinates ) );
+		$this->assertSameSize( $arguments[0], $coordinates );
 
 		foreach ( $coordinates as $geoCoordinate ) {
 			$this->assertInstanceOf( LatLongValue::class, $geoCoordinate );

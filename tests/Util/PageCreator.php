@@ -18,7 +18,7 @@ class PageCreator {
 		return new self();
 	}
 
-	public function createPage( string $title, string $content = null ) {
+	public function createPage( string $title, ?string $content = null ) {
 		$titleObject = Title::newFromText( $title );
 
 		$this->createPageWithContent(
