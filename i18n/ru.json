@@ -115,6 +115,7 @@
 	"maps-displaymap-par-geojson": "URL файла или название страницы, содержащей данные GeoJSON",
 	"maps-fullscreen-button": "Переключить полноэкранный режим",
 	"maps-fullscreen-button-tooltip": "Посмотреть карту в полноэкранном или встроенном  режиме.",
+	"maps-mylocation-button-tooltip": "Показать моё местоположение на карте.",
 	"validation-error-invalid-location": "Параметр $1 должен быть корректным местоположением.",
 	"validation-error-invalid-locations": "Параметр $1 должен содержать одно или несколько корректных местоположений.",
 	"validation-error-invalid-width": "Параметр $1 должен быть корректной шириной.",
@@ -182,6 +183,7 @@
 	"semanticmaps-latitude": "Широта: $1",
 	"semanticmaps-longitude": "Долгота: $1",
 	"semanticmaps-altitude": "Высота: $1",
+	"semanticmaps-coordinates": "Координаты",
 	"semanticmaps-forminput-locations": "Места",
 	"semanticmaps-par-staticlocations": "Список мест для добавления на карту вместе с запрашиваемыми данными. Например, к display_points можно добавить название, описание и значок, используя тильду ~ в качестве разделителя.",
 	"semanticmaps-par-showtitle": "Показывать или нет заголовок в окне информации маркера. Его отключение часто бывает полезно при использовании шаблона для форматирования содержимого окна информация.",
@@ -271,5 +273,7 @@
 	"maps-validator-describe-header-description": "Описание",
 	"maps-validator-describe-required": "требуется",
 	"maps-validator-describe-empty": "пусто",
-	"maps-validator-message-nodesc": "Описание не предоставлено"
+	"maps-validator-message-nodesc": "Описание не предоставлено",
+	"maps-config-type-string": "Текст",
+	"maps-config-type-string-list": "Список текстовых значений"
 }

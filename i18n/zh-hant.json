@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"1233thehongkonger",
+			"Addonian1123",
 			"Cwlin0416",
 			"EagerLin",
 			"Horacewai2",
@@ -284,5 +285,26 @@
 	"maps-config-error-invalid-url": "圖層「$1」的「url」必須以 http:// 或 https:// 開頭。",
 	"maps-config-error-invalid-wms": "圖層「$1」的「wms」屬性必須為真或假。",
 	"maps-config-error-unknown-option": "圖層「$1」有一個未知選項「$2」。",
-	"maps-config-error-invalid-option-url": "圖層「$1」的「$2」選項必須是一個以 http:// 或 https:// 開頭的 URL。"
+	"maps-config-error-invalid-option-url": "圖層「$1」的「$2」選項必須是一個以 http:// 或 https:// 開頭的 URL。",
+	"maps-config-error-invalid-attribution": "圖層「 $1 」的「屬性」選項必須為文字。",
+	"maps-config-error-invalid-default-list": "「$1」必須是圖層名稱清單。",
+	"maps-config-error-invalid-availability": "「$1」必須是圖層名稱的映射，值為true或false。",
+	"maps-config-type-boolean": "$1或$2",
+	"maps-config-type-string": "文字",
+	"maps-config-type-string-list": "文字值列表",
+	"maps-config-type-number-map": "名稱，每個名稱對應一個正數",
+	"maps-config-type-integer": "整數",
+	"maps-config-type-integer-min": "整數， $1或以上",
+	"maps-config-type-enum": "$1中之一",
+	"maps-config-type-enum-list": "包含$1之一的列表",
+	"maps-config-type-dimension": "尺寸：數字，可帶有$1之一。",
+	"maps-config-type-dimension-auto": "尺寸：數字，可帶有$1之一或$2",
+	"maps-config-type-language": "語言代碼，例如$1",
+	"maps-config-type-layer-definitions": "命名自訂Leaflet圖層；請參閱文檔",
+	"maps-config-type-availability": "每個對應為$1或$2的圖層名稱",
+	"maps-config-docs-heading": "配置參考",
+	"maps-config-docs-pointer": "請參閱下方的[[#$1|設定參考]]和[$2 完整文件]。",
+	"maps-config-docs-column-key": "設定",
+	"maps-config-docs-column-type": "接受的值",
+	"maps-config-docs-column-setting": "LocalSettings.php等效項"
 }
