@@ -119,13 +119,46 @@ class GeoJsonFetcherTest extends TestCase {
 		);
 	}
 
-	public function testWhenUrlResolvesToPrivateIp_emptyJsonIsReturned() {
-		$this->fileFetcher = new StubFileFetcher( json_encode( self::VALID_FILE_JSON ) );
+	/**
+	 * Through the fetcher as production wires it, guard and all, unlike the stub the other tests
+	 * inject. A server listening on the address the URL points at makes this fail if the guard lets
+	 * such a URL through, rather than passing on a connection that fails anyway.
+	 *
+	 * @dataProvider loopbackHostProvider
+	 */
+	public function testWhenUrlPointsToPrivateNetwork_theServerIsNotContacted( string $host ) {
+		$server = stream_socket_server( 'tcp://127.0.0.1:0' );
 
-		$this->assertSame(
-			[],
-			$this->newJsonFileParser()->parse( 'http://127.0.0.1/file' )
+		MapsTestFactory::newTestInstance()->newGeoJsonFetcher()->parse(
+			'http://' . $host . ':' . $this->portOf( $server ) . '/secret.geojson'
 		);
+
+		$this->assertFalse( $this->wasConnectedTo( $server ) );
+
+		fclose( $server );
+	}
+
+	public static function loopbackHostProvider(): iterable {
+		yield 'loopback' => [ '127.0.0.1' ];
+		yield 'loopback written as IPv6' => [ '[::ffff:127.0.0.1]' ];
+	}
+
+	/**
+	 * @param resource $server
+	 */
+	private function portOf( $server ): int {
+		return (int)explode( ':', stream_socket_get_name( $server, false ) )[1];
+	}
+
+	/**
+	 * @param resource $server
+	 */
+	private function wasConnectedTo( $server ): bool {
+		$pending = [ $server ];
+		$write = null;
+		$except = null;
+
+		return stream_select( $pending, $write, $except, 0 ) > 0;
 	}
 
 }
