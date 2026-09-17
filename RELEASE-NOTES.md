@@ -5,7 +5,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 ## Maps 14.2.1
 
-Not yet released
+Released on September 18th, 2026.
 
 * Fixed a Server-Side Request Forgery vulnerability: the check that stops the Leaflet `geojson` parameter from fetching URLs on private and internal networks could be bypassed, for instance by writing such an address in IPv6 form or by using a hostname that resolves to one. The check now covers these forms and the connection is pinned to the addresses it approved, which requires the `curl` PHP extension ([GHSA-56p2-6jwm-mvfc](https://github.com/ProfessionalWiki/Maps/security/advisories/GHSA-56p2-6jwm-mvfc))
 
