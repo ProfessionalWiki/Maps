@@ -7,6 +7,7 @@ namespace Maps;
 use DataValues\Geo\Parsers\LatLongParser;
 use FileFetcher\Cache\Factory as CacheFactory;
 use FileFetcher\FileFetcher;
+use GuzzleHttp\Handler\CurlHandler;
 use Jeroen\SimpleGeocoder\Geocoder;
 use Jeroen\SimpleGeocoder\Geocoders\Decorators\CoordinateFriendlyGeocoder;
 use Jeroen\SimpleGeocoder\Geocoders\FileFetchers\GeoNamesGeocoder;
@@ -14,11 +15,14 @@ use Jeroen\SimpleGeocoder\Geocoders\FileFetchers\GoogleGeocoder;
 use Jeroen\SimpleGeocoder\Geocoders\FileFetchers\NominatimGeocoder;
 use Jeroen\SimpleGeocoder\Geocoders\NullGeocoder;
 use Maps\DataAccess\CachingGeocoder;
+use Maps\DataAccess\DnsHostResolver;
 use Maps\DataAccess\GeoJsonFetcher;
+use Maps\DataAccess\GuardedFileFetcher;
 use Maps\DataAccess\ImageRepository;
 use Maps\DataAccess\MapsFileFetcher;
 use Maps\DataAccess\MediaWikiFileUrlFinder;
 use Maps\DataAccess\MwImageRepository;
+use Maps\DataAccess\UrlSsrfGuard;
 use Maps\DataAccess\PageContentFetcher;
 use Maps\GeoJsonPages\GeoJsonStore;
 use Maps\GeoJsonPages\Semantic\SemanticGeoJsonStore;
@@ -129,6 +133,10 @@ class MapsFactory {
 		);
 	}
 
+	/**
+	 * Fetches without any check on where the URL leads, so only give it URLs that an administrator
+	 * configured. Editor provided URLs go through getGeoJsonFileFetcher().
+	 */
 	public function getFileFetcher(): FileFetcher {
 		return $this->newFileFetcher();
 	}
@@ -139,12 +147,24 @@ class MapsFactory {
 
 	public function getGeoJsonFileFetcher(): FileFetcher {
 		if ( $this->settings['egMapsGeoJsonCacheTtl'] === 0 ) {
-			return $this->getFileFetcher();
+			return $this->newGuardedFileFetcher();
 		}
 
 		return ( new CacheFactory() )->newJeroenSimpleCacheFetcher(
-			$this->getFileFetcher(),
+			$this->newGuardedFileFetcher(),
 			$this->getMediaWikiSimpleCache( $this->settings['egMapsGeoJsonCacheTtl'] )
+		);
+	}
+
+	/**
+	 * Unlike the fetcher used for the geocoding services, this one is given URLs that editors control,
+	 * so it only fetches what the SSRF guard approves.
+	 */
+	private function newGuardedFileFetcher(): FileFetcher {
+		return new GuardedFileFetcher(
+			$this->mediaWikiServices->getHttpRequestFactory(),
+			new UrlSsrfGuard( new DnsHostResolver() ),
+			new CurlHandler()
 		);
 	}
 
