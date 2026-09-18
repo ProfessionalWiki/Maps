@@ -293,20 +293,20 @@ class GoogleMapsService implements MappingService {
 
 	/**
 	 * The url the browser should fetch this kml value from. Empty when there is none: the value is
-	 * blank, or it is not a file on this wiki while the wiki does not allow external KML.
+	 * blank, or it is not a file on this wiki while the wiki does not allow external data files.
 	 */
 	private function getKmlUrl( string $fileName ): string {
-		$url = $this->fileUrlFinder->findFileUrl( $fileName ) ?? $this->getExternalKmlUrl( $fileName );
+		$url = $this->fileUrlFinder->findFileUrl( $fileName ) ?? $this->getExternalDataFileUrl( $fileName );
 
 		return (string)MediaWikiServices::getInstance()->getUrlUtils()->expand( $url );
 	}
 
-	private function getExternalKmlUrl( string $fileName ): string {
-		return $this->allowsExternalKml() ? trim( $fileName ) : '';
+	private function getExternalDataFileUrl( string $fileName ): string {
+		return $this->allowsExternalDataFiles() ? trim( $fileName ) : '';
 	}
 
-	private function allowsExternalKml(): bool {
-		return (bool)$this->config->get( 'egMapsAllowExternalKml' );
+	private function allowsExternalDataFiles(): bool {
+		return (bool)$this->config->get( 'egMapsAllowExternalDataFiles' );
 	}
 
 	public function newMapId(): string {
@@ -408,7 +408,7 @@ class GoogleMapsService implements MappingService {
 	public function newMapDataFromParameters( array $params ): MapData {
 		// The browser fetches the documents that NetworkLink elements point at, and only sees the
 		// urls once it has the KML in hand, so it needs to know the policy itself.
-		$params['allowexternalkml'] = $this->allowsExternalKml();
+		$params['allowexternaldatafiles'] = $this->allowsExternalDataFiles();
 
 		return new MapData( $params );
 	}

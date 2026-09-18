@@ -34,19 +34,29 @@ class GoogleMapsServiceTest extends TestCase {
 		);
 	}
 
-	public function testOnlyWikiFilesRemainWhenExternalKmlIsNotAllowed(): void {
+	public function testOnlyWikiFilesRemainWhenExternalDataFilesAreNotAllowed(): void {
 		$this->assertSame(
 			[ self::WIKI_FILE_URL ],
 			$this->kmlUrlsWithoutExternal( [ self::EXTERNAL_URL, self::WIKI_FILE, 'Missing.kml' ] )
 		);
 	}
 
-	public function testMapDataSaysExternalKmlIsAllowed(): void {
-		$this->assertTrue( $this->externalKmlInMapData( true ) );
+	public function testExternalUrlIsDroppedWithTheDefaultSettings(): void {
+		$this->assertSame(
+			[ self::WIKI_FILE_URL ],
+			$this->kmlUrls(
+				$this->newServiceWithSettings( [] ),
+				[ self::EXTERNAL_URL, self::WIKI_FILE ]
+			)
+		);
 	}
 
-	public function testMapDataSaysExternalKmlIsNotAllowed(): void {
-		$this->assertFalse( $this->externalKmlInMapData( false ) );
+	public function testMapDataSaysExternalDataFilesAreAllowed(): void {
+		$this->assertTrue( $this->externalDataFilesInMapData( true ) );
+	}
+
+	public function testMapDataSaysExternalDataFilesAreNotAllowed(): void {
+		$this->assertFalse( $this->externalDataFilesInMapData( false ) );
 	}
 
 	/**
@@ -54,7 +64,7 @@ class GoogleMapsServiceTest extends TestCase {
 	 * @return string[]
 	 */
 	private function kmlUrlsAllowingExternal( array $fileNames ): array {
-		return $this->kmlUrls( $fileNames, true );
+		return $this->kmlUrls( $this->newService( true ), $fileNames );
 	}
 
 	/**
@@ -62,7 +72,7 @@ class GoogleMapsServiceTest extends TestCase {
 	 * @return string[]
 	 */
 	private function kmlUrlsWithoutExternal( array $fileNames ): array {
-		return $this->kmlUrls( $fileNames, false );
+		return $this->kmlUrls( $this->newService( false ), $fileNames );
 	}
 
 	/**
@@ -71,37 +81,39 @@ class GoogleMapsServiceTest extends TestCase {
 	 * @param string[] $fileNames
 	 * @return string[]
 	 */
-	private function kmlUrls( array $fileNames, bool $allowExternalKml ): array {
-		$postFormat = $this->newService( $allowExternalKml )->getParameterInfo()['kml']['post-format'];
+	private function kmlUrls( GoogleMapsService $service, array $fileNames ): array {
+		$postFormat = $service->getParameterInfo()['kml']['post-format'];
 
 		return $postFormat( $fileNames );
 	}
 
-	private function externalKmlInMapData( bool $allowExternalKml ): bool {
-		return $this->newService( $allowExternalKml )
+	private function externalDataFilesInMapData( bool $allowExternalDataFiles ): bool {
+		return $this->newService( $allowExternalDataFiles )
 			->newMapDataFromParameters( [] )
-			->getParameters()['allowexternalkml'];
+			->getParameters()['allowexternaldatafiles'];
 	}
 
-	private function newService( bool $allowExternalKml ): GoogleMapsService {
+	private function newService( bool $allowExternalDataFiles ): GoogleMapsService {
+		return $this->newServiceWithSettings(
+			[ 'egMapsAllowExternalDataFiles' => $allowExternalDataFiles ]
+		);
+	}
+
+	/**
+	 * @param array<string, mixed> $settings Settings overriding the shipped defaults
+	 */
+	private function newServiceWithSettings( array $settings ): GoogleMapsService {
 		$fileUrlFinder = new InMemoryFileUrlFinder();
 		$fileUrlFinder->addFile( self::WIKI_FILE, self::WIKI_FILE_URL );
 
 		return new GoogleMapsService(
-			$this->newSettings( $allowExternalKml ),
-			$fileUrlFinder
-		);
-	}
-
-	private function newSettings( bool $allowExternalKml ): EffectiveSettings {
-		return new EffectiveSettings(
-			array_merge(
-				require __DIR__ . '/../../DefaultSettings.php',
-				[ 'egMapsAllowExternalKml' => $allowExternalKml ]
+			new EffectiveSettings(
+				array_merge( require __DIR__ . '/../../DefaultSettings.php', $settings ),
+				ConfigSchema::newDefault(),
+				new StubWikiConfigSource( null ),
+				true
 			),
-			ConfigSchema::newDefault(),
-			new StubWikiConfigSource( null ),
-			true
+			$fileUrlFinder
 		);
 	}
 

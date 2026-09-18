@@ -305,11 +305,12 @@ class MapsFactory {
 		return $factory;
 	}
 
-	public function newGeoJsonFetcher( ?FileFetcher $fileFetcher = null ): GeoJsonFetcher {
+	public function newGeoJsonFetcher(): GeoJsonFetcher {
 		return new GeoJsonFetcher(
-			$fileFetcher ?? $this->getGeoJsonFileFetcher(),
+			$this->getGeoJsonFileFetcher(),
 			$this->mediaWikiServices->getTitleParser(),
-			$this->mediaWikiServices->getRevisionLookup()
+			$this->mediaWikiServices->getRevisionLookup(),
+			(bool)$this->getEffectiveSettings()->get( 'egMapsAllowExternalDataFiles' )
 		);
 	}
 

@@ -4,10 +4,30 @@ declare( strict_types = 1 );
 
 namespace Maps\Tests\Integration\Parser;
 
+use Maps\Tests\MapsTestFactory;
 use Maps\Tests\Util\TestFactory;
 use PHPUnit\Framework\TestCase;
 
 class GoogleMapsTest extends TestCase {
+
+	private bool $originalAllowExternalDataFiles;
+
+	protected function setUp(): void {
+		parent::setUp();
+
+		$this->originalAllowExternalDataFiles = $GLOBALS['egMapsAllowExternalDataFiles'] ?? false;
+	}
+
+	protected function tearDown(): void {
+		$this->setAllowExternalDataFiles( $this->originalAllowExternalDataFiles );
+
+		parent::tearDown();
+	}
+
+	private function setAllowExternalDataFiles( bool $allow ): void {
+		$GLOBALS['egMapsAllowExternalDataFiles'] = $allow;
+		MapsTestFactory::newTestInstance();
+	}
 
 	private function assertStringContainsData( string $expected, string $html ): void {
 		$this->assertStringContainsString( htmlspecialchars( $expected ), $html );
@@ -18,6 +38,8 @@ class GoogleMapsTest extends TestCase {
 	}
 
 	public function testEmptyKmlEntriesAreDropped() {
+		$this->setAllowExternalDataFiles( true );
+
 		$this->assertStringContainsData(
 			'"kml":["https://example.com/points.kml"],',
 			$this->parse(
@@ -26,9 +48,20 @@ class GoogleMapsTest extends TestCase {
 		);
 	}
 
-	public function testExternalKmlIsAllowedByDefault() {
+	public function testKmlOnOtherHostsIsDroppedWhenExternalDataFilesAreNotAllowed() {
+		$this->setAllowExternalDataFiles( false );
+
 		$this->assertStringContainsData(
-			'"allowexternalkml":true',
+			'"kml":[]',
+			$this->parse( '{{#google_maps:kml=https://example.com/points.kml}}' )
+		);
+	}
+
+	public function testMapDataSaysExternalDataFilesAreAllowed() {
+		$this->setAllowExternalDataFiles( true );
+
+		$this->assertStringContainsData(
+			'"allowexternaldatafiles":true',
 			$this->parse( '{{#google_maps:1,1}}' )
 		);
 	}

@@ -3,6 +3,13 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 15.0.0
+
+Not yet released
+
+* Breaking change: the `kml` and `geojson` parameters now only load files that are on this wiki: KML files uploaded here and GeoJson pages. Maps that name a URL render without that data. Set `$egMapsAllowExternalDataFiles = true;` to keep loading URLs
+* Breaking change: `$egMapsAllowExternalKml` and `general.allowExternalKml` are replaced by `$egMapsAllowExternalDataFiles` and `general.allowExternalDataFiles`. A `MediaWiki:Maps` page that still holds the old key keeps working, but cannot be saved until the key is renamed
+
 ## Maps 14.2.1
 
 Released on September 18th, 2026.

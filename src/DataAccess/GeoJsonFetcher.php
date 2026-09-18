@@ -20,11 +20,18 @@ class GeoJsonFetcher {
 	private FileFetcher $fileFetcher;
 	private \TitleParser $titleParser;
 	private RevisionLookup $revisionLookup;
+	private bool $allowExternalDataFiles;
 
-	public function __construct( FileFetcher $fileFetcher, \TitleParser $titleParser, RevisionLookup $revisionLookup ) {
+	public function __construct(
+		FileFetcher $fileFetcher,
+		\TitleParser $titleParser,
+		RevisionLookup $revisionLookup,
+		bool $allowExternalDataFiles
+	) {
 		$this->fileFetcher = $fileFetcher;
 		$this->titleParser = $titleParser;
 		$this->revisionLookup = $revisionLookup;
+		$this->allowExternalDataFiles = $allowExternalDataFiles;
 	}
 
 	public function parse( string $fileLocation ): array {
@@ -54,6 +61,11 @@ class GeoJsonFetcher {
 
 		// Prevent reading JSON files on the server
 		if ( !filter_var( $fileLocation, FILTER_VALIDATE_URL ) ) {
+			return $this->newEmptyResult();
+		}
+
+		// External data files are only fetched when this wiki allows them
+		if ( !$this->allowExternalDataFiles ) {
 			return $this->newEmptyResult();
 		}
 

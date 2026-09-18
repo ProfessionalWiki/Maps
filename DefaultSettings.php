@@ -54,13 +54,14 @@ return [
 	'egMapsResizableByDefault' => false,
 	'egMapsRezoomForKML' => false,
 
-	// Boolean. Whether the kml parameter may reference KML outside of this wiki. These documents are
-	// fetched by the browser of everyone viewing the map, so the host they come from learns the IP
-	// address and user agent of each reader, and can change what it serves after the edit was
-	// reviewed. When false, kml values that are not a file on this wiki are dropped, and the
-	// NetworkLink elements inside a KML document may only point at this wiki. Does not apply to
-	// gkml, which Google fetches and renders on its own servers.
-	'egMapsAllowExternalKml' => true,
+	// Boolean. Whether the kml and geojson parameters may name a URL. Such a file is fetched by the
+	// browser of everyone viewing the map for kml, by this wiki's server for geojson, and the host
+	// serving it can change what it contains after the edit was reviewed. When false, only KML files
+	// uploaded to this wiki and GeoJson pages are used, and the NetworkLink elements inside a KML
+	// document may only point at this wiki. Does not apply to gkml, which Google fetches and renders
+	// on its own servers. When true, the server-side fetches block private address ranges and pin
+	// DNS; stronger guarantees need a firewall or an egress proxy.
+	'egMapsAllowExternalDataFiles' => false,
 
 	// Boolean. Sets if pages with maps should be put in special category
 	'egMapsEnableCategory' => false,
