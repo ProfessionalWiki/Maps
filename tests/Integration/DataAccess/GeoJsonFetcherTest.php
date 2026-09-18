@@ -41,7 +41,13 @@ class GeoJsonFetcherTest extends TestCase {
 	 */
 	private $fileFetcher;
 
+	private bool $originalAllowExternalDataFiles;
+
 	public function setUp(): void {
+		$this->originalAllowExternalDataFiles = $GLOBALS['egMapsAllowExternalDataFiles'] ?? false;
+		// Most tests here fetch from a url, which only happens when the wiki allows it.
+		$this->setAllowExternalDataFiles( true );
+
 		$this->fileFetcher = new StubFileFetcher( json_encode( self::VALID_FILE_JSON ) );
 
 		$pageCreator = new PageCreator();
@@ -51,8 +57,22 @@ class GeoJsonFetcherTest extends TestCase {
 		);
 	}
 
+	protected function tearDown(): void {
+		MapsTestFactory::$geoJsonFileFetcher = null;
+		$this->setAllowExternalDataFiles( $this->originalAllowExternalDataFiles );
+
+		parent::tearDown();
+	}
+
+	private function setAllowExternalDataFiles( bool $allow ): void {
+		$GLOBALS['egMapsAllowExternalDataFiles'] = $allow;
+		MapsTestFactory::newTestInstance();
+	}
+
 	private function newJsonFileParser(): GeoJsonFetcher {
-		return MapsTestFactory::newTestInstance()->newGeoJsonFetcher( $this->fileFetcher );
+		MapsTestFactory::$geoJsonFileFetcher = $this->fileFetcher;
+
+		return MapsTestFactory::newTestInstance()->newGeoJsonFetcher();
 	}
 
 	public function testWhenFileRetrievalFails_emptyJsonIsReturned() {
@@ -128,6 +148,24 @@ class GeoJsonFetcherTest extends TestCase {
 		);
 	}
 
+	public function testWhenExternalDataFilesAreNotAllowed_urlIsNotFetched() {
+		$this->setAllowExternalDataFiles( false );
+
+		$this->assertSame(
+			[],
+			$this->newJsonFileParser()->parse( 'http://example.com/file' )
+		);
+	}
+
+	public function testWhenExternalDataFilesAreNotAllowed_pageContentIsStillReturned() {
+		$this->setAllowExternalDataFiles( false );
+
+		$this->assertSame(
+			self::VALID_PAGE_JSON,
+			$this->newJsonFileParser()->parse( self::EXISTING_GEO_JSON_PAGE_WITH_PREFIX )
+		);
+	}
+
 	/**
 	 * Through the fetcher as production wires it, guard and all, unlike the stub the other tests
 	 * inject. A server listening on the address the URL points at makes this fail if the guard lets
@@ -136,6 +174,8 @@ class GeoJsonFetcherTest extends TestCase {
 	 * @dataProvider loopbackHostProvider
 	 */
 	public function testWhenUrlPointsToPrivateNetwork_theServerIsNotContacted( string $host ) {
+		$this->setAllowExternalDataFiles( true );
+
 		$server = stream_socket_server( 'tcp://127.0.0.1:0' );
 
 		MapsTestFactory::newTestInstance()->newGeoJsonFetcher()->parse(

@@ -4,6 +4,7 @@ declare( strict_types = 1 );
 
 namespace Maps\Tests;
 
+use FileFetcher\FileFetcher;
 use Maps\Config\WikiConfigSource;
 use Maps\DataAccess\ImageRepository;
 use Maps\MapsFactory;
@@ -27,6 +28,12 @@ class MapsTestFactory extends MapsFactory {
 	public static ?array $wikiConfig = null;
 
 	/**
+	 * When set, GeoJson urls are fetched from this instead of over the network. Reset to null in
+	 * tearDown.
+	 */
+	public static ?FileFetcher $geoJsonFileFetcher = null;
+
+	/**
 	 * Initializes a new test instance, updates the global instance used by production code and returns it.
 	 */
 	public static function newTestInstance(): self {
@@ -39,6 +46,10 @@ class MapsTestFactory extends MapsFactory {
 
 	public function getImageRepository(): ImageRepository {
 		return $this->imageRepo;
+	}
+
+	public function getGeoJsonFileFetcher(): FileFetcher {
+		return self::$geoJsonFileFetcher ?? parent::getGeoJsonFileFetcher();
 	}
 
 	/**
