@@ -203,6 +203,10 @@
 						map:_this.map,
 						zoom:options.kmlrezoom,
 						allowExternalDocuments:options.allowexternaldatafiles === true,
+						// Only a wiki that refused external data files filtered kml down to the files it
+						// resolved itself. Anything else, map data from before the setting included,
+						// says nothing about what is on this wiki.
+						wikiDocumentUrls:options.allowexternaldatafiles === false ? options.kml : [],
 						failedParse:function(document){
 							console.log(options.kml);
 							console.log(document);

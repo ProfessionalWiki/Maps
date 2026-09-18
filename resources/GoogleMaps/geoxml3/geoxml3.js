@@ -100,14 +100,17 @@ geoXML3 = window.geoXML3 || {instances: []};
 geoXML3.maxNetworkLinkDepth = 3;
 
 /**
- * Local modification (Maps extension): whether a url resolves to the origin of the page, which is
- * the wiki itself. Anything the browser cannot resolve counts as another origin.
+ * Local modification (Maps extension): the origin a url resolves to, or null when there is none to
+ * compare against: a url the browser cannot resolve, or one with an opaque origin, such as a data:
+ * url. The browser spells an opaque origin "null", and two of those are not the same place.
  */
-geoXML3.isSameOrigin = function (url) {
+geoXML3.originOf = function (url) {
 	try {
-		return new URL(url, document.baseURI).origin === window.location.origin;
+		var origin = new URL(url, document.baseURI).origin;
+
+		return origin === 'null' ? null : origin;
 	} catch (e) {
-		return false;
+		return null;
 	}
 };
 
@@ -152,12 +155,33 @@ geoXML3.parser = function (options) {
 		render(geoXML3.xmlParse(kmlString),thisDoc);
 	}
 
+	// Local modification (Maps extension): whether a url is on this wiki, meaning the origin of the
+	// page or of a document in wikiDocumentUrls. While the wiki does not allow external data files,
+	// that option holds only files the wiki itself resolved, which it can serve from another host
+	// through $wgUploadBaseUrl, a foreign file repo, or a CDN. Origins rather than the urls
+	// themselves, because such a document names further documents on its own host.
+	var isWikiUrl = function (url) {
+		var origin = geoXML3.originOf(url);
+
+		if (origin === null) {
+			return false;
+		}
+
+		if (origin === window.location.origin) {
+			return true;
+		}
+
+		return parserOptions.wikiDocumentUrls.some(function (wikiUrl) {
+			return geoXML3.originOf(wikiUrl) === origin;
+		});
+	};
+
 	// Local modification (Maps extension): the reader's browser does the fetching, so the wiki
 	// decides whether KML may come from anywhere else. A KML document names documents of its own,
 	// through NetworkLink and styleUrl, so this is applied everywhere the parser takes a url, not
 	// only to the ones that came from the wikitext.
 	var allowedUrl = function (url) {
-		if (parserOptions.allowExternalDocuments || geoXML3.isSameOrigin(url)) {
+		if (parserOptions.allowExternalDocuments || isWikiUrl(url)) {
 			return true;
 		}
 
@@ -1540,11 +1564,20 @@ geoXML3.parserOptions = function (overrides) {
 
 		/**
 		 * Local modification (Maps extension): when false, the parser only fetches documents from
-		 * the origin of the page, including the ones NetworkLink elements point at.
+		 * the origin of the page and of the urls in wikiDocumentUrls, including the ones NetworkLink
+		 * elements point at.
 		 * @type Boolean
 		 * @default true
 		 */
 		this.allowExternalDocuments = true,
+
+		/**
+		 * Local modification (Maps extension): the urls of the documents the wiki itself supplied.
+		 * Their origins count as the wiki's own, since it can serve uploads from another host.
+		 * @type Array
+		 * @default []
+		 */
+		this.wikiDocumentUrls = [],
 
 		this.markerOptions       = {},
 		this.infoWindowOptions   = {},
