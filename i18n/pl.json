@@ -7,6 +7,7 @@
 			"Deejay1",
 			"FunPL",
 			"Macofe",
+			"PanWor",
 			"Pietrasagh",
 			"Rail",
 			"Railfail536",
@@ -16,7 +17,7 @@
 			"Yarl"
 		]
 	},
-	"maps-desc": "Umożliwia zamieszczanie na stronach wiki dynamicznych map z wykorzystaniem Map Google lub Leaflet. Posiada edytor wizualny, opcjonalnie integruje się z Semantyczną MediaWiki, wspiera GeoJSON i dodaje dane geograficzne.",
+	"maps-desc": "Umożliwia zamieszczanie na stronach wiki dynamicznych map z wykorzystaniem Map Google lub Leaflet. Jest wyposażony w edytor wizualny, opcjonalnie integruje się z Semantyczną MediaWiki, wspiera GeoJSON i dodaje dane geograficzne.",
 	"maps_map": "Mapa",
 	"maps-tracking-category": "Strony z mapami renderowanymi przy użyciu rozszerzenia map",
 	"maps-loading-map": "Wczytywanie mapy…",
