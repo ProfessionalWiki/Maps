@@ -106,8 +106,3 @@ parameters:
 			message: "#^Instantiated class ParserOptions not found\\.$#"
 			count: 1
 			path: src/Presentation/WikitextParser.php
-
-		-
-			message: "#^Call to static method newFromText\\(\\) on an unknown class Title\\.$#"
-			count: 1
-			path: src/WikitextParsers/LineParser.php

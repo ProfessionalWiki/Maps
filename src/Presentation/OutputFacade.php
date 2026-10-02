@@ -30,9 +30,8 @@ class OutputFacade {
 		}
 
 		if ( $this->parserOutput !== null ) {
-			// Append the HTML to any existing text.
-			$existingText = $this->parserOutput->hasText() ? $this->parserOutput->getRawText() : '';
-			$this->parserOutput->setText( $existingText . $html );
+			$existingText = $this->parserOutput->hasText() ? $this->parserOutput->getContentHolderText() : '';
+			$this->parserOutput->setContentHolderText( $existingText . $html );
 		}
 	}
 

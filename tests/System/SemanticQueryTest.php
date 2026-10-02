@@ -89,7 +89,7 @@ class SemanticQueryTest extends TestCase {
 
 		return MediaWikiServices::getInstance()->getContentRenderer()
 			->getParserOutput( $content, $title )
-			->getText();
+			->getContentHolderText();
 	}
 
 	private function createDataPages() {
