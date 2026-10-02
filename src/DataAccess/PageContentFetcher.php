@@ -4,6 +4,8 @@ declare( strict_types = 1 );
 
 namespace Maps\DataAccess;
 
+use MediaWiki\Content\Content;
+use MediaWiki\Page\PageLookup;
 use MediaWiki\Revision\RevisionLookup;
 
 /**
@@ -12,29 +14,27 @@ use MediaWiki\Revision\RevisionLookup;
  */
 class PageContentFetcher {
 
-	private \TitleParser $titleParser;
+	private PageLookup $pageLookup;
 	private RevisionLookup $revisionLookup;
 
-	public function __construct( \TitleParser $titleParser, RevisionLookup $revisionLookup ) {
-		$this->titleParser = $titleParser;
+	public function __construct( PageLookup $pageLookup, RevisionLookup $revisionLookup ) {
+		$this->pageLookup = $pageLookup;
 		$this->revisionLookup = $revisionLookup;
 	}
 
-	public function getPageContent( string $pageTitle, int $defaultNamespace = NS_MAIN ): ?\Content {
-		try {
-			$title = $this->titleParser->parseTitle( $pageTitle, $defaultNamespace );
-		}
-		catch ( \MalformedTitleException $e ) {
+	public function getPageContent( string $pageTitle, int $defaultNamespace = NS_MAIN ): ?Content {
+		$page = $this->pageLookup->getExistingPageByText( $pageTitle, $defaultNamespace );
+
+		if ( $page === null ) {
 			return null;
 		}
 
-		$revision = $this->revisionLookup->getRevisionByTitle( $title );
+		$revision = $this->revisionLookup->getRevisionByTitle( $page );
 
 		if ( $revision === null ) {
 			return null;
 		}
 
-		// $revision->getRevisionRecord()->getContent( 'main' );
 		return $revision->getContent( 'main' );
 	}
 

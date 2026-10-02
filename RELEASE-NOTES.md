@@ -3,6 +3,13 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 15.0.1
+
+Not yet released
+
+* Fixed deprecated `RevisionStore::getRevisionByTitle()` usage causing warnings on MediaWiki 1.45+
+* Fixed deprecated `TextContent::getNativeData()` usage causing warnings on MediaWiki 1.46
+
 ## Maps 15.0.0
 
 Released on September 18th, 2026.

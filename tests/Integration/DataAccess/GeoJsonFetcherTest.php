@@ -12,7 +12,9 @@ use FileFetcher\ThrowingFileFetcher;
 use Maps\DataAccess\GeoJsonFetcher;
 use Maps\GeoJsonPages\GeoJsonContent;
 use Maps\Tests\MapsTestFactory;
+use Maps\Tests\Util\DeprecationWarnings;
 use Maps\Tests\Util\PageCreator;
+use MediaWiki\Content\JsonContent;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -120,9 +122,37 @@ class GeoJsonFetcherTest extends TestCase {
 		$this->assertSame( [], $this->newJsonFileParser()->parse( $jsonFilePath ) );
 	}
 
-	public function testWhenPageExists_itsContentsIsReturned() {
+	public function testWhenUrlIsNotAValidPageName_itsFileIsReturned() {
 		$this->assertSame(
-			self::VALID_PAGE_JSON,
+			self::VALID_FILE_JSON,
+			$this->newJsonFileParser()->parse( 'http://example.com/my%20file' )
+		);
+	}
+
+	public function testWhenPageExists_itIsReadWithoutDeprecationWarnings() {
+		$fetcher = $this->newJsonFileParser();
+
+		$this->assertSame(
+			[],
+			DeprecationWarnings::during( fn () => $fetcher->parse( self::EXISTING_GEO_JSON_PAGE_WITH_PREFIX ) )
+		);
+	}
+
+	public function testWhenPageWasEdited_itsCurrentContentIsReturned() {
+		$editedJson = [
+			'type' => 'FeatureCollection',
+			'features' => [
+				[ 'type' => 'Feature', 'geometry' => null, 'properties' => [ 'title' => 'Edited' ] ]
+			]
+		];
+
+		( new PageCreator() )->createPageWithContent(
+			self::EXISTING_GEO_JSON_PAGE_WITH_PREFIX,
+			new GeoJsonContent( json_encode( $editedJson ) )
+		);
+
+		$this->assertSame(
+			$editedJson,
 			$this->newJsonFileParser()->parse( self::EXISTING_GEO_JSON_PAGE_WITH_PREFIX )
 		);
 	}
@@ -131,6 +161,13 @@ class GeoJsonFetcherTest extends TestCase {
 		$this->assertSame(
 			[],
 			$this->newJsonFileParser()->parse( self::NON_EXISTING_GEO_JSON_PAGE )
+		);
+	}
+
+	public function testWhenPageNameHasInterwikiPrefix_emptyJsonIsReturned() {
+		$this->assertSame(
+			[],
+			$this->newJsonFileParser()->parse( 'wikipedia:' . self::EXISTING_GEO_JSON_PAGE )
 		);
 	}
 
@@ -145,6 +182,18 @@ class GeoJsonFetcherTest extends TestCase {
 		$this->assertSame(
 			self::EXISTING_GEO_JSON_PAGE,
 			$this->newJsonFileParser()->fetch( self::EXISTING_GEO_JSON_PAGE_WITH_PREFIX )->getTitleValue()->getText()
+		);
+	}
+
+	public function testPageInAnotherNamespaceIsReturnedAsSourceInThatNamespace() {
+		( new PageCreator() )->createPageWithContent(
+			'MediaWiki:GeoJsonFetcherTest.json',
+			new JsonContent( json_encode( self::VALID_PAGE_JSON ) )
+		);
+
+		$this->assertSame(
+			NS_MEDIAWIKI,
+			$this->newJsonFileParser()->fetch( 'MediaWiki:GeoJsonFetcherTest.json' )->getTitleValue()->getNamespace()
 		);
 	}
 
