@@ -38,26 +38,6 @@ parameters:
 			path: src/DataAccess/CachingGeocoder.php
 
 		-
-			message: "#^Property Maps\\\\DataAccess\\\\GeoJsonFetcher\\:\\:\\$titleParser has unknown class TitleParser as its type\\.$#"
-			count: 1
-			path: src/DataAccess/GeoJsonFetcher.php
-
-		-
-			message: "#^Parameter \\$titleParser of method Maps\\\\DataAccess\\\\GeoJsonFetcher\\:\\:__construct\\(\\) has invalid type TitleParser\\.$#"
-			count: 1
-			path: src/DataAccess/GeoJsonFetcher.php
-
-		-
-			message: "#^Class JsonContent not found\\.$#"
-			count: 1
-			path: src/DataAccess/GeoJsonFetcher.php
-
-		-
-			message: "#^Caught class MalformedTitleException not found\\.$#"
-			count: 1
-			path: src/DataAccess/GeoJsonFetcher.php
-
-		-
 			message: "#^Property Maps\\\\DataAccess\\\\GeoJsonFetcherResult\\:\\:\\$source has unknown class TitleValue as its type\\.$#"
 			count: 1
 			path: src/DataAccess/GeoJsonFetcherResult.php
@@ -71,26 +51,6 @@ parameters:
 			message: "#^Method Maps\\\\DataAccess\\\\GeoJsonFetcherResult\\:\\:getTitleValue\\(\\) has invalid return type TitleValue\\.$#"
 			count: 1
 			path: src/DataAccess/GeoJsonFetcherResult.php
-
-		-
-			message: "#^Property Maps\\\\DataAccess\\\\PageContentFetcher\\:\\:\\$titleParser has unknown class TitleParser as its type\\.$#"
-			count: 1
-			path: src/DataAccess/PageContentFetcher.php
-
-		-
-			message: "#^Parameter \\$titleParser of method Maps\\\\DataAccess\\\\PageContentFetcher\\:\\:__construct\\(\\) has invalid type TitleParser\\.$#"
-			count: 1
-			path: src/DataAccess/PageContentFetcher.php
-
-		-
-			message: "#^Method Maps\\\\DataAccess\\\\PageContentFetcher\\:\\:getPageContent\\(\\) has invalid return type Content\\.$#"
-			count: 1
-			path: src/DataAccess/PageContentFetcher.php
-
-		-
-			message: "#^Caught class MalformedTitleException not found\\.$#"
-			count: 1
-			path: src/DataAccess/PageContentFetcher.php
 
 		-
 			message: "#^Call to static method encode\\(\\) on an unknown class FormatJson\\.$#"

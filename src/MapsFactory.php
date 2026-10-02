@@ -194,7 +194,7 @@ class MapsFactory {
 
 	public function getPageContentFetcher(): PageContentFetcher {
 		return new PageContentFetcher(
-			$this->mediaWikiServices->getTitleParser(),
+			$this->mediaWikiServices->getPageStore(),
 			$this->mediaWikiServices->getRevisionLookup()
 		);
 	}
@@ -308,7 +308,7 @@ class MapsFactory {
 	public function newGeoJsonFetcher(): GeoJsonFetcher {
 		return new GeoJsonFetcher(
 			$this->getGeoJsonFileFetcher(),
-			$this->mediaWikiServices->getTitleParser(),
+			$this->mediaWikiServices->getPageStore(),
 			$this->mediaWikiServices->getRevisionLookup(),
 			(bool)$this->getEffectiveSettings()->get( 'egMapsAllowExternalDataFiles' )
 		);
