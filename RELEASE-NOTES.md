@@ -9,6 +9,8 @@ Not yet released
 
 * Fixed deprecated `RevisionStore::getRevisionByTitle()` usage causing warnings on MediaWiki 1.45+
 * Fixed deprecated `TextContent::getNativeData()` usage causing warnings on MediaWiki 1.46
+* Fixed GeoJson pages causing a fatal error on MediaWiki 1.47 and `ParserOutput::setText()` deprecation warnings on MediaWiki 1.45 and 1.46
+* Fixed a fatal error (`Class "Title" not found`) on MediaWiki 1.44+ when `lines` or `polygons` link to a wiki page instead of a URL
 
 ## Maps 15.0.0
 

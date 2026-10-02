@@ -45,7 +45,7 @@ class GeoJsonMapPageUiTest extends TestCase {
 		GeoJsonMapPageUi::forExistingPage( $this->pageJson( $title ) )
 			->addToOutput( OutputFacade::newFromParserOutput( $parserOutput ) );
 
-		return $parserOutput->getRawText();
+		return $parserOutput->getContentHolderText();
 	}
 
 	private function pageJson( string $title ): string {

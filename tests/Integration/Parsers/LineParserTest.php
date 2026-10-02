@@ -59,15 +59,18 @@ class LineParserTest extends TestCase {
 	}
 
 	public function testLinkWithInvalidTitleDoesNotCrash() {
-		if ( !class_exists( \Title::class ) ) {
-			$this->markTestSkipped( 'Title class not available' );
-		}
-
 		$parser = $this->newParser();
 
 		$line = $parser->parse( '4,2~link:<>' );
 
 		$this->assertSame( '', $line->getLink() );
+	}
+
+	public function testLinkToPageIsSetToThePageUrl() {
+		$link = $this->newParser()->parse( '4,2~link:Some page' )->getLink();
+
+		$this->assertStringStartsWith( 'http', $link );
+		$this->assertStringEndsWith( 'Some_page', $link );
 	}
 
 	public function testTitleAndTextGetSetWhenPresent() {
