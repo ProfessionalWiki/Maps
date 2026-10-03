@@ -77,7 +77,7 @@ class ConfigPageHooksTest extends TestCase {
 	}
 
 	public function testSavingInvalidConfigFailsWithEachError() {
-		$status = $this->saveConfigPage( '{"leaflets":{},"googlemaps":{}}' );
+		$status = $this->trySavingConfigPage( '{"leaflets":{},"googlemaps":{}}' );
 
 		$this->assertStatusNotOK( $status );
 		$this->assertStatusMessagesExactly(
@@ -88,8 +88,26 @@ class ConfigPageHooksTest extends TestCase {
 	}
 
 	/**
-	 * Saves the way maintenance scripts and extensions do, without the edit form.
+	 * Saves the way maintenance scripts and extensions do, without the edit form. A save that goes through is
+	 * undone, so a failing run does not leave the test config as the wiki's configuration.
 	 */
+	private function trySavingConfigPage( string $json ): StatusValue {
+		$previousJson = $this->configPageJson();
+		$status = $this->saveConfigPage( $json );
+
+		if ( $status->isOK() ) {
+			$this->saveConfigPage( $previousJson );
+		}
+
+		return $status;
+	}
+
+	private function configPageJson(): string {
+		$content = MapsTestFactory::newTestInstance()->getPageContentFetcher()->getPageContent( 'MediaWiki:Maps' );
+
+		return $content instanceof JsonContent ? $content->getText() : '{}';
+	}
+
 	private function saveConfigPage( string $json ): StatusValue {
 		return PageCreator::instance()->createPageWithContent( 'MediaWiki:Maps', new JsonContent( $json ) );
 	}
@@ -123,9 +141,9 @@ class ConfigPageHooksTest extends TestCase {
 		$this->assertStringContainsString( '(maps-config-error-unknown-key: later)', $text );
 	}
 
-	public function testOtherJsonPagesAreNotValidated() {
+	public function testPageNamedMapsInAnotherNamespaceIsNotValidated() {
 		$this->assertStatusGood( $this->validateSave(
-			Title::makeTitle( NS_GEO_JSON, 'Some area' ),
+			Title::makeTitle( NS_GEO_JSON, 'Maps' ),
 			'{"type":"FeatureCollection","features":[]}'
 		) );
 	}
