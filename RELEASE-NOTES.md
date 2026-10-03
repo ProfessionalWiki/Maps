@@ -11,6 +11,7 @@ Not yet released
 * Fixed deprecated `TextContent::getNativeData()` usage causing warnings on MediaWiki 1.46
 * Fixed GeoJson pages causing a fatal error on MediaWiki 1.47 and `ParserOutput::setText()` deprecation warnings on MediaWiki 1.45 and 1.46
 * Fixed a fatal error (`Class "Title" not found`) on MediaWiki 1.44+ when `lines` or `polygons` link to a wiki page instead of a URL
+* Fixed MediaWiki 1.46 logging an `EditFilter` hook deprecation warning on every request, and the `MediaWiki:Maps` config page accepting invalid configuration on MediaWiki 1.47. The configuration is now also validated when the page is saved without the edit form, such as with `edit.php` or a rollback
 
 ## Maps 15.0.0
 

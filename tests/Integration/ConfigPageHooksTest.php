@@ -6,14 +6,26 @@ namespace Maps\Tests\Integration;
 
 use Maps\MapsHooks;
 use Maps\Tests\MapsTestFactory;
+use Maps\Tests\Util\PageCreator;
+use MediaWiki\Content\JsonContent;
+use MediaWiki\Content\ValidationParams;
+use MediaWiki\Context\RequestContext;
+use MediaWiki\MediaWikiServices;
+use MediaWiki\Parser\Sanitizer;
 use MediaWiki\Title\Title;
+use MediaWikiTestCaseTrait;
 use PHPUnit\Framework\TestCase;
+use StatusValue;
 
 /**
+ * Needs the database to save MediaWiki:Maps, a save that the code under test refuses.
+ *
  * @covers \Maps\MapsHooks::onContentHandlerDefaultModelFor
- * @covers \Maps\MapsHooks::onEditFilter
+ * @covers \Maps\MapsHooks::onJsonValidateSave
  */
 class ConfigPageHooksTest extends TestCase {
+
+	use MediaWikiTestCaseTrait;
 
 	private bool $originalEnabled;
 
@@ -37,17 +49,6 @@ class ConfigPageHooksTest extends TestCase {
 
 	private function configTitle(): Title {
 		return Title::makeTitle( NS_MEDIAWIKI, 'Maps' );
-	}
-
-	private function editorFor( Title $title ): object {
-		return new class( $title ) {
-			public function __construct( private Title $title ) {
-			}
-
-			public function getTitle(): Title {
-				return $this->title;
-			}
-		};
 	}
 
 	public function testConfigPageGetsJsonContentModel() {
@@ -75,55 +76,68 @@ class ConfigPageHooksTest extends TestCase {
 		$this->assertSame( CONTENT_MODEL_WIKITEXT, $model );
 	}
 
+	public function testSavingInvalidConfigFailsWithEachError() {
+		$status = $this->saveConfigPage( '{"leaflets":{},"googlemaps":{}}' );
+
+		$this->assertStatusNotOK( $status );
+		$this->assertStatusMessagesExactly(
+			StatusValue::newFatal( 'maps-config-error-unknown-key', 'leaflets' )
+				->fatal( 'maps-config-error-unknown-key', 'googlemaps' ),
+			$status
+		);
+	}
+
+	/**
+	 * Saves the way maintenance scripts and extensions do, without the edit form.
+	 */
+	private function saveConfigPage( string $json ): StatusValue {
+		return PageCreator::instance()->createPageWithContent( 'MediaWiki:Maps', new JsonContent( $json ) );
+	}
+
 	public function testValidConfigIsAccepted() {
-		$error = '';
-
-		MapsHooks::onEditFilter( $this->editorFor( $this->configTitle() ), '{"leaflet":{}}', '', $error, '' );
-
-		$this->assertSame( '', $error );
+		$this->assertStatusGood( $this->validateSave( $this->configTitle(), '{"leaflet":{}}' ) );
 	}
 
-	public function testInvalidConfigIsRejected() {
-		$error = '';
+	/**
+	 * Runs the checks that every save of JSON content runs, without saving.
+	 */
+	private function validateSave( Title $title, string $json ): StatusValue {
+		$content = new JsonContent( $json );
 
-		MapsHooks::onEditFilter(
-			$this->editorFor( $this->configTitle() ),
-			'{"leaflet":{"layerDefinitions":{"Historic":{"url":"ftp://tiles.example"}}}}',
-			'',
-			$error,
-			''
-		);
-
-		$this->assertNotSame( '', $error );
+		return $content->getContentHandler()->validateSave( $content, new ValidationParams( $title, 0 ) );
 	}
 
-	public function testEditsToOtherPagesAreNotValidated() {
-		$error = '';
+	/**
+	 * MediaWiki 1.43 to 1.46 show the errors on the edit form as this HTML.
+	 */
+	public function testErrorsShowConfigKeysAsText() {
+		$status = $this->validateSave( $this->configTitle(), '{"<!--":{},"later":{}}' );
 
-		MapsHooks::onEditFilter(
-			$this->editorFor( Title::makeTitle( NS_MAIN, 'Some page' ) ),
-			'this is not even json',
-			'',
-			$error,
-			''
-		);
+		$html = MediaWikiServices::getInstance()->getFormatterFactory()
+			->getStatusFormatter( RequestContext::getMain() )
+			->getHTML( $status, [ 'lang' => 'qqx' ] );
 
-		$this->assertSame( '', $error );
+		$text = Sanitizer::stripAllTags( $html );
+
+		$this->assertStringContainsString( '(maps-config-error-unknown-key: <!--)', $text );
+		$this->assertStringContainsString( '(maps-config-error-unknown-key: later)', $text );
+	}
+
+	public function testOtherJsonPagesAreNotValidated() {
+		$this->assertStatusGood( $this->validateSave(
+			Title::makeTitle( NS_GEO_JSON, 'Some area' ),
+			'{"type":"FeatureCollection","features":[]}'
+		) );
+	}
+
+	public function testOtherJsonPagesInTheMediaWikiNamespaceAreNotValidated() {
+		$this->assertStatusGood( $this->validateSave( Title::makeTitle( NS_MEDIAWIKI, 'Maps.json' ), '{"leaflets":{}}' ) );
 	}
 
 	public function testConfigPageIsNotValidatedWhenWikiConfigDisabled() {
 		$this->setWikiConfigEnabled( false );
 
-		$error = '';
-		MapsHooks::onEditFilter(
-			$this->editorFor( $this->configTitle() ),
-			'{"leaflet":{"layerDefinitions":{"Historic":{"url":"ftp://tiles.example"}}}}',
-			'',
-			$error,
-			''
-		);
-
-		$this->assertSame( '', $error );
+		$this->assertStatusGood( $this->validateSave( $this->configTitle(), '{"leaflets":{}}' ) );
 	}
 
 }

@@ -111,7 +111,7 @@ class MapsSetup {
 		$hooks['ChangeTagsListActive'][] = 'Maps\MapsHooks::onRegisterTags';
 		$hooks['ChangeTagsAllowedAdd'][] = 'Maps\MapsHooks::onChangeTagsAllowedAdd';
 		$hooks['ContentHandlerDefaultModelFor'][] = 'Maps\MapsHooks::onContentHandlerDefaultModelFor';
-		$hooks['EditFilter'][] = 'Maps\MapsHooks::onEditFilter';
+		$hooks['JsonValidateSave'][] = 'Maps\MapsHooks::onJsonValidateSave';
 		$hooks['AlternateEdit'][] = 'Maps\MapsHooks::onAlternateEdit';
 		$hooks['EditFormPreloadText'][] = 'Maps\MapsHooks::onEditFormPreloadText';
 		$hooks['BeforePageDisplay'][] = 'Maps\MapsHooks::onBeforePageDisplay';

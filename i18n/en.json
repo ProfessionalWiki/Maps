@@ -266,7 +266,6 @@
 	"maps-validator-describe-required": "required",
 	"maps-validator-describe-empty": "empty",
 	"maps-validator-message-nodesc": "No description provided",
-	"maps-config-invalid": "The Maps configuration was not saved because it is invalid:",
 	"maps-config-error-invalid-json": "The configuration must be a JSON object.",
 	"maps-config-error-not-object": "The value of \"$1\" must be a JSON object.",
 	"maps-config-error-unknown-key": "Unknown configuration key \"$1\".",
