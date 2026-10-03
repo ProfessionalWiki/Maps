@@ -169,9 +169,16 @@ class MapPrinter extends ResultPrinter {
 	}
 
 	private function addTrackingCategoryIfNeeded() {
-		$parser = MediaWikiServices::getInstance()->getParser();
+		// Queries on special pages, such as Special:Ask, are not part of a page.
+		if ( !$this->mInline || !\Maps\MapsFactory::globalInstance()->getEffectiveSettings()->get( 'egMapsEnableCategory' ) ) {
+			return;
+		}
 
-		if ( \Maps\MapsFactory::globalInstance()->getEffectiveSettings()->get( 'egMapsEnableCategory' ) && $parser->getOutput() !== null ) {
+		// copyParser() does not copy: it returns the parser that runs the inline query.
+		$parser = $this->copyParser();
+
+		// Callers other than SMW's #ask can pass a parser that never parsed and has no output yet.
+		if ( $parser->getOptions() !== null ) {
 			$parser->addTrackingCategory( 'maps-tracking-category' );
 		}
 	}
