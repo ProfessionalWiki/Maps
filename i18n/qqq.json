@@ -244,7 +244,6 @@
 	"maps-validator-describe-required": "{{related|Validator-describe}}\n{{Identical|Required}}",
 	"maps-validator-describe-empty": "{{Identical|Empty}}\n{{related|Validator-describe}}",
 	"maps-validator-message-nodesc": "Indicates that no parameter description is available",
-	"maps-config-invalid": "Heading shown above the list of errors when an edit to the MediaWiki:Maps JSON config page is rejected.",
 	"maps-config-error-invalid-json": "Error shown when the MediaWiki:Maps config is not a JSON object.",
 	"maps-config-error-not-object": "Error shown when a value that must be a JSON object is not. $1 is the location, e.g. \"leaflet\" or \"layerDefinitions\".",
 	"maps-config-error-unknown-key": "Error shown when the config contains an unrecognized key. $1 is the unknown key.",

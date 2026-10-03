@@ -9,12 +9,14 @@ use ALTree;
 use Maps\Config\ConfigExample;
 use Maps\GeoJsonPages\GeoJsonNewPageUi;
 use Maps\Presentation\OutputFacade;
-use MediaWiki\Html\Html;
+use MediaWiki\Content\JsonContent;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Page\PageIdentity;
 use MediaWiki\Settings\SettingsBuilder;
 use MediaWiki\Title\Title;
 use SkinTemplate;
 use SMW\Query\PrintRequest;
+use StatusValue;
 
 /**
  * Static class for hooks handled by the Maps extension.
@@ -138,41 +140,21 @@ final class MapsHooks {
 	}
 
 	/**
-	 * Validates the on-wiki config page on save, blocking the edit with precise errors when the
+	 * Validates the on-wiki config page on save, blocking the save with precise errors when the
 	 * configuration is invalid.
-	 *
-	 * @param \MediaWiki\EditPage\EditPage $editor
-	 * @param string $text
-	 * @param string $section
-	 * @param string &$error
-	 * @param string $summary
 	 */
-	public static function onEditFilter( $editor, $text, $section, &$error, $summary ) {
+	public static function onJsonValidateSave( JsonContent $content, PageIdentity $pageIdentity, StatusValue $status ) {
 		$factory = MapsFactory::globalInstance();
 
-		if ( !is_string( $text ) || !$factory->isConfigPage( $editor->getTitle() ) ) {
+		if ( !$factory->isConfigPage( Title::newFromPageIdentity( $pageIdentity ) ) ) {
 			return true;
 		}
 
-		$errors = $factory->getConfigValidator()->validate( $text );
-
-		if ( $errors !== [] ) {
-			$error = self::formatConfigErrors( $errors );
+		foreach ( $factory->getConfigValidator()->validate( $content->getText() ) as $error ) {
+			$status->fatal( ...$error );
 		}
 
 		return true;
-	}
-
-	private static function formatConfigErrors( array $errors ): string {
-		$items = '';
-
-		foreach ( $errors as $errorSpec ) {
-			$items .= Html::rawElement( 'li', [], wfMessage( ...$errorSpec )->escaped() );
-		}
-
-		return Html::errorBox(
-			wfMessage( 'maps-config-invalid' )->escaped() . Html::rawElement( 'ul', [], $items )
-		);
 	}
 
 	/**
