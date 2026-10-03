@@ -162,6 +162,7 @@
 	"maps-googlemaps3-par-clusteraveragecenter": "{{maps-par|googlemaps3|clusteraveragecenter}}",
 	"maps-googlemaps3-par-clusterminsize": "{{maps-par|googlemaps3|clusterminsize}}",
 	"semanticmaps-unrecognizeddistance": "This is an error message.\n\nParameter:\n* $1 - distance",
+	"semanticmaps-no-coordinate-printout": "Warning shown when a semantic query with a map result format returns results, but none of the queried properties is of the \"Geographic coordinates\" datatype, so the map has no locations to show. \"Geographic coordinates\" is the English name of the Semantic MediaWiki datatype.",
 	"semanticmaps-kml-link": "This is the label of a link.",
 	"semanticmaps-kml": "{{optional}}",
 	"semanticmaps-default-kml-pagelink": "Used as default value for \"pagelinktext\" input box.\nSee example: [{{canonicalurl:Special:Ask|format=kml}} Special:Ask]\n\n<code>$1</code> is not a parameter (appears as is), but it will be replaced by the page title.\n\nSee also:\n* {{msg-mw|Semanticmaps-kml-pagelinktext}}\n{{Identical|View page}}",
