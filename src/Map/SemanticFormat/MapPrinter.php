@@ -11,6 +11,7 @@ use Maps\LegacyModel\Location;
 use Maps\Map\MapOutput;
 use Maps\Map\MapOutputBuilder;
 use Maps\MappingService;
+use Maps\MapsFactory;
 use Maps\Presentation\ElementJsonSerializer;
 use Maps\Presentation\WikitextParser;
 use Maps\SemanticMW\QueryHandler;
@@ -89,7 +90,7 @@ class MapPrinter extends ResultPrinter {
 
 		$this->isHTML = true;
 
-		$factory = \Maps\MapsFactory::globalInstance();
+		$factory = MapsFactory::globalInstance();
 		$this->locationParser = $factory->newLocationParser();
 		$this->fileUrlFinder = $factory->getFileUrlFinder();
 
@@ -170,14 +171,14 @@ class MapPrinter extends ResultPrinter {
 
 	private function addTrackingCategoryIfNeeded() {
 		// Queries on special pages, such as Special:Ask, are not part of a page.
-		if ( !$this->mInline || !\Maps\MapsFactory::globalInstance()->getEffectiveSettings()->get( 'egMapsEnableCategory' ) ) {
+		if ( !$this->mInline || !MapsFactory::globalInstance()->getEffectiveSettings()->get( 'egMapsEnableCategory' ) ) {
 			return;
 		}
 
-		// copyParser() does not copy: it returns the parser that runs the inline query.
+		// copyParser() does not copy. For #ask and #show it returns the parser running the query; other callers can
+		// get a parser that never parsed and has no output yet.
 		$parser = $this->copyParser();
 
-		// Callers other than SMW's #ask can pass a parser that never parsed and has no output yet.
 		if ( $parser->getOptions() !== null ) {
 			$parser->addTrackingCategory( 'maps-tracking-category' );
 		}
@@ -317,7 +318,7 @@ class MapPrinter extends ResultPrinter {
 	 * @return array
 	 */
 	private function getParameterInfo() {
-		$config = \Maps\MapsFactory::globalInstance()->getEffectiveSettings();
+		$config = MapsFactory::globalInstance()->getEffectiveSettings();
 
 		$params = $this->service->getParameterInfo();
 
