@@ -275,7 +275,6 @@
 	"maps-validator-describe-required": "必填",
 	"maps-validator-describe-empty": "空",
 	"maps-validator-message-nodesc": "没有提供描述",
-	"maps-config-invalid": "地图配置无效，因此未保存：",
 	"maps-config-error-invalid-json": "配置必须是JSON对象。",
 	"maps-config-error-not-object": "“$1”的值必须是JSON对象。",
 	"maps-config-error-unknown-key": "未知配置项“$1”。",

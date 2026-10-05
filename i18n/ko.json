@@ -259,7 +259,6 @@
 	"maps-validator-describe-required": "필수",
 	"maps-validator-describe-empty": "비었음",
 	"maps-validator-message-nodesc": "설명을 제공하지 않았습니다",
-	"maps-config-invalid": "지도 구성이 유효하지 않아 저장되지 않았습니다.",
 	"maps-config-error-invalid-json": "구성은 JSON 객체여야 합니다.",
 	"maps-config-error-not-object": "\"$1\"의 값은 JSON 객체여야 합니다.",
 	"maps-config-error-unknown-key": "알 수 없는 구성 키 \"$1\".",

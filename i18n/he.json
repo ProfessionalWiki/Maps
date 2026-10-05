@@ -260,6 +260,7 @@
 	"maps-validator-describe-empty": "ריק",
 	"maps-validator-message-nodesc": "ללא תיאור",
 	"maps-config-error-invalid-integer": "\"$1\" חייב להיות מספר שלם.",
+	"maps-config-type-boolean": "$1 או $2",
 	"maps-config-type-string": "טקסט",
 	"maps-config-type-string-list": "רשימה של ערכי טקסט",
 	"maps-config-type-integer": "מספר שלם",

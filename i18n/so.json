@@ -249,7 +249,6 @@
 	"maps-validator-describe-required": "loo baahan yahay",
 	"maps-validator-describe-empty": "madhan",
 	"maps-validator-message-nodesc": "Sharaxaad lama bixin",
-	"maps-config-invalid": "Qaabaynta Khariidadaha lama kaydin sababtoo ah waa mid aan sax ahayn:",
 	"maps-config-error-invalid-json": "Qaabayntu waa inay noqotaa shay JSON ah.",
 	"maps-config-error-not-object": "Qiimaha \"$1\" waa inuu noqdaa shay JSON ah.",
 	"maps-config-error-unknown-key": "Furaha qaabaynta \"$1\" lama yaqaan.",

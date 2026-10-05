@@ -277,7 +277,6 @@
 	"maps-validator-describe-required": "requis",
 	"maps-validator-describe-empty": "vide",
 	"maps-validator-message-nodesc": "Aucune description fournie",
-	"maps-config-invalid": "La configuration Maps n'a pas été sauvegardée car elle est non valide :",
 	"maps-config-error-invalid-json": "La configuration doit être un objet JSON.",
 	"maps-config-error-invalid-boolean": "« $1 » doit valoir true ou false.",
 	"maps-config-error-invalid-integer": "« $1 » doit être un nombre entier.",

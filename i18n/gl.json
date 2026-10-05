@@ -253,7 +253,6 @@
 	"maps-validator-describe-required": "obrigatorio",
 	"maps-validator-describe-empty": "baleiro",
 	"maps-validator-message-nodesc": "Non se achegou descrición ningunha",
-	"maps-config-invalid": "Non se gardou a configuración dos mapas porque non é válida:",
 	"maps-config-error-invalid-json": "A configuración debe ser un obxecto JSON.",
 	"maps-config-error-not-object": "O valor de «$1» debe ser un obxecto JSON.",
 	"maps-config-error-unknown-key": "Descoñécese a clave de configuración «$1».",

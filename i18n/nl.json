@@ -265,7 +265,6 @@
 	"maps-validator-describe-required": "vereist",
 	"maps-validator-describe-empty": "leeg",
 	"maps-validator-message-nodesc": "Geen beschrijving",
-	"maps-config-invalid": "De configuratie van Maps is niet opgeslagen omdat deze ongeldig is:",
 	"maps-config-error-invalid-json": "De configuratie moet een JSON-object zijn.",
 	"maps-config-error-not-object": "De waarde van \"$1\" moet een JSON-object zijn.",
 	"maps-config-error-unknown-key": "Onbekende configuratiesleutel \"$1\".",

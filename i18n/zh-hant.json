@@ -267,7 +267,6 @@
 	"maps-validator-describe-required": "必填",
 	"maps-validator-describe-empty": "空白",
 	"maps-validator-message-nodesc": "未提供描述",
-	"maps-config-invalid": "由於「地圖」的組態無效，因此未被儲存：",
 	"maps-config-error-invalid-json": "該組態必須是一個JSON物件。",
 	"maps-config-error-not-object": "「$1」的值必須是一個JSON物件。",
 	"maps-config-error-unknown-key": "未知的組態key「$1」。",

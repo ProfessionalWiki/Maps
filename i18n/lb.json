@@ -150,7 +150,6 @@
 	"maps-validator-describe-required": "obligatoresch",
 	"maps-validator-describe-empty": "eidel",
 	"maps-validator-message-nodesc": "Et gëtt keng Beschreiwung",
-	"maps-config-invalid": "D'Maps-Konfiguratioun gouf net gespäichert, well se ongülteg ass:",
 	"maps-config-error-invalid-json": "D'Konfiguratioun muss en JSON-Objet sinn.",
 	"maps-config-error-not-object": "De Wäert fir „$1“ muss en JSON-Objet sinn.",
 	"maps-config-error-unknown-key": "Onbekannte Konfiguratiounsschlëssel „$1“.",
