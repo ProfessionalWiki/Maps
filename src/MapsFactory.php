@@ -37,6 +37,7 @@ use Maps\Map\CargoFormat\CargoOutputBuilder;
 use Maps\Map\DisplayMap\DisplayMapFunction;
 use Maps\Map\MapOutputBuilder;
 use Maps\Presentation\CoordinateFormatter;
+use Maps\Presentation\WikitextParser;
 use Maps\WikitextParsers\CircleParser;
 use Maps\WikitextParsers\DistanceParser;
 use Maps\WikitextParsers\ImageOverlayParser;
@@ -45,11 +46,13 @@ use Maps\WikitextParsers\LocationParser;
 use Maps\WikitextParsers\PolygonParser;
 use Maps\WikitextParsers\RectangleParser;
 use Maps\WikitextParsers\WmsOverlayParser;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
 use MessageLocalizer;
 use ParamProcessor\ParamDefinitionFactory;
 use MediaWiki\Parser\Parser;
+use MediaWiki\Parser\ParserOptions;
 use RepoGroup;
 use SimpleCache\Cache\Cache;
 use SimpleCache\Cache\MediaWikiCache;
@@ -305,13 +308,59 @@ class MapsFactory {
 		return $factory;
 	}
 
-	public function newGeoJsonFetcher(): GeoJsonFetcher {
+	/**
+	 * @param Parser|null $parser The parser rendering the page, through which the fetcher reads wiki pages
+	 */
+	public function newGeoJsonFetcher( ?Parser $parser = null ): GeoJsonFetcher {
 		return new GeoJsonFetcher(
 			$this->getGeoJsonFileFetcher(),
 			$this->mediaWikiServices->getPageStore(),
-			$this->mediaWikiServices->getRevisionLookup(),
+			$this->getRenderingParser( $parser ),
 			(bool)$this->getEffectiveSettings()->get( 'egMapsAllowExternalDataFiles' )
 		);
+	}
+
+	/**
+	 * @return Parser The given parser while it is parsing, and otherwise a parser of Maps' own for an anonymous reader,
+	 * because what it produces can end up in a page render that is cached for every reader.
+	 */
+	public function getRenderingParser( ?Parser $parser ): Parser {
+		if ( $parser !== null && $this->isParsing( $parser ) ) {
+			return $parser;
+		}
+
+		return $this->newParser( ParserOptions::newFromAnon() );
+	}
+
+	private function isParsing( Parser $parser ): bool {
+		// A parser that never parsed has no options, and can lack an output even when given options. Once a parse is
+		// over, its output holds the text.
+		if ( $parser->getOptions() === null ) {
+			return false;
+		}
+
+		$output = $parser->getOutput();
+
+		return $output !== null && !$output->hasText();
+	}
+
+	private function newParser( ParserOptions $options ): Parser {
+		$parser = $this->mediaWikiServices->getParserFactory()->create();
+		$parser->startExternalParse( null, $options, Parser::OT_HTML );
+
+		return $parser;
+	}
+
+	public function newWikitextParser( Parser $pageParser ): WikitextParser {
+		return new WikitextParser( $pageParser, $this->mediaWikiServices->getParserFactory() );
+	}
+
+	/**
+	 * A parser for rendering outside of any page, such as on Special:Ask. It parses for the user making the request,
+	 * as nothing caches the result for other readers.
+	 */
+	public function newRequestParser(): Parser {
+		return $this->newParser( ParserOptions::newFromContext( RequestContext::getMain() ) );
 	}
 
 	public function smwIntegrationIsEnabled(): bool {

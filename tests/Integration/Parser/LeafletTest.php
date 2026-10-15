@@ -6,7 +6,6 @@ namespace Maps\Tests\Integration\Parser;
 
 use Maps\Config\ConfigSchema;
 use Maps\Config\EffectiveSettings;
-use Maps\GeoJsonPages\GeoJsonContent;
 use Maps\LeafletService;
 use Maps\Tests\MapsTestFactory;
 use Maps\Tests\TestDoubles\ImageValueObject;
@@ -142,25 +141,9 @@ class LeafletTest extends TestCase {
 		$this->assertStringNotContainsString( 'layerDefinitions', $html );
 	}
 
-	private function createGeoJsonPage( string $pageName, string $featureTitle ): void {
-		PageCreator::instance()->createPageWithContent(
-			'GeoJson:' . $pageName,
-			new GeoJsonContent( json_encode( [
-				'type' => 'FeatureCollection',
-				'features' => [
-					[
-						'type' => 'Feature',
-						'geometry' => [ 'type' => 'Point', 'coordinates' => [ 4.35, 50.85 ] ],
-						'properties' => [ 'title' => $featureTitle ],
-					],
-				],
-			] ) )
-		);
-	}
-
 	private function createTwoGeoJsonPages(): void {
-		$this->createGeoJsonPage( 'FirstSource', self::FIRST_FEATURE );
-		$this->createGeoJsonPage( 'SecondSource', self::SECOND_FEATURE );
+		PageCreator::instance()->createGeoJsonPage( 'FirstSource', self::FIRST_FEATURE );
+		PageCreator::instance()->createGeoJsonPage( 'SecondSource', self::SECOND_FEATURE );
 	}
 
 	private function assertBothFeaturesAreRendered( string $html ): void {
@@ -185,7 +168,7 @@ class LeafletTest extends TestCase {
 	}
 
 	public function testMissingSourceDoesNotStopTheRemainingOneFromRendering() {
-		$this->createGeoJsonPage( 'SecondSource', self::SECOND_FEATURE );
+		PageCreator::instance()->createGeoJsonPage( 'SecondSource', self::SECOND_FEATURE );
 
 		$html = $this->parse( '{{#leaflet:geojson=NoSuchPage;SecondSource}}' );
 
@@ -203,7 +186,7 @@ class LeafletTest extends TestCase {
 	}
 
 	public function testGeoJsonSourceIsThePageNameWithASingleSource() {
-		$this->createGeoJsonPage( 'FirstSource', self::FIRST_FEATURE );
+		PageCreator::instance()->createGeoJsonPage( 'FirstSource', self::FIRST_FEATURE );
 
 		$this->assertStringContainsData(
 			'"GeoJsonSource":"FirstSource"',
@@ -212,7 +195,7 @@ class LeafletTest extends TestCase {
 	}
 
 	public function testTrailingDelimiterLeavesTheSingleSourceEditable() {
-		$this->createGeoJsonPage( 'FirstSource', self::FIRST_FEATURE );
+		PageCreator::instance()->createGeoJsonPage( 'FirstSource', self::FIRST_FEATURE );
 
 		$this->assertStringContainsData(
 			'"GeoJsonSource":"FirstSource"',
@@ -221,7 +204,7 @@ class LeafletTest extends TestCase {
 	}
 
 	public function testLeadingDelimiterLeavesTheSingleSourceEditable() {
-		$this->createGeoJsonPage( 'FirstSource', self::FIRST_FEATURE );
+		PageCreator::instance()->createGeoJsonPage( 'FirstSource', self::FIRST_FEATURE );
 
 		$this->assertStringContainsData(
 			'"GeoJsonSource":"FirstSource"',

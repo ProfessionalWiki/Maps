@@ -7,8 +7,10 @@ namespace Maps\DataAccess;
 use FileFetcher\FileFetcher;
 use FileFetcher\FileFetchingException;
 use MediaWiki\Content\JsonContent;
+use MediaWiki\Page\ExistingPageRecord;
 use MediaWiki\Page\PageLookup;
-use MediaWiki\Revision\RevisionLookup;
+use MediaWiki\Parser\Parser;
+use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Title\TitleValue;
 
 /**
@@ -22,18 +24,22 @@ class GeoJsonFetcher {
 
 	private FileFetcher $fileFetcher;
 	private PageLookup $pageLookup;
-	private RevisionLookup $revisionLookup;
+	private Parser $parser;
 	private bool $allowExternalDataFiles;
 
+	/**
+	 * @param Parser $parser A parser in the middle of a parse, normally the one rendering the page. Pages are read
+	 * through it, so its options decide which pages the render may include, and its output records the pages read.
+	 */
 	public function __construct(
 		FileFetcher $fileFetcher,
 		PageLookup $pageLookup,
-		RevisionLookup $revisionLookup,
+		Parser $parser,
 		bool $allowExternalDataFiles
 	) {
 		$this->fileFetcher = $fileFetcher;
 		$this->pageLookup = $pageLookup;
-		$this->revisionLookup = $revisionLookup;
+		$this->parser = $parser;
 		$this->allowExternalDataFiles = $allowExternalDataFiles;
 	}
 
@@ -45,7 +51,7 @@ class GeoJsonFetcher {
 		$page = $this->pageLookup->getExistingPageByText( $fileLocation, NS_GEO_JSON );
 
 		if ( $page !== null ) {
-			$revision = $this->revisionLookup->getRevisionByTitle( $page );
+			$revision = $this->fetchCurrentRevision( $page );
 
 			if ( $revision !== null ) {
 				$content = $revision->getContent( 'main' );
@@ -80,6 +86,19 @@ class GeoJsonFetcher {
 		catch ( FileFetchingException $ex ) {
 			return $this->newEmptyResult();
 		}
+	}
+
+	/**
+	 * Records the page as used even when the parser refuses it, so that an edit of the page also refreshes the
+	 * renders that were allowed to show it.
+	 */
+	private function fetchCurrentRevision( ExistingPageRecord $page ): ?RevisionRecord {
+		$title = TitleValue::newFromPage( $page );
+		$revision = $this->parser->fetchCurrentRevisionRecordOfTitle( $title );
+
+		$this->parser->getOutput()->addTemplate( $title, $page->getId(), $revision?->getId() );
+
+		return $revision;
 	}
 
 	private function newEmptyResult(): GeoJsonFetcherResult {

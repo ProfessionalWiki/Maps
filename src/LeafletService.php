@@ -9,6 +9,7 @@ use Maps\DataAccess\GeoJsonFetcherResult;
 use Maps\DataAccess\GeoJsonSources;
 use Maps\DataAccess\ImageRepository;
 use Maps\Map\MapData;
+use MediaWiki\Parser\Parser;
 use ParamProcessor\ParameterTypes;
 use ParamProcessor\ProcessingResult;
 
@@ -275,13 +276,13 @@ class LeafletService implements MappingService {
 		return array_unique( $layerDependencies );
 	}
 
-	public function newMapDataFromProcessingResult( ProcessingResult $processingResult ): MapData {
-		return $this->newMapDataFromParameters( $processingResult->getParameterArray() );
+	public function newMapDataFromProcessingResult( ProcessingResult $processingResult, Parser $parser ): MapData {
+		return $this->newMapDataFromParameters( $processingResult->getParameterArray(), $parser );
 	}
 
-	public function newMapDataFromParameters( array $params ): MapData {
+	public function newMapDataFromParameters( array $params, Parser $parser ): MapData {
 		if ( $params['geojson'] !== [] ) {
-			$sources = $this->fetchGeoJson( $params['geojson'] );
+			$sources = $this->fetchGeoJson( $params['geojson'], $parser );
 
 			$params['geojson'] = $sources->getContents();
 			$params['GeoJsonSource'] = $sources->getEditablePageName();
@@ -307,8 +308,8 @@ class LeafletService implements MappingService {
 	/**
 	 * @param string[] $sourceNames Page names in the GeoJson namespace or URLs
 	 */
-	private function fetchGeoJson( array $sourceNames ): GeoJsonSources {
-		$fetcher = MapsFactory::globalInstance()->newGeoJsonFetcher();
+	private function fetchGeoJson( array $sourceNames, Parser $parser ): GeoJsonSources {
+		$fetcher = MapsFactory::globalInstance()->newGeoJsonFetcher( $parser );
 
 		return new GeoJsonSources(
 			array_map(

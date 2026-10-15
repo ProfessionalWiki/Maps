@@ -14,11 +14,17 @@ use Maps\GeoJsonPages\GeoJsonContent;
 use Maps\Tests\MapsTestFactory;
 use Maps\Tests\Util\DeprecationWarnings;
 use Maps\Tests\Util\PageCreator;
+use Maps\Tests\Util\RefusingParserOptions;
 use MediaWiki\Content\JsonContent;
+use MediaWiki\MediaWikiServices;
 use PHPUnit\Framework\TestCase;
 
 /**
+ * Needs the database: the fetcher reads GeoJSON pages that the tests create.
+ *
  * @covers \Maps\DataAccess\GeoJsonFetcher
+ * @covers \Maps\MapsFactory::getRenderingParser
+ * @covers \Maps\MapsFactory::getGeoJsonFileFetcher
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
@@ -185,6 +191,17 @@ class GeoJsonFetcherTest extends TestCase {
 		);
 	}
 
+	/**
+	 * The GeoJSON editor saves against this revision.
+	 */
+	public function testCurrentRevisionOfThePageIsReturned(): void {
+		$this->assertSame(
+			MediaWikiServices::getInstance()->getPageStore()
+				->getExistingPageByText( self::EXISTING_GEO_JSON_PAGE_WITH_PREFIX )->getLatest(),
+			$this->newJsonFileParser()->fetch( self::EXISTING_GEO_JSON_PAGE_WITH_PREFIX )->getRevisionId()
+		);
+	}
+
 	public function testPageInAnotherNamespaceIsReturnedAsSourceInThatNamespace() {
 		( new PageCreator() )->createPageWithContent(
 			'MediaWiki:GeoJsonFetcherTest.json',
@@ -195,6 +212,15 @@ class GeoJsonFetcherTest extends TestCase {
 			NS_MEDIAWIKI,
 			$this->newJsonFileParser()->fetch( 'MediaWiki:GeoJsonFetcherTest.json' )->getTitleValue()->getNamespace()
 		);
+	}
+
+	public function testWithoutAParserPagesAreReadAsAnAnonymousReader(): void {
+		RefusingParserOptions::whileDefaultsRefuseAnonymousReaders( function (): void {
+			$this->assertSame(
+				[],
+				$this->newJsonFileParser()->parse( self::EXISTING_GEO_JSON_PAGE_WITH_PREFIX )
+			);
+		} );
 	}
 
 	public function testWhenExternalDataFilesAreNotAllowed_urlIsNotFetched() {

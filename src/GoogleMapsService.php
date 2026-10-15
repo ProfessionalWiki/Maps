@@ -8,6 +8,7 @@ use Maps\Config\EffectiveSettings;
 use Maps\Map\MapData;
 use MediaWiki\Html\Html;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Parser\Parser;
 use ParamProcessor\ProcessedParam;
 use ParamProcessor\ProcessingResult;
 
@@ -377,7 +378,7 @@ class GoogleMapsService implements MappingService {
 		];
 	}
 
-	public function newMapDataFromProcessingResult( ProcessingResult $processingResult ): MapData {
+	public function newMapDataFromProcessingResult( ProcessingResult $processingResult, Parser $parser ): MapData {
 		$parameters = $processingResult->getParameters();
 
 		if ( array_key_exists( 'zoom', $parameters ) && $parameters['zoom']->wasSetToDefault() && count(
@@ -392,7 +393,7 @@ class GoogleMapsService implements MappingService {
 			$mapParams[$parameter->getName()] = $parameter->getValue();
 		}
 
-		return $this->newMapDataFromParameters( $mapParams );
+		return $this->newMapDataFromParameters( $mapParams, $parser );
 	}
 
 	private function getParameterWithValue( ProcessedParam $param, $value ) {
@@ -405,7 +406,7 @@ class GoogleMapsService implements MappingService {
 		);
 	}
 
-	public function newMapDataFromParameters( array $params ): MapData {
+	public function newMapDataFromParameters( array $params, Parser $parser ): MapData {
 		// The browser fetches the documents that NetworkLink elements point at, and only sees the
 		// urls once it has the KML in hand, so it needs to know the policy itself.
 		$params['allowexternaldatafiles'] = $this->allowsExternalDataFiles();

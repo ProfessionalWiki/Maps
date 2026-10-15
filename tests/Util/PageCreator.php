@@ -4,6 +4,7 @@ declare( strict_types = 1 );
 
 namespace Maps\Tests\Util;
 
+use Maps\GeoJsonPages\GeoJsonContent;
 use MediaWiki\CommentStore\CommentStoreComment;
 use MediaWiki\Title\Title;
 use StatusValue;
@@ -25,6 +26,22 @@ class PageCreator {
 		$this->createPageWithContent(
 			$title,
 			\ContentHandler::makeContent( $content ?? 'Content of ' . $title, $titleObject )
+		);
+	}
+
+	public function createGeoJsonPage( string $pageName, string $featureTitle ): void {
+		$this->createPageWithContent(
+			'GeoJson:' . $pageName,
+			new GeoJsonContent( json_encode( [
+				'type' => 'FeatureCollection',
+				'features' => [
+					[
+						'type' => 'Feature',
+						'geometry' => [ 'type' => 'Point', 'coordinates' => [ 4.35, 50.85 ] ],
+						'properties' => [ 'title' => $featureTitle ],
+					],
+				],
+			] ) )
 		);
 	}
 

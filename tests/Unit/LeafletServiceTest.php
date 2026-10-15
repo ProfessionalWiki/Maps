@@ -11,6 +11,7 @@ use Maps\Map\MapData;
 use Maps\Tests\TestDoubles\ImageValueObject;
 use Maps\Tests\TestDoubles\InMemoryImageRepository;
 use Maps\Tests\TestDoubles\StubWikiConfigSource;
+use MediaWiki\Parser\Parser;
 use PHPUnit\Framework\TestCase;
 use ReflectionMethod;
 
@@ -244,7 +245,7 @@ class LeafletServiceTest extends TestCase {
 		);
 
 		return $this->newService( new InMemoryImageRepository(), $layerDefinitions )
-			->newMapDataFromParameters( $params );
+			->newMapDataFromParameters( $params, $this->createStub( Parser::class ) );
 	}
 
 	/**

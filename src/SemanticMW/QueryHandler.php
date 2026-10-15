@@ -7,12 +7,9 @@ namespace Maps\SemanticMW;
 use MediaWiki\Html\Html;
 use MediaWiki\Linker\Linker;
 use MediaWiki\Title\Title;
-use MediaWiki\Context\RequestContext;
-use MediaWiki\Parser\Parser;
-use MediaWiki\Parser\ParserOptions;
 use Maps\LegacyModel\Location;
 use Maps\MapsFunctions;
-use MediaWiki\MediaWikiServices;
+use Maps\Presentation\WikitextParser;
 use SMW\Query\PrintRequest;
 use SMW\Query\QueryResult;
 use SMW\Query\Result\ResultArray;
@@ -45,13 +42,13 @@ class QueryHandler {
 
 	private $outputMode;
 
-	private $parser = null;
-
 	/**
 	 * The template to use for the text, or false if there is none.
 	 * @var string|boolean false
 	 */
 	private $template = false;
+
+	private ?WikitextParser $templateParser = null;
 
 	/**
 	 * Should link targets be made absolute (instead of relative)?
@@ -98,8 +95,9 @@ class QueryHandler {
 		$this->linkAbsolute = $linkAbsolute;
 	}
 
-	public function setTemplate( string $template ) {
+	public function setTemplate( string $template, WikitextParser $templateParser ) {
 		$this->template = $template === '' ? false : $template;
+		$this->templateParser = $templateParser;
 	}
 
 	public function setUserParam( string $userParam ) {
@@ -464,7 +462,7 @@ class QueryHandler {
 
 	private function buildPopupText( array $properties, string $title, Location $location ): string {
 		if ( $this->hasTemplate() ) {
-			return $this->getParser()->recursiveTagParseFully(
+			return $this->templateParser->wikitextToHtml(
 				$this->newTemplatedPopup()->getWikiText(
 					$title,
 					$this->getTitleOutput( $title ),
@@ -492,37 +490,6 @@ class QueryHandler {
 		}
 
 		return $this->hideNamespace ? $title->getText() : $title->getFullText();
-	}
-
-	/**
-	 * Since we’re outside the normal parse flow (like QueryHandler), we must initialize the Parser:
-	 * * Build a fresh Parser from ParserFactory->create() rather than the global shared instance.
-	 * * Reuse that initialized Parser for all related parsing that belongs to the same context Title and Options.
-	 */
-	private function getParser(): Parser {
-		if ( $this->parser !== null ) {
-			return $this->parser;
-		}
-
-		$this->parser = MediaWikiServices::getInstance()->getParserFactory()->create();
-
-		// Ensure parser options are present
-		$options = $this->parser->getOptions();
-		if ( !$options ) {
-			$user = RequestContext::getMain()->getUser();
-			$options = new ParserOptions( $user );
-			$this->parser->setOptions( $options );
-			$this->parser->clearState();
-		}
-
-		$this->parser->startExternalParse(
-			null,
-			$options,
-			Parser::OT_HTML,
-			true
-		);
-
-		return $this->parser;
 	}
 
 	/**

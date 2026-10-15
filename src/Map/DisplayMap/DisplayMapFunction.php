@@ -62,7 +62,7 @@ class DisplayMapFunction {
 		$this->trackMap( $parser );
 
 		$mapOutput = $this->renderer->renderMap(
-			$service->newMapDataFromProcessingResult( $processor->processParameters() ),
+			$service->newMapDataFromProcessingResult( $processor->processParameters(), $parser ),
 			$parser
 		);
 
@@ -94,7 +94,7 @@ class DisplayMapFunction {
 		$this->trackMap( $parser );
 
 		$mapOutput = $this->renderer->renderMap(
-			$service->newMapDataFromProcessingResult( $processor->processParameters() ),
+			$service->newMapDataFromProcessingResult( $processor->processParameters(), $parser ),
 			$parser
 		);
 

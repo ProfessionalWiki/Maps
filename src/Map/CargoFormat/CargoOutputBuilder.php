@@ -14,6 +14,7 @@ use Maps\Map\Marker;
 use Maps\Map\StructuredPopup;
 use Maps\MappingService;
 use Maps\MappingServices;
+use MediaWiki\Parser\Parser;
 use ParamProcessor\ParamDefinitionFactory;
 use ParamProcessor\Processor;
 
@@ -33,10 +34,10 @@ class CargoOutputBuilder {
 		$this->imageRepository = $imageRepository;
 	}
 
-	public function buildOutputFromCargoData( array $values, array $formattedValues, array $fieldDescriptions, array $displayParams ): MapOutput {
+	public function buildOutputFromCargoData( array $values, array $formattedValues, array $fieldDescriptions, array $displayParams, Parser $parser ): MapOutput {
 		$service = $this->services->getDefaultService();
 
-		$mapData = $service->newMapDataFromProcessingResult( $this->processParameters( $service, $displayParams ) );
+		$mapData = $service->newMapDataFromProcessingResult( $this->processParameters( $service, $displayParams ), $parser );
 		$mapData->setMarkers( $this->createMarkers( $formattedValues, $fieldDescriptions, $mapData ) );
 
 		return $this->outputBuilder->buildOutput(

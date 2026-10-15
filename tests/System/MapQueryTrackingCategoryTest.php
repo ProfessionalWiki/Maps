@@ -20,6 +20,7 @@ use SMWQueryProcessor;
  * Needs the database: the queries need a page with coordinates in the Semantic MediaWiki store.
  *
  * @covers \Maps\Map\SemanticFormat\MapPrinter
+ * @covers \Maps\MapsFactory::getRenderingParser
  */
 class MapQueryTrackingCategoryTest extends TestCase {
 
@@ -180,7 +181,19 @@ class MapQueryTrackingCategoryTest extends TestCase {
 		return SMWQueryProcessor::getResultFromQuery( $query, $params, SMW_OUTPUT_HTML, $context );
 	}
 
+	/**
+	 * Semantic Compound Queries and other callers render inline queries with whichever parser SMW last held, which can
+	 * be one whose parse is over.
+	 */
+	public function testInlineMapQueryWithAParserWhoseParseIsOverLeavesThatParseUntouched(): void {
+		$this->assertLeavesThePreviousParseUntouched( SMWQueryProcessor::INLINE_QUERY );
+	}
+
 	public function testMapShownOnSpecialAskLeavesThePreviousParseUntouched(): void {
+		$this->assertLeavesThePreviousParseUntouched( SMWQueryProcessor::SPECIAL_PAGE );
+	}
+
+	private function assertLeavesThePreviousParseUntouched( int $context ): void {
 		$previousOutput = MediaWikiServices::getInstance()->getParser()->parse(
 			'Some text',
 			$this->pageTitle(),
@@ -188,7 +201,7 @@ class MapQueryTrackingCategoryTest extends TestCase {
 		);
 		SMWQueryProcessor::setRecursiveTextProcessor();
 
-		$html = $this->renderQueryResult( SMWQueryProcessor::SPECIAL_PAGE );
+		$html = $this->renderQueryResult( $context );
 
 		$this->assertStringContainsString( 'data-mw-maps-mapdata=', $html );
 		$this->assertNotContains( $this->trackingCategory(), $previousOutput->getCategoryNames() );

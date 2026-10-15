@@ -13,10 +13,8 @@ use Maps\Map\MapOutputBuilder;
 use Maps\MappingService;
 use Maps\MapsFactory;
 use Maps\Presentation\ElementJsonSerializer;
-use Maps\Presentation\WikitextParser;
 use Maps\SemanticMW\QueryHandler;
 use Maps\WikitextParsers\LocationParser;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
 use MediaWiki\Parser\Parser;
 use SMW\Query\QueryResult;
@@ -66,15 +64,6 @@ class MapPrinter extends ResultPrinter {
 		self::$services['map'] = self::$services[$serviceName];
 	}
 
-	private function getParser(): Parser {
-		return MediaWikiServices::getInstance()->getParser();
-	}
-
-	private function getParserClone(): Parser {
-		$parser = $this->getParser();
-		return clone $parser;
-	}
-
 	/**
 	 * Builds up and returns the HTML for the map, with the queried coordinate data on it.
 	 *
@@ -94,9 +83,12 @@ class MapPrinter extends ResultPrinter {
 		$this->locationParser = $factory->newLocationParser();
 		$this->fileUrlFinder = $factory->getFileUrlFinder();
 
-		$this->elementSerializer = new ElementJsonSerializer( new WikitextParser( $this->getParserClone() ) );
+		$parser = $this->getRenderingParser( $factory );
+		$wikitextParser = $factory->newWikitextParser( $parser );
 
-		$this->addTrackingCategoryIfNeeded();
+		$this->elementSerializer = new ElementJsonSerializer( $wikitextParser );
+
+		$this->addTrackingCategoryIfNeeded( $parser );
 
 		$params = $this->params;
 
@@ -104,7 +96,7 @@ class MapPrinter extends ResultPrinter {
 		$queryHandler->setLinkStyle( $params['link'] );
 		$queryHandler->setHeaderStyle( $params['headers'] );
 		$queryHandler->setShowSubject( $params['showtitle'] );
-		$queryHandler->setTemplate( $params['template'] );
+		$queryHandler->setTemplate( $params['template'], $wikitextParser );
 		$queryHandler->setUserParam( $params['userparam'] );
 		$queryHandler->setHideNamespace( $params['hidenamespace'] );
 		$queryHandler->setActiveIcon( $params['activeicon'] );
@@ -138,7 +130,7 @@ class MapPrinter extends ResultPrinter {
 		}
 
 		$outputBuilder = new MapOutputBuilder();
-		$mapOutput = $outputBuilder->buildOutput( $this->service, $this->service->newMapDataFromParameters( $params ) );
+		$mapOutput = $outputBuilder->buildOutput( $this->service, $this->service->newMapDataFromParameters( $params, $parser ) );
 
 		$this->outputResources( $mapOutput );
 
@@ -169,17 +161,19 @@ class MapPrinter extends ResultPrinter {
 		);
 	}
 
-	private function addTrackingCategoryIfNeeded() {
+	private function getRenderingParser( MapsFactory $factory ): Parser {
 		// Queries on special pages, such as Special:Ask, are not part of a page.
-		if ( !$this->mInline || !MapsFactory::globalInstance()->getEffectiveSettings()->get( 'egMapsEnableCategory' ) ) {
-			return;
+		if ( !$this->mInline ) {
+			return $factory->newRequestParser();
 		}
 
 		// copyParser() does not copy. For #ask and #show it returns the parser running the query; other callers can
-		// get a parser that never parsed and has no output yet.
-		$parser = $this->copyParser();
+		// get a parser that never parsed, or one whose parse is over.
+		return $factory->getRenderingParser( $this->copyParser() );
+	}
 
-		if ( $parser->getOptions() !== null ) {
+	private function addTrackingCategoryIfNeeded( Parser $parser ) {
+		if ( $this->mInline && MapsFactory::globalInstance()->getEffectiveSettings()->get( 'egMapsEnableCategory' ) ) {
 			$parser->addTrackingCategory( 'maps-tracking-category' );
 		}
 	}

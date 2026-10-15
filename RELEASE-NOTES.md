@@ -3,6 +3,26 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 15.1.0
+
+Not yet released
+
+* Fixed maps not updating when a template or GeoJSON page they use is edited
+* Fixed links in marker text and popups missing from "What links here"
+* Fixed `<nowiki>`, `<pre>` and similar tags in `{{#display_map:}}` marker text showing as strip markers such as `UNIQ--nowiki-00000000-QINU`. Under Parsoid on MediaWiki 1.44 and later, other tags still show as strip markers, and `<nowiki>` content is parsed as wikitext
+* Fixed readers getting a page with a map rendered for other settings, such as another interface language
+* Fixed the page's own TemplateStyles styles going missing after a `<display_map>` whose marker text uses the same styles, on MediaWiki 1.43 and 1.44
+* Fixed charts and other query results placed above a map missing their data, scripts or styles when the map's markers have a title or text, with Semantic MediaWiki 7.0 and older
+* Fixed `{{PAGENAME}}` and relative links in popup templates referring to `Badtitle/Parser` instead of the page
+* Fixed widgets of the Widgets extension showing as `START_WIDGET…END_WIDGET` markers in `{{#display_map:}}` marker text and in the popups of semantic maps
+* Categories and language links in marker text and popup templates now apply to the page, so category queries, such as those of Semantic MediaWiki, find it
+* The content of references in `<display_map>` marker text shows nowhere, as the popup no longer gets a reference list. References in popup templates are numbered per popup
+* Semantic maps with many popups that link pages render much faster, while popup templates that use Lua take longer, as Lua starts anew for each popup. Each popup also has the limits of a parse of its own, including Lua's CPU time limit, so a large map whose popups run heavy Lua can now reach the request timeout
+* Extensions that vary the parser cache with `ParserOptions::addExtraKey()` while parsing marker text or popups do not vary it for the page
+* Extensions that restrict which pages a page may include now apply to marker text and popups as to the rest of the page, and to GeoJSON pages as to Lua's `mw.title:getContent()`
+* Existing pages pick up the new categories, links and dependencies when their links are next updated, as on an edit or with `refreshLinks.php`
+* For developers: `MappingService::newMapDataFromProcessingResult()` and `newMapDataFromParameters()`, `CargoOutputBuilder::buildOutputFromCargoData()`, `QueryHandler::setTemplate()` and the `GeoJsonFetcher` constructor now take the parser rendering the page, and the `WikitextParser` constructor also takes a `ParserFactory`. `MapsFactory::newGeoJsonFetcher()` takes the parser optionally; without one, the fetcher reads pages as an anonymous reader
+
 ## Maps 15.0.1
 
 Released on October 3rd, 2026.
