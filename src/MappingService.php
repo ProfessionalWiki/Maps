@@ -5,6 +5,7 @@ declare( strict_types = 1 );
 namespace Maps;
 
 use Maps\Map\MapData;
+use MediaWiki\Parser\Parser;
 use ParamProcessor\ParamDefinition;
 use ParamProcessor\ProcessingResult;
 
@@ -32,8 +33,14 @@ interface MappingService {
 
 	public function newMapId(): string;
 
-	public function newMapDataFromProcessingResult( ProcessingResult $processingResult ): MapData;
+	/**
+	 * @param Parser $parser The parser rendering the map, which reads the wiki pages the map shows
+	 */
+	public function newMapDataFromProcessingResult( ProcessingResult $processingResult, Parser $parser ): MapData;
 
-	public function newMapDataFromParameters( array $params ): MapData;
+	/**
+	 * @param Parser $parser The parser rendering the map, which reads the wiki pages the map shows
+	 */
+	public function newMapDataFromParameters( array $params, Parser $parser ): MapData;
 
 }

@@ -50,7 +50,7 @@ class DisplayMapRenderer {
 		$this->locationParser = $factory->newLocationParser();
 		$this->fileUrlFinder = $factory->getFileUrlFinder();
 
-		$this->wikitextParser = new WikitextParser( clone $parser );
+		$this->wikitextParser = $factory->newWikitextParser( $parser );
 		$this->elementSerializer = new ElementJsonSerializer( $this->wikitextParser );
 
 		$mapData->setParameters( $this->handleMarkerData( $mapData->getParameters() ) );

@@ -35,7 +35,8 @@ class CargoFormat extends CargoDisplayFormat {
 			$valuesTable,
 			$formattedValuesTable,
 			$fieldDescriptions,
-			$displayParams
+			$displayParams,
+			$this->getRenderingParser()
 		);
 
 		if ( $this->parser !== null ) {
@@ -52,6 +53,17 @@ class CargoFormat extends CargoDisplayFormat {
 		}
 
 		return $this->parser;
+	}
+
+	private function getRenderingParser(): Parser {
+		$factory = MapsFactory::globalInstance();
+
+		// Cargo gives no parser on special pages, such as Special:CargoQuery.
+		if ( $this->parser === null ) {
+			return $factory->newRequestParser();
+		}
+
+		return $factory->getRenderingParser( $this->parser instanceof Parser ? $this->parser : null );
 	}
 
 	private function getResultBuilder(): CargoOutputBuilder {

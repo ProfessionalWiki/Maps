@@ -12,6 +12,7 @@ jobs:
     continue-on-error: ${{ matrix.experimental }}
 
     strategy:
+      fail-fast: false
       matrix:
         # smwCache keeps the cache key free of the version constraint's special
         # characters, which would otherwise collide and share one cache.
@@ -31,6 +32,16 @@ jobs:
             smw: ''
             smwCache: 'none'
             experimental: false
+          - mw: 'REL1_46'
+            php: 8.3
+            smw: ''
+            smwCache: 'none'
+            experimental: false
+          - mw: 'master'
+            php: 8.3
+            smw: ''
+            smwCache: 'none'
+            experimental: true
           # Exercises the Semantic MediaWiki integration, which self-skips when SMW is absent.
           # Both supported major versions are tested, as they differ in API (e.g. class namespaces).
           - mw: 'REL1_43'
@@ -96,10 +107,22 @@ jobs:
         if: matrix.smw != ''
         run: php maintenance/update.php --quick
 
+      # MediaWiki 1.46 replaced tests/phpunit/phpunit.php with a configuration that composer generates from a template,
+      # which the release tarballs leave out. That configuration fails tests without a @covers annotation, which many
+      # Maps tests lack, so the jobs relax that as tests/phpunit/phpunit.php did.
       - name: Run PHPUnit
-        run: php tests/phpunit/phpunit.php -c extensions/Maps
+        run: |
+          if [ -f tests/phpunit/phpunit.php ]; then
+            php tests/phpunit/phpunit.php -c extensions/Maps
+          else
+            wget -nv -O phpunit.xml.template "https://raw.githubusercontent.com/wikimedia/mediawiki/${{ matrix.mw }}/phpunit.xml.template"
+            composer phpunit:config
+            sed -i -e 's/forceCoversAnnotation="true"/forceCoversAnnotation="false"/' -e 's/failOnRisky="true"/failOnRisky="false"/' phpunit.xml
+            vendor/bin/phpunit extensions/Maps/tests
+          fi
 
       - name: Run PHPUnit with code coverage
+        if: matrix.mw == 'REL1_43' || matrix.mw == 'REL1_44' || matrix.mw == 'REL1_45'
         run: |
           php tests/phpunit/phpunit.php -c extensions/Maps --coverage-clover coverage.xml
           bash <(curl -s https://codecov.io/bash)

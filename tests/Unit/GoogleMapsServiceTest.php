@@ -9,6 +9,7 @@ use Maps\Config\EffectiveSettings;
 use Maps\GoogleMapsService;
 use Maps\Tests\TestDoubles\InMemoryFileUrlFinder;
 use Maps\Tests\TestDoubles\StubWikiConfigSource;
+use MediaWiki\Parser\Parser;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -89,7 +90,7 @@ class GoogleMapsServiceTest extends TestCase {
 
 	private function externalDataFilesInMapData( bool $allowExternalDataFiles ): bool {
 		return $this->newService( $allowExternalDataFiles )
-			->newMapDataFromParameters( [] )
+			->newMapDataFromParameters( [], $this->createStub( Parser::class ) )
 			->getParameters()['allowexternaldatafiles'];
 	}
 
