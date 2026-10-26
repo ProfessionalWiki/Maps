@@ -45,7 +45,7 @@
 	"maps-geo-json-create-page-button": "دا مخ جوړول",
 	"maps-geo-json-create-page-creating": "مخ جوړول...",
 	"tag-maps-visual-edit": "ليدنيزه نخچې سمون",
-	"tag-maps-visual-edit-description": "د [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Maps Maps شاتاړي]\n له‌خوا چمتو‌شوي ليدنيز سمونگر سره ترسره‌شوی سمون",
+	"tag-maps-visual-edit-description": "د [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Maps نخشو شاتاړي] له‌خوا چمتو‌شوي ليدنيز سمونگر سره ترسره‌شوی سمون",
 	"maps-validator-type-string": "متن",
 	"maps-validator-type-integer": "ټوله شمېره",
 	"maps-validator-type-float": "شمېره",
