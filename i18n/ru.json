@@ -112,7 +112,7 @@
 	"maps-displaymap-par-rectangles": "Прямоугольники для отображения",
 	"maps-displaymap-par-static": "Сделать карту статичной",
 	"maps-displaymap-par-wmsoverlay": "Использовать слой WMS",
-	"maps-displaymap-par-geojson": "URL файла или название страницы, содержащей данные GeoJSON",
+	"maps-displaymap-par-geojson": "Одна или несколько страниц или URL-адресов, содержащих данные GeoJSON, разделённые точками с запятой.",
 	"maps-fullscreen-button": "Переключить полноэкранный режим",
 	"maps-fullscreen-button-tooltip": "Посмотреть карту в полноэкранном или встроенном  режиме.",
 	"maps-mylocation-button-tooltip": "Показать моё местоположение на карте.",

@@ -289,7 +289,7 @@
 	"maps-config-type-layer-definitions": "Poimenovani sloji Leaflet po meri; glejte dokumentacijo",
 	"maps-config-type-availability": "Vsako ime sloja je nastavljeno na $1 ali $2",
 	"maps-config-docs-heading": "Referenca konfiguracije",
-	"maps-config-docs-pointer": "Glejte [[$1|referenco konfiguracije]] spodaj in [$2 celotno dokumentacijo].",
+	"maps-config-docs-pointer": "Glejte [[#$1|referenco konfiguracije]] spodaj in [$2 celotno dokumentacijo].",
 	"maps-config-docs-column-key": "Nastavitev",
 	"maps-config-docs-column-type": "Sprejeta vrednost",
 	"maps-config-docs-column-setting": "Ekvivalent LocalSettings.php"

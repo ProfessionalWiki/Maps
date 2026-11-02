@@ -12,6 +12,7 @@
 			"Meelo",
 			"MuratTheTurkish",
 			"Rapsar",
+			"Rumixist",
 			"Sadrettin",
 			"SaldırganSincap",
 			"Sezgin İbiş",
@@ -169,6 +170,7 @@
 	"semanticmaps-latitude": "Enlem: $1",
 	"semanticmaps-longitude": "Boylam: $1",
 	"semanticmaps-altitude": "Rakım: $1",
+	"semanticmaps-coordinates": "Konaçlar",
 	"semanticmaps-forminput-locations": "Konumlar",
 	"semanticmaps-par-staticlocations": "Sorgulanan verilerle birlikte haritaya eklenecek yerlerin listesi. display_points üzerinde olduğu gibi, ayırıcı olarak \"~\" işaretini kullanarak konum başına bir başlık, açıklama ve simge ekleyebilirsiniz.",
 	"semanticmaps-par-showtitle": "İşaretçi bilgi penceresinde bir başlık gösterin veya göstermeyin. Bunu devre dışı bırakmak genellikle bilgi penceresi içeriğini biçimlendirmek için bir şablon kullanırken yararlıdır.",
@@ -262,5 +264,9 @@
 	"maps-validator-describe-header-description": "Açıklama",
 	"maps-validator-describe-required": "gerekli",
 	"maps-validator-describe-empty": "boş",
-	"maps-validator-message-nodesc": "Açıklama yapılmadı"
+	"maps-validator-message-nodesc": "Açıklama yapılmadı",
+	"maps-config-type-string": "Metin",
+	"maps-config-type-integer": "Tam sayı",
+	"maps-config-docs-heading": "Yapılandırma kaynağı",
+	"maps-config-docs-column-key": "Ayar"
 }
