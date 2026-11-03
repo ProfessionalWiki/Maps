@@ -55,7 +55,20 @@ class WikitextParser {
 			return '';
 		}
 
+		return $this->parse( $text, $this->startTextParse() );
+	}
+
+	/**
+	 * The HTML is not parsed as wikitext, while the wikitext around it can wrap it, as a tag opened before the HTML and
+	 * closed after it.
+	 */
+	public function wikitextAroundHtmlToHtml( string $wikitextBefore, string $html, string $wikitextAfter ): string {
 		$textParser = $this->startTextParse();
+
+		return $this->parse( $wikitextBefore . $textParser->insertStripItem( $html ) . $wikitextAfter, $textParser );
+	}
+
+	private function parse( string $text, Parser $textParser ): string {
 		$html = $this->withWidgets(
 			$textParser->recursiveTagParseFully( $this->handOverStripMarkers( $text, $textParser ) ),
 			$textParser->getOutput()

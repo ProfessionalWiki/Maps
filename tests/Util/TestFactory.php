@@ -9,6 +9,7 @@ use MediaWiki\MediaWikiServices;
 use MediaWiki\Parser\ParserOptions;
 use MediaWiki\Parser\ParserOutput;
 use MediaWiki\Title\Title;
+use SMWQueryProcessor;
 use User;
 
 /**
@@ -44,6 +45,20 @@ class TestFactory {
 			null,
 			$options
 		);
+	}
+
+	/**
+	 * @param string[] $queryParameters
+	 */
+	public function renderOnSpecialAsk( array $queryParameters, int $outputMode ): string {
+		[ $query, $params ] = SMWQueryProcessor::getQueryAndParamsFromFunctionParams(
+			$queryParameters,
+			$outputMode,
+			SMWQueryProcessor::SPECIAL_PAGE,
+			false
+		);
+
+		return SMWQueryProcessor::getResultFromQuery( $query, $params, $outputMode, SMWQueryProcessor::SPECIAL_PAGE );
 	}
 
 }

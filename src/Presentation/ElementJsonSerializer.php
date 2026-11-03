@@ -9,9 +9,11 @@ use Maps\LegacyModel\BaseElement;
 class ElementJsonSerializer {
 
 	private WikitextParser $parser;
+	private HtmlSanitizer $sanitizer;
 
 	public function __construct( WikitextParser $parser ) {
 		$this->parser = $parser;
+		$this->sanitizer = new HtmlSanitizer();
 	}
 
 	public function elementToJson( BaseElement $element ): array {
@@ -29,6 +31,12 @@ class ElementJsonSerializer {
 		$hasTitleAndText = $elementJson['title'] !== '' && $elementJson['text'] !== '';
 		$elementJson['text'] = ( $hasTitleAndText ? '<b>' . $elementJson['title'] . '</b>' : $elementJson['title'] ) . $elementJson['text'];
 		$elementJson['title'] = strip_tags( $elementJson['title'] );
+	}
+
+	public function inlineLabel( array &$elementJson ): void {
+		if ( isset( $elementJson['inlineLabel'] ) ) {
+			$elementJson['inlineLabel'] = $this->sanitizer->sanitize( $this->parser->wikitextToHtml( $elementJson['inlineLabel'] ) );
+		}
 	}
 
 }
