@@ -7,25 +7,14 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 Released on November 4th, 2026.
 
-* Fixed an XSS vulnerability in semantic maps: when a query found no locations, its `default` text was output as raw HTML, so a crafted link to Special:Ask could run JavaScript. `default` now works as in other result formats: wikitext on pages, plain text on Special:Ask
-* Fixed an XSS vulnerability in semantic maps shown with Google Maps: the inline label of a location in `staticlocations` was used as raw HTML, so a crafted link to Special:Ask could run JavaScript. As in `{{#display_map:}}`, the label now takes wikitext and keeps only its links and images
-* Fixed an XSS vulnerability in semantic maps: on pages, their `intro` and `outro` were output as raw HTML, which let editors add scripts and, through Special:Ask, let a crafted link run JavaScript. They now take wikitext, as in other result formats
-* Fixed an XSS vulnerability on wikis that set `$wgRawHtml`: maps on Special:Ask rendered `<html>` sections in their texts as raw HTML, so a crafted link could run JavaScript
-* Fixed maps not updating when a template or GeoJSON page they use is edited
-* Fixed links in marker text and popups missing from "What links here"
-* Fixed `<nowiki>`, `<pre>` and similar tags in `{{#display_map:}}` marker text showing as strip markers such as `UNIQ--nowiki-00000000-QINU`. Under Parsoid on MediaWiki 1.44 and later, other tags still show as strip markers, and `<nowiki>` content is parsed as wikitext
-* Fixed readers getting a page with a map rendered for other settings, such as another interface language
-* Fixed the page's own TemplateStyles styles going missing after a `<display_map>` whose marker text uses the same styles, on MediaWiki 1.43 and 1.44
-* Fixed charts and other query results placed above a map missing their data, scripts or styles when the map's markers have a title or text, with Semantic MediaWiki 7.0 and older
-* Fixed `{{PAGENAME}}` and relative links in popup templates referring to `Badtitle/Parser` instead of the page
-* Fixed widgets of the Widgets extension showing as `START_WIDGET…END_WIDGET` markers in `{{#display_map:}}` marker text and in the popups of semantic maps
-* Categories and language links in marker text and popup templates now apply to the page, so category queries, such as those of Semantic MediaWiki, find it
-* The content of references in `<display_map>` marker text shows nowhere, as the popup no longer gets a reference list. References in popup templates are numbered per popup
-* Semantic maps with many popups that link pages render much faster, while popup templates that use Lua take longer, as Lua starts anew for each popup. Each popup also has the limits of a parse of its own, including Lua's CPU time limit, so a large map whose popups run heavy Lua can now reach the request timeout
-* Extensions that vary the parser cache with `ParserOptions::addExtraKey()` while parsing marker text or popups do not vary it for the page
-* Extensions that restrict which pages a page may include now apply to marker text and popups as to the rest of the page, and to GeoJSON pages as to Lua's `mw.title:getContent()`
-* Existing pages pick up the new categories, links and dependencies when their links are next updated, as on an edit or with `refreshLinks.php`
-* For developers: `MappingService::newMapDataFromProcessingResult()` and `newMapDataFromParameters()`, `CargoOutputBuilder::buildOutputFromCargoData()`, `QueryHandler::setTemplate()` and the `GeoJsonFetcher` constructor now take the parser rendering the page, and the `WikitextParser` constructor also takes a `ParserFactory`. `MapsFactory::newGeoJsonFetcher()` takes the parser optionally; without one, the fetcher reads pages as an anonymous reader
+* Fixed XSS vulnerabilities in semantic maps, on pages and through Special:Ask
+* `default`, `intro` and `outro` of semantic maps now take wikitext, so raw HTML links and images in them show as text: use wikitext links and images. Inline labels of `staticlocations` keep only links and images
+* Fixed maps not updating when a template or GeoJSON page they use is edited, and readers getting a map rendered for other readers' settings, such as another interface language
+* Fixed strip markers such as `UNIQ--nowiki-00000000-QINU`, widget markers and `Badtitle/Parser` showing in marker text and popups
+* Links, categories and language links in marker text and popup templates now apply to the page, as in "What links here" and category queries. Existing pages pick them up on their next links update, as with `refreshLinks.php`
+* `<ref>` content in `<display_map>` marker text no longer shows
+* Popup templates that use Lua start Lua anew for each popup, so maps with many such popups can reach the request timeout
+* For developers: methods of `MappingService`, `CargoOutputBuilder` and `QueryHandler`, and the constructors of `GeoJsonFetcher` and `WikitextParser`, now take the parser rendering the page or a `ParserFactory`
 
 ## Maps 15.0.1
 
