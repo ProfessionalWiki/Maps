@@ -7,8 +7,8 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 Released on November 4th, 2026.
 
-* Fixed XSS vulnerabilities in semantic maps, on pages and through Special:Ask
-* `default`, `intro` and `outro` of semantic maps now take wikitext, so raw HTML links and images in them show as text: use wikitext links and images. Inline labels of `staticlocations` keep only links and images
+* Fixed XSS vulnerabilities in maps of Semantic MediaWiki queries, on pages and through Special:Ask
+* `default`, `intro` and `outro` of map queries now take wikitext, so raw HTML links and images in them show as text: use wikitext links and images. Inline labels of `staticlocations` keep only links and images
 * Fixed maps not updating when a template or GeoJSON page they use is edited, and readers getting a map rendered for other readers' settings, such as another interface language
 * Fixed strip markers such as `UNIQ--nowiki-00000000-QINU`, widget markers and `Badtitle/Parser` showing in marker text and popups
 * Links, categories and language links in marker text and popup templates now apply to the page, as in "What links here" and category queries. Existing pages pick them up on their next links update, as with `refreshLinks.php`
