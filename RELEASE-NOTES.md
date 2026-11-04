@@ -5,7 +5,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 ## Maps 15.1.0
 
-Not yet released
+Released on November 4th, 2026.
 
 * Fixed an XSS vulnerability in semantic maps: when a query found no locations, its `default` text was output as raw HTML, so a crafted link to Special:Ask could run JavaScript. `default` now works as in other result formats: wikitext on pages, plain text on Special:Ask
 * Fixed an XSS vulnerability in semantic maps shown with Google Maps: the inline label of a location in `staticlocations` was used as raw HTML, so a crafted link to Special:Ask could run JavaScript. As in `{{#display_map:}}`, the label now takes wikitext and keeps only its links and images
