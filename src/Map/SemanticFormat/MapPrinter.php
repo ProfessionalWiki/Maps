@@ -13,6 +13,7 @@ use Maps\Map\MapOutputBuilder;
 use Maps\MappingService;
 use Maps\MapsFactory;
 use Maps\Presentation\ElementJsonSerializer;
+use Maps\Presentation\WikitextParser;
 use Maps\SemanticMW\QueryHandler;
 use Maps\WikitextParsers\LocationParser;
 use MediaWiki\Title\Title;
@@ -77,8 +78,6 @@ class MapPrinter extends ResultPrinter {
 			return $this->fatalErrorMsg;
 		}
 
-		$this->isHTML = true;
-
 		$factory = MapsFactory::globalInstance();
 		$this->locationParser = $factory->newLocationParser();
 		$this->fileUrlFinder = $factory->getFileUrlFinder();
@@ -116,8 +115,12 @@ class MapPrinter extends ResultPrinter {
 		$params['ajaxquery'] = urlencode( $params['ajaxquery'] );
 
 		if ( $params['locations'] === [] ) {
-			return $params['default'];
+			// Only pages parse the text as wikitext: Special:Ask serves even raw output as HTML.
+			$this->isHTML = $outputMode !== SMW_OUTPUT_WIKI;
+			return $this->isHTML ? htmlspecialchars( $this->mDefault ) : $this->mDefault;
 		}
+
+		$this->isHTML = true;
 
 		// We can only take care of the zoom defaulting here,
 		// as not all locations are available in whats passed to Validator.
@@ -134,7 +137,7 @@ class MapPrinter extends ResultPrinter {
 
 		$this->outputResources( $mapOutput );
 
-		return $mapOutput->getHtml();
+		return $this->withIntroAndOutro( $mapOutput->getHtml(), $wikitextParser, $outputMode );
 	}
 
 	private function outputResources( MapOutput $mapOutput ) {
@@ -146,6 +149,22 @@ class MapPrinter extends ResultPrinter {
 		foreach ( $mapOutput->getResourceModules() as $resourceModule ) {
 			SMWOutputs::requireResource( $resourceModule );
 		}
+	}
+
+	/**
+	 * On pages, Semantic MediaWiki adds the intro and outro to HTML results without parsing them, so the map parses
+	 * them itself and leaves Semantic MediaWiki none to add.
+	 */
+	private function withIntroAndOutro( string $html, WikitextParser $wikitextParser, int $outputMode ): string {
+		if ( $outputMode !== SMW_OUTPUT_WIKI || ( $this->mIntro === '' && $this->mOutro === '' ) ) {
+			return $html;
+		}
+
+		$html = $wikitextParser->wikitextAroundHtmlToHtml( $this->mIntro, $html, $this->mOutro );
+		$this->mIntro = '';
+		$this->mOutro = '';
+
+		return $html;
 	}
 
 	private function randomString(): string {
@@ -250,6 +269,8 @@ class MapPrinter extends ResultPrinter {
 
 		if ( $params['pagelabel'] ) {
 			$jsonObj['inlineLabel'] = Linker::link( Title::newFromText( $jsonObj['title'] ) );
+		} else {
+			$this->elementSerializer->inlineLabel( $jsonObj );
 		}
 
 		return $jsonObj;

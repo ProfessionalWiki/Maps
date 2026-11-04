@@ -360,7 +360,11 @@ class MapsFactory {
 	 * as nothing caches the result for other readers.
 	 */
 	public function newRequestParser(): Parser {
-		return $this->newParser( ParserOptions::newFromContext( RequestContext::getMain() ) );
+		$options = ParserOptions::newFromContext( RequestContext::getMain() );
+		// The text comes from the request, so anyone can write it.
+		$options->setAllowUnsafeRawHtml( false );
+
+		return $this->newParser( $options );
 	}
 
 	public function smwIntegrationIsEnabled(): bool {

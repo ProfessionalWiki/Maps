@@ -7,6 +7,10 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 Not yet released
 
+* Fixed an XSS vulnerability in semantic maps: when a query found no locations, its `default` text was output as raw HTML, so a crafted link to Special:Ask could run JavaScript. `default` now works as in other result formats: wikitext on pages, plain text on Special:Ask
+* Fixed an XSS vulnerability in semantic maps shown with Google Maps: the inline label of a location in `staticlocations` was used as raw HTML, so a crafted link to Special:Ask could run JavaScript. As in `{{#display_map:}}`, the label now takes wikitext and keeps only its links and images
+* Fixed an XSS vulnerability in semantic maps: on pages, their `intro` and `outro` were output as raw HTML, which let editors add scripts and, through Special:Ask, let a crafted link run JavaScript. They now take wikitext, as in other result formats
+* Fixed an XSS vulnerability on wikis that set `$wgRawHtml`: maps on Special:Ask rendered `<html>` sections in their texts as raw HTML, so a crafted link could run JavaScript
 * Fixed maps not updating when a template or GeoJSON page they use is edited
 * Fixed links in marker text and popups missing from "What links here"
 * Fixed `<nowiki>`, `<pre>` and similar tags in `{{#display_map:}}` marker text showing as strip markers such as `UNIQ--nowiki-00000000-QINU`. Under Parsoid on MediaWiki 1.44 and later, other tags still show as strip markers, and `<nowiki>` content is parsed as wikitext

@@ -13,7 +13,6 @@ use MediaWiki\Parser\ParserOptions;
 use MediaWiki\Parser\ParserOutput;
 use PHPUnit\Framework\TestCase;
 use SMW\ParserData;
-use SMWQueryProcessor;
 
 /**
  * Needs the database: the queries need a page with coordinates in the Semantic MediaWiki store, and the maps use a
@@ -33,6 +32,7 @@ class SemanticMapPageParserTest extends TestCase {
 	private const GEO_JSON_PAGE_NAME = 'SemanticMapPageParserTest';
 	private const GEO_JSON_PAGE = 'GeoJson:' . self::GEO_JSON_PAGE_NAME;
 	private const GEO_JSON_FEATURE = 'Feature of the SemanticMapPageParserTest GeoJSON page';
+	private const LABEL_LINK_TARGET = 'SemanticMapPageParserTest label link target';
 
 	public static function setUpBeforeClass(): void {
 		parent::setUpBeforeClass();
@@ -93,6 +93,14 @@ class SemanticMapPageParserTest extends TestCase {
 		$this->assertContains( 'SemanticMapPageParserTest link target', RecordedLinks::linksOf( $output ) );
 	}
 
+	public function testLinkInStaticLocationInlineLabelIsRecordedOnThePage(): void {
+		$output = $this->render(
+			'{{#ask:[[Coordinates::+]]|?Coordinates|format=map|locations=1,1~Title~Text~~~[[' . self::LABEL_LINK_TARGET . ']]}}'
+		);
+
+		$this->assertContains( self::LABEL_LINK_TARGET, RecordedLinks::linksOf( $output ) );
+	}
+
 	public function testLinkInShapeTextIsRecordedOnThePage(): void {
 		$output = $this->render(
 			'{{#ask:[[Coordinates::+]]|?Coordinates|format=map|lines=1,1:2,2~Line title~[[SemanticMapPageParserTest shape link target]]}}'
@@ -126,26 +134,25 @@ class SemanticMapPageParserTest extends TestCase {
 	}
 
 	/**
+	 * Special:Ask renders text from the request, which must not become raw HTML, also where $wgRawHtml allows it in pages.
+	 */
+	public function testParserForSpecialAskAllowsNoRawHtml(): void {
+		$this->assertFalse( MapsTestFactory::newTestInstance()->newRequestParser()->getOptions()->getAllowUnsafeRawHtml() );
+	}
+
+	/**
 	 * Nothing caches a map on Special:Ask for other readers.
 	 */
 	public function testMapOnSpecialAskShowsWhatTheRequestingUserMayRead(): void {
 		RefusingParserOptions::whileDefaultsRefuseAnonymousReaders( function (): void {
 			$this->assertStringContainsString(
 				self::GEO_JSON_FEATURE,
-				$this->renderOnSpecialAsk( [ '[[Coordinates::+]]', '?Coordinates', 'format=leaflet', 'geojson=SemanticMapPageParserTest' ] )
+				TestFactory::newInstance()->renderOnSpecialAsk(
+					[ '[[Coordinates::+]]', '?Coordinates', 'format=leaflet', 'geojson=SemanticMapPageParserTest' ],
+					SMW_OUTPUT_HTML
+				)
 			);
 		} );
-	}
-
-	private function renderOnSpecialAsk( array $queryParameters ): string {
-		[ $query, $params ] = SMWQueryProcessor::getQueryAndParamsFromFunctionParams(
-			$queryParameters,
-			SMW_OUTPUT_HTML,
-			SMWQueryProcessor::SPECIAL_PAGE,
-			false
-		);
-
-		return SMWQueryProcessor::getResultFromQuery( $query, $params, SMW_OUTPUT_HTML, SMWQueryProcessor::SPECIAL_PAGE );
 	}
 
 }
