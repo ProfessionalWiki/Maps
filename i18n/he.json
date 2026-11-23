@@ -158,7 +158,7 @@
 	"maps-googlemaps3-par-clustergridsize": "גודל הרשת של האשכול בפיקסלים.",
 	"maps-par-clustermaxzoom": "רמת התקריב המרבית שבה יכולים להתקיים אשכולות.",
 	"maps-par-clusterzoomonclick": "האם ההתנהגות הראשונית ללחיצה על אשכול היא להתקרב לתוכו.",
-	"maps-par-clusteranimate": "האם להפעיל מעברים חלקים בעת שינוי רמת התקריב ובפריסת סמנים חופפים.",
+	"maps-par-clusteranimate": "האם להפעיל מעברים חלקים בעת שינוי רמת התקריב ובהצגת סמנים קרובים (spiderfying).",
 	"maps-par-maxclusterradius": "הרדיוס המרבי שהאשכול יכסה.",
 	"maps-googlemaps3-par-clusteraveragecenter": "האם המרכז של כל אשכול אמור להיות הממוצע של כל הסמנים באשכול.",
 	"maps-googlemaps3-par-clusterminsize": "המספר המזערי של הסמנים שאמורים להיות באשכול לפני שהסמנים מוסתרים ומוצג מונה.",
